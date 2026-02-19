@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RANK 5</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>RANK 4</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 :root {
   --ink:    #0C0C0C;
@@ -19,10 +19,10 @@
   --c1: #F59E0B;
   --c2: #0EA572;
   --c3: #2F54EB;
-  --c4: #B012C9;
   --ok:     #059669;
   --ok-tint:#DCFCE7;
   --fail:   #DC2626;
+  --warn:   #B45309;
 }
 
 body {
@@ -30,635 +30,433 @@ body {
   color: var(--ink);
   font-family: 'Outfit', sans-serif;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* ── HEADER ────────────────────────────────── */
+/* ── HEADER ── */
 .header {
   position: sticky; top: 0; z-index: 200;
   background: var(--ink);
   height: 58px;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 28px;
+  padding: 0 22px;
 }
 .logo {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.1rem; letter-spacing: 8px; line-height: 1;
-  color: white;
+  font-size: 2.1rem; letter-spacing: 7px; line-height: 1; color: white;
 }
-.logo-r { color: var(--c0); }
-.logo-a { color: var(--c1); }
-.logo-n { color: var(--c2); }
-.logo-k { color: var(--c3); }
-.logo-5 { color: var(--c4); }
-
-.header-right { display: flex; align-items: center; gap: 16px; }
-.header-date {
-  font-size: 0.65rem; font-weight: 600;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-}
+.logo-r{color:var(--c0)}.logo-a{color:var(--c1)}.logo-n{color:var(--c2)}.logo-k{color:var(--c3)}
+.header-right { display: flex; align-items: center; gap: 14px; }
+.header-date { font-size: 0.62rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
 .btn-help {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.72rem; font-weight: 700;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 100px; padding: 5px 14px;
-  color: rgba(255,255,255,0.7);
+  font-family: 'Outfit', sans-serif; font-size: 0.72rem; font-weight: 700;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 100px; padding: 5px 14px; color: rgba(255,255,255,0.7);
   cursor: pointer; transition: all 0.15s;
 }
 .btn-help:hover { background: rgba(255,255,255,0.18); color: white; }
 
-/* ── HERO ────────────────────────────────── */
+/* ── HERO ── */
 .hero {
-  background: var(--ink);
-  padding: 36px 28px 40px;
+  background: var(--ink); padding: 32px 22px 38px;
   position: relative; overflow: hidden;
 }
-/* coloured gradient wash */
 .hero::before {
-  content: '';
-  position: absolute; inset: 0; pointer-events: none;
+  content: ''; position: absolute; inset: 0; pointer-events: none;
   background:
     radial-gradient(ellipse 60% 80% at 10% 60%, rgba(232,57,30,0.18) 0%, transparent 60%),
     radial-gradient(ellipse 55% 70% at 90% 20%, rgba(47,84,235,0.18) 0%, transparent 60%),
     radial-gradient(ellipse 50% 60% at 55% 90%, rgba(14,165,114,0.14) 0%, transparent 55%);
 }
-/* dot grid texture */
 .hero::after {
-  content: '';
-  position: absolute; inset: 0; pointer-events: none;
+  content: ''; position: absolute; inset: 0; pointer-events: none;
   background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
   background-size: 20px 20px;
 }
-.hero-inner {
-  position: relative; z-index: 1;
-  max-width: 840px; margin: 0 auto;
-}
+.hero-inner { position: relative; z-index: 1; max-width: 840px; margin: 0 auto; }
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 7px;
-  font-size: 0.6rem; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; color: rgba(255,255,255,0.38);
-  margin-bottom: 10px;
+  font-size: 0.58rem; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 8px;
 }
-.hero-eyebrow::before {
-  content: '';
-  width: 18px; height: 1.5px;
-  background: rgba(255,255,255,0.25);
-  flex-shrink: 0;
-}
+.hero-eyebrow::before { content: ''; width: 18px; height: 1.5px; background: rgba(255,255,255,0.22); flex-shrink: 0; }
 .hero-heading {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2.4rem, 6vw, 4rem);
-  letter-spacing: 2px; color: white; line-height: 1;
-  margin-bottom: 8px;
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 6vw, 3.8rem);
+  letter-spacing: 2px; color: white; line-height: 1; margin-bottom: 6px;
 }
-.hero-sub {
-  font-size: 0.8rem; font-weight: 500;
-  color: rgba(255,255,255,0.38);
-  margin-bottom: 32px;
-}
-
-/* item cards */
-.hero-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
+.hero-sub { font-size: 0.78rem; font-weight: 500; color: rgba(255,255,255,0.35); margin-bottom: 28px; }
+.hero-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .hero-card {
-  border-radius: 18px;
-  padding: 22px 14px 20px;
-  text-align: center;
-  border: 1.5px solid rgba(255,255,255,0.1);
-  cursor: default;
-  transition: transform 0.2s ease, border-color 0.2s;
-  position: relative; overflow: hidden;
+  border-radius: 16px; padding: 20px 12px 18px; text-align: center;
+  border: 1.5px solid rgba(255,255,255,0.1); cursor: default;
+  transition: transform 0.2s ease, border-color 0.2s; position: relative; overflow: hidden;
 }
-/* per-card colour accent */
-.hero-card:nth-child(1) { background: rgba(232,57,30,0.14); border-color: rgba(232,57,30,0.3); }
-.hero-card:nth-child(2) { background: rgba(245,158,11,0.13); border-color: rgba(245,158,11,0.28); }
-.hero-card:nth-child(3) { background: rgba(14,165,114,0.13); border-color: rgba(14,165,114,0.28); }
-.hero-card:nth-child(4) { background: rgba(176,18,201,0.13); border-color: rgba(176,18,201,0.28); }
-.hero-card:hover { transform: translateY(-4px); }
-.hero-card:hover:nth-child(1) { border-color: rgba(232,57,30,0.55); }
-.hero-card:hover:nth-child(2) { border-color: rgba(245,158,11,0.5); }
-.hero-card:hover:nth-child(3) { border-color: rgba(14,165,114,0.5); }
-.hero-card:hover:nth-child(4) { border-color: rgba(176,18,201,0.5); }
-
-/* top colour bar on each card */
+.hero-card:nth-child(1){background:rgba(232,57,30,0.14);border-color:rgba(232,57,30,0.28)}
+.hero-card:nth-child(2){background:rgba(245,158,11,0.13);border-color:rgba(245,158,11,0.25)}
+.hero-card:nth-child(3){background:rgba(14,165,114,0.13);border-color:rgba(14,165,114,0.25)}
+.hero-card:nth-child(4){background:rgba(47,84,235,0.13);border-color:rgba(47,84,235,0.25)}
+.hero-card:hover{transform:translateY(-3px)}
 .hero-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 3px; border-radius: 18px 18px 0 0;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 16px 16px 0 0;
 }
-.hero-card:nth-child(1)::before { background: var(--c0); }
-.hero-card:nth-child(2)::before { background: var(--c1); }
-.hero-card:nth-child(3)::before { background: var(--c2); }
-.hero-card:nth-child(4)::before { background: var(--c4); }
+.hero-card:nth-child(1)::before{background:var(--c0)}.hero-card:nth-child(2)::before{background:var(--c1)}
+.hero-card:nth-child(3)::before{background:var(--c2)}.hero-card:nth-child(4)::before{background:var(--c3)}
+.hero-card-emoji { font-size: 2.2rem; display: block; margin-bottom: 10px; line-height: 1; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4)); }
+.hero-card-name { display: block; font-size: 0.79rem; font-weight: 700; color: rgba(255,255,255,0.9); line-height: 1.25; }
 
-.hero-card-emoji {
-  font-size: 2.4rem; display: block;
-  margin-bottom: 12px; line-height: 1;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
-}
-.hero-card-name {
-  display: block;
-  font-size: 0.82rem; font-weight: 700;
-  color: rgba(255,255,255,0.9); line-height: 1.25;
-  letter-spacing: 0.2px;
-}
-
-/* ── PROGRESS BAR ──────────────────────────── */
-.progress-bar {
-  background: var(--white);
-  border-bottom: 1.5px solid var(--edge);
-  padding: 10px 28px;
-}
-.progress-bar-inner {
-  max-width: 840px; margin: 0 auto;
-  display: flex; align-items: center; gap: 12px;
-}
-.progress-label {
-  font-size: 0.6rem; font-weight: 700; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--muted);
-  white-space: nowrap;
-}
+/* ── PROGRESS BAR ── */
+.progress-bar { background: var(--white); border-bottom: 1.5px solid var(--edge); padding: 10px 22px; }
+.progress-bar-inner { max-width: 840px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+.progress-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
 .progress-pips { display: flex; gap: 5px; flex: 1; }
-.pip {
-  flex: 1; height: 5px; border-radius: 3px;
-  background: var(--edge); transition: background 0.4s ease;
+.pip { flex: 1; height: 5px; border-radius: 3px; background: var(--edge); transition: background 0.4s ease; }
+.pip.lit-0{background:var(--c0)}.pip.lit-1{background:var(--c1)}.pip.lit-2{background:var(--c2)}.pip.lit-3{background:var(--c3)}
+.progress-checks {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 0.58rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
 }
-.pip.lit-0 { background: var(--c0); }
-.pip.lit-1 { background: var(--c1); }
-.pip.lit-2 { background: var(--c2); }
-.pip.lit-3 { background: var(--c3); }
-.pip.lit-4 { background: var(--c4); }
-.progress-pair {
-  display: flex; align-items: center; gap: 6px;
-  font-size: 0.6rem; font-weight: 700; letter-spacing: 1px;
-  text-transform: uppercase; color: var(--muted);
-}
-.pair-pip {
-  width: 22px; height: 5px; border-radius: 3px;
-  background: var(--edge); transition: background 0.4s ease;
-}
+.check-pips { display: flex; gap: 4px; }
+.check-pip { width: 10px; height: 10px; border-radius: 50%; background: var(--edge); transition: background 0.3s; }
+.check-pip.used { background: var(--fail); }
+.check-pip.remaining { background: var(--ink); }
+.progress-pair { display: flex; align-items: center; gap: 6px; font-size: 0.58rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+.pair-pip { width: 22px; height: 5px; border-radius: 3px; background: var(--edge); transition: background 0.4s ease; }
 .pair-pip.lit { background: var(--ok); }
 
-/* ── MAIN ──────────────────────────────────── */
-.main {
-  max-width: 840px; margin: 0 auto;
-  padding: 24px 20px 80px;
-}
+/* ── MAIN ── */
+.main { max-width: 840px; margin: 0 auto; padding: 20px 16px 80px; }
 
-/* ── PAIR FINDER ───────────────────────────── */
+/* ── PAIR FINDER ── */
 .pair-box {
-  background: var(--white);
-  border-radius: 16px;
-  border: 2px solid var(--ink);
-  overflow: hidden;
-  margin-bottom: 20px;
-  box-shadow: 3px 3px 0 var(--ink);
+  background: var(--white); border-radius: 16px; border: 2px solid var(--ink);
+  overflow: hidden; margin-bottom: 18px; box-shadow: 3px 3px 0 var(--ink);
 }
-.pair-head {
-  background: var(--ink);
-  padding: 13px 18px;
-  display: flex; align-items: center; gap: 10px;
-}
+.pair-head { background: var(--ink); padding: 12px 18px; display: flex; align-items: center; gap: 10px; }
 .pair-head-icon { font-size: 1rem; }
 .pair-head-text { flex: 1; }
-.pair-head-title {
-  font-size: 0.85rem; font-weight: 800;
-  color: white; line-height: 1; margin-bottom: 2px;
-}
-.pair-head-hint {
-  font-size: 0.67rem; font-weight: 500;
-  color: rgba(255,255,255,0.42);
-}
-.pair-body { padding: 16px 18px 20px; }
+.pair-head-title { font-size: 0.85rem; font-weight: 800; color: white; line-height: 1; margin-bottom: 2px; }
+.pair-head-hint { font-size: 0.65rem; font-weight: 500; color: rgba(255,255,255,0.42); }
+.pair-body { padding: 14px 18px 18px; }
 .pair-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
-
 .pair-pill {
-  border: 2px solid; border-radius: 100px;
-  padding: 7px 17px;
+  border: 2px solid; border-radius: 100px; padding: 7px 18px;
   font-size: 0.73rem; font-weight: 700;
   cursor: pointer; transition: all 0.14s ease;
   background: var(--white); user-select: none;
 }
-.pair-pill:hover:not([disabled]) {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 14px rgba(0,0,0,0.12);
-}
+.pair-pill:hover:not([disabled]) { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
 .pair-pill[disabled] { cursor: default; }
-.pair-pill.pp0 { border-color: var(--c0); color: var(--c0); }
-.pair-pill.pp1 { border-color: var(--c1); color: var(--c1); }
-.pair-pill.pp2 { border-color: var(--c2); color: var(--c2); }
-.pair-pill.pp3 { border-color: var(--c3); color: var(--c3); }
-.pair-pill.pp4 { border-color: var(--c4); color: var(--c4); }
-.pair-pill.pp0.sel { background: var(--c0); color: white; box-shadow: 0 4px 14px rgba(232,57,30,0.4); }
-.pair-pill.pp1.sel { background: var(--c1); color: white; box-shadow: 0 4px 14px rgba(245,158,11,0.4); }
-.pair-pill.pp2.sel { background: var(--c2); color: white; box-shadow: 0 4px 14px rgba(14,165,114,0.4); }
-.pair-pill.pp3.sel { background: var(--c3); color: white; box-shadow: 0 4px 14px rgba(47,84,235,0.4); }
-.pair-pill.pp4.sel { background: var(--c4); color: white; box-shadow: 0 4px 14px rgba(176,18,201,0.4); }
-.pair-pill.linked-done { opacity: 0.55; cursor: default; color: white !important; }
-.pair-pill.pp0.linked-done { background: var(--c0); }
-.pair-pill.pp1.linked-done { background: var(--c1); }
-.pair-pill.pp2.linked-done { background: var(--c2); }
-.pair-pill.pp3.linked-done { background: var(--c3); }
-.pair-pill.pp4.linked-done { background: var(--c4); }
-
+.pair-pill.pp0{border-color:var(--c0);color:var(--c0)}.pair-pill.pp1{border-color:var(--c1);color:var(--c1)}
+.pair-pill.pp2{border-color:var(--c2);color:var(--c2)}.pair-pill.pp3{border-color:var(--c3);color:var(--c3)}
+.pair-pill.pp0.sel{background:var(--c0);color:white;box-shadow:0 4px 14px rgba(232,57,30,0.4)}
+.pair-pill.pp1.sel{background:var(--c1);color:white;box-shadow:0 4px 14px rgba(245,158,11,0.4)}
+.pair-pill.pp2.sel{background:var(--c2);color:white;box-shadow:0 4px 14px rgba(14,165,114,0.4)}
+.pair-pill.pp3.sel{background:var(--c3);color:white;box-shadow:0 4px 14px rgba(47,84,235,0.4)}
+.pair-pill.linked-done{opacity:0.55;cursor:default;color:white!important}
+.pair-pill.pp0.linked-done{background:var(--c0)}.pair-pill.pp1.linked-done{background:var(--c1)}
+.pair-pill.pp2.linked-done{background:var(--c2)}.pair-pill.pp3.linked-done{background:var(--c3)}
 .pair-foot { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .btn-link {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.76rem; font-weight: 800;
+  font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 800;
   padding: 9px 22px; border: 2px solid var(--ink); border-radius: 100px;
-  background: var(--ink); color: white;
-  cursor: pointer; transition: all 0.14s;
+  background: var(--ink); color: white; cursor: pointer; transition: all 0.14s;
 }
-.btn-link:hover:not([disabled]) {
-  background: #252525;
-  transform: translateY(-1px);
-  box-shadow: 0 5px 16px rgba(0,0,0,0.25);
-}
-.btn-link[disabled] { opacity: 0.25; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
-
-.pair-msg { font-size: 0.76rem; font-weight: 600; color: var(--muted); flex: 1; }
-.pair-msg.ok  { color: var(--ok); }
-.pair-msg.err { color: var(--fail); }
-
+.btn-link:hover:not([disabled]) { background: #252525; transform: translateY(-1px); box-shadow: 0 5px 16px rgba(0,0,0,0.25); }
+.btn-link[disabled] { opacity: 0.25; cursor: not-allowed; transform: none!important; box-shadow: none!important; }
+.pair-msg { font-size: 0.75rem; font-weight: 600; color: var(--muted); flex: 1; min-height: 18px; }
+.pair-msg.ok{color:var(--ok)}.pair-msg.err{color:var(--fail)}
 .linked-badge {
-  display: none; margin-top: 14px;
-  align-items: center; gap: 10px;
-  background: var(--ok-tint);
-  border: 1.5px solid #86EFAC;
+  display: none; margin-top: 12px; align-items: center; gap: 10px;
+  background: var(--ok-tint); border: 1.5px solid #86EFAC;
   border-radius: 10px; padding: 12px 16px;
   font-size: 0.8rem; font-weight: 700; color: var(--ok);
 }
 .linked-badge.show { display: flex; }
 
-/* ── CATEGORY CARDS ────────────────────────── */
+/* Wrong pair feedback panel */
+.pair-wrong-reveal {
+  display: none; margin-top: 14px;
+  background: #FEF9F0; border: 1.5px solid #FBBF24;
+  border-radius: 12px; padding: 14px 16px;
+}
+.pair-wrong-reveal.show { display: block; }
+.pair-wrong-title {
+  font-size: 0.72rem; font-weight: 800; color: var(--warn); letter-spacing: 0.5px;
+  margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+}
+.pair-wrong-rows { display: flex; flex-direction: column; gap: 8px; }
+.pair-wrong-row { display: flex; align-items: flex-start; gap: 10px; }
+.pair-wrong-label {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  min-width: 110px; padding-top: 6px;
+}
+.pair-wrong-tiles { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
+.pwt {
+  font-size: 0.7rem; font-weight: 600; padding: 5px 10px;
+  border-radius: 8px; border: 1.5px solid var(--edge); background: var(--white);
+}
+.pwt.wrong { background: #FEE2E2; border-color: #FCA5A5; color: var(--fail); font-weight: 700; }
+.pwt.should-be { background: var(--ok-tint); border-color: #86EFAC; color: var(--ok); font-weight: 700; }
+.pwr-arrow { color: #CBD5E1; font-size: 0.75rem; }
+.swap-hint {
+  font-size: 0.65rem; font-weight: 600; color: #92400E;
+  margin-top: 10px; padding-top: 10px; border-top: 1px solid #FDE68A;
+  display: flex; align-items: center; gap: 5px;
+}
+
+/* ── CATEGORY CARDS ── */
 .cats-list { display: flex; flex-direction: column; gap: 12px; }
-
 .cat-block {
-  background: var(--white);
-  border-radius: 16px;
-  border: 1.5px solid var(--edge);
-  overflow: hidden;
-  animation: riseIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
-  transition: box-shadow 0.2s, border-color 0.2s;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  background: var(--white); border-radius: 16px; border: 1.5px solid var(--edge);
+  overflow: hidden; animation: riseIn 0.45s cubic-bezier(0.22,1,0.36,1) both;
+  transition: box-shadow 0.2s, border-color 0.2s; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 }
-.cat-block:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
-.cat-block:nth-child(1) { animation-delay: 0.06s; }
-.cat-block:nth-child(2) { animation-delay: 0.12s; }
-.cat-block:nth-child(3) { animation-delay: 0.18s; }
-.cat-block:nth-child(4) { animation-delay: 0.24s; }
-.cat-block:nth-child(5) { animation-delay: 0.30s; }
-.cat-block.correct { border-color: #86EFAC; box-shadow: 0 4px 20px rgba(14,165,114,0.12); }
-.cat-block.wrong-flash { animation: shake 0.35s ease !important; }
+.cat-block:hover{box-shadow:0 6px 20px rgba(0,0,0,0.07)}
+.cat-block:nth-child(1){animation-delay:0.06s}.cat-block:nth-child(2){animation-delay:0.12s}
+.cat-block:nth-child(3){animation-delay:0.18s}.cat-block:nth-child(4){animation-delay:0.24s}
+.cat-block.correct{border-color:#86EFAC;box-shadow:0 4px 20px rgba(14,165,114,0.12)}
+.cat-block.wrong-flash{animation:shake 0.35s ease!important}
+.cat-topbar{height:4px}
+.cat-block.b0 .cat-topbar{background:var(--c0)}.cat-block.b1 .cat-topbar{background:var(--c1)}
+.cat-block.b2 .cat-topbar{background:var(--c2)}.cat-block.b3 .cat-topbar{background:var(--c3)}
+.cat-block.correct .cat-topbar{background:var(--ok)}
+.cat-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; gap: 12px; }
+.cat-block.b0:not(.correct) .cat-header{background:#FFF3F1}
+.cat-block.b1:not(.correct) .cat-header{background:#FFFBEB}
+.cat-block.b2:not(.correct) .cat-header{background:#F0FDF8}
+.cat-block.b3:not(.correct) .cat-header{background:#EEF2FF}
+.cat-block.correct .cat-header{background:#F0FDF4}
+.cat-header-left{display:flex;align-items:center;gap:10px;flex:1}
+.cat-swatch{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.cat-block.b0 .cat-swatch{background:var(--c0)}.cat-block.b1 .cat-swatch{background:var(--c1)}
+.cat-block.b2 .cat-swatch{background:var(--c2)}.cat-block.b3 .cat-swatch{background:var(--c3)}
+.cat-block.correct .cat-swatch{background:var(--ok)}
+.cat-name{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:2px;line-height:1}
+.cat-block.b0 .cat-name{color:var(--c0)}.cat-block.b1 .cat-name{color:var(--c1)}
+.cat-block.b2 .cat-name{color:var(--c2)}.cat-block.b3 .cat-name{color:var(--c3)}
+.cat-block.correct .cat-name{color:var(--ok)}
+.cat-desc{font-size:0.62rem;font-weight:500;color:var(--muted);margin-top:1px}
+.cat-header-right{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.star-slot{font-size:1.15rem;line-height:1;filter:grayscale(1);opacity:0.15;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1)}
+.star-slot.lit{filter:none;opacity:1;animation:starPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both}
 
-/* coloured full-width top bar */
-.cat-topbar { height: 4px; }
-.cat-block.b0 .cat-topbar { background: var(--c0); }
-.cat-block.b1 .cat-topbar { background: var(--c1); }
-.cat-block.b2 .cat-topbar { background: var(--c2); }
-.cat-block.b3 .cat-topbar { background: var(--c3); }
-.cat-block.b4 .cat-topbar { background: var(--c4); }
-.cat-block.correct .cat-topbar { background: var(--ok); }
-
-.cat-header {
-  display: flex; align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  gap: 12px;
-}
-/* tinted header backgrounds */
-.cat-block.b0:not(.correct) .cat-header { background: #FFF3F1; }
-.cat-block.b1:not(.correct) .cat-header { background: #FFFBEB; }
-.cat-block.b2:not(.correct) .cat-header { background: #F0FDF8; }
-.cat-block.b3:not(.correct) .cat-header { background: #EEF2FF; }
-.cat-block.b4:not(.correct) .cat-header { background: #FDF4FF; }
-.cat-block.correct .cat-header { background: #F0FDF4; }
-
-.cat-header-left { display: flex; align-items: center; gap: 11px; flex: 1; }
-.cat-swatch {
-  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
-}
-.cat-block.b0 .cat-swatch { background: var(--c0); }
-.cat-block.b1 .cat-swatch { background: var(--c1); }
-.cat-block.b2 .cat-swatch { background: var(--c2); }
-.cat-block.b3 .cat-swatch { background: var(--c3); }
-.cat-block.b4 .cat-swatch { background: var(--c4); }
-.cat-block.correct .cat-swatch { background: var(--ok); }
-
-.cat-name-wrap { display: flex; flex-direction: column; gap: 1px; }
-.cat-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.1rem; letter-spacing: 2.5px; line-height: 1;
-}
-.cat-block.b0 .cat-name { color: var(--c0); }
-.cat-block.b1 .cat-name { color: var(--c1); }
-.cat-block.b2 .cat-name { color: var(--c2); }
-.cat-block.b3 .cat-name { color: var(--c3); }
-.cat-block.b4 .cat-name { color: var(--c4); }
-.cat-block.correct .cat-name { color: var(--ok); }
-
-.cat-desc { font-size: 0.63rem; font-weight: 500; color: var(--muted); }
-
-.cat-header-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-.star-slot {
-  font-size: 1.2rem; line-height: 1;
-  filter: grayscale(1); opacity: 0.15;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.star-slot.lit {
-  filter: none; opacity: 1;
-  animation: starPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-}
+/* Check button — shows remaining checks or locked state */
 .btn-check {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.7rem; font-weight: 700;
-  padding: 7px 16px; border-radius: 100px;
-  border: 2px solid; background: transparent;
-  cursor: pointer; transition: all 0.14s; white-space: nowrap;
+  font-family:'Outfit',sans-serif; font-size:0.68rem; font-weight:700;
+  padding:7px 14px; border-radius:100px; border:2px solid;
+  background:transparent; cursor:pointer; transition:all 0.14s; white-space:nowrap;
 }
-.cat-block.b0 .btn-check { border-color: var(--c0); color: var(--c0); }
-.cat-block.b1 .btn-check { border-color: var(--c1); color: var(--c1); }
-.cat-block.b2 .btn-check { border-color: var(--c2); color: var(--c2); }
-.cat-block.b3 .btn-check { border-color: var(--c3); color: var(--c3); }
-.cat-block.b4 .btn-check { border-color: var(--c4); color: var(--c4); }
-.cat-block.b0 .btn-check:hover:not([disabled]) { background: var(--c0); color: white; }
-.cat-block.b1 .btn-check:hover:not([disabled]) { background: var(--c1); color: white; }
-.cat-block.b2 .btn-check:hover:not([disabled]) { background: var(--c2); color: white; }
-.cat-block.b3 .btn-check:hover:not([disabled]) { background: var(--c3); color: white; }
-.cat-block.b4 .btn-check:hover:not([disabled]) { background: var(--c4); color: white; }
-.btn-check[disabled] { opacity: 0.3; cursor: not-allowed; }
-.btn-check.is-correct { color: var(--ok) !important; border-color: #6EE7B7 !important; background: var(--ok-tint) !important; }
-.btn-check.is-wrong   { color: var(--fail) !important; border-color: #FCA5A5 !important; }
+.cat-block.b0 .btn-check{border-color:var(--c0);color:var(--c0)}
+.cat-block.b1 .btn-check{border-color:var(--c1);color:var(--c1)}
+.cat-block.b2 .btn-check{border-color:var(--c2);color:var(--c2)}
+.cat-block.b3 .btn-check{border-color:var(--c3);color:var(--c3)}
+.cat-block.b0 .btn-check:hover:not([disabled]){background:var(--c0);color:white}
+.cat-block.b1 .btn-check:hover:not([disabled]){background:var(--c1);color:white}
+.cat-block.b2 .btn-check:hover:not([disabled]){background:var(--c2);color:white}
+.cat-block.b3 .btn-check:hover:not([disabled]){background:var(--c3);color:white}
+.btn-check[disabled]{opacity:0.3;cursor:not-allowed}
+.btn-check.is-correct{color:var(--ok)!important;border-color:#6EE7B7!important;background:var(--ok-tint)!important}
+.btn-check.is-wrong{color:var(--fail)!important;border-color:#FCA5A5!important}
+.btn-check.no-checks{color:var(--muted)!important;border-color:var(--edge)!important;background:var(--lift)!important;opacity:0.7}
 
-/* ── RANK ROW ──────────────────────────────── */
+/* ── RANK ROW ── */
 .rank-row {
   display: flex; align-items: flex-start;
-  padding: 14px 14px 12px;
-  gap: 8px; overflow-x: auto;
+  padding: 14px 12px 10px; gap: 7px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  /* prevent text selection during drag */
+  user-select: none; -webkit-user-select: none;
 }
-.rank-entry {
-  display: flex; flex-direction: column;
-  align-items: center; gap: 6px;
-  flex: 1; min-width: 88px;
-}
-.rank-num {
-  font-size: 0.58rem; font-weight: 700;
-  letter-spacing: 1px; color: var(--muted);
-  text-transform: uppercase;
-}
+.rank-entry { display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1; min-width: 82px; }
+.rank-num { font-size: 0.56rem; font-weight: 700; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
 .rank-tile {
-  width: 100%; min-height: 54px;
-  background: var(--lift);
-  border: 1.5px solid var(--edge);
-  border-radius: 12px;
+  width: 100%; min-height: 52px;
+  background: var(--lift); border: 1.5px solid var(--edge); border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.75rem; font-weight: 600;
-  text-align: center; padding: 8px 6px;
-  cursor: grab; user-select: none; line-height: 1.3;
-  transition: all 0.15s cubic-bezier(0.22, 1, 0.36, 1);
-  /* subtle grip dots */
+  font-size: 0.74rem; font-weight: 600; text-align: center; padding: 8px 5px; line-height: 1.3;
+  cursor: grab; touch-action: none; /* crucial for custom touch drag */
+  transition: background 0.12s, border-color 0.12s, box-shadow 0.12s, transform 0.12s;
+  position: relative;
   background-image: radial-gradient(circle, var(--edge) 1px, transparent 1px);
   background-size: 8px 8px;
-  background-position: calc(100% - 6px) 6px;
+  background-position: calc(100% - 5px) 5px;
   background-repeat: no-repeat;
   background-color: var(--lift);
+  will-change: transform;
 }
-.rank-tile:hover {
-  background-color: var(--edge);
-  border-color: #C5C0B8;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 14px rgba(0,0,0,0.1);
+.rank-tile:hover { background-color: var(--edge); border-color: #C5C0B8; }
+.rank-tile.dragging { opacity: 0.2; transform: scale(0.95); box-shadow: none; }
+.rank-tile.drag-over { border-color: var(--c3); border-style: dashed; background-color: #EEF2FF; box-shadow: 0 0 0 3px rgba(47,84,235,0.15); transform: scale(1.03); }
+.correct .rank-tile { background-color: var(--ok-tint); background-image: none; border-color: #86EFAC; cursor: default; touch-action: auto; }
+/* Individually locked tile — correct position confirmed by Check Order */
+.rank-tile.locked {
+  background-color: var(--ok-tint) !important; background-image: none !important;
+  border-color: #86EFAC !important; cursor: default !important; touch-action: auto !important;
+  color: var(--ok); font-weight: 700;
+  box-shadow: 0 0 0 2px rgba(14,165,114,0.2);
 }
-.rank-tile:active { cursor: grabbing; transform: scale(0.97); }
-.rank-tile.dragging { opacity: 0.12; transform: scale(0.94); }
-.rank-tile.drag-over {
-  border-color: var(--c3); border-style: dashed;
-  background-color: #EEF2FF;
-  box-shadow: 0 0 0 4px rgba(47,84,235,0.14);
-  transform: scale(1.04);
-}
-.correct .rank-tile {
-  background-color: var(--ok-tint);
-  background-image: none;
-  border-color: #86EFAC; cursor: default;
-}
-.rank-arrow {
-  color: var(--edge); font-size: 0.85rem;
-  flex-shrink: 0; margin-top: 32px;
-}
+.rank-tile.locked::after { content: '✓'; position: absolute; top: 4px; right: 6px; font-size: 0.55rem; color: var(--ok); font-weight: 800; }
+.rank-arrow { color: var(--edge); font-size: 0.85rem; flex-shrink: 0; margin-top: 30px; }
 .item-fact {
-  font-size: 0.58rem; font-weight: 600;
-  color: transparent; text-align: center;
+  font-size: 0.57rem; font-weight: 600; color: transparent; text-align: center;
   line-height: 1.3; width: 100%; padding: 0 2px;
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.4s ease, color 0.3s ease 0.2s;
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, color 0.3s ease 0.2s;
 }
 .item-fact.revealed { color: var(--ok); max-height: 36px; }
 
-/* ── FOOTER ────────────────────────────────── */
-.footer { display: flex; justify-content: center; padding: 28px 0 0; }
+/* Ghost tile — follows finger/mouse during drag */
+.drag-ghost {
+  position: fixed; pointer-events: none; z-index: 9999;
+  background: var(--ink); color: white;
+  border-radius: 12px; padding: 10px 14px;
+  font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  transform: rotate(2deg) scale(1.05);
+  transition: none; white-space: nowrap;
+  max-width: 140px; text-align: center; line-height: 1.2;
+}
+
+/* ── CHECKS TOAST ── */
+.checks-toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: var(--ink); color: white; border-radius: 100px;
+  padding: 10px 22px; font-size: 0.78rem; font-weight: 700;
+  z-index: 500; opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+.checks-toast.show { opacity: 1; }
+
+/* ── FOOTER ── */
+.footer { display: flex; justify-content: center; padding: 26px 0 0; }
 .btn-footer-help {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.7rem; font-weight: 600;
-  background: none; border: 1.5px solid var(--edge);
-  border-radius: 100px; padding: 7px 18px;
-  color: var(--muted); cursor: pointer; transition: all 0.15s;
+  font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 600;
+  background: none; border: 1.5px solid var(--edge); border-radius: 100px;
+  padding: 7px 18px; color: var(--muted); cursor: pointer; transition: all 0.15s;
 }
 .btn-footer-help:hover { border-color: var(--ink); color: var(--ink); }
 
-/* ── RESULTS ───────────────────────────────── */
-.results-screen { display: none; animation: riseIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
-.results-screen.show { display: block; }
-
-.results-card {
-  background: var(--ink);
-  border-radius: 20px;
-  overflow: hidden;
-  margin-bottom: 18px;
-  border: 2px solid var(--ink);
-  box-shadow: 4px 4px 0 var(--ink);
-}
-.results-card-stripe {
-  height: 6px;
-  background: linear-gradient(90deg, var(--c0) 0%, var(--c1) 25%, var(--c2) 50%, var(--c3) 75%, var(--c4) 100%);
-}
-.results-card-body {
-  padding: 40px 28px 36px;
-  text-align: center;
-  position: relative; overflow: hidden;
-}
+/* ── RESULTS ── */
+.results-screen{display:none;animation:riseIn 0.5s cubic-bezier(0.22,1,0.36,1) both}
+.results-screen.show{display:block}
+.results-card { background:var(--ink); border-radius:20px; overflow:hidden; margin-bottom:18px; border:2px solid var(--ink); box-shadow:4px 4px 0 var(--ink); }
+.results-card-stripe { height:6px; background:linear-gradient(90deg,var(--c0) 0%,var(--c1) 33%,var(--c2) 66%,var(--c3) 100%); }
+.results-card-stripe.fail { background: linear-gradient(90deg,#7F1D1D,#DC2626,#7F1D1D); }
+.results-card-body { padding:36px 24px 32px; text-align:center; position:relative; overflow:hidden; }
 .results-card-body::before {
-  content: '';
-  position: absolute; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(ellipse 50% 70% at 12% 40%, rgba(232,57,30,0.2) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 70% at 88% 20%, rgba(47,84,235,0.2) 0%, transparent 55%);
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background: radial-gradient(ellipse 50% 70% at 12% 40%,rgba(232,57,30,0.2) 0%,transparent 55%),
+              radial-gradient(ellipse 50% 70% at 88% 20%,rgba(47,84,235,0.2) 0%,transparent 55%);
 }
-.results-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.8rem; letter-spacing: 8px;
-  position: relative; margin-bottom: 4px;
+.results-card-body.fail::before {
+  background: radial-gradient(ellipse 60% 80% at 20% 50%,rgba(220,38,38,0.25) 0%,transparent 60%),
+              radial-gradient(ellipse 50% 60% at 80% 30%,rgba(127,29,29,0.2) 0%,transparent 60%);
 }
-.results-date {
-  font-size: 0.62rem; font-weight: 600;
-  letter-spacing: 2.5px; text-transform: uppercase;
-  color: rgba(255,255,255,0.32);
-  margin-bottom: 28px; position: relative;
+.results-logo { font-family:'Bebas Neue',sans-serif; font-size:2.8rem; letter-spacing:8px; position:relative; margin-bottom:4px; }
+.results-fail-icon { font-size:3.2rem; margin-bottom:10px; position:relative; }
+.results-fail-heading { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; letter-spacing:3px; color:white; position:relative; margin-bottom:6px; }
+.results-fail-sub { font-size:0.82rem; font-weight:500; color:rgba(255,255,255,0.45); margin-bottom:24px; position:relative; line-height:1.6; }
+.results-date { font-size:0.62rem; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.32); margin-bottom:24px; position:relative; }
+.stars-row { display:flex; justify-content:center; gap:5px; margin-bottom:8px; position:relative; }
+.res-star { font-size:2.1rem; animation:starPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
+.results-score { font-size:0.72rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.32); margin-bottom:24px; position:relative; }
+.share-box {
+  background:rgba(255,255,255,0.07); border:1.5px solid rgba(255,255,255,0.12);
+  border-radius:12px; padding:16px 20px;
+  font-family:monospace; font-size:0.8rem; line-height:1.85; white-space:pre;
+  color:rgba(255,255,255,0.82); display:inline-block; text-align:left;
+  margin-bottom:14px; position:relative; max-width:100%;
 }
-.stars-row { display: flex; justify-content: center; gap: 5px; margin-bottom: 8px; position: relative; }
-.res-star {
-  font-size: 2.3rem;
-  animation: starPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+.results-share-prompt {
+  font-size: 0.75rem; font-weight: 600;
+  color: rgba(255,255,255,0.45); margin-bottom: 14px; position: relative;
 }
-.results-score {
-  font-size: 0.72rem; font-weight: 600;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: rgba(255,255,255,0.32);
-  margin-bottom: 28px; position: relative;
-}
-.share-card {
-  background: rgba(255,255,255,0.07);
-  border: 1.5px solid rgba(255,255,255,0.12);
-  border-radius: 12px; padding: 18px 22px;
-  font-family: monospace; font-size: 0.82rem;
-  line-height: 1.85; white-space: pre;
-  color: rgba(255,255,255,0.82);
-  display: inline-block; text-align: left;
-  margin-bottom: 16px; position: relative;
-}
+.results-share-prompt a { color: rgba(255,255,255,0.7); text-decoration: underline; }
 .btn-copy {
-  display: block; margin: 0 auto;
-  background: white; color: var(--ink);
-  border: none; border-radius: 100px;
-  padding: 11px 30px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.8rem; font-weight: 800;
-  cursor: pointer; transition: all 0.14s; position: relative;
+  display:block; margin:0 auto;
+  background:white; color:var(--ink); border:none; border-radius:100px;
+  padding:11px 30px; font-family:'Outfit',sans-serif; font-size:0.8rem; font-weight:800;
+  cursor:pointer; transition:all 0.14s; position:relative;
 }
-.btn-copy:hover { background: #EDEDED; transform: translateY(-1px); box-shadow: 0 5px 16px rgba(0,0,0,0.25); }
+.btn-copy:hover { background:#EDEDED; transform:translateY(-1px); box-shadow:0 5px 16px rgba(0,0,0,0.25); }
+/* The correct answer reveal on fail */
+.fail-answer-reveal { background:rgba(255,255,255,0.06); border:1.5px solid rgba(255,255,255,0.12); border-radius:14px; padding:18px 20px; margin-bottom:14px; position:relative; text-align:left; }
+.fail-answer-label { font-size:0.58rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:14px; }
+.fail-answer-row { margin-bottom:10px; }
+.fail-answer-row:last-child { margin-bottom:0; }
+.fail-cat-name { font-size:0.65rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:5px; display:flex; align-items:center; gap:6px; }
+.fail-pills { display:flex; gap:5px; flex-wrap:wrap; align-items:center; }
+.fail-pill { background:rgba(255,255,255,0.1); border:1.5px solid rgba(255,255,255,0.15); border-radius:100px; padding:4px 11px; font-size:0.7rem; font-weight:600; color:rgba(255,255,255,0.8); }
+.fail-pill.pair-pill-match { background:rgba(14,165,114,0.2); border-color:rgba(134,239,172,0.4); color:#86EFAC; }
+.fail-arrow { font-size:0.7rem; color:rgba(255,255,255,0.2); }
+.fail-match-badge { font-size:0.5rem; font-weight:800; letter-spacing:1px; padding:2px 7px; border-radius:4px; background:rgba(14,165,114,0.3); color:#86EFAC; text-transform:uppercase; border:1px solid rgba(134,239,172,0.3); }
+.answers-section { background:var(--white); border:1.5px solid var(--edge); border-radius:16px; padding:20px; }
+.answers-label { font-size:0.58rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+.answer-rows { display:flex; flex-direction:column; gap:12px; }
+.answer-row-item { display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap; }
+.answer-cat-label { font-size:0.66rem; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; min-width:130px; padding-top:5px; display:flex; align-items:center; gap:7px; }
+.answer-pills { display:flex; gap:5px; align-items:center; flex-wrap:wrap; }
+.answer-item-pill { background:var(--lift); border:1.5px solid var(--edge); border-radius:100px; padding:4px 11px; font-size:0.7rem; font-weight:600; }
+.ans-arrow { font-size:0.7rem; color:var(--edge); }
+.match-flag { font-size:0.5rem; font-weight:800; letter-spacing:1px; padding:2px 7px; border-radius:4px; background:var(--ink); color:white; text-transform:uppercase; }
 
-.answers-section {
-  background: var(--white);
-  border: 1.5px solid var(--edge);
-  border-radius: 16px; padding: 22px;
-}
-.answers-label {
-  font-size: 0.6rem; font-weight: 700;
-  letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 18px;
-}
-.answer-rows { display: flex; flex-direction: column; gap: 14px; }
-.answer-row-item { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
-.answer-cat-label {
-  font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 0.5px; text-transform: uppercase;
-  min-width: 152px; padding-top: 5px;
-  display: flex; align-items: center; gap: 7px;
-}
-.answer-pills { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-.answer-item-pill {
-  background: var(--lift);
-  border: 1.5px solid var(--edge);
-  border-radius: 100px; padding: 4px 12px;
-  font-size: 0.72rem; font-weight: 600;
-}
-.ans-arrow { font-size: 0.75rem; color: var(--edge); }
-.match-flag {
-  font-size: 0.5rem; font-weight: 800;
-  letter-spacing: 1px; padding: 2px 7px;
-  border-radius: 4px; background: var(--ink); color: white;
-  text-transform: uppercase;
-}
-
-/* ── OVERLAY ───────────────────────────────── */
+/* ── OVERLAY ── */
 .overlay {
-  display: none; position: fixed; inset: 0;
-  background: rgba(12,12,12,0.65);
-  z-index: 400; align-items: center; justify-content: center;
-  backdrop-filter: blur(5px);
+  display:none; position:fixed; inset:0; background:rgba(12,12,12,0.65);
+  z-index:400; align-items:center; justify-content:center; backdrop-filter:blur(5px);
 }
-.overlay.show { display: flex; }
+.overlay.show{display:flex}
 .overlay-card {
-  background: var(--white);
-  border-radius: 20px; padding: 32px 30px 26px;
-  max-width: 420px; width: 92%;
-  animation: riseIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
-  border: 2px solid var(--ink);
-  box-shadow: 6px 6px 0 var(--ink);
+  background:var(--white); border-radius:20px; padding:30px 28px 24px;
+  max-width:420px; width:92%; animation:riseIn 0.3s cubic-bezier(0.22,1,0.36,1) both;
+  border:2px solid var(--ink); box-shadow:6px 6px 0 var(--ink);
+  max-height:90vh; overflow-y:auto;
 }
-.overlay-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2rem; letter-spacing: 3px; margin-bottom: 20px;
-}
-.overlay-steps { display: flex; flex-direction: column; gap: 13px; margin-bottom: 24px; }
-.overlay-step { display: flex; align-items: flex-start; gap: 13px; }
-.step-num {
-  width: 26px; height: 26px; border-radius: 8px;
-  background: var(--ink); color: white;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.72rem; font-weight: 800;
-  flex-shrink: 0; margin-top: 1px;
-}
-.step-text { font-size: 0.8rem; font-weight: 500; color: #444; line-height: 1.6; }
-.step-text strong { color: var(--ink); font-weight: 800; }
-.btn-play {
-  width: 100%; padding: 13px;
-  background: var(--ink); color: white; border: none;
-  border-radius: 100px; font-family: 'Outfit', sans-serif;
-  font-size: 0.85rem; font-weight: 800;
-  cursor: pointer; transition: background 0.14s; letter-spacing: 0.3px;
-}
-.btn-play:hover { background: #252525; }
+.overlay-title { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:3px; margin-bottom:18px; }
+.overlay-steps { display:flex; flex-direction:column; gap:12px; margin-bottom:22px; }
+.overlay-step { display:flex; align-items:flex-start; gap:12px; }
+.step-num { width:24px; height:24px; border-radius:7px; background:var(--ink); color:white; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:800; flex-shrink:0; margin-top:2px; }
+.step-text { font-size:0.78rem; font-weight:500; color:#444; line-height:1.55; }
+.step-text strong { color:var(--ink); font-weight:800; }
+.btn-play { width:100%; padding:13px; background:var(--ink); color:white; border:none; border-radius:100px; font-family:'Outfit',sans-serif; font-size:0.85rem; font-weight:800; cursor:pointer; transition:background 0.14s; }
+.btn-play:hover{background:#252525}
 
-/* ── ANIMATIONS ────────────────────────────── */
-@keyframes riseIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+/* ── ANIMATIONS ── */
+@keyframes riseIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 @keyframes shake {
-  0%,100% { transform: translateX(0); }
-  20% { transform: translateX(-8px); }
-  40% { transform: translateX(8px); }
-  60% { transform: translateX(-4px); }
-  80% { transform: translateX(4px); }
+  0%,100%{transform:translateX(0)} 20%{transform:translateX(-8px)}
+  40%{transform:translateX(8px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)}
 }
 @keyframes starPop {
-  from { transform: scale(0) rotate(-30deg); opacity: 0; }
-  65%  { transform: scale(1.45) rotate(8deg); }
-  to   { transform: scale(1) rotate(0); opacity: 1; }
+  from{transform:scale(0) rotate(-30deg);opacity:0} 65%{transform:scale(1.45) rotate(8deg)}
+  to{transform:scale(1) rotate(0);opacity:1}
 }
 @keyframes correctPulse {
-  0%   { box-shadow: 0 0 0 0 rgba(14,165,114,0.5); }
-  70%  { box-shadow: 0 0 0 10px rgba(14,165,114,0); }
-  100% { box-shadow: 0 0 0 0 rgba(14,165,114,0); }
+  0%{box-shadow:0 0 0 0 rgba(14,165,114,0.5)} 70%{box-shadow:0 0 0 10px rgba(14,165,114,0)} 100%{box-shadow:0 0 0 0 rgba(14,165,114,0)}
 }
-.cat-block.correct { animation: correctPulse 0.7s ease both 0.05s; }
+.cat-block.correct{animation:correctPulse 0.7s ease both 0.05s}
 
-@media(max-width: 620px) {
-  .hero { padding: 28px 16px 32px; }
-  .hero-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .hero-heading { font-size: 2rem; }
-  .hero-card-emoji { font-size: 2rem; }
-  .header { padding: 0 16px; }
-  .main { padding: 18px 14px 70px; }
-  .pair-box { border-radius: 14px; }
-  .rank-tile { font-size: 0.7rem; min-width: 76px; padding: 7px 4px; }
-  .rank-entry { min-width: 76px; }
-  .pair-pill { font-size: 0.7rem; padding: 6px 12px; }
-  .progress-bar { padding: 10px 16px; }
+@media(max-width:580px){
+  .hero-cards{grid-template-columns:repeat(2,1fr);gap:8px}
+  .hero{padding:24px 14px 30px}
+  .hero-heading{font-size:1.9rem}
+  .header{padding:0 14px}
+  .main{padding:16px 12px 70px}
+  .rank-tile{font-size:0.68rem;min-width:72px;padding:7px 4px}
+  .rank-entry{min-width:72px}
+  .pair-pill{font-size:0.68rem;padding:6px 13px}
+  .progress-bar{padding:9px 14px}
+  .pair-wrong-label{min-width:90px}
+  .hero-card-emoji{font-size:1.9rem}
 }
 </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
+<!-- HEADER -->
 <header class="header">
   <div class="logo">
-    <span class="logo-r">R</span><span class="logo-a">A</span><span class="logo-n">N</span><span class="logo-k">K</span><span class="logo-5">&nbsp;5</span>
+    <span class="logo-r">R</span><span class="logo-a">A</span><span class="logo-n">N</span><span class="logo-k">K</span>&nbsp;4
   </div>
   <div class="header-right">
     <span class="header-date" id="headerDate"></span>
@@ -666,28 +464,32 @@ body {
   </div>
 </header>
 
-<!-- ── HERO: TODAY'S ITEMS ── -->
+<!-- HERO -->
 <section class="hero" id="heroSection">
   <div class="hero-inner">
     <div class="hero-eyebrow">Today's puzzle</div>
     <div class="hero-heading">Today's Items</div>
-    <div class="hero-sub">Rank all four across five categories &mdash; then find the matching pair</div>
+    <div class="hero-sub">Rank all four across four categories &mdash; then find the matching pair</div>
     <div class="hero-cards" id="heroCards"></div>
   </div>
 </section>
 
-<!-- ── PROGRESS ── -->
+<!-- PROGRESS -->
 <div class="progress-bar" id="progressBar">
   <div class="progress-bar-inner">
     <span class="progress-label">Categories</span>
     <div class="progress-pips" id="progressPips"></div>
+    <div class="progress-checks">
+      Checks
+      <div class="check-pips" id="checkPips"></div>
+    </div>
     <div class="progress-pair">
       Pair <div class="pair-pip" id="pairPip"></div>
     </div>
   </div>
 </div>
 
-<!-- ── MAIN ── -->
+<!-- MAIN -->
 <main class="main">
 
   <!-- Pair Finder -->
@@ -708,6 +510,11 @@ body {
       <div class="linked-badge" id="linkedBadge">
         <span>🔗</span><span id="linkedText"></span>
       </div>
+      <div class="pair-wrong-reveal" id="pairWrongReveal">
+        <div class="pair-wrong-title">⚠️ Close! Here's what each category actually ranked:</div>
+        <div class="pair-wrong-rows" id="pairWrongRows"></div>
+        <div class="swap-hint" id="swapHint"></div>
+      </div>
     </div>
   </div>
 
@@ -718,22 +525,36 @@ body {
     <button class="btn-footer-help" onclick="document.getElementById('helpOverlay').classList.add('show')">How to play</button>
   </div>
 
-  <!-- Results -->
+  <!-- Results: WIN -->
   <div class="results-screen" id="resultsScreen">
     <div class="results-card">
-      <div class="results-card-stripe"></div>
-      <div class="results-card-body">
-        <div class="results-logo">
-          <span style="color:var(--c0)">R</span><span style="color:var(--c1)">A</span><span style="color:var(--c2)">N</span><span style="color:var(--c3)">K</span><span style="color:rgba(255,255,255,0.9)"> 5</span>
+      <div class="results-card-stripe" id="resultsStripe"></div>
+      <div class="results-card-body" id="resultsCardBody">
+        <!-- Win content -->
+        <div id="winContent">
+          <div class="results-logo">
+            <span style="color:var(--c0)">R</span><span style="color:var(--c1)">A</span><span style="color:var(--c2)">N</span><span style="color:var(--c3)">K</span><span style="color:rgba(255,255,255,0.9)"> 4</span>
+          </div>
+          <div class="results-date" id="resultsDate"></div>
+          <div class="stars-row" id="starsRow"></div>
+          <div class="results-score" id="scoreLabel"></div>
+          <div class="share-box" id="shareBox"></div>
+          <div class="results-share-prompt">Play at <a href="https://playrank4.com" target="_blank">playrank4.com</a></div>
+          <button class="btn-copy" id="btnCopy">Copy Result</button>
         </div>
-        <div class="results-date" id="resultsDate"></div>
-        <div class="stars-row" id="starsRow"></div>
-        <div class="results-score" id="scoreLabel"></div>
-        <div class="share-card" id="shareCard"></div>
-        <button class="btn-copy" id="btnCopy">Copy Result</button>
+        <!-- Fail content -->
+        <div id="failContent" style="display:none">
+          <div class="results-fail-icon">💔</div>
+          <div class="results-fail-heading">Unlucky!</div>
+          <div class="results-fail-sub" id="failSub"></div>
+          <div class="results-date" id="resultsDateFail"></div>
+          <div class="share-box" id="shareBoxFail"></div>
+          <div class="results-share-prompt">Play at <a href="https://playrank4.com" target="_blank">playrank4.com</a></div>
+          <button class="btn-copy" id="btnCopyFail">Copy Result</button>
+        </div>
       </div>
     </div>
-    <div class="answers-section">
+    <div class="answers-section" id="answersSection">
       <div class="answers-label">Today's Correct Orders</div>
       <div class="answer-rows" id="answerRows"></div>
     </div>
@@ -741,26 +562,29 @@ body {
 
 </main>
 
-<!-- ── HOW TO PLAY OVERLAY ── -->
+<!-- Checks toast -->
+<div class="checks-toast" id="checksToast"></div>
+
+<!-- How to Play Overlay -->
 <div class="overlay" id="helpOverlay" onclick="if(event.target===this)this.classList.remove('show')">
   <div class="overlay-card">
     <div class="overlay-title">How to Play</div>
     <div class="overlay-steps">
       <div class="overlay-step">
         <div class="step-num">1</div>
-        <div class="step-text">You have <strong>4 items</strong> and <strong>5 ranking categories</strong>. Items rank differently in each category.</div>
+        <div class="step-text">You have <strong>4 items</strong> and <strong>4 ranking categories</strong>. Drag items to rank them — <strong>1st = least, 4th = most</strong>.</div>
       </div>
       <div class="overlay-step">
         <div class="step-num">2</div>
-        <div class="step-text"><strong>Drag</strong> the tiles to set your order — <strong>1st = least</strong>, <strong>4th = most</strong>. Tap two to swap on mobile.</div>
+        <div class="step-text">You have <strong>3 Check Order attempts</strong> shared across all categories. Use them wisely — a ⭐ lights up when a row is correct.</div>
       </div>
       <div class="overlay-step">
         <div class="step-num">3</div>
-        <div class="step-text">Hit <strong>Check Order</strong> — a ⭐ lights up if correct and real values are revealed!</div>
+        <div class="step-text">Exactly <strong>two categories share the same ranking order</strong>. Select both in the pair finder and hit <strong>Link Pair</strong> — this ends the game.</div>
       </div>
       <div class="overlay-step">
         <div class="step-num">4</div>
-        <div class="step-text">Exactly <strong>two categories share the same order</strong>. Select both and hit <strong>Link Pair</strong> to finish.</div>
+        <div class="step-text"><strong>Guess the pair correctly → you win!</strong> Guess wrong → game over. Check Order highlights which tiles are in the right place to help you narrow it down.</div>
       </div>
     </div>
     <button class="btn-play" onclick="document.getElementById('helpOverlay').classList.remove('show')">Let's go!</button>
@@ -768,135 +592,125 @@ body {
 </div>
 
 <script>
-// ═══════════════════════════════════════════════
-// PUZZLE DATA
-// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// PUZZLE DATA  —  4 categories each, exactly 1 matching pair
+// ═══════════════════════════════════════════════════════
 const PUZZLES = [
   // ── DAY 0 ── A4 Paper · Pencil · Elephant · Moon
+  // matchingPair: WEIGHT [0] = VALUE IN $ [2]  →  [A4 Paper, Pencil, Elephant, Moon]
   {
-    items: ['A4 Paper', 'Pencil', 'Elephant', 'Moon'],
+    items: ['A4 Paper','Pencil','Elephant','Moon'],
     categories: [
-      { label: 'WEIGHT',      desc: 'Lightest → Heaviest',       order: ['A4 Paper','Pencil','Elephant','Moon'] },
-      { label: 'LENGTH',      desc: 'Shortest → Longest',        order: ['Pencil','A4 Paper','Elephant','Moon'] },
-      { label: 'VALUE IN $',  desc: 'Cheapest → Most Expensive', order: ['A4 Paper','Pencil','Elephant','Moon'] },
-      { label: 'AGE',         desc: 'Oldest → Newest',           order: ['Moon','Elephant','A4 Paper','Pencil'] },
-      { label: 'NAME LENGTH', desc: 'Fewest → Most Letters',     order: ['Moon','Pencil','A4 Paper','Elephant'] },
+      { label:'WEIGHT',     desc:'Lightest → Heaviest',       order:['A4 Paper','Pencil','Elephant','Moon'] },
+      { label:'LENGTH',     desc:'Shortest → Longest',        order:['Pencil','A4 Paper','Elephant','Moon'] },
+      { label:'VALUE IN $', desc:'Cheapest → Most Expensive', order:['A4 Paper','Pencil','Elephant','Moon'] },
+      { label:'AGE',        desc:'Oldest → Newest',           order:['Moon','Elephant','A4 Paper','Pencil'] },
     ],
-    matchingPair: [0, 2]
+    matchingPair:[0,2]
   },
   // ── DAY 1 ── Ant · Tennis Ball · Blue Whale · Eiffel Tower
+  // matchingPair: WEIGHT [0] = MARKET VALUE [3]  →  [Ant, Tennis Ball, Blue Whale, Eiffel Tower]
   {
-    items: ['Ant', 'Tennis Ball', 'Blue Whale', 'Eiffel Tower'],
+    items: ['Ant','Tennis Ball','Blue Whale','Eiffel Tower'],
     categories: [
-      { label: 'WEIGHT',       desc: 'Lightest → Heaviest',         order: ['Ant','Tennis Ball','Blue Whale','Eiffel Tower'] },
-      { label: 'POPULATION',   desc: 'Fewest → Most in Existence',  order: ['Eiffel Tower','Blue Whale','Tennis Ball','Ant'] },
-      { label: 'AGE',          desc: 'Newest → Oldest',             order: ['Eiffel Tower','Tennis Ball','Blue Whale','Ant'] },
-      { label: 'MARKET VALUE', desc: 'Cheapest → Most Expensive',   order: ['Ant','Tennis Ball','Blue Whale','Eiffel Tower'] },
-      { label: 'MAX SPEED',    desc: 'Slowest → Fastest',           order: ['Eiffel Tower','Ant','Blue Whale','Tennis Ball'] },
+      { label:'WEIGHT',       desc:'Lightest → Heaviest',        order:['Ant','Tennis Ball','Blue Whale','Eiffel Tower'] },
+      { label:'POPULATION',   desc:'Fewest → Most in Existence', order:['Eiffel Tower','Blue Whale','Tennis Ball','Ant'] },
+      { label:'AGE',          desc:'Newest → Oldest',            order:['Eiffel Tower','Tennis Ball','Blue Whale','Ant'] },
+      { label:'MARKET VALUE', desc:'Cheapest → Most Expensive',  order:['Ant','Tennis Ball','Blue Whale','Eiffel Tower'] },
     ],
-    matchingPair: [0, 3]
+    matchingPair:[0,3]
   },
   // ── DAY 2 ── Strawberry · Basketball · School Bus · Eiffel Tower
+  // matchingPair: WEIGHT [0] = HEIGHT [1]  →  [Strawberry, Basketball, School Bus, Eiffel Tower]
   {
-    items: ['Strawberry', 'Basketball', 'School Bus', 'Eiffel Tower'],
+    items: ['Strawberry','Basketball','School Bus','Eiffel Tower'],
     categories: [
-      { label: 'WEIGHT',         desc: 'Lightest → Heaviest',          order: ['Strawberry','Basketball','School Bus','Eiffel Tower'] },
-      { label: 'HEIGHT',         desc: 'Shortest → Tallest',           order: ['Strawberry','Basketball','School Bus','Eiffel Tower'] },
-      { label: 'INVENTION DATE', desc: 'Most Recent → Oldest',         order: ['Basketball','Eiffel Tower','School Bus','Strawberry'] },
-      { label: 'COST PER KG',    desc: 'Cheapest → Most Expensive/kg', order: ['Eiffel Tower','School Bus','Strawberry','Basketball'] },
-      { label: 'YEAR CREATED',   desc: 'Oldest → Most Recent',         order: ['Strawberry','School Bus','Eiffel Tower','Basketball'] },
+      { label:'WEIGHT',         desc:'Lightest → Heaviest',          order:['Strawberry','Basketball','School Bus','Eiffel Tower'] },
+      { label:'HEIGHT',         desc:'Shortest → Tallest',           order:['Strawberry','Basketball','School Bus','Eiffel Tower'] },
+      { label:'INVENTION DATE', desc:'Most Recent → Oldest',         order:['Basketball','Eiffel Tower','School Bus','Strawberry'] },
+      { label:'COST PER KG',    desc:'Cheapest → Most Expensive/kg', order:['Eiffel Tower','School Bus','Strawberry','Basketball'] },
     ],
-    matchingPair: [0, 1]
+    matchingPair:[0,1]
   },
   // ── DAY 3 ── Golf Ball · Dolphin · Boeing 747 · Burj Khalifa
+  // matchingPair: WEIGHT [0] = HEIGHT [1]  →  [Golf Ball, Dolphin, Boeing 747, Burj Khalifa]
   {
-    items: ['Golf Ball', 'Dolphin', 'Boeing 747', 'Burj Khalifa'],
+    items: ['Golf Ball','Dolphin','Boeing 747','Burj Khalifa'],
     categories: [
-      { label: 'WEIGHT',     desc: 'Lightest → Heaviest',        order: ['Golf Ball','Dolphin','Boeing 747','Burj Khalifa'] },
-      { label: 'HEIGHT',     desc: 'Shortest → Tallest',         order: ['Golf Ball','Dolphin','Boeing 747','Burj Khalifa'] },
-      { label: 'AGE',        desc: 'Newest → Oldest',            order: ['Burj Khalifa','Boeing 747','Golf Ball','Dolphin'] },
-      { label: 'MAX SPEED',  desc: 'Slowest → Fastest',          order: ['Burj Khalifa','Dolphin','Golf Ball','Boeing 747'] },
-      { label: 'POPULATION', desc: 'Fewest → Most in Existence', order: ['Burj Khalifa','Boeing 747','Dolphin','Golf Ball'] },
+      { label:'WEIGHT',     desc:'Lightest → Heaviest',        order:['Golf Ball','Dolphin','Boeing 747','Burj Khalifa'] },
+      { label:'HEIGHT',     desc:'Shortest → Tallest',         order:['Golf Ball','Dolphin','Boeing 747','Burj Khalifa'] },
+      { label:'AGE',        desc:'Newest → Oldest',            order:['Burj Khalifa','Boeing 747','Golf Ball','Dolphin'] },
+      { label:'MAX SPEED',  desc:'Slowest → Fastest',          order:['Burj Khalifa','Dolphin','Golf Ball','Boeing 747'] },
     ],
-    matchingPair: [0, 1]
+    matchingPair:[0,1]
   },
   // ── DAY 4 ── Postage Stamp · Human Brain · Double Decker Bus · Amazon River
+  // matchingPair: WEIGHT [0] = LENGTH [1]  →  [Postage Stamp, Human Brain, Double Decker Bus, Amazon River]
   {
-    items: ['Postage Stamp', 'Human Brain', 'Double Decker Bus', 'Amazon River'],
+    items: ['Postage Stamp','Human Brain','Double Decker Bus','Amazon River'],
     categories: [
-      { label: 'WEIGHT',      desc: 'Lightest → Heaviest',   order: ['Postage Stamp','Human Brain','Double Decker Bus','Amazon River'] },
-      { label: 'LENGTH',      desc: 'Shortest → Longest',    order: ['Postage Stamp','Human Brain','Double Decker Bus','Amazon River'] },
-      { label: 'TEMPERATURE', desc: 'Coldest → Hottest',     order: ['Postage Stamp','Amazon River','Human Brain','Double Decker Bus'] },
-      { label: 'SPEED',       desc: 'Slowest → Fastest',     order: ['Postage Stamp','Amazon River','Double Decker Bus','Human Brain'] },
-      { label: 'AGE',         desc: 'Newest → Oldest',       order: ['Double Decker Bus','Postage Stamp','Human Brain','Amazon River'] },
+      { label:'WEIGHT',      desc:'Lightest → Heaviest',  order:['Postage Stamp','Human Brain','Double Decker Bus','Amazon River'] },
+      { label:'LENGTH',      desc:'Shortest → Longest',   order:['Postage Stamp','Human Brain','Double Decker Bus','Amazon River'] },
+      { label:'TEMPERATURE', desc:'Coldest → Hottest',    order:['Postage Stamp','Amazon River','Human Brain','Double Decker Bus'] },
+      { label:'AGE',         desc:'Newest → Oldest',      order:['Double Decker Bus','Postage Stamp','Human Brain','Amazon River'] },
     ],
-    matchingPair: [0, 1]
+    matchingPair:[0,1]
   },
   // ── DAY 5 ── Snowflake · Violin · Rocket · Amazon Rainforest
+  // matchingPair: WEIGHT [0] = LENGTH [1]  →  [Snowflake, Violin, Rocket, Amazon Rainforest]
   {
-    items: ['Snowflake', 'Violin', 'Rocket', 'Amazon Rainforest'],
+    items: ['Snowflake','Violin','Rocket','Amazon Rainforest'],
     categories: [
-      { label: 'WEIGHT',      desc: 'Lightest → Heaviest',  order: ['Snowflake','Violin','Rocket','Amazon Rainforest'] },
-      { label: 'LENGTH',      desc: 'Shortest → Longest',   order: ['Snowflake','Violin','Rocket','Amazon Rainforest'] },
-      { label: 'TEMPERATURE', desc: 'Coldest → Hottest',    order: ['Snowflake','Violin','Amazon Rainforest','Rocket'] },
-      { label: 'AGE',         desc: 'Newest → Oldest',      order: ['Rocket','Violin','Amazon Rainforest','Snowflake'] },
-      { label: 'SPEED',       desc: 'Slowest → Fastest',    order: ['Amazon Rainforest','Violin','Snowflake','Rocket'] },
+      { label:'WEIGHT',      desc:'Lightest → Heaviest', order:['Snowflake','Violin','Rocket','Amazon Rainforest'] },
+      { label:'LENGTH',      desc:'Shortest → Longest',  order:['Snowflake','Violin','Rocket','Amazon Rainforest'] },
+      { label:'TEMPERATURE', desc:'Coldest → Hottest',   order:['Snowflake','Violin','Amazon Rainforest','Rocket'] },
+      { label:'SPEED',       desc:'Slowest → Fastest',   order:['Amazon Rainforest','Violin','Snowflake','Rocket'] },
     ],
-    matchingPair: [0, 1]
+    matchingPair:[0,1]
   },
 ];
 
-// ═══════════════════════════════════════════════
-// FACTS
-// ═══════════════════════════════════════════════
+// ─── FACTS  ─────────────────────────────────────────────────
 const FACTS = [
-  [
+  [ // P0
     {'A4 Paper':'~5 g','Pencil':'~10 g','Elephant':'~4,000 kg','Moon':'7.3×10²² kg'},
     {'Pencil':'~19 cm','A4 Paper':'29.7 cm','Elephant':'~6 m long','Moon':'3,474 km Ø'},
     {'A4 Paper':'~$0.01','Pencil':'~$0.50','Elephant':'~$30,000','Moon':'incalculable'},
     {'Moon':'~4.5 B yrs','Elephant':'~60 M yrs','A4 Paper':'std. 1975','Pencil':'inv. 1565'},
-    {'Moon':'4 letters','Pencil':'6 letters','A4 Paper':'7 letters','Elephant':'8 letters'},
   ],
-  [
+  [ // P1
     {'Ant':'~1 mg','Tennis Ball':'~58 g','Blue Whale':'~150,000 kg','Eiffel Tower':'~7,300 t'},
     {'Eiffel Tower':'1 original','Blue Whale':'~15,000 alive','Tennis Ball':'~300 M/yr','Ant':'~20 quadrillion'},
     {'Eiffel Tower':'built 1889','Tennis Ball':'inv. ~1870s','Blue Whale':'~5 M yrs','Ant':'~100 M yrs'},
-    {'Ant':'~$0','Tennis Ball':'~$3','Blue Whale':'~$1 M est.','Eiffel Tower':'~$480 B est.'},
-    {'Eiffel Tower':'0 — stationary','Ant':'~1.6 km/h','Blue Whale':'~46 km/h','Tennis Ball':'~260 km/h'},
+    {'Ant':'~$0','Tennis Ball':'~$3','Blue Whale':'~$1 M','Eiffel Tower':'~$480 B'},
   ],
-  [
+  [ // P2
     {'Strawberry':'~12 g','Basketball':'~620 g','School Bus':'~10,000 kg','Eiffel Tower':'~7,300 t'},
     {'Strawberry':'~3 cm','Basketball':'~24 cm Ø','School Bus':'~3.5 m tall','Eiffel Tower':'330 m'},
     {'Basketball':'inv. 1891','Eiffel Tower':'built 1889','School Bus':'1827','Strawberry':'~1300s'},
     {'Eiffel Tower':'~$7/kg','School Bus':'~$10/kg','Strawberry':'~$42/kg','Basketball':'~$48/kg'},
-    {'Strawberry':'~1300s','School Bus':'1827','Eiffel Tower':'1889','Basketball':'1891'},
   ],
-  [
+  [ // P3
     {'Golf Ball':'~45 g','Dolphin':'~200 kg','Boeing 747':'~178,000 kg','Burj Khalifa':'~500,000 t'},
     {'Golf Ball':'4.3 cm Ø','Dolphin':'~3 m','Boeing 747':'~19 m tall','Burj Khalifa':'828 m'},
     {'Burj Khalifa':'opened 2010','Boeing 747':'first flight 1969','Golf Ball':'inv. ~1400s','Dolphin':'~10 M yrs'},
-    {'Burj Khalifa':'0 — stationary','Dolphin':'~60 km/h','Golf Ball':'~290 km/h','Boeing 747':'~988 km/h'},
-    {'Burj Khalifa':'1 in the world','Boeing 747':'~500 active','Dolphin':'~600,000+','Golf Ball':'billions'},
+    {'Burj Khalifa':'0 km/h','Dolphin':'~60 km/h','Golf Ball':'~290 km/h','Boeing 747':'~988 km/h'},
   ],
-  [
+  [ // P4
     {'Postage Stamp':'~0.2 g','Human Brain':'~1.4 kg','Double Decker Bus':'~12,000 kg','Amazon River':'~10¹⁴ kg'},
     {'Postage Stamp':'~2.5 cm','Human Brain':'~16 cm','Double Decker Bus':'~10 m','Amazon River':'6,992 km'},
     {'Postage Stamp':'~20 °C','Amazon River':'~28 °C','Human Brain':'~37 °C','Double Decker Bus':'~90 °C'},
-    {'Postage Stamp':'~0 km/h','Amazon River':'~2 km/h','Double Decker Bus':'~90 km/h','Human Brain':'~432 km/h'},
     {'Double Decker Bus':'~1895','Postage Stamp':'1840','Human Brain':'~300 k yrs','Amazon River':'~11 M yrs'},
   ],
-  [
+  [ // P5
     {'Snowflake':'~0.003 mg','Violin':'~400 g','Rocket':'~2.9 M kg','Amazon Rainforest':'~200 B t'},
     {'Snowflake':'~1–5 mm','Violin':'~60 cm','Rocket':'~110 m','Amazon Rainforest':'~3,300 km wide'},
     {'Snowflake':'≤ 0 °C','Violin':'~20 °C','Amazon Rainforest':'~27 °C','Rocket':'~3,300 °C'},
-    {'Rocket':'1926','Violin':'~1550','Amazon Rainforest':'~55 M yrs','Snowflake':'billions of yrs'},
     {'Amazon Rainforest':'0 km/h','Violin':'~3.6 km/h','Snowflake':'~5 km/h','Rocket':'~28,000 km/h'},
   ],
 ];
 
-// ═══════════════════════════════════════════════
-// EMOJIS
-// ═══════════════════════════════════════════════
+// ─── EMOJIS ──────────────────────────────────────────────────
 const EMOJIS = [
   {'A4 Paper':'📄','Pencil':'✏️','Elephant':'🐘','Moon':'🌙'},
   {'Ant':'🐜','Tennis Ball':'🎾','Blue Whale':'🐋','Eiffel Tower':'🗼'},
@@ -906,53 +720,58 @@ const EMOJIS = [
   {'Snowflake':'❄️','Violin':'🎻','Rocket':'🚀','Amazon Rainforest':'🌿'},
 ];
 
-// ═══════════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════════
-const CAT_COLORS = ['var(--c0)','var(--c1)','var(--c2)','var(--c3)','var(--c4)'];
+// ─── CONSTANTS ────────────────────────────────────────────────
+const MAX_CHECKS = 3;
+const CAT_COLORS = ['var(--c0)','var(--c1)','var(--c2)','var(--c3)'];
+const WEBSITE = 'playrank4.com';
+
+// ─── STATE ────────────────────────────────────────────────────
 let puzzle, state, pidx;
 
 function getPuzzleIdx() {
   const d = new Date();
-  return Math.floor((d - new Date(d.getFullYear(), 0, 0)) / 86400000) % PUZZLES.length;
+  return Math.floor((d - new Date(d.getFullYear(),0,0)) / 86400000) % PUZZLES.length;
 }
 
 function shuffle(arr) {
   const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+  for (let i = a.length-1; i>0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
   }
-  if (a.join() === arr.join()) [a[0], a[1]] = [a[1], a[0]];
+  if (a.join() === arr.join()) [a[0],a[1]] = [a[1],a[0]];
   return a;
 }
 
-// ─── INIT ───────────────────────────────────────
+// ─── INIT ─────────────────────────────────────────────────────
 function initGame() {
   pidx = getPuzzleIdx();
   puzzle = PUZZLES[pidx];
   const emojis = EMOJIS[pidx] || {};
   const now = new Date();
 
+  const dateShort = now.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  const dateLong  = now.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}).toUpperCase();
   document.getElementById('headerDate').textContent =
-    now.toLocaleDateString('en-GB', { weekday:'short', day:'numeric', month:'short', year:'numeric' }).toUpperCase();
-  document.getElementById('resultsDate').textContent =
-    now.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' }).toUpperCase();
+    now.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'}).toUpperCase();
+  document.getElementById('resultsDate').textContent    = dateLong;
+  document.getElementById('resultsDateFail').textContent = dateLong;
 
-  // Hero cards
   document.getElementById('heroCards').innerHTML = puzzle.items.map(item => `
     <div class="hero-card">
-      <span class="hero-card-emoji">${emojis[item] || '📦'}</span>
+      <span class="hero-card-emoji">${emojis[item]||'📦'}</span>
       <span class="hero-card-name">${item}</span>
     </div>`).join('');
 
   state = {
-    userOrder:  puzzle.categories.map(c => shuffle(c.order)),
-    catCorrect: Array(5).fill(false),
-    starLit:    Array(5).fill(false),
-    pairSel:    [],
-    pairLinked: false,
-    gameOver:   false,
+    userOrder:   puzzle.categories.map(c => shuffle(c.order)),
+    // lockedItems[ci] = Set of item-names confirmed correct in their current slot
+    lockedItems: Array(4).fill(null).map(() => new Set()),
+    catCorrect:  Array(4).fill(false),
+    checksUsed:  0,
+    pairSel:     [],
+    pairLinked:  false,
+    gameOver:    false,
   };
 
   updateProgress();
@@ -960,19 +779,26 @@ function initGame() {
   renderCats();
 }
 
-// ─── PROGRESS ──────────────────────────────────
+// ─── PROGRESS ─────────────────────────────────────────────────
 function updateProgress() {
   document.getElementById('progressPips').innerHTML =
-    state.catCorrect.map((done, i) =>
-      `<div class="pip${done ? ' lit-' + i : ''}"></div>`).join('');
+    state.catCorrect.map((done,i) => `<div class="pip${done?' lit-'+i:''}"></div>`).join('');
+
+  const used = state.checksUsed;
+  document.getElementById('checkPips').innerHTML =
+    Array.from({length:MAX_CHECKS}).map((_,i) => {
+      const cls = i < used ? 'check-pip used' : 'check-pip remaining';
+      return `<div class="${cls}"></div>`;
+    }).join('');
+
   document.getElementById('pairPip').className = 'pair-pip' + (state.pairLinked ? ' lit' : '');
 }
 
-// ─── PAIR PILLS ────────────────────────────────
+// ─── PAIR PILLS ───────────────────────────────────────────────
 function renderPairPills() {
-  const [pa, pb] = puzzle.matchingPair;
-  document.getElementById('pairPills').innerHTML = puzzle.categories.map((cat, ci) => {
-    const isLinked = state.pairLinked && (ci === pa || ci === pb);
+  const [pa,pb] = puzzle.matchingPair;
+  document.getElementById('pairPills').innerHTML = puzzle.categories.map((cat,ci) => {
+    const isLinked = state.pairLinked && (ci===pa || ci===pb);
     const isSel    = state.pairSel.includes(ci);
     let cls = `pair-pill pp${ci}`;
     if (isLinked) cls += ' linked-done';
@@ -987,50 +813,111 @@ function renderPairPills() {
 function togglePill(ci) {
   if (state.pairLinked || state.gameOver) return;
   const idx = state.pairSel.indexOf(ci);
-  if (idx > -1) state.pairSel.splice(idx, 1);
+  if (idx > -1) state.pairSel.splice(idx,1);
   else if (state.pairSel.length < 2) state.pairSel.push(ci);
   else state.pairSel = [state.pairSel[1], ci];
-  setPairMsg('Select two categories above', '');
+  setPairMsg('Select two categories above','');
+  // hide wrong reveal if re-selecting
+  document.getElementById('pairWrongReveal').classList.remove('show');
   renderPairPills();
 }
 
 function linkPair() {
-  if (state.pairSel.length !== 2 || state.pairLinked) return;
-  const [a, b] = state.pairSel;
+  if (state.pairSel.length !== 2 || state.pairLinked || state.gameOver) return;
+  const [a,b] = state.pairSel;
   const ua = state.userOrder[a].join(',');
   const ub = state.userOrder[b].join(',');
 
   if (ua !== ub) {
-    setPairMsg("Those two rankings don't match each other yet — adjust your orderings first!", 'err');
-    shakePills([a, b]);
+    setPairMsg("Those two rankings don't match each other yet — fix your orders first!", 'err');
+    shakePills([a,b]);
     return;
   }
 
-  const [pa, pb] = puzzle.matchingPair;
-  const correct = (a === pa && b === pb) || (a === pb && b === pa);
+  const [pa,pb] = puzzle.matchingPair;
+  const correct = (a===pa && b===pb) || (a===pb && b===pa);
 
   if (correct) {
     state.pairLinked = true;
-    state.pairSel = [];
-    setPairMsg('', '');
-    document.getElementById('linkedText').textContent =
-      `${puzzle.categories[pa].label} and ${puzzle.categories[pb].label} share the same order!`;
-    document.getElementById('linkedBadge').classList.add('show');
+    state.gameOver   = true;
     updateProgress();
-    renderPairPills();
-    checkEnd();
+    setTimeout(() => showResults(true), 600);
   } else {
-    setPairMsg("Those orderings match — but it's not the real pair. Keep investigating!", 'err');
-    shakePills([a, b]);
+    state.gameOver = true;
+    // Show the wrong-pair panel briefly before results
+    showWrongPairReveal(a, b);
+    setPairMsg("Wrong pair — game over!", 'err');
+    shakePills([a,b]);
     state.pairSel = [];
     renderPairPills();
+    setTimeout(() => showResults(false), 1800);
   }
+}
+
+function showWrongPairReveal(a, b) {
+  const catA = puzzle.categories[a];
+  const catB = puzzle.categories[b];
+  const userA = state.userOrder[a];
+  const userB = state.userOrder[b];
+  const correctA = catA.order;
+  const correctB = catB.order;
+
+  function buildRow(catLabel, userOrder, correctOrder, catIdx) {
+    const tiles = userOrder.map((item, pos) => {
+      const correctPos = correctOrder.indexOf(item);
+      const wrong = correctPos !== pos;
+      return `<span class="pwt${wrong ? ' wrong' : ''}">${item}</span>${pos < userOrder.length-1 ? '<span class="pwr-arrow">→</span>' : ''}`;
+    }).join('');
+
+    // Find pairs that need swapping
+    const swaps = [];
+    const used = [];
+    for (let i=0; i<userOrder.length; i++) {
+      if (used.includes(i)) continue;
+      const item = userOrder[i];
+      const shouldBeAt = correctOrder.indexOf(item);
+      if (shouldBeAt !== i) {
+        const displaced = userOrder[shouldBeAt];
+        if (!swaps.find(s => s.a===item||s.a===displaced)) {
+          swaps.push({a:item, b:displaced, fromPos:i+1, toPos:shouldBeAt+1});
+          used.push(i, shouldBeAt);
+        }
+      }
+    }
+
+    return `<div class="pair-wrong-row">
+      <div class="pair-wrong-label" style="color:${CAT_COLORS[catIdx]}">${catLabel}</div>
+      <div class="pair-wrong-tiles">${tiles}</div>
+    </div>`;
+  }
+
+  // Find overall swap hints between the two selected categories
+  function getSwapHint(userA, correctA, userB, correctB) {
+    // Items that differ between userA order and correctA order
+    const diffsA = userA.reduce((acc,item,i) => correctA.indexOf(item)!==i ? acc.concat(item) : acc, []);
+    const diffsB = userB.reduce((acc,item,i) => correctB.indexOf(item)!==i ? acc.concat(item) : acc, []);
+    if (diffsA.length === 0 && diffsB.length === 0) return '';
+    // Give clearest hint about what to move
+    const allDiffs = [...new Set([...diffsA,...diffsB])];
+    if (allDiffs.length === 0) return '';
+    return `💡 Tip: Items in the wrong position — ${allDiffs.slice(0,2).join(' and ')} need moving`;
+  }
+
+  const rowsHTML = buildRow(catA.label, userA, correctA, a) + buildRow(catB.label, userB, correctB, b);
+  document.getElementById('pairWrongRows').innerHTML = rowsHTML;
+
+  const hint = getSwapHint(userA, correctA, userB, correctB);
+  const hintEl = document.getElementById('swapHint');
+  hintEl.textContent = hint;
+  hintEl.style.display = hint ? '' : 'none';
+
+  document.getElementById('pairWrongReveal').classList.add('show');
 }
 
 function setPairMsg(text, type) {
   const el = document.getElementById('pairMsg');
   el.textContent = text;
-  el.className = 'pair-msg' + (type ? ' ' + type : '');
+  el.className = 'pair-msg' + (type ? ' '+type : '');
 }
 
 function shakePills(indices) {
@@ -1038,19 +925,24 @@ function shakePills(indices) {
   indices.forEach(ci => {
     if (btns[ci]) {
       btns[ci].style.animation = 'shake 0.35s ease';
-      setTimeout(() => { if (btns[ci]) btns[ci].style.animation = ''; }, 400);
+      setTimeout(() => { if(btns[ci]) btns[ci].style.animation = ''; }, 400);
     }
   });
 }
 
-// ─── RENDER CATEGORIES ─────────────────────────
+// ─── RENDER CATEGORIES ────────────────────────────────────────
 function renderCats() {
   const list = document.getElementById('catsList');
   list.innerHTML = '';
   puzzle.categories.forEach((cat, ci) => {
-    const correct = state.catCorrect[ci];
-    const lit     = state.starLit[ci];
-    const block   = document.createElement('div');
+    const correct    = state.catCorrect[ci];
+    const locked     = state.lockedItems[ci]; // Set of item names in correct position
+    const checksLeft = MAX_CHECKS - state.checksUsed;
+
+    let checkLabel = correct ? '✓ Correct' :
+                     checksLeft > 0 ? `Check Order (${checksLeft} left)` : 'No checks left';
+
+    const block = document.createElement('div');
     block.className = `cat-block b${ci}${correct ? ' correct' : ''}`;
     block.id = `cat-${ci}`;
     block.innerHTML = `
@@ -1058,118 +950,258 @@ function renderCats() {
       <div class="cat-header">
         <div class="cat-header-left">
           <div class="cat-swatch"></div>
-          <div class="cat-name-wrap">
+          <div>
             <div class="cat-name">${cat.label}</div>
             <div class="cat-desc">${cat.desc}</div>
           </div>
         </div>
         <div class="cat-header-right">
-          <div class="star-slot${lit ? ' lit' : ''}">⭐</div>
-          <button class="btn-check" id="checkbtn-${ci}" ${correct ? 'disabled' : ''} onclick="checkOrder(${ci})">
-            ${correct ? '✓ Correct' : 'Check Order'}
+          <div class="star-slot${correct?' lit':''}">⭐</div>
+          <button class="btn-check${!correct&&checksLeft===0?' no-checks':''}" id="checkbtn-${ci}"
+            ${correct||state.gameOver||checksLeft===0?'disabled':''} onclick="checkOrder(${ci})">
+            ${checkLabel}
           </button>
         </div>
       </div>
       <div class="rank-row" id="rankrow-${ci}">
         ${state.userOrder[ci].map((item, ri) => {
-          const fm = FACTS[pidx] && FACTS[pidx][ci];
-          const fact = fm ? (fm[item] || '') : '';
+          const isLocked   = locked.has(item);
+          const fm         = FACTS[pidx] && FACTS[pidx][ci];
+          const fact       = fm ? (fm[item]||'') : '';
+          const tileClass  = isLocked ? 'rank-tile locked' : 'rank-tile';
           return `
           ${ri > 0 ? '<div class="rank-arrow">→</div>' : ''}
           <div class="rank-entry">
             <div class="rank-num">${ri+1}${['st','nd','rd','th'][ri]}</div>
-            <div class="rank-tile" draggable="${!correct}" data-ci="${ci}" data-ri="${ri}">${item}</div>
-            <div class="item-fact${correct && fact ? ' revealed' : ''}">${fact}</div>
+            <div class="${tileClass}" data-ci="${ci}" data-ri="${ri}"${isLocked?' data-locked="1"':''}>${item}</div>
+            <div class="item-fact${correct&&fact?' revealed':''}">
+              ${fact}
+            </div>
           </div>`;
         }).join('')}
       </div>`;
     list.appendChild(block);
-    if (!correct && !state.gameOver) setupDrag(ci);
+    if (!correct && !state.gameOver) setupInteraction(ci);
   });
 }
 
-// ─── DRAG & DROP ───────────────────────────────
-function setupDrag(ci) {
+// ─── DRAG & DROP — unified mouse + touch ─────────────────────
+function setupInteraction(ci) {
   const row = document.getElementById(`rankrow-${ci}`);
   if (!row) return;
-  const tiles = () => row.querySelectorAll('.rank-tile');
-  let dragged = null, fromRi = null;
 
-  tiles().forEach(tile => {
-    tile.addEventListener('dragstart', e => {
-      dragged = tile; fromRi = parseInt(tile.dataset.ri);
-      e.dataTransfer.effectAllowed = 'move';
-      setTimeout(() => tile.classList.add('dragging'), 0);
-    });
-    tile.addEventListener('dragend', () => {
-      tiles().forEach(t => t.classList.remove('dragging', 'drag-over'));
-      dragged = null;
-    });
-    tile.addEventListener('dragover', e => {
-      e.preventDefault();
-      if (tile !== dragged) {
-        tiles().forEach(t => t.classList.remove('drag-over'));
-        tile.classList.add('drag-over');
+  // Ghost element (shown during drag)
+  let ghost = null;
+  let fromRi = null;
+  let activeTouch = null;
+  let isDragging = false;
+  let startX, startY;
+  const DRAG_THRESHOLD = 8; // px movement before drag starts
+
+  function getTiles() { return Array.from(row.querySelectorAll('.rank-tile')); }
+
+  function createGhost(text, x, y) {
+    ghost = document.createElement('div');
+    ghost.className = 'drag-ghost';
+    ghost.textContent = text;
+    document.body.appendChild(ghost);
+    moveGhost(x, y);
+  }
+
+  function moveGhost(x, y) {
+    if (!ghost) return;
+    ghost.style.left = (x - ghost.offsetWidth/2) + 'px';
+    ghost.style.top  = (y - ghost.offsetHeight/2) + 'px';
+  }
+
+  function removeGhost() {
+    if (ghost) { ghost.remove(); ghost = null; }
+  }
+
+  function getTileAt(x, y) {
+    const els = document.elementsFromPoint(x, y);
+    return els.find(el => el.classList.contains('rank-tile') && parseInt(el.dataset.ci) === ci) || null;
+  }
+
+  function highlightTarget(targetTile) {
+    getTiles().forEach(t => t.classList.remove('drag-over'));
+    if (targetTile) targetTile.classList.add('drag-over');
+  }
+
+  function doSwap(toRi) {
+    if (toRi === fromRi || toRi === null) return;
+    // Don't allow swapping into or out of a locked position
+    const fromItem = state.userOrder[ci][fromRi];
+    const toItem   = state.userOrder[ci][toRi];
+    if (state.lockedItems[ci].has(fromItem) || state.lockedItems[ci].has(toItem)) return;
+    [state.userOrder[ci][fromRi], state.userOrder[ci][toRi]] =
+      [state.userOrder[ci][toRi], state.userOrder[ci][fromRi]];
+    renderCats(); renderPairPills();
+  }
+
+  // ── MOUSE EVENTS ──
+  getTiles().forEach(tile => {
+    tile.addEventListener('mousedown', e => {
+      if (e.button !== 0) return;
+      fromRi = parseInt(tile.dataset.ri);
+      startX = e.clientX; startY = e.clientY;
+      isDragging = false;
+
+      function onMouseMove(e) {
+        const dx = e.clientX - startX, dy = e.clientY - startY;
+        if (!isDragging && Math.sqrt(dx*dx+dy*dy) > DRAG_THRESHOLD) {
+          isDragging = true;
+          tile.classList.add('dragging');
+          createGhost(tile.textContent.trim(), e.clientX, e.clientY);
+        }
+        if (isDragging) {
+          moveGhost(e.clientX, e.clientY);
+          const target = getTileAt(e.clientX, e.clientY);
+          highlightTarget(target !== tile ? target : null);
+        }
       }
-    });
-    tile.addEventListener('dragleave', () => tile.classList.remove('drag-over'));
-    tile.addEventListener('drop', e => {
-      e.preventDefault();
-      if (tile !== dragged) {
-        const toRi = parseInt(tile.dataset.ri);
-        [state.userOrder[ci][fromRi], state.userOrder[ci][toRi]] =
-          [state.userOrder[ci][toRi], state.userOrder[ci][fromRi]];
-        if (state.catCorrect[ci]) state.catCorrect[ci] = false;
-        renderCats(); renderPairPills();
+
+      function onMouseUp(e) {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+        if (isDragging) {
+          tile.classList.remove('dragging');
+          getTiles().forEach(t => t.classList.remove('drag-over'));
+          removeGhost();
+          const target = getTileAt(e.clientX, e.clientY);
+          if (target && target !== tile) doSwap(parseInt(target.dataset.ri));
+        }
+        isDragging = false; fromRi = null;
       }
+
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
     });
-    // Touch swap
-    let tFrom = null;
-    tile.addEventListener('touchstart', () => tFrom = parseInt(tile.dataset.ri), { passive: true });
+  });
+
+  // ── TOUCH EVENTS ──
+  getTiles().forEach(tile => {
+    tile.addEventListener('touchstart', e => {
+      if (activeTouch !== null) return;
+      activeTouch = e.touches[0].identifier;
+      fromRi = parseInt(tile.dataset.ri);
+      const t = e.touches[0];
+      startX = t.clientX; startY = t.clientY;
+      isDragging = false;
+    }, {passive: true});
+
+    tile.addEventListener('touchmove', e => {
+      const touch = Array.from(e.touches).find(t => t.identifier === activeTouch);
+      if (!touch) return;
+      const dx = touch.clientX - startX, dy = touch.clientY - startY;
+      if (!isDragging && Math.sqrt(dx*dx+dy*dy) > DRAG_THRESHOLD) {
+        isDragging = true;
+        tile.classList.add('dragging');
+        createGhost(tile.textContent.trim(), touch.clientX, touch.clientY);
+      }
+      if (isDragging) {
+        e.preventDefault(); // prevent scroll only once dragging
+        moveGhost(touch.clientX, touch.clientY);
+        const target = getTileAt(touch.clientX, touch.clientY);
+        highlightTarget(target && target !== tile ? target : null);
+      }
+    }, {passive: false});
+
     tile.addEventListener('touchend', e => {
-      tiles().forEach(t => t.classList.remove('drag-over'));
-      const touch = e.changedTouches[0];
-      const el = document.elementFromPoint(touch.clientX, touch.clientY);
-      const tgt = el?.closest('.rank-tile');
-      if (tgt && parseInt(tgt.dataset.ci) === ci && parseInt(tgt.dataset.ri) !== tFrom) {
-        const toRi = parseInt(tgt.dataset.ri);
-        [state.userOrder[ci][tFrom], state.userOrder[ci][toRi]] =
-          [state.userOrder[ci][toRi], state.userOrder[ci][tFrom]];
-        if (state.catCorrect[ci]) state.catCorrect[ci] = false;
-        renderCats(); renderPairPills();
+      const changedTouch = Array.from(e.changedTouches).find(t => t.identifier === activeTouch);
+      if (!changedTouch) return;
+      activeTouch = null;
+
+      if (isDragging) {
+        tile.classList.remove('dragging');
+        getTiles().forEach(t => t.classList.remove('drag-over'));
+        removeGhost();
+        const target = getTileAt(changedTouch.clientX, changedTouch.clientY);
+        if (target && target !== tile) doSwap(parseInt(target.dataset.ri));
       }
-      tFrom = null;
-    });
+      isDragging = false; fromRi = null;
+    }, {passive: true});
+
+    tile.addEventListener('touchcancel', () => {
+      activeTouch = null; isDragging = false; fromRi = null;
+      tile.classList.remove('dragging');
+      getTiles().forEach(t => t.classList.remove('drag-over'));
+      removeGhost();
+    }, {passive: true});
   });
 }
 
-// ─── CHECK ORDER ───────────────────────────────
+// ─── CHECK ORDER ─────────────────────────────────────────────
 function checkOrder(ci) {
   if (state.catCorrect[ci] || state.gameOver) return;
-  const ok = state.userOrder[ci].join(',') === puzzle.categories[ci].order.join(',');
-  if (ok) {
+  if (state.checksUsed >= MAX_CHECKS) return;
+
+  state.checksUsed++;
+  updateProgress();
+
+  const correctOrder = puzzle.categories[ci].order;
+  const userOrder    = state.userOrder[ci];
+
+  // Lock every item that is currently in its correct position
+  let allCorrect = true;
+  userOrder.forEach((item, ri) => {
+    if (correctOrder[ri] === item) {
+      state.lockedItems[ci].add(item);
+    } else {
+      allCorrect = false;
+    }
+  });
+
+  if (allCorrect) {
     state.catCorrect[ci] = true;
-    state.starLit[ci] = true;
-    updateProgress();
-    renderCats(); renderPairPills(); checkEnd();
+    renderCats(); renderPairPills();
   } else {
+    // Flash the block, then re-render to show green locked tiles
     const block = document.getElementById(`cat-${ci}`);
     const btn   = document.getElementById(`checkbtn-${ci}`);
     block.classList.remove('wrong-flash'); void block.offsetWidth; block.classList.add('wrong-flash');
-    btn.classList.add('is-wrong'); btn.textContent = '✗ Not right';
+    btn.classList.add('is-wrong'); btn.textContent = '✗ Some wrong';
+
+    const remaining = MAX_CHECKS - state.checksUsed;
+    showToast(remaining > 0
+      ? `${remaining} check${remaining===1?'':'s'} remaining`
+      : 'No more checks!');
+
     setTimeout(() => {
-      btn.classList.remove('is-wrong'); btn.textContent = 'Check Order';
       block.classList.remove('wrong-flash');
+      btn.classList.remove('is-wrong');
+      renderCats(); renderPairPills();
     }, 700);
   }
 }
 
-function checkEnd() {
-  if (state.catCorrect.every(Boolean) && state.pairLinked) setTimeout(showResults, 700);
+function showToast(msg) {
+  const t = document.getElementById('checksToast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
 }
 
-// ─── RESULTS ───────────────────────────────────
-function showResults() {
+// ─── BUILD ANSWERS LIST (shared by win + fail) ───────────────
+function buildAnswers() {
+  const [pa,pb] = puzzle.matchingPair;
+  document.getElementById('answerRows').innerHTML = puzzle.categories.map((cat,ci) => {
+    const isMatch = ci===pa || ci===pb;
+    return `<div class="answer-row-item">
+      <div class="answer-cat-label" style="color:${CAT_COLORS[ci]}">
+        ${cat.label}${isMatch?'<span class="match-flag">MATCH</span>':''}
+      </div>
+      <div class="answer-pills">
+        ${cat.order.map((item,i) =>
+          `${i>0?'<span class="ans-arrow">→</span>':''}<span class="answer-item-pill">${item}</span>`
+        ).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── RESULTS ─────────────────────────────────────────────────
+function showResults(won) {
   state.gameOver = true;
   document.getElementById('heroSection').style.display  = 'none';
   document.getElementById('progressBar').style.display  = 'none';
@@ -1177,48 +1209,73 @@ function showResults() {
   document.getElementById('catsList').style.display     = 'none';
   document.querySelector('.footer').style.display       = 'none';
 
-  const stars = state.starLit.filter(Boolean).length;
-  const starsRow = document.getElementById('starsRow');
-  starsRow.innerHTML = '';
-  for (let i = 0; i < 5; i++) {
-    const s = document.createElement('div');
-    s.className = 'res-star';
-    s.textContent = i < stars ? '⭐' : '☆';
-    s.style.animationDelay = (i * 0.09) + 's';
-    starsRow.appendChild(s);
+  const now     = new Date();
+  const dateStr = now.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  const checksUsed = state.checksUsed;
+
+  if (won) {
+    document.getElementById('failContent').style.display = 'none';
+    document.getElementById('winContent').style.display  = '';
+    document.getElementById('resultsStripe').classList.remove('fail');
+
+    // Stars = number of fully-correct categories
+    const stars = state.catCorrect.filter(Boolean).length;
+    const sr = document.getElementById('starsRow');
+    sr.innerHTML = '';
+    for (let i=0; i<4; i++) {
+      const s = document.createElement('div');
+      s.className = 'res-star';
+      s.textContent = i < stars ? '⭐' : '☆';
+      s.style.animationDelay = (i*0.09)+'s';
+      sr.appendChild(s);
+    }
+    document.getElementById('scoreLabel').textContent =
+      `${stars}/4 categories correct · ${checksUsed}/${MAX_CHECKS} checks used`;
+
+    const shareText =
+      `RANK 4 — ${dateStr}\n` +
+      `${'⭐'.repeat(stars)}${'☆'.repeat(4-stars)} ${stars}/4\n` +
+      `Checks used: ${checksUsed}/${MAX_CHECKS}\n` +
+      `Matching pair: ✓ Found!\n` +
+      `Play at ${WEBSITE} #Rank4`;
+    document.getElementById('shareBox').textContent = shareText;
+    document.getElementById('btnCopy').onclick = () => {
+      navigator.clipboard.writeText(shareText).catch(()=>{});
+      document.getElementById('btnCopy').textContent = 'Copied! ✓';
+      setTimeout(() => document.getElementById('btnCopy').textContent = 'Copy Result', 1800);
+    };
+
+  } else {
+    document.getElementById('winContent').style.display  = 'none';
+    document.getElementById('failContent').style.display = '';
+    document.getElementById('resultsStripe').classList.add('fail');
+
+    const [pa,pb] = puzzle.matchingPair;
+    const correctPairLabel =
+      `${puzzle.categories[pa].label} & ${puzzle.categories[pb].label}`;
+
+    document.getElementById('failSub').innerHTML =
+      `The correct matching pair was<br><strong style="color:rgba(255,255,255,0.85)">${correctPairLabel}</strong><br>Come back tomorrow for a new puzzle!`;
+
+    const shareText =
+      `RANK 4 — ${dateStr}\n` +
+      `❌ Wrong pair guessed\n` +
+      `Checks used: ${checksUsed}/${MAX_CHECKS}\n` +
+      `Play at ${WEBSITE} #Rank4`;
+    document.getElementById('shareBoxFail').textContent = shareText;
+    document.getElementById('btnCopyFail').onclick = () => {
+      navigator.clipboard.writeText(shareText).catch(()=>{});
+      document.getElementById('btnCopyFail').textContent = 'Copied! ✓';
+      setTimeout(() => document.getElementById('btnCopyFail').textContent = 'Copy Result', 1800);
+    };
   }
-  document.getElementById('scoreLabel').textContent = `${stars} / 5 Stars`;
 
-  const now = new Date();
-  const dateStr = now.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
-  const share = `RANK 5 — ${dateStr}\n${'⭐'.repeat(stars)}${'☆'.repeat(5-stars)} ${stars}/5\nMatching pair: ✓ Found\n#Rank5`;
-  document.getElementById('shareCard').textContent = share;
-  document.getElementById('btnCopy').onclick = () => {
-    navigator.clipboard.writeText(share).catch(() => {});
-    document.getElementById('btnCopy').textContent = 'Copied! ✓';
-    setTimeout(() => document.getElementById('btnCopy').textContent = 'Copy Result', 1800);
-  };
-
-  const [pa, pb] = puzzle.matchingPair;
-  document.getElementById('answerRows').innerHTML = puzzle.categories.map((cat, ci) => {
-    const isMatch = ci === pa || ci === pb;
-    return `<div class="answer-row-item">
-      <div class="answer-cat-label" style="color:${CAT_COLORS[ci]}">
-        ${cat.label}${isMatch ? '<span class="match-flag">MATCH</span>' : ''}
-      </div>
-      <div class="answer-pills">
-        ${cat.order.map((item, i) =>
-          `${i > 0 ? '<span class="ans-arrow">→</span>' : ''}<span class="answer-item-pill">${item}</span>`
-        ).join('')}
-      </div>
-    </div>`;
-  }).join('');
-
+  buildAnswers();
   document.getElementById('resultsScreen').classList.add('show');
-  document.getElementById('resultsScreen').scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('resultsScreen').scrollIntoView({behavior:'smooth'});
 }
 
-// ─── BOOT ──────────────────────────────────────
+// ─── BOOT ─────────────────────────────────────────────────────
 document.getElementById('btnLink').addEventListener('click', linkPair);
 document.getElementById('btnHelp').addEventListener('click', () =>
   document.getElementById('helpOverlay').classList.add('show'));
@@ -1227,5 +1284,4 @@ initGame();
 setTimeout(() => document.getElementById('helpOverlay').classList.add('show'), 400);
 </script>
 </body>
-
 </html>
