@@ -240,7 +240,7 @@ body {
 .star-slot{font-size:1.15rem;line-height:1;filter:grayscale(1);opacity:0.15;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1)}
 .star-slot.lit{filter:none;opacity:1;animation:starPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both}
 
-/* Check button — shows remaining checks or locked state */
+/* Check button */
 .btn-check {
   font-family:'Outfit',sans-serif; font-size:0.68rem; font-weight:700;
   padding:7px 14px; border-radius:100px; border:2px solid;
@@ -259,22 +259,29 @@ body {
 .btn-check.is-wrong{color:var(--fail)!important;border-color:#FCA5A5!important}
 .btn-check.no-checks{color:var(--muted)!important;border-color:var(--edge)!important;background:var(--lift)!important;opacity:0.7}
 
-/* ── RANK ROW ── */
+/* ── RANK ROW — NO horizontal scroll, wraps on mobile ── */
 .rank-row {
-  display: flex; align-items: flex-start;
-  padding: 14px 12px 10px; gap: 7px;
-  overflow-x: auto; -webkit-overflow-scrolling: touch;
-  /* prevent text selection during drag */
+  display: flex; align-items: stretch;
+  padding: 14px 12px 10px; gap: 0;
+  /* KEY FIX: no overflow-x: auto — use CSS grid/flex wrap instead */
   user-select: none; -webkit-user-select: none;
 }
-.rank-entry { display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1; min-width: 82px; }
+
+/* Each entry takes equal width, tiles stay same height */
+.rank-entry {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  flex: 1; min-width: 0; /* allow shrinking */
+}
 .rank-num { font-size: 0.56rem; font-weight: 700; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+
+/* Tile height is fixed so swapping doesn't resize the row → no page jump */
 .rank-tile {
-  width: 100%; min-height: 52px;
+  width: 100%;
+  height: 64px; /* FIXED height — prevents layout jumps */
   background: var(--lift); border: 1.5px solid var(--edge); border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.74rem; font-weight: 600; text-align: center; padding: 8px 5px; line-height: 1.3;
-  cursor: grab; touch-action: none; /* crucial for custom touch drag */
+  font-size: 0.72rem; font-weight: 600; text-align: center; padding: 6px 4px; line-height: 1.25;
+  cursor: grab; touch-action: none;
   transition: background 0.12s, border-color 0.12s, box-shadow 0.12s, transform 0.12s;
   position: relative;
   background-image: radial-gradient(circle, var(--edge) 1px, transparent 1px);
@@ -283,12 +290,13 @@ body {
   background-repeat: no-repeat;
   background-color: var(--lift);
   will-change: transform;
+  /* Prevent content reflow jumping — use visibility trick instead of opacity for dragging */
+  overflow: hidden;
 }
 .rank-tile:hover { background-color: var(--edge); border-color: #C5C0B8; }
 .rank-tile.dragging { opacity: 0.2; transform: scale(0.95); box-shadow: none; }
 .rank-tile.drag-over { border-color: var(--c3); border-style: dashed; background-color: #EEF2FF; box-shadow: 0 0 0 3px rgba(47,84,235,0.15); transform: scale(1.03); }
 .correct .rank-tile { background-color: var(--ok-tint); background-image: none; border-color: #86EFAC; cursor: default; touch-action: auto; }
-/* Individually locked tile — correct position confirmed by Check Order */
 .rank-tile.locked {
   background-color: var(--ok-tint) !important; background-image: none !important;
   border-color: #86EFAC !important; cursor: default !important; touch-action: auto !important;
@@ -296,15 +304,20 @@ body {
   box-shadow: 0 0 0 2px rgba(14,165,114,0.2);
 }
 .rank-tile.locked::after { content: '✓'; position: absolute; top: 4px; right: 6px; font-size: 0.55rem; color: var(--ok); font-weight: 800; }
-.rank-arrow { color: var(--edge); font-size: 0.85rem; flex-shrink: 0; margin-top: 30px; }
+
+/* Arrow between tiles — hidden on very small screens */
+.rank-arrow { color: var(--edge); font-size: 0.75rem; flex-shrink: 0; align-self: flex-start; margin-top: 34px; padding: 0 1px; }
+
+/* Facts displayed BELOW each tile */
 .item-fact {
   font-size: 0.57rem; font-weight: 600; color: transparent; text-align: center;
   line-height: 1.3; width: 100%; padding: 0 2px;
-  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, color 0.3s ease 0.2s;
+  min-height: 18px; /* reserve space so height doesn't change on reveal */
+  transition: color 0.3s ease 0.2s;
 }
-.item-fact.revealed { color: var(--ok); max-height: 36px; }
+.item-fact.revealed { color: var(--ok); }
 
-/* Ghost tile — follows finger/mouse during drag */
+/* Ghost tile */
 .drag-ghost {
   position: fixed; pointer-events: none; z-index: 9999;
   background: var(--ink); color: white;
@@ -379,7 +392,6 @@ body {
   cursor:pointer; transition:all 0.14s; position:relative;
 }
 .btn-copy:hover { background:#EDEDED; transform:translateY(-1px); box-shadow:0 5px 16px rgba(0,0,0,0.25); }
-/* The correct answer reveal on fail */
 .fail-answer-reveal { background:rgba(255,255,255,0.06); border:1.5px solid rgba(255,255,255,0.12); border-radius:14px; padding:18px 20px; margin-bottom:14px; position:relative; text-align:left; }
 .fail-answer-label { font-size:0.58rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:14px; }
 .fail-answer-row { margin-bottom:10px; }
@@ -390,14 +402,19 @@ body {
 .fail-pill.pair-pill-match { background:rgba(14,165,114,0.2); border-color:rgba(134,239,172,0.4); color:#86EFAC; }
 .fail-arrow { font-size:0.7rem; color:rgba(255,255,255,0.2); }
 .fail-match-badge { font-size:0.5rem; font-weight:800; letter-spacing:1px; padding:2px 7px; border-radius:4px; background:rgba(14,165,114,0.3); color:#86EFAC; text-transform:uppercase; border:1px solid rgba(134,239,172,0.3); }
+
+/* ── ANSWERS SECTION — facts shown under each item ── */
 .answers-section { background:var(--white); border:1.5px solid var(--edge); border-radius:16px; padding:20px; }
 .answers-label { font-size:0.58rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
-.answer-rows { display:flex; flex-direction:column; gap:12px; }
+.answer-rows { display:flex; flex-direction:column; gap:16px; }
 .answer-row-item { display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap; }
-.answer-cat-label { font-size:0.66rem; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; min-width:130px; padding-top:5px; display:flex; align-items:center; gap:7px; }
-.answer-pills { display:flex; gap:5px; align-items:center; flex-wrap:wrap; }
-.answer-item-pill { background:var(--lift); border:1.5px solid var(--edge); border-radius:100px; padding:4px 11px; font-size:0.7rem; font-weight:600; }
-.ans-arrow { font-size:0.7rem; color:var(--edge); }
+.answer-cat-label { font-size:0.66rem; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; min-width:130px; padding-top:5px; display:flex; align-items:center; gap:7px; flex-shrink: 0; }
+.answer-pills { display:flex; gap:5px; align-items:flex-start; flex-wrap:wrap; }
+/* Each pill now has a fact underneath it */
+.answer-pill-wrap { display:flex; flex-direction:column; align-items:center; gap:3px; }
+.answer-item-pill { background:var(--lift); border:1.5px solid var(--edge); border-radius:100px; padding:4px 11px; font-size:0.7rem; font-weight:600; white-space:nowrap; }
+.answer-item-fact { font-size:0.58rem; font-weight:600; color:var(--ok); text-align:center; line-height:1.2; max-width:90px; }
+.ans-arrow { font-size:0.7rem; color:var(--edge); padding-top:6px; }
 .match-flag { font-size:0.5rem; font-weight:800; letter-spacing:1px; padding:2px 7px; border-radius:4px; background:var(--ink); color:white; text-transform:uppercase; }
 
 /* ── OVERLAY ── */
@@ -436,18 +453,38 @@ body {
 }
 .cat-block.correct{animation:correctPulse 0.7s ease both 0.05s}
 
+/* ── MOBILE ── */
 @media(max-width:580px){
   .hero-cards{grid-template-columns:repeat(2,1fr);gap:8px}
   .hero{padding:24px 14px 30px}
   .hero-heading{font-size:1.9rem}
   .header{padding:0 14px}
-  .main{padding:16px 12px 70px}
-  .rank-tile{font-size:0.68rem;min-width:72px;padding:7px 4px}
-  .rank-entry{min-width:72px}
+  .main{padding:16px 10px 70px}
   .pair-pill{font-size:0.68rem;padding:6px 13px}
   .progress-bar{padding:9px 14px}
   .pair-wrong-label{min-width:90px}
   .hero-card-emoji{font-size:1.9rem}
+
+  /* Rank row: tiles flow side by side with NO scroll — shrink font/size */
+  .rank-row { padding: 12px 8px 8px; gap: 0; }
+  .rank-tile {
+    font-size: 0.6rem;
+    height: 56px;
+    border-radius: 9px;
+    padding: 4px 2px;
+  }
+  .rank-arrow { font-size: 0.6rem; margin-top: 28px; padding: 0; }
+  .rank-num { font-size: 0.5rem; }
+  .item-fact { font-size: 0.5rem; min-height: 16px; }
+
+  /* Answer section on mobile */
+  .answer-cat-label { min-width: 100px; }
+  .answer-item-fact { font-size: 0.53rem; max-width: 70px; }
+}
+
+@media(max-width:400px){
+  .rank-tile { font-size: 0.55rem; height: 50px; }
+  .rank-arrow { margin-top: 25px; }
 }
 </style>
 </head>
@@ -539,7 +576,7 @@ body {
           <div class="stars-row" id="starsRow"></div>
           <div class="results-score" id="scoreLabel"></div>
           <div class="share-box" id="shareBox"></div>
-          <div class="results-share-prompt">Play at <a href="https://playrank4.com" target="_blank">playrank4.com</a></div>
+          <div class="results-share-prompt">Play at <a href="https://seanpri222.github.io/RANK4/" target="_blank">seanpri222.github.io/RANK4</a></div>
           <button class="btn-copy" id="btnCopy">Copy Result</button>
         </div>
         <!-- Fail content -->
@@ -549,7 +586,7 @@ body {
           <div class="results-fail-sub" id="failSub"></div>
           <div class="results-date" id="resultsDateFail"></div>
           <div class="share-box" id="shareBoxFail"></div>
-          <div class="results-share-prompt">Play at <a href="https://playrank4.com" target="_blank">playrank4.com</a></div>
+          <div class="results-share-prompt">Play at <a href="https://seanpri222.github.io/RANK4/" target="_blank">seanpri222.github.io/RANK4</a></div>
           <button class="btn-copy" id="btnCopyFail">Copy Result</button>
         </div>
       </div>
@@ -584,7 +621,7 @@ body {
       </div>
       <div class="overlay-step">
         <div class="step-num">4</div>
-        <div class="step-text"><strong>Guess the pair correctly → you win!</strong> Guess wrong → game over. Check Order highlights which tiles are in the right place to help you narrow it down.</div>
+        <div class="step-text"><strong>Guess the pair correctly → you win!</strong> If your linked order matches the correct pair, you get <strong>4/4 stars</strong> — no Check needed. Guess wrong → game over.</div>
       </div>
     </div>
     <button class="btn-play" onclick="document.getElementById('helpOverlay').classList.remove('show')">Let's go!</button>
@@ -593,11 +630,9 @@ body {
 
 <script>
 // ═══════════════════════════════════════════════════════
-// PUZZLE DATA  —  4 categories each, exactly 1 matching pair
+// PUZZLE DATA
 // ═══════════════════════════════════════════════════════
 const PUZZLES = [
-  // ── DAY 0 ── A4 Paper · Pencil · Elephant · Moon
-  // matchingPair: WEIGHT [0] = VALUE IN $ [2]  →  [A4 Paper, Pencil, Elephant, Moon]
   {
     items: ['A4 Paper','Pencil','Elephant','Moon'],
     categories: [
@@ -608,8 +643,6 @@ const PUZZLES = [
     ],
     matchingPair:[0,2]
   },
-  // ── DAY 1 ── Ant · Tennis Ball · Blue Whale · Eiffel Tower
-  // matchingPair: WEIGHT [0] = MARKET VALUE [3]  →  [Ant, Tennis Ball, Blue Whale, Eiffel Tower]
   {
     items: ['Ant','Tennis Ball','Blue Whale','Eiffel Tower'],
     categories: [
@@ -620,8 +653,6 @@ const PUZZLES = [
     ],
     matchingPair:[0,3]
   },
-  // ── DAY 2 ── Strawberry · Basketball · School Bus · Eiffel Tower
-  // matchingPair: WEIGHT [0] = HEIGHT [1]  →  [Strawberry, Basketball, School Bus, Eiffel Tower]
   {
     items: ['Strawberry','Basketball','School Bus','Eiffel Tower'],
     categories: [
@@ -632,8 +663,6 @@ const PUZZLES = [
     ],
     matchingPair:[0,1]
   },
-  // ── DAY 3 ── Golf Ball · Dolphin · Boeing 747 · Burj Khalifa
-  // matchingPair: WEIGHT [0] = HEIGHT [1]  →  [Golf Ball, Dolphin, Boeing 747, Burj Khalifa]
   {
     items: ['Golf Ball','Dolphin','Boeing 747','Burj Khalifa'],
     categories: [
@@ -644,8 +673,6 @@ const PUZZLES = [
     ],
     matchingPair:[0,1]
   },
-  // ── DAY 4 ── Postage Stamp · Human Brain · Double Decker Bus · Amazon River
-  // matchingPair: WEIGHT [0] = LENGTH [1]  →  [Postage Stamp, Human Brain, Double Decker Bus, Amazon River]
   {
     items: ['Postage Stamp','Human Brain','Double Decker Bus','Amazon River'],
     categories: [
@@ -656,8 +683,6 @@ const PUZZLES = [
     ],
     matchingPair:[0,1]
   },
-  // ── DAY 5 ── Snowflake · Violin · Rocket · Amazon Rainforest
-  // matchingPair: WEIGHT [0] = LENGTH [1]  →  [Snowflake, Violin, Rocket, Amazon Rainforest]
   {
     items: ['Snowflake','Violin','Rocket','Amazon Rainforest'],
     categories: [
@@ -670,39 +695,38 @@ const PUZZLES = [
   },
 ];
 
-// ─── FACTS  ─────────────────────────────────────────────────
 const FACTS = [
-  [ // P0
+  [
     {'A4 Paper':'~5 g','Pencil':'~10 g','Elephant':'~4,000 kg','Moon':'7.3×10²² kg'},
     {'Pencil':'~19 cm','A4 Paper':'29.7 cm','Elephant':'~6 m long','Moon':'3,474 km Ø'},
     {'A4 Paper':'~$0.01','Pencil':'~$0.50','Elephant':'~$30,000','Moon':'incalculable'},
     {'Moon':'~4.5 B yrs','Elephant':'~60 M yrs','A4 Paper':'std. 1975','Pencil':'inv. 1565'},
   ],
-  [ // P1
+  [
     {'Ant':'~1 mg','Tennis Ball':'~58 g','Blue Whale':'~150,000 kg','Eiffel Tower':'~7,300 t'},
     {'Eiffel Tower':'1 original','Blue Whale':'~15,000 alive','Tennis Ball':'~300 M/yr','Ant':'~20 quadrillion'},
     {'Eiffel Tower':'built 1889','Tennis Ball':'inv. ~1870s','Blue Whale':'~5 M yrs','Ant':'~100 M yrs'},
     {'Ant':'~$0','Tennis Ball':'~$3','Blue Whale':'~$1 M','Eiffel Tower':'~$480 B'},
   ],
-  [ // P2
+  [
     {'Strawberry':'~12 g','Basketball':'~620 g','School Bus':'~10,000 kg','Eiffel Tower':'~7,300 t'},
     {'Strawberry':'~3 cm','Basketball':'~24 cm Ø','School Bus':'~3.5 m tall','Eiffel Tower':'330 m'},
     {'Basketball':'inv. 1891','Eiffel Tower':'built 1889','School Bus':'1827','Strawberry':'~1300s'},
     {'Eiffel Tower':'~$7/kg','School Bus':'~$10/kg','Strawberry':'~$42/kg','Basketball':'~$48/kg'},
   ],
-  [ // P3
+  [
     {'Golf Ball':'~45 g','Dolphin':'~200 kg','Boeing 747':'~178,000 kg','Burj Khalifa':'~500,000 t'},
     {'Golf Ball':'4.3 cm Ø','Dolphin':'~3 m','Boeing 747':'~19 m tall','Burj Khalifa':'828 m'},
     {'Burj Khalifa':'opened 2010','Boeing 747':'first flight 1969','Golf Ball':'inv. ~1400s','Dolphin':'~10 M yrs'},
     {'Burj Khalifa':'0 km/h','Dolphin':'~60 km/h','Golf Ball':'~290 km/h','Boeing 747':'~988 km/h'},
   ],
-  [ // P4
+  [
     {'Postage Stamp':'~0.2 g','Human Brain':'~1.4 kg','Double Decker Bus':'~12,000 kg','Amazon River':'~10¹⁴ kg'},
     {'Postage Stamp':'~2.5 cm','Human Brain':'~16 cm','Double Decker Bus':'~10 m','Amazon River':'6,992 km'},
     {'Postage Stamp':'~20 °C','Amazon River':'~28 °C','Human Brain':'~37 °C','Double Decker Bus':'~90 °C'},
     {'Double Decker Bus':'~1895','Postage Stamp':'1840','Human Brain':'~300 k yrs','Amazon River':'~11 M yrs'},
   ],
-  [ // P5
+  [
     {'Snowflake':'~0.003 mg','Violin':'~400 g','Rocket':'~2.9 M kg','Amazon Rainforest':'~200 B t'},
     {'Snowflake':'~1–5 mm','Violin':'~60 cm','Rocket':'~110 m','Amazon Rainforest':'~3,300 km wide'},
     {'Snowflake':'≤ 0 °C','Violin':'~20 °C','Amazon Rainforest':'~27 °C','Rocket':'~3,300 °C'},
@@ -710,7 +734,6 @@ const FACTS = [
   ],
 ];
 
-// ─── EMOJIS ──────────────────────────────────────────────────
 const EMOJIS = [
   {'A4 Paper':'📄','Pencil':'✏️','Elephant':'🐘','Moon':'🌙'},
   {'Ant':'🐜','Tennis Ball':'🎾','Blue Whale':'🐋','Eiffel Tower':'🗼'},
@@ -720,12 +743,11 @@ const EMOJIS = [
   {'Snowflake':'❄️','Violin':'🎻','Rocket':'🚀','Amazon Rainforest':'🌿'},
 ];
 
-// ─── CONSTANTS ────────────────────────────────────────────────
 const MAX_CHECKS = 3;
 const CAT_COLORS = ['var(--c0)','var(--c1)','var(--c2)','var(--c3)'];
-const WEBSITE = 'playrank4.com';
+const WEBSITE_URL  = 'https://seanpri222.github.io/RANK4/';
+const WEBSITE_DISP = 'seanpri222.github.io/RANK4';
 
-// ─── STATE ────────────────────────────────────────────────────
 let puzzle, state, pidx;
 
 function getPuzzleIdx() {
@@ -743,18 +765,16 @@ function shuffle(arr) {
   return a;
 }
 
-// ─── INIT ─────────────────────────────────────────────────────
 function initGame() {
   pidx = getPuzzleIdx();
   puzzle = PUZZLES[pidx];
   const emojis = EMOJIS[pidx] || {};
   const now = new Date();
 
-  const dateShort = now.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
-  const dateLong  = now.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}).toUpperCase();
+  const dateLong = now.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}).toUpperCase();
   document.getElementById('headerDate').textContent =
     now.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'}).toUpperCase();
-  document.getElementById('resultsDate').textContent    = dateLong;
+  document.getElementById('resultsDate').textContent     = dateLong;
   document.getElementById('resultsDateFail').textContent = dateLong;
 
   document.getElementById('heroCards').innerHTML = puzzle.items.map(item => `
@@ -765,7 +785,6 @@ function initGame() {
 
   state = {
     userOrder:   puzzle.categories.map(c => shuffle(c.order)),
-    // lockedItems[ci] = Set of item-names confirmed correct in their current slot
     lockedItems: Array(4).fill(null).map(() => new Set()),
     catCorrect:  Array(4).fill(false),
     checksUsed:  0,
@@ -779,22 +798,17 @@ function initGame() {
   renderCats();
 }
 
-// ─── PROGRESS ─────────────────────────────────────────────────
 function updateProgress() {
   document.getElementById('progressPips').innerHTML =
     state.catCorrect.map((done,i) => `<div class="pip${done?' lit-'+i:''}"></div>`).join('');
-
   const used = state.checksUsed;
   document.getElementById('checkPips').innerHTML =
-    Array.from({length:MAX_CHECKS}).map((_,i) => {
-      const cls = i < used ? 'check-pip used' : 'check-pip remaining';
-      return `<div class="${cls}"></div>`;
-    }).join('');
-
+    Array.from({length:MAX_CHECKS}).map((_,i) =>
+      `<div class="${i < used ? 'check-pip used' : 'check-pip remaining'}"></div>`
+    ).join('');
   document.getElementById('pairPip').className = 'pair-pip' + (state.pairLinked ? ' lit' : '');
 }
 
-// ─── PAIR PILLS ───────────────────────────────────────────────
 function renderPairPills() {
   const [pa,pb] = puzzle.matchingPair;
   document.getElementById('pairPills').innerHTML = puzzle.categories.map((cat,ci) => {
@@ -817,7 +831,6 @@ function togglePill(ci) {
   else if (state.pairSel.length < 2) state.pairSel.push(ci);
   else state.pairSel = [state.pairSel[1], ci];
   setPairMsg('Select two categories above','');
-  // hide wrong reveal if re-selecting
   document.getElementById('pairWrongReveal').classList.remove('show');
   renderPairPills();
 }
@@ -828,23 +841,31 @@ function linkPair() {
   const ua = state.userOrder[a].join(',');
   const ub = state.userOrder[b].join(',');
 
-  if (ua !== ub) {
-    setPairMsg("Those two rankings don't match each other yet — fix your orders first!", 'err');
-    shakePills([a,b]);
-    return;
-  }
-
+  // ── FIX 1: orders don't need to match each other — we check correctness directly
+  // The two selected categories must each match the correct pair order
   const [pa,pb] = puzzle.matchingPair;
   const correct = (a===pa && b===pb) || (a===pb && b===pa);
 
   if (correct) {
     state.pairLinked = true;
     state.gameOver   = true;
+
+    // ── FIX 1 (continued): Auto-mark all correct categories even if Check wasn't used
+    // If the pair orders in the user's arrangement match the correct order, award stars
+    puzzle.categories.forEach((cat, ci) => {
+      if (!state.catCorrect[ci]) {
+        const userArr = state.userOrder[ci];
+        const corrArr = cat.order;
+        if (userArr.join(',') === corrArr.join(',')) {
+          state.catCorrect[ci] = true;
+        }
+      }
+    });
+
     updateProgress();
     setTimeout(() => showResults(true), 600);
   } else {
     state.gameOver = true;
-    // Show the wrong-pair panel briefly before results
     showWrongPairReveal(a, b);
     setPairMsg("Wrong pair — game over!", 'err');
     shakePills([a,b]);
@@ -864,53 +885,29 @@ function showWrongPairReveal(a, b) {
 
   function buildRow(catLabel, userOrder, correctOrder, catIdx) {
     const tiles = userOrder.map((item, pos) => {
-      const correctPos = correctOrder.indexOf(item);
-      const wrong = correctPos !== pos;
+      const wrong = correctOrder.indexOf(item) !== pos;
       return `<span class="pwt${wrong ? ' wrong' : ''}">${item}</span>${pos < userOrder.length-1 ? '<span class="pwr-arrow">→</span>' : ''}`;
     }).join('');
-
-    // Find pairs that need swapping
-    const swaps = [];
-    const used = [];
-    for (let i=0; i<userOrder.length; i++) {
-      if (used.includes(i)) continue;
-      const item = userOrder[i];
-      const shouldBeAt = correctOrder.indexOf(item);
-      if (shouldBeAt !== i) {
-        const displaced = userOrder[shouldBeAt];
-        if (!swaps.find(s => s.a===item||s.a===displaced)) {
-          swaps.push({a:item, b:displaced, fromPos:i+1, toPos:shouldBeAt+1});
-          used.push(i, shouldBeAt);
-        }
-      }
-    }
-
     return `<div class="pair-wrong-row">
       <div class="pair-wrong-label" style="color:${CAT_COLORS[catIdx]}">${catLabel}</div>
       <div class="pair-wrong-tiles">${tiles}</div>
     </div>`;
   }
 
-  // Find overall swap hints between the two selected categories
   function getSwapHint(userA, correctA, userB, correctB) {
-    // Items that differ between userA order and correctA order
     const diffsA = userA.reduce((acc,item,i) => correctA.indexOf(item)!==i ? acc.concat(item) : acc, []);
     const diffsB = userB.reduce((acc,item,i) => correctB.indexOf(item)!==i ? acc.concat(item) : acc, []);
-    if (diffsA.length === 0 && diffsB.length === 0) return '';
-    // Give clearest hint about what to move
     const allDiffs = [...new Set([...diffsA,...diffsB])];
     if (allDiffs.length === 0) return '';
     return `💡 Tip: Items in the wrong position — ${allDiffs.slice(0,2).join(' and ')} need moving`;
   }
 
-  const rowsHTML = buildRow(catA.label, userA, correctA, a) + buildRow(catB.label, userB, correctB, b);
-  document.getElementById('pairWrongRows').innerHTML = rowsHTML;
-
+  document.getElementById('pairWrongRows').innerHTML =
+    buildRow(catA.label, userA, correctA, a) + buildRow(catB.label, userB, correctB, b);
   const hint = getSwapHint(userA, correctA, userB, correctB);
   const hintEl = document.getElementById('swapHint');
   hintEl.textContent = hint;
   hintEl.style.display = hint ? '' : 'none';
-
   document.getElementById('pairWrongReveal').classList.add('show');
 }
 
@@ -930,13 +927,13 @@ function shakePills(indices) {
   });
 }
 
-// ─── RENDER CATEGORIES ────────────────────────────────────────
+// ─── RENDER CATEGORIES ─────────────────────────────────────────
 function renderCats() {
   const list = document.getElementById('catsList');
   list.innerHTML = '';
   puzzle.categories.forEach((cat, ci) => {
     const correct    = state.catCorrect[ci];
-    const locked     = state.lockedItems[ci]; // Set of item names in correct position
+    const locked     = state.lockedItems[ci];
     const checksLeft = MAX_CHECKS - state.checksUsed;
 
     let checkLabel = correct ? '✓ Correct' :
@@ -965,10 +962,10 @@ function renderCats() {
       </div>
       <div class="rank-row" id="rankrow-${ci}">
         ${state.userOrder[ci].map((item, ri) => {
-          const isLocked   = locked.has(item);
-          const fm         = FACTS[pidx] && FACTS[pidx][ci];
-          const fact       = fm ? (fm[item]||'') : '';
-          const tileClass  = isLocked ? 'rank-tile locked' : 'rank-tile';
+          const isLocked = locked.has(item);
+          const fm       = FACTS[pidx] && FACTS[pidx][ci];
+          const fact     = fm ? (fm[item]||'') : '';
+          const tileClass = isLocked ? 'rank-tile locked' : 'rank-tile';
           return `
           ${ri > 0 ? '<div class="rank-arrow">→</div>' : ''}
           <div class="rank-entry">
@@ -985,18 +982,17 @@ function renderCats() {
   });
 }
 
-// ─── DRAG & DROP — unified mouse + touch ─────────────────────
+// ─── DRAG & DROP — unified mouse + touch ───────────────────────
 function setupInteraction(ci) {
   const row = document.getElementById(`rankrow-${ci}`);
   if (!row) return;
 
-  // Ghost element (shown during drag)
   let ghost = null;
   let fromRi = null;
   let activeTouch = null;
   let isDragging = false;
   let startX, startY;
-  const DRAG_THRESHOLD = 8; // px movement before drag starts
+  const DRAG_THRESHOLD = 8;
 
   function getTiles() { return Array.from(row.querySelectorAll('.rank-tile')); }
 
@@ -1030,7 +1026,6 @@ function setupInteraction(ci) {
 
   function doSwap(toRi) {
     if (toRi === fromRi || toRi === null) return;
-    // Don't allow swapping into or out of a locked position
     const fromItem = state.userOrder[ci][fromRi];
     const toItem   = state.userOrder[ci][toRi];
     if (state.lockedItems[ci].has(fromItem) || state.lockedItems[ci].has(toItem)) return;
@@ -1100,7 +1095,7 @@ function setupInteraction(ci) {
         createGhost(tile.textContent.trim(), touch.clientX, touch.clientY);
       }
       if (isDragging) {
-        e.preventDefault(); // prevent scroll only once dragging
+        e.preventDefault();
         moveGhost(touch.clientX, touch.clientY);
         const target = getTileAt(touch.clientX, touch.clientY);
         highlightTarget(target && target !== tile ? target : null);
@@ -1111,7 +1106,6 @@ function setupInteraction(ci) {
       const changedTouch = Array.from(e.changedTouches).find(t => t.identifier === activeTouch);
       if (!changedTouch) return;
       activeTouch = null;
-
       if (isDragging) {
         tile.classList.remove('dragging');
         getTiles().forEach(t => t.classList.remove('drag-over'));
@@ -1131,7 +1125,7 @@ function setupInteraction(ci) {
   });
 }
 
-// ─── CHECK ORDER ─────────────────────────────────────────────
+// ─── CHECK ORDER ───────────────────────────────────────────────
 function checkOrder(ci) {
   if (state.catCorrect[ci] || state.gameOver) return;
   if (state.checksUsed >= MAX_CHECKS) return;
@@ -1142,7 +1136,6 @@ function checkOrder(ci) {
   const correctOrder = puzzle.categories[ci].order;
   const userOrder    = state.userOrder[ci];
 
-  // Lock every item that is currently in its correct position
   let allCorrect = true;
   userOrder.forEach((item, ri) => {
     if (correctOrder[ri] === item) {
@@ -1156,7 +1149,6 @@ function checkOrder(ci) {
     state.catCorrect[ci] = true;
     renderCats(); renderPairPills();
   } else {
-    // Flash the block, then re-render to show green locked tiles
     const block = document.getElementById(`cat-${ci}`);
     const btn   = document.getElementById(`checkbtn-${ci}`);
     block.classList.remove('wrong-flash'); void block.offsetWidth; block.classList.add('wrong-flash');
@@ -1182,25 +1174,32 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2200);
 }
 
-// ─── BUILD ANSWERS LIST (shared by win + fail) ───────────────
+// ─── BUILD ANSWERS — with facts under each item ────────────────
 function buildAnswers() {
   const [pa,pb] = puzzle.matchingPair;
   document.getElementById('answerRows').innerHTML = puzzle.categories.map((cat,ci) => {
     const isMatch = ci===pa || ci===pb;
+    const fm = FACTS[pidx] && FACTS[pidx][ci];
+    const pillsHTML = cat.order.map((item,i) => {
+      const fact = fm ? (fm[item]||'') : '';
+      return `
+        ${i>0?'<span class="ans-arrow">→</span>':''}
+        <div class="answer-pill-wrap">
+          <span class="answer-item-pill">${item}</span>
+          ${fact ? `<span class="answer-item-fact">${fact}</span>` : ''}
+        </div>`;
+    }).join('');
+
     return `<div class="answer-row-item">
       <div class="answer-cat-label" style="color:${CAT_COLORS[ci]}">
         ${cat.label}${isMatch?'<span class="match-flag">MATCH</span>':''}
       </div>
-      <div class="answer-pills">
-        ${cat.order.map((item,i) =>
-          `${i>0?'<span class="ans-arrow">→</span>':''}<span class="answer-item-pill">${item}</span>`
-        ).join('')}
-      </div>
+      <div class="answer-pills">${pillsHTML}</div>
     </div>`;
   }).join('');
 }
 
-// ─── RESULTS ─────────────────────────────────────────────────
+// ─── RESULTS ──────────────────────────────────────────────────
 function showResults(won) {
   state.gameOver = true;
   document.getElementById('heroSection').style.display  = 'none';
@@ -1218,7 +1217,7 @@ function showResults(won) {
     document.getElementById('winContent').style.display  = '';
     document.getElementById('resultsStripe').classList.remove('fail');
 
-    // Stars = number of fully-correct categories
+    // ── FIX 1: Stars = categories with correct order (checked OR auto-detected at link)
     const stars = state.catCorrect.filter(Boolean).length;
     const sr = document.getElementById('starsRow');
     sr.innerHTML = '';
@@ -1237,7 +1236,7 @@ function showResults(won) {
       `${'⭐'.repeat(stars)}${'☆'.repeat(4-stars)} ${stars}/4\n` +
       `Checks used: ${checksUsed}/${MAX_CHECKS}\n` +
       `Matching pair: ✓ Found!\n` +
-      `Play at ${WEBSITE} #Rank4`;
+      `Play at ${WEBSITE_URL} #Rank4`;
     document.getElementById('shareBox').textContent = shareText;
     document.getElementById('btnCopy').onclick = () => {
       navigator.clipboard.writeText(shareText).catch(()=>{});
@@ -1251,17 +1250,14 @@ function showResults(won) {
     document.getElementById('resultsStripe').classList.add('fail');
 
     const [pa,pb] = puzzle.matchingPair;
-    const correctPairLabel =
-      `${puzzle.categories[pa].label} & ${puzzle.categories[pb].label}`;
-
     document.getElementById('failSub').innerHTML =
-      `The correct matching pair was<br><strong style="color:rgba(255,255,255,0.85)">${correctPairLabel}</strong><br>Come back tomorrow for a new puzzle!`;
+      `The correct matching pair was<br><strong style="color:rgba(255,255,255,0.85)">${puzzle.categories[pa].label} & ${puzzle.categories[pb].label}</strong><br>Come back tomorrow for a new puzzle!`;
 
     const shareText =
       `RANK 4 — ${dateStr}\n` +
       `❌ Wrong pair guessed\n` +
       `Checks used: ${checksUsed}/${MAX_CHECKS}\n` +
-      `Play at ${WEBSITE} #Rank4`;
+      `Play at ${WEBSITE_URL} #Rank4`;
     document.getElementById('shareBoxFail').textContent = shareText;
     document.getElementById('btnCopyFail').onclick = () => {
       navigator.clipboard.writeText(shareText).catch(()=>{});
