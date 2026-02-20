@@ -1009,24 +1009,41 @@ async function showPage(id){
 }
 
 // ─── Loading overlay ───
+// ─── Loading overlay ───
 function showLoader(msg){
-  let el=document.getElementById('globalLoader');
+  var el=document.getElementById('globalLoader');
   if(!el){
-    el=document.createElement('div');el.id='globalLoader';
-    el.style.cssText='position:fixed;inset:0;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;gap:16px';
-    el.innerHTML='<div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:6px;color:white"><span style="color:var(--c0)">R</span><span style="color:var(--c1)">A</span><span style="color:var(--c2)">N</span><span style="color:var(--c3)">K</span> 4</div>'
-      +'<div id="loaderMsg" style="font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4)">'+(msg||'Loading puzzles...')+'</div>'
-      +'<div style="width:120px;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;margin-top:4px"><div id="loaderBar" style="height:100%;background:linear-gradient(90deg,var(--c0),var(--c1),var(--c2),var(--c3));width:0;transition:width 1.4s ease;border-radius:2px"></div></div>';
+    el=document.createElement('div');
+    el.id='globalLoader';
+    el.style.cssText='position:fixed;inset:0;background:#0C0C0C;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;gap:16px';
+    var logo=document.createElement('div');
+    logo.style.cssText='font-size:3rem;letter-spacing:6px;color:white;font-weight:900';
+    logo.innerHTML='<span style="color:#E8391E">R</span><span style="color:#F59E0B">A</span><span style="color:#0EA572">N</span><span style="color:#2F54EB">K</span> 4';
+    var msgEl=document.createElement('div');
+    msgEl.id='loaderMsg';
+    msgEl.style.cssText='font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4)';
+    msgEl.textContent=msg||'Loading puzzles...';
+    var track=document.createElement('div');
+    track.style.cssText='width:120px;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;margin-top:4px';
+    var bar=document.createElement('div');
+    bar.id='loaderBar';
+    bar.style.cssText='height:100%;background:linear-gradient(90deg,#E8391E,#F59E0B,#0EA572,#2F54EB);width:0;transition:width 1.4s ease;border-radius:2px';
+    track.appendChild(bar);
+    el.appendChild(logo);el.appendChild(msgEl);el.appendChild(track);
     document.body.appendChild(el);
-    setTimeout(()=>{const b=document.getElementById('loaderBar');if(b)b.style.width='85%';},50);
-  }else{document.getElementById('loaderMsg').textContent=msg||'Loading...';}
+    setTimeout(function(){var b=document.getElementById('loaderBar');if(b)b.style.width='85%';},50);
+  }else{
+    var m=document.getElementById('loaderMsg');
+    if(m)m.textContent=msg||'Loading...';
+  }
 }
 function hideLoader(){
-  const el=document.getElementById('globalLoader');
+  var el=document.getElementById('globalLoader');
   if(el){
-    const b=document.getElementById('loaderBar');if(b)b.style.width='100%';
-    setTimeout(()=>{el.style.opacity='0';el.style.transition='opacity 0.4s';setTimeout(()=>el.remove(),400);},300);
+    var b=document.getElementById('loaderBar');if(b)b.style.width='100%';
+    setTimeout(function(){el.style.opacity='0';el.style.transition='opacity 0.4s';setTimeout(function(){if(el.parentNode)el.remove();},400);},300);
   }
+}
 }
 
 // ─── Admin ───
