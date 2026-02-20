@@ -492,7 +492,7 @@ textarea.form-input{resize:vertical;min-height:60px}
 </header>
 
 <!-- ══════════════════ HOME PAGE ══════════════════ -->
-<div class="page active" id="page-home">
+<div class="page" id="page-home">
   <div class="home-hero">
     <div class="home-hero-inner">
       <div class="home-eyebrow">Daily Puzzle Games</div>
@@ -981,7 +981,14 @@ function getPuzzleForToday(puzzles){
 }
 
 // ─── Page system ───
-function showPage(id){
+async function showPage(id){
+  // Always wait for cloud data before initialising any game
+  if(!_cloudCache){
+    showLoader('Loading puzzles...');
+    await fetchCloudData();
+    hideLoader();
+    renderHomeCards();
+  }
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   window.scrollTo(0,0);
@@ -990,7 +997,15 @@ function showPage(id){
   if(id==='buildline'&&!btlState.initialized)initBtl();
   if(id==='bingo'&&!bingoState.initialized)initBingo();
   if(id==='archive')renderArchive();
-  if(id==='admin')renderAdminLists();
+  if(id==='admin'){
+    _cloudCache=null;
+    showLoader('Loading latest puzzles...');
+    await fetchCloudData();
+    hideLoader();
+    renderAdminLists();
+    const today=getTodayStr();
+    ['r4AdminDate','p3AdminDate','btlAdminDate','bingoAdminDate'].forEach(eid=>{const el=document.getElementById(eid);if(el)el.value=today;});
+  }
 }
 
 // ─── Loading overlay ───
@@ -1020,12 +1035,14 @@ function adminLogin(){
   if(pw===ADMIN_PASSWORD){
     document.getElementById('adminLoginWrap').style.display='none';
     document.getElementById('adminPanelWrap').style.display='block';
-    // Force fresh fetch from cloud each time admin logs in
     _cloudCache=null;
     showLoader('Loading latest puzzles...');
-    fetchCloudData().then(()=>{hideLoader();renderAdminLists();});
-    const today=getTodayStr();
-    ['r4AdminDate','p3AdminDate','btlAdminDate','bingoAdminDate'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=today;});
+    fetchCloudData().then(()=>{
+      hideLoader();
+      renderAdminLists();
+      const today=getTodayStr();
+      ['r4AdminDate','p3AdminDate','btlAdminDate','bingoAdminDate'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=today;});
+    });
   }else{document.getElementById('adminErr').textContent='Incorrect password.';setTimeout(()=>document.getElementById('adminErr').textContent='',2000);}
 }
 function switchAdminTab(tab){
@@ -1639,6 +1656,8 @@ showLoader('Loading puzzles...');
 fetchCloudData().then(()=>{
   hideLoader();
   renderHomeCards();
+  // Mark home page as ready
+  document.getElementById('page-home').classList.add('active');
 });
 </script>
 </body>
