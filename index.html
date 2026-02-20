@@ -3,149 +3,179 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>RANK 4</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>Rank 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+/* ═══════════════════════════════════════════════ RESET + ROOT */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --ink:#0C0C0C;--paper:#F6F4EF;--white:#FFFFFF;--muted:#9B9690;--edge:#E3E0D8;--lift:#EDEAE3;
+  --c0:#E8391E;--c1:#F59E0B;--c2:#0EA572;--c3:#2F54EB;
+  --ok:#059669;--ok-tint:#DCFCE7;--fail:#DC2626;--warn:#B45309;
+  --p3-a:#7C3AED;--p3-b:#2ecc71;--p3-c:#0284C7;
+  --btl:#D97706;--bingo:#0F766E;
+}
+body{background:var(--paper);color:var(--ink);font-family:'Outfit',sans-serif;min-height:100vh;overflow-x:hidden}
 
-:root {
-  --ink:    #0C0C0C;
-  --paper:  #F6F4EF;
-  --white:  #FFFFFF;
-  --muted:  #9B9690;
-  --edge:   #E3E0D8;
-  --lift:   #EDEAE3;
-  --c0: #E8391E;
-  --c1: #F59E0B;
-  --c2: #0EA572;
-  --c3: #2F54EB;
-  --ok:     #059669;
-  --ok-tint:#DCFCE7;
-  --fail:   #DC2626;
-  --warn:   #B45309;
-}
+/* ═══════════════════════════════════════════════ HEADER */
+.site-header{position:sticky;top:0;z-index:300;background:var(--ink);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 22px}
+.site-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:5px;color:white;cursor:pointer}
+.site-logo span:nth-child(1){color:var(--c0)}.site-logo span:nth-child(2){color:var(--c1)}.site-logo span:nth-child(3){color:var(--c2)}.site-logo span:nth-child(4){color:var(--c3)}
+.header-nav{display:flex;align-items:center;gap:6px}
+.nav-btn{font-family:'Outfit',sans-serif;font-size:0.68rem;font-weight:700;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:5px 13px;color:rgba(255,255,255,0.65);cursor:pointer;transition:all 0.15s;white-space:nowrap}
+.nav-btn:hover,.nav-btn.active{background:rgba(255,255,255,0.2);color:white;border-color:rgba(255,255,255,0.3)}
+.nav-btn.admin-btn{color:rgba(255,255,255,0.3);border-color:rgba(255,255,255,0.08)}
+.nav-btn.admin-btn:hover{color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.06)}
 
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: 'Outfit', sans-serif;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+/* ═══════════════════════════════════════════════ PAGE SYSTEM */
+.page{display:none}.page.active{display:block}
 
-/* ── HEADER ── */
-.header {
-  position: sticky; top: 0; z-index: 200;
-  background: var(--ink);
-  height: 58px;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 22px;
-}
-.logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.1rem; letter-spacing: 7px; line-height: 1; color: white;
-}
-.logo-r{color:var(--c0)}.logo-a{color:var(--c1)}.logo-n{color:var(--c2)}.logo-k{color:var(--c3)}
-.header-right { display: flex; align-items: center; gap: 14px; }
-.header-date { font-size: 0.62rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
-.btn-help {
-  font-family: 'Outfit', sans-serif; font-size: 0.72rem; font-weight: 700;
-  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 100px; padding: 5px 14px; color: rgba(255,255,255,0.7);
-  cursor: pointer; transition: all 0.15s;
-}
-.btn-help:hover { background: rgba(255,255,255,0.18); color: white; }
+/* ═══════════════════════════════════════════════ HOME PAGE */
+.home-hero{background:var(--ink);padding:48px 22px 54px;position:relative;overflow:hidden}
+.home-hero::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 80% at 10% 60%,rgba(232,57,30,0.18) 0%,transparent 60%),
+    radial-gradient(ellipse 55% 70% at 90% 20%,rgba(47,84,235,0.18) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 60% at 55% 90%,rgba(14,165,114,0.14) 0%,transparent 55%)}
+.home-hero::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:20px 20px}
+.home-hero-inner{position:relative;z-index:1;max-width:860px;margin:0 auto;text-align:center}
+.home-eyebrow{font-size:0.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:14px}
+.home-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,10vw,6rem);letter-spacing:4px;color:white;line-height:1;margin-bottom:10px}
+.home-sub{font-size:0.9rem;font-weight:500;color:rgba(255,255,255,0.4);max-width:480px;margin:0 auto 36px;line-height:1.6}
+.home-game-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:860px;margin:0 auto}
+.home-game-card{border-radius:18px;padding:22px 14px 20px;text-align:center;border:1.5px solid rgba(255,255,255,0.1);cursor:pointer;transition:transform 0.2s ease,border-color 0.2s,box-shadow 0.2s;position:relative;overflow:hidden}
+.home-game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:18px 18px 0 0}
+.home-game-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,0.4)}
+.hgc-rank4{background:rgba(232,57,30,0.12);border-color:rgba(232,57,30,0.25)}.hgc-rank4::before{background:linear-gradient(90deg,var(--c0),var(--c1),var(--c2),var(--c3))}
+.hgc-p3{background:rgba(124,58,237,0.12);border-color:rgba(124,58,237,0.25)}.hgc-p3::before{background:var(--p3-a)}
+.hgc-btl{background:rgba(217,119,6,0.12);border-color:rgba(217,119,6,0.25)}.hgc-btl::before{background:var(--btl)}
+.hgc-bingo{background:rgba(15,118,110,0.12);border-color:rgba(15,118,110,0.25)}.hgc-bingo::before{background:var(--bingo)}
+.hgc-emoji{font-size:2.4rem;display:block;margin-bottom:12px;line-height:1;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5))}
+.hgc-name{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;color:white;margin-bottom:4px}
+.hgc-tag{display:inline-block;font-size:0.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.55)}
+.hgc-rank4 .hgc-tag{background:rgba(232,57,30,0.2);color:rgba(255,100,60,0.9)}
 
-/* ── HERO ── */
-.hero {
-  background: var(--ink); padding: 32px 22px 38px;
-  position: relative; overflow: hidden;
-}
-.hero::before {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(ellipse 60% 80% at 10% 60%, rgba(232,57,30,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 55% 70% at 90% 20%, rgba(47,84,235,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 60% at 55% 90%, rgba(14,165,114,0.14) 0%, transparent 55%);
-}
-.hero::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-.hero-inner { position: relative; z-index: 1; max-width: 840px; margin: 0 auto; }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-size: 0.58rem; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 8px;
-}
-.hero-eyebrow::before { content: ''; width: 18px; height: 1.5px; background: rgba(255,255,255,0.22); flex-shrink: 0; }
-.hero-heading {
-  font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 6vw, 3.8rem);
-  letter-spacing: 2px; color: white; line-height: 1; margin-bottom: 6px;
-}
-.hero-sub { font-size: 0.78rem; font-weight: 500; color: rgba(255,255,255,0.35); margin-bottom: 28px; }
-.hero-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-.hero-card {
-  border-radius: 16px; padding: 20px 12px 18px; text-align: center;
-  border: 1.5px solid rgba(255,255,255,0.1); cursor: default;
-  transition: transform 0.2s ease, border-color 0.2s; position: relative; overflow: hidden;
-}
-.hero-card:nth-child(1){background:rgba(232,57,30,0.14);border-color:rgba(232,57,30,0.28)}
-.hero-card:nth-child(2){background:rgba(245,158,11,0.13);border-color:rgba(245,158,11,0.25)}
-.hero-card:nth-child(3){background:rgba(14,165,114,0.13);border-color:rgba(14,165,114,0.25)}
-.hero-card:nth-child(4){background:rgba(47,84,235,0.13);border-color:rgba(47,84,235,0.25)}
-.hero-card:hover{transform:translateY(-3px)}
-.hero-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 16px 16px 0 0;
-}
-.hero-card:nth-child(1)::before{background:var(--c0)}.hero-card:nth-child(2)::before{background:var(--c1)}
-.hero-card:nth-child(3)::before{background:var(--c2)}.hero-card:nth-child(4)::before{background:var(--c3)}
-.hero-card-emoji { font-size: 2.2rem; display: block; margin-bottom: 10px; line-height: 1; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4)); }
-.hero-card-name { display: block; font-size: 0.79rem; font-weight: 700; color: rgba(255,255,255,0.9); line-height: 1.25; }
+.home-section{max-width:860px;margin:0 auto;padding:36px 20px 80px}
+.home-section-label{font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.home-section-label::after{content:'';flex:1;height:1px;background:var(--edge)}
 
-/* ── PROGRESS BAR ── */
-.progress-bar { background: var(--white); border-bottom: 1.5px solid var(--edge); padding: 10px 22px; }
-.progress-bar-inner { max-width: 840px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
-.progress-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-.progress-pips { display: flex; gap: 5px; flex: 1; }
-.pip { flex: 1; height: 5px; border-radius: 3px; background: var(--edge); transition: background 0.4s ease; }
+/* ═══════════════════════════════════════════════ SHARED GAME CHROME */
+.game-wrap{max-width:860px;margin:0 auto;padding:20px 16px 80px}
+.game-back-bar{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding:0 0 14px;border-bottom:1px solid var(--edge)}
+.back-btn{font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:700;background:none;border:1.5px solid var(--edge);border-radius:100px;padding:6px 14px;color:var(--muted);cursor:pointer;transition:all 0.15s}
+.back-btn:hover{border-color:var(--ink);color:var(--ink)}
+.game-title-bar{flex:1;display:flex;align-items:center;gap:10px}
+.game-title-label{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:3px}
+
+/* ═══════════════════════════════════════════════ ARCHIVE */
+.archive-grid{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.archive-item{background:var(--white);border:1.5px solid var(--edge);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all 0.15s}
+.archive-item:hover{border-color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,0.07);transform:translateX(3px)}
+.archive-num{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:var(--muted);min-width:50px}
+.archive-info{flex:1}
+.archive-date{font-size:0.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.archive-items-preview{font-size:0.78rem;font-weight:600;color:var(--ink)}
+.archive-badge{font-size:0.58rem;font-weight:800;letter-spacing:1px;padding:3px 9px;border-radius:6px;background:var(--ink);color:white;text-transform:uppercase}
+.archive-badge.today{background:var(--c0);color:white}
+
+/* ═══════════════════════════════════════════════ ADMIN PANEL */
+.admin-login{max-width:400px;margin:60px auto;background:var(--white);border:2px solid var(--ink);border-radius:20px;padding:36px;box-shadow:6px 6px 0 var(--ink);text-align:center}
+.admin-login-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;margin-bottom:6px}
+.admin-login-sub{font-size:0.75rem;color:var(--muted);margin-bottom:24px}
+.admin-pw-field{width:100%;padding:12px 16px;border:2px solid var(--edge);border-radius:10px;font-family:'Outfit',sans-serif;font-size:0.9rem;font-weight:600;outline:none;transition:border-color 0.15s;margin-bottom:12px}
+.admin-pw-field:focus{border-color:var(--ink)}
+.admin-login-btn{width:100%;padding:12px;background:var(--ink);color:white;border:none;border-radius:100px;font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:800;cursor:pointer;transition:background 0.14s}
+.admin-login-btn:hover{background:#252525}
+.admin-err{font-size:0.72rem;color:var(--fail);margin-top:8px;min-height:18px}
+
+/* Admin panel body */
+.admin-panel{max-width:860px;margin:0 auto;padding:24px 16px 80px}
+.admin-section-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:3px;margin-bottom:4px}
+.admin-section-sub{font-size:0.75rem;color:var(--muted);margin-bottom:22px}
+.admin-tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.admin-tab{font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:700;padding:8px 18px;border:2px solid var(--edge);border-radius:100px;background:var(--white);color:var(--muted);cursor:pointer;transition:all 0.14s}
+.admin-tab.active{background:var(--ink);color:white;border-color:var(--ink)}
+.admin-tab-content{display:none}.admin-tab-content.active{display:block}
+.admin-card{background:var(--white);border:2px solid var(--edge);border-radius:16px;padding:22px;margin-bottom:16px}
+.admin-card-title{font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.form-row.single{grid-template-columns:1fr}
+.form-row.four{grid-template-columns:repeat(4,1fr)}
+label.form-label{font-size:0.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
+input.form-input,textarea.form-input{width:100%;padding:9px 12px;border:1.5px solid var(--edge);border-radius:8px;font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:600;outline:none;transition:border-color 0.15s;background:var(--paper)}
+input.form-input:focus,textarea.form-input:focus{border-color:var(--ink);background:white}
+textarea.form-input{resize:vertical;min-height:60px}
+.form-hint{font-size:0.6rem;color:var(--muted);margin-top:3px}
+.btn-admin-save{background:var(--ok);color:white;border:none;border-radius:100px;padding:10px 26px;font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:800;cursor:pointer;transition:all 0.14s;display:inline-flex;align-items:center;gap:7px}
+.btn-admin-save:hover{background:#047857;transform:translateY(-1px);box-shadow:0 5px 16px rgba(5,150,105,0.35)}
+.btn-admin-del{background:none;color:var(--fail);border:1.5px solid #FCA5A5;border-radius:100px;padding:6px 14px;font-family:'Outfit',sans-serif;font-size:0.7rem;font-weight:700;cursor:pointer;transition:all 0.14s}
+.btn-admin-del:hover{background:#FEE2E2}
+.admin-list{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.admin-list-item{background:var(--paper);border:1.5px solid var(--edge);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px}
+.admin-list-item-info{flex:1}
+.admin-list-date{font-size:0.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.admin-list-name{font-size:0.8rem;font-weight:700;color:var(--ink)}
+.admin-save-msg{font-size:0.72rem;font-weight:700;color:var(--ok);margin-left:14px;opacity:0;transition:opacity 0.3s}
+.admin-save-msg.show{opacity:1}
+.cat-order-fields{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.cat-order-row{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:center}
+.order-num{font-size:0.65rem;font-weight:800;color:var(--muted);width:22px;text-align:right}
+.cat-color-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.cat-color-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* ═══════════════════════════════════════════════ RANK 4 GAME */
+.rank4-hero{background:var(--ink);padding:28px 22px 34px;position:relative;overflow:hidden}
+.rank4-hero::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 80% at 10% 60%,rgba(232,57,30,0.18) 0%,transparent 60%),
+    radial-gradient(ellipse 55% 70% at 90% 20%,rgba(47,84,235,0.18) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 60% at 55% 90%,rgba(14,165,114,0.14) 0%,transparent 55%)}
+.rank4-hero::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:20px 20px}
+.rank4-hero-inner{position:relative;z-index:1;max-width:840px;margin:0 auto}
+.r4-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:0.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:6px}
+.r4-eyebrow::before{content:'';width:18px;height:1.5px;background:rgba(255,255,255,0.22);flex-shrink:0}
+.r4-heading{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,6vw,3.4rem);letter-spacing:2px;color:white;line-height:1;margin-bottom:5px}
+.r4-sub{font-size:0.76rem;font-weight:500;color:rgba(255,255,255,0.35);margin-bottom:22px}
+.r4-hero-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.r4-hero-card{border-radius:14px;padding:16px 10px 14px;text-align:center;border:1.5px solid rgba(255,255,255,0.1);position:relative;overflow:hidden;transition:transform 0.2s}
+.r4-hero-card:hover{transform:translateY(-3px)}
+.r4-hero-card:nth-child(1){background:rgba(232,57,30,0.14);border-color:rgba(232,57,30,0.28)}
+.r4-hero-card:nth-child(2){background:rgba(245,158,11,0.13);border-color:rgba(245,158,11,0.25)}
+.r4-hero-card:nth-child(3){background:rgba(14,165,114,0.13);border-color:rgba(14,165,114,0.25)}
+.r4-hero-card:nth-child(4){background:rgba(47,84,235,0.13);border-color:rgba(47,84,235,0.25)}
+.r4-hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0}
+.r4-hero-card:nth-child(1)::before{background:var(--c0)}.r4-hero-card:nth-child(2)::before{background:var(--c1)}
+.r4-hero-card:nth-child(3)::before{background:var(--c2)}.r4-hero-card:nth-child(4)::before{background:var(--c3)}
+.r4-card-emoji{font-size:1.9rem;display:block;margin-bottom:8px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4))}
+.r4-card-name{display:block;font-size:0.76rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1.2}
+
+/* Progress bar */
+.r4-progress{background:var(--white);border-bottom:1.5px solid var(--edge);padding:10px 22px}
+.r4-progress-inner{max-width:840px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.progress-label{font-size:0.58rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.progress-pips{display:flex;gap:5px;flex:1}
+.pip{flex:1;height:5px;border-radius:3px;background:var(--edge);transition:background 0.4s ease}
 .pip.lit-0{background:var(--c0)}.pip.lit-1{background:var(--c1)}.pip.lit-2{background:var(--c2)}.pip.lit-3{background:var(--c3)}
-.progress-checks {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 0.58rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
-}
-.check-pips { display: flex; gap: 4px; }
-.check-pip { width: 10px; height: 10px; border-radius: 50%; background: var(--edge); transition: background 0.3s; }
-.check-pip.used { background: var(--fail); }
-.check-pip.remaining { background: var(--ink); }
-.progress-pair { display: flex; align-items: center; gap: 6px; font-size: 0.58rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
-.pair-pip { width: 22px; height: 5px; border-radius: 3px; background: var(--edge); transition: background 0.4s ease; }
-.pair-pip.lit { background: var(--ok); }
+.progress-checks{display:flex;align-items:center;gap:7px;font-size:0.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.check-pips{display:flex;gap:4px}
+.check-pip{width:10px;height:10px;border-radius:50%;background:var(--edge);transition:background 0.3s}
+.check-pip.used{background:var(--fail)}.check-pip.remaining{background:var(--ink)}
+.progress-pair{display:flex;align-items:center;gap:6px;font-size:0.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.pair-pip{width:22px;height:5px;border-radius:3px;background:var(--edge);transition:background 0.4s ease}
+.pair-pip.lit{background:var(--ok)}
 
-/* ── MAIN ── */
-.main { max-width: 840px; margin: 0 auto; padding: 20px 16px 80px; }
-
-/* ── PAIR FINDER ── */
-.pair-box {
-  background: var(--white); border-radius: 16px; border: 2px solid var(--ink);
-  overflow: hidden; margin-bottom: 18px; box-shadow: 3px 3px 0 var(--ink);
-}
-.pair-head { background: var(--ink); padding: 12px 18px; display: flex; align-items: center; gap: 10px; }
-.pair-head-icon { font-size: 1rem; }
-.pair-head-text { flex: 1; }
-.pair-head-title { font-size: 0.85rem; font-weight: 800; color: white; line-height: 1; margin-bottom: 2px; }
-.pair-head-hint { font-size: 0.65rem; font-weight: 500; color: rgba(255,255,255,0.42); }
-.pair-body { padding: 14px 18px 18px; }
-.pair-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
-.pair-pill {
-  border: 2px solid; border-radius: 100px; padding: 7px 18px;
-  font-size: 0.73rem; font-weight: 700;
-  cursor: pointer; transition: all 0.14s ease;
-  background: var(--white); user-select: none;
-}
-.pair-pill:hover:not([disabled]) { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
-.pair-pill[disabled] { cursor: default; }
+/* Pair finder box */
+.pair-box{background:var(--white);border-radius:16px;border:2px solid var(--ink);overflow:hidden;margin-bottom:18px;box-shadow:3px 3px 0 var(--ink)}
+.pair-head{background:var(--ink);padding:12px 18px;display:flex;align-items:center;gap:10px}
+.pair-head-icon{font-size:1rem}
+.pair-head-text{flex:1}
+.pair-head-title{font-size:0.85rem;font-weight:800;color:white;line-height:1;margin-bottom:2px}
+.pair-head-hint{font-size:0.65rem;font-weight:500;color:rgba(255,255,255,0.42)}
+.pair-body{padding:14px 18px 18px}
+.pair-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.pair-pill{border:2px solid;border-radius:100px;padding:7px 18px;font-size:0.73rem;font-weight:700;cursor:pointer;transition:all 0.14s ease;background:var(--white);user-select:none}
+.pair-pill:hover:not([disabled]){transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.12)}
+.pair-pill[disabled]{cursor:default}
 .pair-pill.pp0{border-color:var(--c0);color:var(--c0)}.pair-pill.pp1{border-color:var(--c1);color:var(--c1)}
 .pair-pill.pp2{border-color:var(--c2);color:var(--c2)}.pair-pill.pp3{border-color:var(--c3);color:var(--c3)}
 .pair-pill.pp0.sel{background:var(--c0);color:white;box-shadow:0 4px 14px rgba(232,57,30,0.4)}
@@ -155,76 +185,39 @@ body {
 .pair-pill.linked-done{opacity:0.55;cursor:default;color:white!important}
 .pair-pill.pp0.linked-done{background:var(--c0)}.pair-pill.pp1.linked-done{background:var(--c1)}
 .pair-pill.pp2.linked-done{background:var(--c2)}.pair-pill.pp3.linked-done{background:var(--c3)}
-.pair-foot { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.btn-link {
-  font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 800;
-  padding: 9px 22px; border: 2px solid var(--ink); border-radius: 100px;
-  background: var(--ink); color: white; cursor: pointer; transition: all 0.14s;
-}
-.btn-link:hover:not([disabled]) { background: #252525; transform: translateY(-1px); box-shadow: 0 5px 16px rgba(0,0,0,0.25); }
-.btn-link[disabled] { opacity: 0.25; cursor: not-allowed; transform: none!important; box-shadow: none!important; }
-.pair-msg { font-size: 0.75rem; font-weight: 600; color: var(--muted); flex: 1; min-height: 18px; }
+.pair-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.btn-link{font-family:'Outfit',sans-serif;font-size:0.76rem;font-weight:800;padding:9px 22px;border:2px solid var(--ink);border-radius:100px;background:var(--ink);color:white;cursor:pointer;transition:all 0.14s}
+.btn-link:hover:not([disabled]){background:#252525;transform:translateY(-1px);box-shadow:0 5px 16px rgba(0,0,0,0.25)}
+.btn-link[disabled]{opacity:0.25;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+.pair-msg{font-size:0.75rem;font-weight:600;color:var(--muted);flex:1;min-height:18px}
 .pair-msg.ok{color:var(--ok)}.pair-msg.err{color:var(--fail)}
-.linked-badge {
-  display: none; margin-top: 12px; align-items: center; gap: 10px;
-  background: var(--ok-tint); border: 1.5px solid #86EFAC;
-  border-radius: 10px; padding: 12px 16px;
-  font-size: 0.8rem; font-weight: 700; color: var(--ok);
-}
-.linked-badge.show { display: flex; }
+.pair-wrong-reveal{display:none;margin-top:14px;background:#FEF9F0;border:1.5px solid #FBBF24;border-radius:12px;padding:14px 16px}
+.pair-wrong-reveal.show{display:block}
+.pair-wrong-title{font-size:0.72rem;font-weight:800;color:var(--warn);letter-spacing:0.5px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.pair-wrong-rows{display:flex;flex-direction:column;gap:8px}
+.pair-wrong-row{display:flex;align-items:flex-start;gap:10px}
+.pair-wrong-label{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;min-width:110px;padding-top:6px}
+.pair-wrong-tiles{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.pwt{font-size:0.7rem;font-weight:600;padding:5px 10px;border-radius:8px;border:1.5px solid var(--edge);background:var(--white)}
+.pwt.wrong{background:#FEE2E2;border-color:#FCA5A5;color:var(--fail);font-weight:700}
+.pwr-arrow{color:#CBD5E1;font-size:0.75rem}
+.swap-hint{font-size:0.65rem;font-weight:600;color:#92400E;margin-top:10px;padding-top:10px;border-top:1px solid #FDE68A;display:flex;align-items:center;gap:5px}
 
-/* Wrong pair feedback panel */
-.pair-wrong-reveal {
-  display: none; margin-top: 14px;
-  background: #FEF9F0; border: 1.5px solid #FBBF24;
-  border-radius: 12px; padding: 14px 16px;
-}
-.pair-wrong-reveal.show { display: block; }
-.pair-wrong-title {
-  font-size: 0.72rem; font-weight: 800; color: var(--warn); letter-spacing: 0.5px;
-  margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
-}
-.pair-wrong-rows { display: flex; flex-direction: column; gap: 8px; }
-.pair-wrong-row { display: flex; align-items: flex-start; gap: 10px; }
-.pair-wrong-label {
-  font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
-  min-width: 110px; padding-top: 6px;
-}
-.pair-wrong-tiles { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
-.pwt {
-  font-size: 0.7rem; font-weight: 600; padding: 5px 10px;
-  border-radius: 8px; border: 1.5px solid var(--edge); background: var(--white);
-}
-.pwt.wrong { background: #FEE2E2; border-color: #FCA5A5; color: var(--fail); font-weight: 700; }
-.pwt.should-be { background: var(--ok-tint); border-color: #86EFAC; color: var(--ok); font-weight: 700; }
-.pwr-arrow { color: #CBD5E1; font-size: 0.75rem; }
-.swap-hint {
-  font-size: 0.65rem; font-weight: 600; color: #92400E;
-  margin-top: 10px; padding-top: 10px; border-top: 1px solid #FDE68A;
-  display: flex; align-items: center; gap: 5px;
-}
-
-/* ── CATEGORY CARDS ── */
-.cats-list { display: flex; flex-direction: column; gap: 12px; }
-.cat-block {
-  background: var(--white); border-radius: 16px; border: 1.5px solid var(--edge);
-  overflow: hidden; animation: riseIn 0.45s cubic-bezier(0.22,1,0.36,1) both;
-  transition: box-shadow 0.2s, border-color 0.2s; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-}
+/* Category cards */
+.cats-list{display:flex;flex-direction:column;gap:12px}
+.cat-block{background:var(--white);border-radius:16px;border:1.5px solid var(--edge);overflow:hidden;animation:riseIn 0.45s cubic-bezier(0.22,1,0.36,1) both;transition:box-shadow 0.2s,border-color 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
 .cat-block:hover{box-shadow:0 6px 20px rgba(0,0,0,0.07)}
 .cat-block:nth-child(1){animation-delay:0.06s}.cat-block:nth-child(2){animation-delay:0.12s}
 .cat-block:nth-child(3){animation-delay:0.18s}.cat-block:nth-child(4){animation-delay:0.24s}
-.cat-block.correct{border-color:#86EFAC;box-shadow:0 4px 20px rgba(14,165,114,0.12)}
+.cat-block.correct{border-color:#86EFAC;box-shadow:0 4px 20px rgba(14,165,114,0.12);animation:correctPulse 0.7s ease both 0.05s}
 .cat-block.wrong-flash{animation:shake 0.35s ease!important}
 .cat-topbar{height:4px}
 .cat-block.b0 .cat-topbar{background:var(--c0)}.cat-block.b1 .cat-topbar{background:var(--c1)}
 .cat-block.b2 .cat-topbar{background:var(--c2)}.cat-block.b3 .cat-topbar{background:var(--c3)}
 .cat-block.correct .cat-topbar{background:var(--ok)}
-.cat-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; gap: 12px; }
-.cat-block.b0:not(.correct) .cat-header{background:#FFF3F1}
-.cat-block.b1:not(.correct) .cat-header{background:#FFFBEB}
-.cat-block.b2:not(.correct) .cat-header{background:#F0FDF8}
-.cat-block.b3:not(.correct) .cat-header{background:#EEF2FF}
+.cat-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;gap:12px}
+.cat-block.b0:not(.correct) .cat-header{background:#FFF3F1}.cat-block.b1:not(.correct) .cat-header{background:#FFFBEB}
+.cat-block.b2:not(.correct) .cat-header{background:#F0FDF8}.cat-block.b3:not(.correct) .cat-header{background:#EEF2FF}
 .cat-block.correct .cat-header{background:#F0FDF4}
 .cat-header-left{display:flex;align-items:center;gap:10px;flex:1}
 .cat-swatch{width:9px;height:9px;border-radius:50%;flex-shrink:0}
@@ -239,17 +232,9 @@ body {
 .cat-header-right{display:flex;align-items:center;gap:9px;flex-shrink:0}
 .star-slot{font-size:1.15rem;line-height:1;filter:grayscale(1);opacity:0.15;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1)}
 .star-slot.lit{filter:none;opacity:1;animation:starPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both}
-
-/* Check button */
-.btn-check {
-  font-family:'Outfit',sans-serif; font-size:0.68rem; font-weight:700;
-  padding:7px 14px; border-radius:100px; border:2px solid;
-  background:transparent; cursor:pointer; transition:all 0.14s; white-space:nowrap;
-}
-.cat-block.b0 .btn-check{border-color:var(--c0);color:var(--c0)}
-.cat-block.b1 .btn-check{border-color:var(--c1);color:var(--c1)}
-.cat-block.b2 .btn-check{border-color:var(--c2);color:var(--c2)}
-.cat-block.b3 .btn-check{border-color:var(--c3);color:var(--c3)}
+.btn-check{font-family:'Outfit',sans-serif;font-size:0.68rem;font-weight:700;padding:7px 14px;border-radius:100px;border:2px solid;background:transparent;cursor:pointer;transition:all 0.14s;white-space:nowrap}
+.cat-block.b0 .btn-check{border-color:var(--c0);color:var(--c0)}.cat-block.b1 .btn-check{border-color:var(--c1);color:var(--c1)}
+.cat-block.b2 .btn-check{border-color:var(--c2);color:var(--c2)}.cat-block.b3 .btn-check{border-color:var(--c3);color:var(--c3)}
 .cat-block.b0 .btn-check:hover:not([disabled]){background:var(--c0);color:white}
 .cat-block.b1 .btn-check:hover:not([disabled]){background:var(--c1);color:white}
 .cat-block.b2 .btn-check:hover:not([disabled]){background:var(--c2);color:white}
@@ -259,1025 +244,1297 @@ body {
 .btn-check.is-wrong{color:var(--fail)!important;border-color:#FCA5A5!important}
 .btn-check.no-checks{color:var(--muted)!important;border-color:var(--edge)!important;background:var(--lift)!important;opacity:0.7}
 
-/* ── RANK ROW — NO horizontal scroll, wraps on mobile ── */
-.rank-row {
-  display: flex; align-items: stretch;
-  padding: 14px 12px 10px; gap: 0;
-  /* KEY FIX: no overflow-x: auto — use CSS grid/flex wrap instead */
-  user-select: none; -webkit-user-select: none;
-}
+/* Rank row */
+.rank-row{display:flex;align-items:stretch;padding:14px 12px 10px;gap:0;user-select:none;-webkit-user-select:none}
+.rank-entry{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:0}
+.rank-num{font-size:0.56rem;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+.rank-tile{width:100%;height:64px;background:var(--lift);border:1.5px solid var(--edge);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:600;text-align:center;padding:6px 4px;line-height:1.25;cursor:grab;touch-action:none;transition:background 0.12s,border-color 0.12s,box-shadow 0.12s,transform 0.12s;position:relative;background-image:radial-gradient(circle,var(--edge) 1px,transparent 1px);background-size:8px 8px;background-position:calc(100% - 5px) 5px;background-repeat:no-repeat;background-color:var(--lift);will-change:transform;overflow:hidden}
+.rank-tile:hover{background-color:var(--edge);border-color:#C5C0B8}
+.rank-tile.dragging{opacity:0.2;transform:scale(0.95);box-shadow:none}
+.rank-tile.drag-over{border-color:var(--c3);border-style:dashed;background-color:#EEF2FF;box-shadow:0 0 0 3px rgba(47,84,235,0.15);transform:scale(1.03)}
+.correct .rank-tile{background-color:var(--ok-tint);background-image:none;border-color:#86EFAC;cursor:default;touch-action:auto}
+.rank-tile.locked{background-color:var(--ok-tint)!important;background-image:none!important;border-color:#86EFAC!important;cursor:default!important;touch-action:auto!important;color:var(--ok);font-weight:700;box-shadow:0 0 0 2px rgba(14,165,114,0.2)}
+.rank-tile.locked::after{content:'✓';position:absolute;top:4px;right:6px;font-size:0.55rem;color:var(--ok);font-weight:800}
+.rank-arrow{color:var(--edge);font-size:0.75rem;flex-shrink:0;align-self:flex-start;margin-top:34px;padding:0 1px}
+.item-fact{font-size:0.57rem;font-weight:600;color:transparent;text-align:center;line-height:1.3;width:100%;padding:0 2px;min-height:18px;transition:color 0.3s ease 0.2s}
+.item-fact.revealed{color:var(--ok)}
+.drag-ghost{position:fixed;pointer-events:none;z-index:9999;background:var(--ink);color:white;border-radius:12px;padding:10px 14px;font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,0.35);transform:rotate(2deg) scale(1.05);transition:none;white-space:nowrap;max-width:140px;text-align:center;line-height:1.2}
+.checks-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;border-radius:100px;padding:10px 22px;font-size:0.78rem;font-weight:700;z-index:500;opacity:0;pointer-events:none;transition:opacity 0.3s ease;white-space:nowrap}
+.checks-toast.show{opacity:1}
 
-/* Each entry takes equal width, tiles stay same height */
-.rank-entry {
-  display: flex; flex-direction: column; align-items: center; gap: 5px;
-  flex: 1; min-width: 0; /* allow shrinking */
-}
-.rank-num { font-size: 0.56rem; font-weight: 700; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+/* ═══════════════════════════════════════════════ RANK 4 RESULTS */
+.r4-results{display:none;animation:riseIn 0.5s cubic-bezier(0.22,1,0.36,1) both}
+.r4-results.show{display:block}
+.r4-res-card{background:var(--ink);border-radius:20px;overflow:hidden;margin-bottom:18px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.r4-res-stripe{height:6px;background:linear-gradient(90deg,var(--c0) 0%,var(--c1) 33%,var(--c2) 66%,var(--c3) 100%)}
+.r4-res-stripe.fail{background:linear-gradient(90deg,#7F1D1D,#DC2626,#7F1D1D)}
+.r4-res-body{padding:36px 24px 32px;text-align:center;position:relative;overflow:hidden}
+.r4-res-body::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 50% 70% at 12% 40%,rgba(232,57,30,0.2) 0%,transparent 55%),
+    radial-gradient(ellipse 50% 70% at 88% 20%,rgba(47,84,235,0.2) 0%,transparent 55%)}
+.r4-res-body.fail::before{background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(220,38,38,0.25) 0%,transparent 60%)}
+.r4-res-logo{font-family:'DM Serif Display',serif;font-size:3rem;letter-spacing:2px;position:relative;margin-bottom:4px;color:white;font-style:italic}
+.r4-res-logo-r{color:var(--c0)}.r4-res-logo-a{color:var(--c1)}.r4-res-logo-n{color:var(--c2)}.r4-res-logo-k{color:var(--c3)}
+.r4-res-date{font-size:0.62rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.32);margin-bottom:18px;position:relative}
+.r4-res-pair-stat{position:relative;margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:10px}
+.r4-res-pair-found{font-family:'DM Serif Display',serif;font-size:2rem;color:#4ADE80;font-style:italic}
+.r4-res-pair-icon{font-size:1.6rem}
+.r4-res-pair-label{font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:4px;position:relative}
+.r4-stars-row{display:flex;justify-content:center;gap:6px;margin-bottom:6px;position:relative}
+.r4-star{font-size:2.1rem;animation:starPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;display:inline-block}
+.r4-score-sub{font-size:0.65rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:22px;position:relative}
+.r4-share-box{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;padding:16px 20px;font-family:monospace;font-size:0.8rem;line-height:1.85;white-space:pre;color:rgba(255,255,255,0.82);display:inline-block;text-align:left;margin-bottom:14px;position:relative;max-width:100%}
+.r4-share-prompt{font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.45);margin-bottom:14px;position:relative}
+.r4-share-prompt a{color:rgba(255,255,255,0.7);text-decoration:underline}
+.btn-copy{display:block;margin:0 auto;background:white;color:var(--ink);border:none;border-radius:100px;padding:11px 30px;font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:800;cursor:pointer;transition:all 0.14s;position:relative}
+.btn-copy:hover{background:#EDEDED;transform:translateY(-1px);box-shadow:0 5px 16px rgba(0,0,0,0.25)}
+.r4-fail-icon{font-size:3.2rem;margin-bottom:10px;position:relative}
+.r4-fail-heading{font-family:'DM Serif Display',serif;font-size:2.5rem;color:white;position:relative;margin-bottom:6px;font-style:italic}
+.r4-fail-sub{font-size:0.82rem;font-weight:500;color:rgba(255,255,255,0.45);margin-bottom:24px;position:relative;line-height:1.6}
+.r4-answers{background:var(--white);border:1.5px solid var(--edge);border-radius:16px;padding:20px}
+.r4-answers-label{font-size:0.58rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.r4-answer-rows{display:flex;flex-direction:column;gap:16px}
+.r4-answer-row{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.r4-answer-cat{font-size:0.66rem;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;min-width:130px;padding-top:5px;display:flex;align-items:center;gap:7px;flex-shrink:0}
+.r4-answer-pills{display:flex;gap:5px;align-items:flex-start;flex-wrap:wrap}
+.r4-pill-wrap{display:flex;flex-direction:column;align-items:center;gap:3px}
+.r4-item-pill{background:var(--lift);border:1.5px solid var(--edge);border-radius:100px;padding:4px 11px;font-size:0.7rem;font-weight:600;white-space:nowrap}
+.r4-item-fact{font-size:0.58rem;font-weight:600;color:var(--ok);text-align:center;line-height:1.2;max-width:90px}
+.ans-arrow{font-size:0.7rem;color:var(--edge);padding-top:6px}
+.match-flag{font-size:0.5rem;font-weight:800;letter-spacing:1px;padding:2px 7px;border-radius:4px;background:var(--ink);color:white;text-transform:uppercase}
 
-/* Tile height is fixed so swapping doesn't resize the row → no page jump */
-.rank-tile {
-  width: 100%;
-  height: 64px; /* FIXED height — prevents layout jumps */
-  background: var(--lift); border: 1.5px solid var(--edge); border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.72rem; font-weight: 600; text-align: center; padding: 6px 4px; line-height: 1.25;
-  cursor: grab; touch-action: none;
-  transition: background 0.12s, border-color 0.12s, box-shadow 0.12s, transform 0.12s;
-  position: relative;
-  background-image: radial-gradient(circle, var(--edge) 1px, transparent 1px);
-  background-size: 8px 8px;
-  background-position: calc(100% - 5px) 5px;
-  background-repeat: no-repeat;
-  background-color: var(--lift);
-  will-change: transform;
-  /* Prevent content reflow jumping — use visibility trick instead of opacity for dragging */
-  overflow: hidden;
-}
-.rank-tile:hover { background-color: var(--edge); border-color: #C5C0B8; }
-.rank-tile.dragging { opacity: 0.2; transform: scale(0.95); box-shadow: none; }
-.rank-tile.drag-over { border-color: var(--c3); border-style: dashed; background-color: #EEF2FF; box-shadow: 0 0 0 3px rgba(47,84,235,0.15); transform: scale(1.03); }
-.correct .rank-tile { background-color: var(--ok-tint); background-image: none; border-color: #86EFAC; cursor: default; touch-action: auto; }
-.rank-tile.locked {
-  background-color: var(--ok-tint) !important; background-image: none !important;
-  border-color: #86EFAC !important; cursor: default !important; touch-action: auto !important;
-  color: var(--ok); font-weight: 700;
-  box-shadow: 0 0 0 2px rgba(14,165,114,0.2);
-}
-.rank-tile.locked::after { content: '✓'; position: absolute; top: 4px; right: 6px; font-size: 0.55rem; color: var(--ok); font-weight: 800; }
+/* ═══════════════════════════════════════════════ PERFECT 3s */
+.p3-wrap{max-width:580px;margin:0 auto;padding:16px 0 60px}
+.p3-header{background:linear-gradient(135deg,var(--p3-a),var(--p3-b));border-radius:16px;padding:20px 20px 16px;margin-bottom:16px;color:white}
+.p3-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;margin-bottom:2px}
+.p3-sub{font-size:0.72rem;font-weight:500;opacity:0.8;margin-bottom:10px}
+.p3-header-bottom{display:flex;align-items:center;justify-content:space-between}
+.p3-attempts-label{font-size:0.58rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:0.7}
+.p3-attempts{display:flex;gap:6px;align-items:center}
+.p3-dot{width:13px;height:13px;border-radius:50%;background:rgba(255,255,255,0.28);transition:all 0.3s;border:1.5px solid rgba(255,255,255,0.4)}
+.p3-dot.used{background:rgba(255,80,80,0.9);border-color:rgba(255,80,80,0.6)}
+.p3-dot.ok{background:rgba(74,222,128,0.9);border-color:rgba(74,222,128,0.6)}
+.p3-solved-group{border-radius:12px;padding:14px 16px;margin-bottom:10px;animation:riseIn 0.4s ease both}
+.p3-solved-group.sg0{background:rgba(124,58,237,0.1);border:2px solid rgba(124,58,237,0.3)}
+.p3-solved-group.sg1{background:rgba(219,39,119,0.1);border:2px solid rgba(219,39,119,0.3)}
+.p3-solved-group.sg2{background:rgba(2,132,199,0.1);border:2px solid rgba(2,132,199,0.3)}
+.p3-solved-name{font-size:0.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+.p3-solved-items-row{display:flex;gap:6px;flex-wrap:wrap}
+.p3-solved-pill{font-size:0.78rem;font-weight:700;padding:5px 12px;border-radius:8px;background:rgba(255,255,255,0.7)}
+.p3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:16px}
+.p3-item{background:var(--white);border:2px solid var(--edge);border-radius:14px;padding:16px 8px;text-align:center;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.16s;user-select:none;min-height:62px;display:flex;align-items:center;justify-content:center;line-height:1.25;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.p3-item:hover:not(.solved-tile){border-color:var(--p3-a);background:#FAF5FF;transform:translateY(-2px);box-shadow:0 5px 14px rgba(124,58,237,0.13)}
+.p3-item.sel{border-color:var(--p3-a);background:;color:var(--p3-a);transform:translateY(-2px);box-shadow:0 5px 14px rgba(124,58,237,0.2)}
+.p3-item.sel1{border-color:var(--p3-b);background:#FDF2F8;color:var(--p3-b);transform:translateY(-2px)}
+.p3-item.sel2{border-color:var(--p3-c);background:#EFF6FF;color:var(--p3-c);transform:translateY(-2px)}
+.p3-item.solved-tile{cursor:default;transform:none;pointer-events:none}
+.p3-item.solved-tile.sg0{background:rgba(124,58,237,0.08);border-color:rgba(124,58,237,0.35);color:var(--p3-a)}
+.p3-item.solved-tile.sg1{background:rgba(219,39,119,0.08);border-color:rgba(46,204,113,0.35);color:var(--p3-b)}
+.p3-item.solved-tile.sg2{background:rgba(2,132,199,0.08);border-color:rgba(2,132,199,0.35);color:var(--p3-c)}
+.p3-item.wrong-flash{animation:shake 0.35s ease;border-color:#FCA5A5!important;background:#FEF2F2!important}
+.p3-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn-p3-submit{font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:800;padding:10px 24px;background:var(--p3-a);color:white;border:none;border-radius:100px;cursor:pointer;transition:all 0.14s}
+.btn-p3-submit:hover:not([disabled]){background:#6D28D9;transform:translateY(-1px);box-shadow:0 5px 16px rgba(124,58,237,0.35)}
+.btn-p3-submit[disabled]{opacity:0.3;cursor:not-allowed}
+.p3-msg{font-size:0.78rem;font-weight:600;color:var(--muted);flex:1;min-height:20px}
+.p3-msg.ok{color:var(--ok)}.p3-msg.err{color:var(--fail)}.p3-msg.warn{color:var(--warn)}
+.p3-gameover-reveal{margin-top:16px;background:var(--lift);border-radius:14px;padding:16px;border:1.5px solid var(--edge)}
+.p3-gameover-label{font-size:0.6rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.p3-reveal-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.p3-reveal-label{font-size:0.65rem;font-weight:800;text-transform:uppercase;min-width:90px}
+.p3-reveal-pill{font-size:0.72rem;font-weight:600;padding:4px 10px;border-radius:7px;background:var(--white);border:1.5px solid var(--edge)}
 
-/* Arrow between tiles — hidden on very small screens */
-.rank-arrow { color: var(--edge); font-size: 0.75rem; flex-shrink: 0; align-self: flex-start; margin-top: 34px; padding: 0 1px; }
+/* ═══════════════════════════════════════════════ BUILD THE LINE */
+.btl-wrap{max-width:680px;margin:0 auto;padding:16px 0 60px}
+.btl-header{background:linear-gradient(135deg,#78350F,var(--btl));border-radius:16px;padding:20px 22px;margin-bottom:18px;color:white;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.btl-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;margin-bottom:2px}
+.btl-cat-label{font-size:0.7rem;font-weight:600;opacity:0.7}
+.btl-header-right{text-align:right;flex-shrink:0}
+.btl-score-big{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:2px;line-height:1}
+.btl-score-lbl{font-size:0.58rem;font-weight:700;opacity:0.6;letter-spacing:1.5px;text-transform:uppercase}
+.btl-item-card{background:var(--white);border-radius:18px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:18px 20px;margin-bottom:22px;display:flex;align-items:center;gap:16px;animation:riseIn 0.35s ease both}
+.btl-item-emoji{font-size:2.8rem;line-height:1;flex-shrink:0;filter:drop-shadow(0 3px 6px rgba(0,0,0,0.15))}
+.btl-item-info{flex:1}
+.btl-item-eyebrow{font-size:0.58rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.btl-item-name{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:2px;color:var(--ink);line-height:1.1}
+.btl-item-progress{display:flex;gap:4px;margin-top:10px}
+.btl-prog-dot{width:8px;height:8px;border-radius:50%;background:var(--edge);transition:background 0.3s}
+.btl-prog-dot.placed{background:var(--btl)}.btl-prog-dot.current{background:var(--ink);transform:scale(1.3)}
+.btl-line-wrap{margin-bottom:20px}
+.btl-line-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.btl-line-end-label{font-size:0.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.btl-spine{position:relative;padding:0 4px}
+.btl-spine::before{content:'';position:absolute;left:26px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--btl),rgba(217,119,6,0.2));border-radius:2px;z-index:0}
+.btl-insert-zone{display:flex;align-items:center;cursor:pointer;margin:3px 0;min-height:40px;padding-left:0;transition:all 0.15s;border-radius:10px}
+.btl-insert-zone:hover .btl-insert-inner{border-color:var(--btl);background:rgba(217,119,6,0.06);transform:translateX(4px)}
+.btl-insert-inner{margin-left:42px;flex:1;border:2px dashed var(--edge);border-radius:10px;padding:7px 14px;font-size:0.72rem;font-weight:700;color:var(--muted);transition:all 0.15s;background:var(--white);display:flex;align-items:center;gap:8px}
+.btl-insert-inner span.plus{color:var(--edge);font-size:1rem;font-weight:900;transition:color 0.15s}
+.btl-insert-zone:hover .btl-insert-inner span.plus{color:var(--btl)}
+.btl-placed-node{display:flex;align-items:center;gap:0;padding:3px 0;z-index:1;position:relative}
+.btl-node-dot{width:14px;height:14px;border-radius:50%;border:3px solid var(--btl);background:white;flex-shrink:0;margin-left:20px;z-index:2;transition:all 0.3s}
+.btl-node-dot.correct{background:var(--ok);border-color:var(--ok)}
+.btl-node-dot.wrong{background:var(--fail);border-color:var(--fail)}
+.btl-placed-card{flex:1;background:var(--lift);border:2px solid var(--edge);border-radius:12px;padding:9px 14px;display:flex;align-items:center;gap:10px;font-size:0.8rem;font-weight:700;transition:all 0.35s;margin-left:8px}
+.btl-placed-card.correct{background:var(--ok-tint);border-color:#86EFAC;color:var(--ok)}
+.btl-placed-card.wrong{background:#FEE2E2;border-color:#FCA5A5;color:var(--fail)}
+.btl-placed-emoji-sm{font-size:1.2rem;flex-shrink:0}
+.btl-placed-text{flex:1;line-height:1.2}
+.btl-placed-value{font-size:0.6rem;font-weight:600;opacity:0.6;margin-left:auto;white-space:nowrap}
+.btl-result-card{background:var(--ink);border-radius:20px;padding:30px 24px;text-align:center;color:white;margin-bottom:18px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.btl-result-heading{font-family:'DM Serif Display',serif;font-size:1.7rem;font-style:italic;color:rgba(255,255,255,0.9);margin-bottom:16px;line-height:1.4}
+.btl-result-pts{font-family:'Bebas Neue',sans-serif;font-size:4.5rem;letter-spacing:3px;color:var(--btl);line-height:1;margin-bottom:4px}
+.btl-result-pts-lbl{font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:14px}
+.btl-result-bar{height:8px;border-radius:4px;background:rgba(255,255,255,0.1);margin:14px 0 6px;overflow:hidden}
+.btl-result-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--btl),#FDE68A);width:0;transition:width 0.9s ease 0.4s}
+.btl-result-pct{font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.35)}
 
-/* Facts displayed BELOW each tile */
-.item-fact {
-  font-size: 0.57rem; font-weight: 600; color: transparent; text-align: center;
-  line-height: 1.3; width: 100%; padding: 0 2px;
-  min-height: 18px; /* reserve space so height doesn't change on reveal */
-  transition: color 0.3s ease 0.2s;
-}
-.item-fact.revealed { color: var(--ok); }
+/* ═══════════════════════════════════════════════ TRIVIA BINGO */
+.bingo-wrap{max-width:700px;margin:0 auto;padding:16px 0 60px}
+.bingo-header{background:linear-gradient(135deg,#0F4C41,var(--bingo));border-radius:16px;padding:18px 20px;margin-bottom:16px;color:white;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.bingo-header-left{}
+.bingo-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px;margin-bottom:2px}
+.bingo-category{font-size:0.7rem;font-weight:600;opacity:0.75}
+.bingo-stats-row{display:flex;gap:16px;align-items:center;margin-top:8px}
+.bingo-stat{text-align:center}
+.bingo-stat-num{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:1px;line-height:1}
+.bingo-stat-lbl{font-size:0.52rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:0.6}
+.bingo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:16px}
+.bingo-cell{background:var(--white);border:2px solid var(--edge);border-radius:10px;padding:8px 5px;text-align:center;font-size:0.68rem;font-weight:700;min-height:62px;display:flex;align-items:center;justify-content:center;line-height:1.2;transition:all 0.2s;position:relative;cursor:default}
+.bingo-cell.selectable{cursor:pointer;border-color:var(--bingo);background:#F0FDF8}
+.bingo-cell.selectable:hover{background:#CCFBF1;transform:scale(1.04);box-shadow:0 4px 12px rgba(15,118,110,0.2)}
+.bingo-cell.selected{background:var(--bingo);border-color:var(--bingo);color:white;transform:scale(1.06);box-shadow:0 4px 14px rgba(15,118,110,0.35)}
+.bingo-cell.marked{background:#CCFBF1;border-color:var(--bingo);color:var(--bingo)}
+.bingo-cell.marked::after{content:'✓';position:absolute;top:3px;right:5px;font-size:0.55rem;color:var(--bingo);font-weight:800}
+.bingo-cell.wrong-flash{animation:shake 0.35s ease;background:#FEE2E2!important;border-color:#FCA5A5!important}
+.bingo-cell.bingo-line{background:var(--bingo);border-color:var(--bingo);color:white}
+.bingo-cell.bingo-line::after{content:'★';position:absolute;top:3px;right:5px;font-size:0.55rem;color:rgba(255,255,255,0.8);font-weight:800}
+.bingo-prompt-card{background:var(--white);border:2px solid var(--ink);border-radius:16px;padding:18px 20px;margin-bottom:14px;box-shadow:3px 3px 0 var(--ink)}
+.bingo-prompt-eyebrow{font-size:0.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+.bingo-q-badge{background:var(--ink);color:white;border-radius:6px;padding:2px 8px;font-size:0.58rem;font-weight:800}
+.bingo-prompt-text{font-size:1.1rem;font-weight:800;color:var(--ink);line-height:1.35;margin-bottom:12px}
+.bingo-instruction{font-size:0.72rem;font-weight:600;color:var(--muted);margin-bottom:14px;padding:8px 12px;background:var(--lift);border-radius:8px}
+.bingo-instruction.active{color:var(--bingo);background:rgba(15,118,110,0.07);border:1px solid rgba(15,118,110,0.2)}
+.bingo-prompt-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn-bingo-confirm{font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:800;padding:9px 20px;background:var(--bingo);color:white;border:none;border-radius:100px;cursor:pointer;transition:all 0.14s}
+.btn-bingo-confirm:hover:not([disabled]){background:#0D9488;transform:translateY(-1px);box-shadow:0 5px 16px rgba(15,118,110,0.35)}
+.btn-bingo-confirm[disabled]{opacity:0.3;cursor:not-allowed}
+.btn-bingo-skip{font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:700;padding:9px 18px;background:none;color:var(--muted);border:2px solid var(--edge);border-radius:100px;cursor:pointer;transition:all 0.14s}
+.btn-bingo-skip:hover{border-color:var(--ink);color:var(--ink)}
+.bingo-feedback{display:none;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;font-size:0.78rem;font-weight:700;margin-bottom:10px}
+.bingo-feedback.show{display:flex}
+.bingo-feedback.correct{background:var(--ok-tint);border:1.5px solid #86EFAC;color:var(--ok)}
+.bingo-feedback.wrong{background:#FEE2E2;border:1.5px solid #FCA5A5;color:var(--fail)}
+.bingo-win-flash{display:none;background:var(--bingo);border-radius:12px;padding:14px 18px;margin-bottom:14px;text-align:center;color:white;animation:riseIn 0.4s ease}
+.bingo-win-flash.show{display:block}
+.bingo-win-flash-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px;margin-bottom:2px}
+.bingo-complete-wrap{background:var(--ink);border-radius:20px;padding:32px 24px;text-align:center;color:white;margin-top:16px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.bingo-complete-icon{font-size:3rem;margin-bottom:12px}
+.bingo-complete-title{font-family:'DM Serif Display',serif;font-size:2.2rem;font-style:italic;margin-bottom:10px}
+.bingo-complete-stats{font-size:0.8rem;font-weight:500;opacity:0.55;line-height:1.8;margin-bottom:20px}
 
-/* Ghost tile */
-.drag-ghost {
-  position: fixed; pointer-events: none; z-index: 9999;
-  background: var(--ink); color: white;
-  border-radius: 12px; padding: 10px 14px;
-  font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 700;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-  transform: rotate(2deg) scale(1.05);
-  transition: none; white-space: nowrap;
-  max-width: 140px; text-align: center; line-height: 1.2;
-}
-
-/* ── CHECKS TOAST ── */
-.checks-toast {
-  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-  background: var(--ink); color: white; border-radius: 100px;
-  padding: 10px 22px; font-size: 0.78rem; font-weight: 700;
-  z-index: 500; opacity: 0; pointer-events: none;
-  transition: opacity 0.3s ease;
-  white-space: nowrap;
-}
-.checks-toast.show { opacity: 1; }
-
-/* ── FOOTER ── */
-.footer { display: flex; justify-content: center; padding: 26px 0 0; }
-.btn-footer-help {
-  font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 600;
-  background: none; border: 1.5px solid var(--edge); border-radius: 100px;
-  padding: 7px 18px; color: var(--muted); cursor: pointer; transition: all 0.15s;
-}
-.btn-footer-help:hover { border-color: var(--ink); color: var(--ink); }
-
-/* ── RESULTS ── */
-.results-screen{display:none;animation:riseIn 0.5s cubic-bezier(0.22,1,0.36,1) both}
-.results-screen.show{display:block}
-.results-card { background:var(--ink); border-radius:20px; overflow:hidden; margin-bottom:18px; border:2px solid var(--ink); box-shadow:4px 4px 0 var(--ink); }
-.results-card-stripe { height:6px; background:linear-gradient(90deg,var(--c0) 0%,var(--c1) 33%,var(--c2) 66%,var(--c3) 100%); }
-.results-card-stripe.fail { background: linear-gradient(90deg,#7F1D1D,#DC2626,#7F1D1D); }
-.results-card-body { padding:36px 24px 32px; text-align:center; position:relative; overflow:hidden; }
-.results-card-body::before {
-  content:''; position:absolute; inset:0; pointer-events:none;
-  background: radial-gradient(ellipse 50% 70% at 12% 40%,rgba(232,57,30,0.2) 0%,transparent 55%),
-              radial-gradient(ellipse 50% 70% at 88% 20%,rgba(47,84,235,0.2) 0%,transparent 55%);
-}
-.results-card-body.fail::before {
-  background: radial-gradient(ellipse 60% 80% at 20% 50%,rgba(220,38,38,0.25) 0%,transparent 60%),
-              radial-gradient(ellipse 50% 60% at 80% 30%,rgba(127,29,29,0.2) 0%,transparent 60%);
-}
-.results-logo { font-family:'Bebas Neue',sans-serif; font-size:2.8rem; letter-spacing:8px; position:relative; margin-bottom:4px; }
-.results-fail-icon { font-size:3.2rem; margin-bottom:10px; position:relative; }
-.results-fail-heading { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; letter-spacing:3px; color:white; position:relative; margin-bottom:6px; }
-.results-fail-sub { font-size:0.82rem; font-weight:500; color:rgba(255,255,255,0.45); margin-bottom:24px; position:relative; line-height:1.6; }
-.results-date { font-size:0.62rem; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.32); margin-bottom:24px; position:relative; }
-.stars-row { display:flex; justify-content:center; gap:5px; margin-bottom:8px; position:relative; }
-.res-star { font-size:2.1rem; animation:starPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
-.results-score { font-size:0.72rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.32); margin-bottom:24px; position:relative; }
-.share-box {
-  background:rgba(255,255,255,0.07); border:1.5px solid rgba(255,255,255,0.12);
-  border-radius:12px; padding:16px 20px;
-  font-family:monospace; font-size:0.8rem; line-height:1.85; white-space:pre;
-  color:rgba(255,255,255,0.82); display:inline-block; text-align:left;
-  margin-bottom:14px; position:relative; max-width:100%;
-}
-.results-share-prompt {
-  font-size: 0.75rem; font-weight: 600;
-  color: rgba(255,255,255,0.45); margin-bottom: 14px; position: relative;
-}
-.results-share-prompt a { color: rgba(255,255,255,0.7); text-decoration: underline; }
-.btn-copy {
-  display:block; margin:0 auto;
-  background:white; color:var(--ink); border:none; border-radius:100px;
-  padding:11px 30px; font-family:'Outfit',sans-serif; font-size:0.8rem; font-weight:800;
-  cursor:pointer; transition:all 0.14s; position:relative;
-}
-.btn-copy:hover { background:#EDEDED; transform:translateY(-1px); box-shadow:0 5px 16px rgba(0,0,0,0.25); }
-.fail-answer-reveal { background:rgba(255,255,255,0.06); border:1.5px solid rgba(255,255,255,0.12); border-radius:14px; padding:18px 20px; margin-bottom:14px; position:relative; text-align:left; }
-.fail-answer-label { font-size:0.58rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:14px; }
-.fail-answer-row { margin-bottom:10px; }
-.fail-answer-row:last-child { margin-bottom:0; }
-.fail-cat-name { font-size:0.65rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:5px; display:flex; align-items:center; gap:6px; }
-.fail-pills { display:flex; gap:5px; flex-wrap:wrap; align-items:center; }
-.fail-pill { background:rgba(255,255,255,0.1); border:1.5px solid rgba(255,255,255,0.15); border-radius:100px; padding:4px 11px; font-size:0.7rem; font-weight:600; color:rgba(255,255,255,0.8); }
-.fail-pill.pair-pill-match { background:rgba(14,165,114,0.2); border-color:rgba(134,239,172,0.4); color:#86EFAC; }
-.fail-arrow { font-size:0.7rem; color:rgba(255,255,255,0.2); }
-.fail-match-badge { font-size:0.5rem; font-weight:800; letter-spacing:1px; padding:2px 7px; border-radius:4px; background:rgba(14,165,114,0.3); color:#86EFAC; text-transform:uppercase; border:1px solid rgba(134,239,172,0.3); }
-
-/* ── ANSWERS SECTION — facts shown under each item ── */
-.answers-section { background:var(--white); border:1.5px solid var(--edge); border-radius:16px; padding:20px; }
-.answers-label { font-size:0.58rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
-.answer-rows { display:flex; flex-direction:column; gap:16px; }
-.answer-row-item { display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap; }
-.answer-cat-label { font-size:0.66rem; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; min-width:130px; padding-top:5px; display:flex; align-items:center; gap:7px; flex-shrink: 0; }
-.answer-pills { display:flex; gap:5px; align-items:flex-start; flex-wrap:wrap; }
-/* Each pill now has a fact underneath it */
-.answer-pill-wrap { display:flex; flex-direction:column; align-items:center; gap:3px; }
-.answer-item-pill { background:var(--lift); border:1.5px solid var(--edge); border-radius:100px; padding:4px 11px; font-size:0.7rem; font-weight:600; white-space:nowrap; }
-.answer-item-fact { font-size:0.58rem; font-weight:600; color:var(--ok); text-align:center; line-height:1.2; max-width:90px; }
-.ans-arrow { font-size:0.7rem; color:var(--edge); padding-top:6px; }
-.match-flag { font-size:0.5rem; font-weight:800; letter-spacing:1px; padding:2px 7px; border-radius:4px; background:var(--ink); color:white; text-transform:uppercase; }
-
-/* ── OVERLAY ── */
-.overlay {
-  display:none; position:fixed; inset:0; background:rgba(12,12,12,0.65);
-  z-index:400; align-items:center; justify-content:center; backdrop-filter:blur(5px);
-}
+/* ═══════════════════════════════════════════════ OVERLAY */
+.overlay{display:none;position:fixed;inset:0;background:rgba(12,12,12,0.65);z-index:400;align-items:center;justify-content:center;backdrop-filter:blur(5px)}
 .overlay.show{display:flex}
-.overlay-card {
-  background:var(--white); border-radius:20px; padding:30px 28px 24px;
-  max-width:420px; width:92%; animation:riseIn 0.3s cubic-bezier(0.22,1,0.36,1) both;
-  border:2px solid var(--ink); box-shadow:6px 6px 0 var(--ink);
-  max-height:90vh; overflow-y:auto;
-}
-.overlay-title { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:3px; margin-bottom:18px; }
-.overlay-steps { display:flex; flex-direction:column; gap:12px; margin-bottom:22px; }
-.overlay-step { display:flex; align-items:flex-start; gap:12px; }
-.step-num { width:24px; height:24px; border-radius:7px; background:var(--ink); color:white; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:800; flex-shrink:0; margin-top:2px; }
-.step-text { font-size:0.78rem; font-weight:500; color:#444; line-height:1.55; }
-.step-text strong { color:var(--ink); font-weight:800; }
-.btn-play { width:100%; padding:13px; background:var(--ink); color:white; border:none; border-radius:100px; font-family:'Outfit',sans-serif; font-size:0.85rem; font-weight:800; cursor:pointer; transition:background 0.14s; }
+.overlay-card{background:var(--white);border-radius:20px;padding:30px 28px 24px;max-width:420px;width:92%;animation:riseIn 0.3s cubic-bezier(0.22,1,0.36,1) both;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);max-height:90vh;overflow-y:auto}
+.overlay-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;margin-bottom:18px}
+.overlay-steps{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+.overlay-step{display:flex;align-items:flex-start;gap:12px}
+.step-num{width:24px;height:24px;border-radius:7px;background:var(--ink);color:white;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800;flex-shrink:0;margin-top:2px}
+.step-text{font-size:0.78rem;font-weight:500;color:#444;line-height:1.55}
+.step-text strong{color:var(--ink);font-weight:800}
+.btn-play{width:100%;padding:13px;background:var(--ink);color:white;border:none;border-radius:100px;font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:800;cursor:pointer;transition:background 0.14s}
 .btn-play:hover{background:#252525}
 
-/* ── ANIMATIONS ── */
-@keyframes riseIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-@keyframes shake {
-  0%,100%{transform:translateX(0)} 20%{transform:translateX(-8px)}
-  40%{transform:translateX(8px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)}
-}
-@keyframes starPop {
-  from{transform:scale(0) rotate(-30deg);opacity:0} 65%{transform:scale(1.45) rotate(8deg)}
-  to{transform:scale(1) rotate(0);opacity:1}
-}
-@keyframes correctPulse {
-  0%{box-shadow:0 0 0 0 rgba(14,165,114,0.5)} 70%{box-shadow:0 0 0 10px rgba(14,165,114,0)} 100%{box-shadow:0 0 0 0 rgba(14,165,114,0)}
-}
-.cat-block.correct{animation:correctPulse 0.7s ease both 0.05s}
+/* ═══════════════════════════════════════════════ ANIMATIONS */
+@keyframes riseIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+@keyframes starPop{from{transform:scale(0) rotate(-30deg);opacity:0}65%{transform:scale(1.45) rotate(8deg)}to{transform:scale(1) rotate(0);opacity:1}}
+@keyframes correctPulse{0%{box-shadow:0 0 0 0 rgba(14,165,114,0.5)}70%{box-shadow:0 0 0 10px rgba(14,165,114,0)}100%{box-shadow:0 0 0 0 rgba(14,165,114,0)}}
 
-/* ── MOBILE ── */
-@media(max-width:580px){
-  .hero-cards{grid-template-columns:repeat(2,1fr);gap:8px}
-  .hero{padding:24px 14px 30px}
-  .hero-heading{font-size:1.9rem}
-  .header{padding:0 14px}
-  .main{padding:16px 10px 70px}
-  .pair-pill{font-size:0.68rem;padding:6px 13px}
-  .progress-bar{padding:9px 14px}
-  .pair-wrong-label{min-width:90px}
-  .hero-card-emoji{font-size:1.9rem}
-
-  /* Rank row: tiles flow side by side with NO scroll — shrink font/size */
-  .rank-row { padding: 12px 8px 8px; gap: 0; }
-  .rank-tile {
-    font-size: 0.6rem;
-    height: 56px;
-    border-radius: 9px;
-    padding: 4px 2px;
-  }
-  .rank-arrow { font-size: 0.6rem; margin-top: 28px; padding: 0; }
-  .rank-num { font-size: 0.5rem; }
-  .item-fact { font-size: 0.5rem; min-height: 16px; }
-
-  /* Answer section on mobile */
-  .answer-cat-label { min-width: 100px; }
-  .answer-item-fact { font-size: 0.53rem; max-width: 70px; }
+/* ═══════════════════════════════════════════════ RESPONSIVE */
+@media(max-width:600px){
+  .home-game-grid{grid-template-columns:repeat(2,1fr)}
+  .header-nav .nav-btn:not(.admin-btn){display:none}
+  .r4-hero-cards{grid-template-columns:repeat(2,1fr)}
+  .rank-row{padding:12px 8px 8px}
+  .rank-tile{font-size:0.6rem;height:54px;border-radius:9px;padding:4px 2px}
+  .rank-arrow{font-size:0.6rem;margin-top:27px}
+  .rank-num{font-size:0.5rem}
+  .item-fact{font-size:0.5rem;min-height:14px}
+  .p3-grid{grid-template-columns:repeat(3,1fr)}
+  .bingo-grid{grid-template-columns:repeat(4,1fr)}
+  .bingo-cell{font-size:0.62rem;padding:7px 4px;min-height:54px}
+  .form-row{grid-template-columns:1fr}
+  .form-row.four{grid-template-columns:repeat(2,1fr)}
+  .r4-answer-cat{min-width:100px}
 }
-
-@media(max-width:400px){
-  .rank-tile { font-size: 0.55rem; height: 50px; }
-  .rank-arrow { margin-top: 25px; }
+@media(max-width:380px){
+  .rank-tile{font-size:0.55rem;height:48px}
+  .bingo-cell{font-size:0.58rem;min-height:48px}
 }
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
-<header class="header">
-  <div class="logo">
-    <span class="logo-r">R</span><span class="logo-a">A</span><span class="logo-n">N</span><span class="logo-k">K</span>&nbsp;4
+<header class="site-header">
+  <div class="site-logo" onclick="showPage('home')">
+    <span>R</span><span>A</span><span>N</span><span>K</span>&nbsp;4
   </div>
-  <div class="header-right">
-    <span class="header-date" id="headerDate"></span>
-    <button class="btn-help" id="btnHelp">How to play</button>
+  <div class="header-nav">
+    <button class="nav-btn" onclick="showPage('rank4')">Rank 4</button>
+    <button class="nav-btn" onclick="showPage('perfect3')">Perfect 3s</button>
+    <button class="nav-btn" onclick="showPage('buildline')">Build the Line</button>
+    <button class="nav-btn" onclick="showPage('bingo')">Trivia Bingo</button>
+    <button class="nav-btn" onclick="showPage('archive')">Archive</button>
+    <button class="nav-btn admin-btn" onclick="showPage('admin')">⚙</button>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="heroSection">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Today's puzzle</div>
-    <div class="hero-heading">Today's Items</div>
-    <div class="hero-sub">Rank all four across four categories &mdash; then find the matching pair</div>
-    <div class="hero-cards" id="heroCards"></div>
-  </div>
-</section>
-
-<!-- PROGRESS -->
-<div class="progress-bar" id="progressBar">
-  <div class="progress-bar-inner">
-    <span class="progress-label">Categories</span>
-    <div class="progress-pips" id="progressPips"></div>
-    <div class="progress-checks">
-      Checks
-      <div class="check-pips" id="checkPips"></div>
+<!-- ══════════════════ HOME PAGE ══════════════════ -->
+<div class="page active" id="page-home">
+  <div class="home-hero">
+    <div class="home-hero-inner">
+      <div class="home-eyebrow">Daily Puzzle Games</div>
+      <div class="home-title">
+        <span style="color:var(--c0)">R</span><span style="color:var(--c1)">A</span><span style="color:var(--c2)">N</span><span style="color:var(--c3)">K</span> 4
+      </div>
+      <div class="home-sub">Four daily puzzles. Rank, group, build, and bingo your way through the day.</div>
+      <div class="home-game-grid">
+        <div class="home-game-card hgc-rank4" onclick="showPage('rank4')">
+          <span class="hgc-emoji">🏆</span>
+          <span class="hgc-name">Rank 4</span>
+          <span class="hgc-tag">Ranking · Pairs</span>
+        </div>
+        <div class="home-game-card hgc-p3" onclick="showPage('perfect3')">
+          <span class="hgc-emoji">🎯</span>
+          <span class="hgc-name">Perfect 3s</span>
+          <span class="hgc-tag">Grouping</span>
+        </div>
+        <div class="home-game-card hgc-btl" onclick="showPage('buildline')">
+          <span class="hgc-emoji">📏</span>
+          <span class="hgc-name">Build the Line</span>
+          <span class="hgc-tag">Ordering</span>
+        </div>
+        <div class="home-game-card hgc-bingo" onclick="showPage('bingo')">
+          <span class="hgc-emoji">🎱</span>
+          <span class="hgc-name">Trivia Bingo</span>
+          <span class="hgc-tag">Trivia · Bingo</span>
+        </div>
+      </div>
     </div>
-    <div class="progress-pair">
-      Pair <div class="pair-pip" id="pairPip"></div>
+  </div>
+  <div class="home-section">
+    <div class="home-section-label">Today's Games</div>
+    <div id="homeTodayCards"></div>
+  </div>
+</div>
+
+<!-- ══════════════════ RANK 4 PAGE ══════════════════ -->
+<div class="page" id="page-rank4">
+  <div class="rank4-hero" id="r4Hero">
+    <div class="rank4-hero-inner">
+      <div class="r4-eyebrow">Today's puzzle</div>
+      <div class="r4-heading">Today's Items</div>
+      <div class="r4-sub">Rank all four across four categories — then find the matching pair</div>
+      <div class="r4-hero-cards" id="r4HeroCards"></div>
+    </div>
+  </div>
+  <div class="r4-progress" id="r4Progress">
+    <div class="r4-progress-inner">
+      <span class="progress-label">Categories</span>
+      <div class="progress-pips" id="r4Pips"></div>
+      <div class="progress-checks">Checks<div class="check-pips" id="r4CheckPips"></div></div>
+      <div class="progress-pair">Pair<div class="pair-pip" id="r4PairPip"></div></div>
+    </div>
+  </div>
+  <div class="game-wrap">
+    <div class="pair-box" id="r4PairBox">
+      <div class="pair-head">
+        <span class="pair-head-icon">🔗</span>
+        <div class="pair-head-text">
+          <div class="pair-head-title">Find the Matching Pair</div>
+          <div class="pair-head-hint">Two categories share the exact same order — which ones?</div>
+        </div>
+      </div>
+      <div class="pair-body">
+        <div class="pair-pills" id="r4PairPills"></div>
+        <div class="pair-foot">
+          <button class="btn-link" id="r4BtnLink" disabled>Link Pair →</button>
+          <span class="pair-msg" id="r4PairMsg">Select two categories above</span>
+        </div>
+        <div class="pair-wrong-reveal" id="r4WrongReveal">
+          <div class="pair-wrong-title">⚠️ Close! Here's what each category actually ranked:</div>
+          <div class="pair-wrong-rows" id="r4WrongRows"></div>
+          <div class="swap-hint" id="r4SwapHint"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cats-list" id="r4CatsList"></div>
+    <div class="r4-results" id="r4Results">
+      <div class="r4-res-card">
+        <div class="r4-res-stripe" id="r4ResStripe"></div>
+        <div class="r4-res-body" id="r4ResBody">
+          <div id="r4WinContent">
+            <div class="r4-res-logo">
+              <span class="r4-res-logo-r">R</span><span class="r4-res-logo-a">A</span><span class="r4-res-logo-n">N</span><span class="r4-res-logo-k">K</span> <span style="color:rgba(255,255,255,0.9)">4</span>
+            </div>
+            <div class="r4-res-date" id="r4ResDate"></div>
+            <div class="r4-res-pair-label">Matching Pair</div>
+            <div class="r4-res-pair-stat">
+              <span class="r4-res-pair-icon">🔗</span>
+              <span class="r4-res-pair-found">Found!</span>
+            </div>
+            <div class="r4-stars-row" id="r4StarsRow"></div>
+            <div class="r4-score-sub" id="r4ScoreSub"></div>
+            <div class="r4-share-box" id="r4ShareBox"></div>
+            <div class="r4-share-prompt">Play at <a href="#" target="_blank">rank4daily.com</a></div>
+            <button class="btn-copy" id="r4BtnCopy">Copy Result</button>
+          </div>
+          <div id="r4FailContent" style="display:none">
+            <div class="r4-fail-icon">💔</div>
+            <div class="r4-fail-heading">Unlucky!</div>
+            <div class="r4-fail-sub" id="r4FailSub"></div>
+            <div class="r4-res-date" id="r4ResDateFail"></div>
+            <div class="r4-share-box" id="r4ShareBoxFail"></div>
+            <div class="r4-share-prompt">Play at <a href="#" target="_blank">rank4daily.com</a></div>
+            <button class="btn-copy" id="r4BtnCopyFail">Copy Result</button>
+          </div>
+        </div>
+      </div>
+      <div class="r4-answers">
+        <div class="r4-answers-label">Today's Correct Orders</div>
+        <div class="r4-answer-rows" id="r4AnswerRows"></div>
+      </div>
+    </div>
+  </div>
+  <div class="checks-toast" id="r4Toast"></div>
+  <div class="overlay" id="r4HelpOverlay" onclick="if(event.target===this)this.classList.remove('show')">
+    <div class="overlay-card">
+      <div class="overlay-title">How to Play</div>
+      <div class="overlay-steps">
+        <div class="overlay-step"><div class="step-num">1</div><div class="step-text">You have <strong>4 items</strong> and <strong>4 ranking categories</strong>. Drag items to rank them — <strong>1st = least, 4th = most</strong>.</div></div>
+        <div class="overlay-step"><div class="step-num">2</div><div class="step-text">You have <strong>3 Check Order attempts</strong> shared across all categories. A ⭐ lights up when a row is correct.</div></div>
+        <div class="overlay-step"><div class="step-num">3</div><div class="step-text">Exactly <strong>two categories share the same ranking order</strong>. Select both and hit <strong>Link Pair</strong> to end the game.</div></div>
+        <div class="overlay-step"><div class="step-num">4</div><div class="step-text">If your orders are correct when you link, you get <strong>4/4 stars automatically</strong> — no Check needed!</div></div>
+      </div>
+      <button class="btn-play" onclick="document.getElementById('r4HelpOverlay').classList.remove('show')">Let's go!</button>
     </div>
   </div>
 </div>
 
-<!-- MAIN -->
-<main class="main">
+<!-- ══════════════════ PERFECT 3s PAGE ══════════════════ -->
+<div class="page" id="page-perfect3">
+  <div class="game-wrap">
+    <div class="game-back-bar">
+      <button class="back-btn" onclick="showPage('home')">← Home</button>
+      <div class="game-title-bar"><div class="game-title-label" style="color:var(--p3-a)">Perfect 3s</div></div>
+    </div>
+    <div class="p3-wrap" id="p3Wrap"></div>
+  </div>
+</div>
 
-  <!-- Pair Finder -->
-  <div class="pair-box" id="pairBox">
-    <div class="pair-head">
-      <span class="pair-head-icon">🔗</span>
-      <div class="pair-head-text">
-        <div class="pair-head-title">Find the Matching Pair</div>
-        <div class="pair-head-hint">Two categories share the exact same order — which ones?</div>
+<!-- ══════════════════ BUILD THE LINE PAGE ══════════════════ -->
+<div class="page" id="page-buildline">
+  <div class="game-wrap">
+    <div class="game-back-bar">
+      <button class="back-btn" onclick="showPage('home')">← Home</button>
+      <div class="game-title-bar"><div class="game-title-label" style="color:var(--btl)">Build the Line</div></div>
+    </div>
+    <div class="btl-wrap" id="btlWrap"></div>
+  </div>
+</div>
+
+<!-- ══════════════════ TRIVIA BINGO PAGE ══════════════════ -->
+<div class="page" id="page-bingo">
+  <div class="game-wrap">
+    <div class="game-back-bar">
+      <button class="back-btn" onclick="showPage('home')">← Home</button>
+      <div class="game-title-bar"><div class="game-title-label" style="color:var(--bingo)">Trivia Bingo</div></div>
+    </div>
+    <div class="bingo-wrap" id="bingoWrap"></div>
+  </div>
+</div>
+
+<!-- ══════════════════ ARCHIVE PAGE ══════════════════ -->
+<div class="page" id="page-archive">
+  <div class="game-wrap">
+    <div class="game-back-bar">
+      <button class="back-btn" onclick="showPage('home')">← Home</button>
+      <div class="game-title-bar"><div class="game-title-label">Archive</div></div>
+    </div>
+    <div id="archiveContent"></div>
+  </div>
+</div>
+
+<!-- ══════════════════ ADMIN PAGE ══════════════════ -->
+<div class="page" id="page-admin">
+  <div class="game-wrap">
+    <div id="adminLoginWrap">
+      <div class="admin-login">
+        <div class="admin-login-title">Admin Panel</div>
+        <div class="admin-login-sub">Enter your password to manage puzzles</div>
+        <input class="admin-pw-field" type="password" id="adminPwInput" placeholder="Password" onkeydown="if(event.key==='Enter')adminLogin()">
+        <button class="admin-login-btn" onclick="adminLogin()">Enter</button>
+        <div class="admin-err" id="adminErr"></div>
       </div>
     </div>
-    <div class="pair-body">
-      <div class="pair-pills" id="pairPills"></div>
-      <div class="pair-foot">
-        <button class="btn-link" id="btnLink" disabled>Link Pair →</button>
-        <span class="pair-msg" id="pairMsg">Select two categories above</span>
-      </div>
-      <div class="linked-badge" id="linkedBadge">
-        <span>🔗</span><span id="linkedText"></span>
-      </div>
-      <div class="pair-wrong-reveal" id="pairWrongReveal">
-        <div class="pair-wrong-title">⚠️ Close! Here's what each category actually ranked:</div>
-        <div class="pair-wrong-rows" id="pairWrongRows"></div>
-        <div class="swap-hint" id="swapHint"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Categories -->
-  <div class="cats-list" id="catsList"></div>
-
-  <div class="footer">
-    <button class="btn-footer-help" onclick="document.getElementById('helpOverlay').classList.add('show')">How to play</button>
-  </div>
-
-  <!-- Results: WIN -->
-  <div class="results-screen" id="resultsScreen">
-    <div class="results-card">
-      <div class="results-card-stripe" id="resultsStripe"></div>
-      <div class="results-card-body" id="resultsCardBody">
-        <!-- Win content -->
-        <div id="winContent">
-          <div class="results-logo">
-            <span style="color:var(--c0)">R</span><span style="color:var(--c1)">A</span><span style="color:var(--c2)">N</span><span style="color:var(--c3)">K</span><span style="color:rgba(255,255,255,0.9)"> 4</span>
+    <div id="adminPanelWrap" style="display:none">
+      <div class="admin-panel">
+        <div class="admin-section-title">Puzzle Manager</div>
+        <div class="admin-section-sub">Add or edit daily puzzles for all games. Changes are saved in your browser.</div>
+        <div class="admin-tabs">
+          <button class="admin-tab active" onclick="switchAdminTab('rank4')">Rank 4</button>
+          <button class="admin-tab" onclick="switchAdminTab('perfect3')">Perfect 3s</button>
+          <button class="admin-tab" onclick="switchAdminTab('buildline')">Build the Line</button>
+          <button class="admin-tab" onclick="switchAdminTab('bingo')">Trivia Bingo</button>
+        </div>
+        <!-- RANK 4 ADMIN -->
+        <div class="admin-tab-content active" id="admintab-rank4">
+          <div class="admin-card">
+            <div class="admin-card-title"><span>➕</span> Add Rank 4 Puzzle</div>
+            <div class="form-row">
+              <div><label class="form-label">Puzzle Date</label><input class="form-input" type="date" id="r4AdminDate"></div>
+              <div><label class="form-label">Items (comma-separated)</label><input class="form-input" type="text" id="r4AdminItems" placeholder="e.g. Cat, Dog, Elephant, Blue Whale"></div>
+            </div>
+            <div class="form-row">
+              <div><label class="form-label">Item Emojis (comma-separated, same order)</label><input class="form-input" type="text" id="r4AdminEmojis" placeholder="🐱, 🐶, 🐘, 🐋"></div>
+            </div>
+            <div id="r4AdminCatsWrap">
+              <div style="margin-bottom:14px;padding:12px;background:var(--paper);border-radius:10px;border:1px solid var(--edge)">
+                <div class="cat-color-row"><div class="cat-color-dot" style="background:var(--c0)"></div><span style="font-size:0.65rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--c0)">Category 1</span></div>
+                <div class="form-row"><div><label class="form-label">Category Name</label><input class="form-input" type="text" id="r4c0name" placeholder="e.g. WEIGHT"></div><div><label class="form-label">Description</label><input class="form-input" type="text" id="r4c0desc" placeholder="e.g. Lightest → Heaviest"></div></div>
+                <label class="form-label">Correct Order (1st to 4th)</label><input class="form-input" type="text" id="r4c0order" placeholder="e.g. Cat, Dog, Elephant, Blue Whale">
+                <label class="form-label" style="margin-top:10px">Facts per item (comma-separated)</label><input class="form-input" type="text" id="r4c0facts" placeholder="e.g. 4 kg, 30 kg, 4000 kg, 150000 kg">
+              </div>
+              <div style="margin-bottom:14px;padding:12px;background:var(--paper);border-radius:10px;border:1px solid var(--edge)">
+                <div class="cat-color-row"><div class="cat-color-dot" style="background:var(--c1)"></div><span style="font-size:0.65rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--c1)">Category 2</span></div>
+                <div class="form-row"><div><label class="form-label">Category Name</label><input class="form-input" type="text" id="r4c1name" placeholder="e.g. LENGTH"></div><div><label class="form-label">Description</label><input class="form-input" type="text" id="r4c1desc" placeholder="e.g. Shortest → Longest"></div></div>
+                <label class="form-label">Correct Order (1st to 4th)</label><input class="form-input" type="text" id="r4c1order" placeholder="e.g. Cat, Dog, Elephant, Blue Whale">
+                <label class="form-label" style="margin-top:10px">Facts per item (comma-separated)</label><input class="form-input" type="text" id="r4c1facts" placeholder="e.g. 30cm, 50cm, 3m, 30m">
+              </div>
+              <div style="margin-bottom:14px;padding:12px;background:var(--paper);border-radius:10px;border:1px solid var(--edge)">
+                <div class="cat-color-row"><div class="cat-color-dot" style="background:var(--c2)"></div><span style="font-size:0.65rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--c2)">Category 3</span></div>
+                <div class="form-row"><div><label class="form-label">Category Name</label><input class="form-input" type="text" id="r4c2name" placeholder="e.g. AGE"></div><div><label class="form-label">Description</label><input class="form-input" type="text" id="r4c2desc" placeholder="e.g. Newest → Oldest"></div></div>
+                <label class="form-label">Correct Order (1st to 4th)</label><input class="form-input" type="text" id="r4c2order" placeholder="e.g. Cat, Dog, Elephant, Blue Whale">
+                <label class="form-label" style="margin-top:10px">Facts per item (comma-separated)</label><input class="form-input" type="text" id="r4c2facts" placeholder="e.g. 10yrs, 50yrs, 100yrs, 1000yrs">
+              </div>
+              <div style="margin-bottom:14px;padding:12px;background:var(--paper);border-radius:10px;border:1px solid var(--edge)">
+                <div class="cat-color-row"><div class="cat-color-dot" style="background:var(--c3)"></div><span style="font-size:0.65rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--c3)">Category 4</span></div>
+                <div class="form-row"><div><label class="form-label">Category Name</label><input class="form-input" type="text" id="r4c3name" placeholder="e.g. SPEED"></div><div><label class="form-label">Description</label><input class="form-input" type="text" id="r4c3desc" placeholder="e.g. Slowest → Fastest"></div></div>
+                <label class="form-label">Correct Order (1st to 4th)</label><input class="form-input" type="text" id="r4c3order" placeholder="e.g. Cat, Dog, Elephant, Blue Whale">
+                <label class="form-label" style="margin-top:10px">Facts per item (comma-separated)</label><input class="form-input" type="text" id="r4c3facts" placeholder="e.g. 5mph, 15mph, 25mph, 60mph">
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label class="form-label">Matching Pair (indices 0–3)</label>
+                <input class="form-input" type="text" id="r4AdminPair" placeholder="e.g. 0,2 (Category 1 and 3 match)">
+                <div class="form-hint">0=Cat1, 1=Cat2, 2=Cat3, 3=Cat4</div>
+              </div>
+            </div>
+            <button class="btn-admin-save" onclick="saveR4Puzzle()">💾 Save Puzzle</button>
+            <span class="admin-save-msg" id="r4SaveMsg">Saved!</span>
           </div>
-          <div class="results-date" id="resultsDate"></div>
-          <div class="stars-row" id="starsRow"></div>
-          <div class="results-score" id="scoreLabel"></div>
-          <div class="share-box" id="shareBox"></div>
-          <div class="results-share-prompt">Play at <a href="https://seanpri222.github.io/RANK4/" target="_blank">seanpri222.github.io/RANK4</a></div>
-          <button class="btn-copy" id="btnCopy">Copy Result</button>
+          <div class="admin-card">
+            <div class="admin-card-title"><span>📋</span> Saved Rank 4 Puzzles</div>
+            <div id="r4AdminList" class="admin-list"></div>
+          </div>
         </div>
-        <!-- Fail content -->
-        <div id="failContent" style="display:none">
-          <div class="results-fail-icon">💔</div>
-          <div class="results-fail-heading">Unlucky!</div>
-          <div class="results-fail-sub" id="failSub"></div>
-          <div class="results-date" id="resultsDateFail"></div>
-          <div class="share-box" id="shareBoxFail"></div>
-          <div class="results-share-prompt">Play at <a href="https://seanpri222.github.io/RANK4/" target="_blank">seanpri222.github.io/RANK4</a></div>
-          <button class="btn-copy" id="btnCopyFail">Copy Result</button>
+        <!-- PERFECT 3s ADMIN -->
+        <div class="admin-tab-content" id="admintab-perfect3">
+          <div class="admin-card">
+            <div class="admin-card-title"><span>➕</span> Add Perfect 3s Puzzle</div>
+            <div class="form-row">
+              <div><label class="form-label">Puzzle Date</label><input class="form-input" type="date" id="p3AdminDate"></div>
+              <div><label class="form-label">Theme / Title</label><input class="form-input" type="text" id="p3AdminTheme" placeholder="e.g. Tom Hanks Universe"></div>
+            </div>
+            <div style="margin-bottom:12px;padding:14px;background:rgba(124,58,237,0.05);border-radius:10px;border:1.5px solid rgba(124,58,237,0.2)">
+              <div style="font-size:0.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--p3-a);margin-bottom:10px">Group 1 (Purple)</div>
+              <div class="form-row"><div><label class="form-label">Group Name</label><input class="form-input" type="text" id="p3g0name" placeholder="e.g. Tom Hanks Movies"></div></div>
+              <label class="form-label">3 Items (comma-separated)</label>
+              <input class="form-input" type="text" id="p3g0items" placeholder="e.g. Cast Away, Forrest Gump, The Green Mile">
+            </div>
+            <div style="margin-bottom:12px;padding:14px;background:rgba(219,39,119,0.05);border-radius:10px;border:1.5px solid rgba(219,39,119,0.2)">
+              <div style="font-size:0.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--p3-b);margin-bottom:10px">Group 2 (Pink)</div>
+              <div class="form-row"><div><label class="form-label">Group Name</label><input class="form-input" type="text" id="p3g1name" placeholder="e.g. Ed Sheeran Songs"></div></div>
+              <label class="form-label">3 Items (comma-separated)</label>
+              <input class="form-input" type="text" id="p3g1items" placeholder="e.g. Shape of You, Bad Habits, Perfect">
+            </div>
+            <div style="margin-bottom:12px;padding:14px;background:rgba(2,132,199,0.05);border-radius:10px;border:1.5px solid rgba(2,132,199,0.2)">
+              <div style="font-size:0.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--p3-c);margin-bottom:10px">Group 3 (Blue)</div>
+              <div class="form-row"><div><label class="form-label">Group Name</label><input class="form-input" type="text" id="p3g2name" placeholder="e.g. Planets with Rings"></div></div>
+              <label class="form-label">3 Items (comma-separated)</label>
+              <input class="form-input" type="text" id="p3g2items" placeholder="e.g. Saturn, Jupiter, Uranus">
+            </div>
+            <button class="btn-admin-save" onclick="saveP3Puzzle()">💾 Save Puzzle</button>
+            <span class="admin-save-msg" id="p3SaveMsg">Saved!</span>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-title"><span>📋</span> Saved Perfect 3s Puzzles</div>
+            <div id="p3AdminList" class="admin-list"></div>
+          </div>
+        </div>
+        <!-- BUILD THE LINE ADMIN -->
+        <div class="admin-tab-content" id="admintab-buildline">
+          <div class="admin-card">
+            <div class="admin-card-title"><span>➕</span> Add Build the Line Puzzle</div>
+            <div class="form-row">
+              <div><label class="form-label">Puzzle Date</label><input class="form-input" type="date" id="btlAdminDate"></div>
+              <div><label class="form-label">Category / Metric</label><input class="form-input" type="text" id="btlAdminCat" placeholder="e.g. Speed in km/h"></div>
+            </div>
+            <label class="form-label">Items in correct order: Smallest → Largest (comma-separated)</label>
+            <input class="form-input" type="text" id="btlAdminItems" placeholder="e.g. Snail, Walking Pace, Cycling, Car, Train, Plane, Rocket" style="margin-bottom:4px">
+            <label class="form-label">Emojis (comma-separated)</label>
+            <input class="form-input" type="text" id="btlAdminEmojis" placeholder="🐌, 🚶, 🚴, 🚗, 🚆, ✈️, 🚀" style="margin-bottom:10px">
+            <label class="form-label">Values shown after game (comma-separated)</label>
+            <input class="form-input" type="text" id="btlAdminValues" placeholder="e.g. 0.05 km/h, 5 km/h, 25 km/h...">
+            <button class="btn-admin-save" onclick="saveBtlPuzzle()" style="margin-top:16px">💾 Save Puzzle</button>
+            <span class="admin-save-msg" id="btlSaveMsg">Saved!</span>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-title"><span>📋</span> Saved Build the Line Puzzles</div>
+            <div id="btlAdminList" class="admin-list"></div>
+          </div>
+        </div>
+        <!-- BINGO ADMIN -->
+        <div class="admin-tab-content" id="admintab-bingo">
+          <div class="admin-card">
+            <div class="admin-card-title"><span>➕</span> Add Trivia Bingo Puzzle</div>
+            <p style="font-size:0.72rem;color:var(--muted);margin-bottom:14px">Players see a prompt and tap ONE grid square that matches. Each prompt can match multiple squares — the player can tap any valid one.</p>
+            <div class="form-row">
+              <div><label class="form-label">Puzzle Date</label><input class="form-input" type="date" id="bingoAdminDate"></div>
+              <div><label class="form-label">Category</label><input class="form-input" type="text" id="bingoAdminCat" placeholder="e.g. Animals"></div>
+            </div>
+            <label class="form-label">16 Grid Square Labels (comma-separated)</label>
+            <textarea class="form-input" id="bingoAdminGrid" rows="3" placeholder="Native to Australia, Mammal, Reptile, Has Gills..." style="margin-bottom:6px"></textarea>
+            <div class="form-hint" style="margin-bottom:12px">Squares 0–15 numbered left to right, top to bottom</div>
+            <label class="form-label">Prompts — one per line. Format: <code style="background:var(--lift);padding:1px 5px;border-radius:4px;font-size:0.7rem">Prompt text | matching square index(es, comma-separated)</code></label>
+            <div class="form-hint" style="margin-bottom:6px">A prompt can match multiple squares — player gets credit for choosing any of them. Leave the index blank for skip-only prompts.</div>
+            <textarea class="form-input" id="bingoAdminPrompts" rows="14" placeholder="A lion | 1&#10;A shark | 3,6&#10;A kangaroo | 0&#10;A bat | 9"></textarea>
+            <button class="btn-admin-save" onclick="saveBingoPuzzle()" style="margin-top:16px">💾 Save Puzzle</button>
+            <span class="admin-save-msg" id="bingoSaveMsg">Saved!</span>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-title"><span>📋</span> Saved Trivia Bingo Puzzles</div>
+            <div id="bingoAdminList" class="admin-list"></div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="answers-section" id="answersSection">
-      <div class="answers-label">Today's Correct Orders</div>
-      <div class="answer-rows" id="answerRows"></div>
-    </div>
-  </div>
-
-</main>
-
-<!-- Checks toast -->
-<div class="checks-toast" id="checksToast"></div>
-
-<!-- How to Play Overlay -->
-<div class="overlay" id="helpOverlay" onclick="if(event.target===this)this.classList.remove('show')">
-  <div class="overlay-card">
-    <div class="overlay-title">How to Play</div>
-    <div class="overlay-steps">
-      <div class="overlay-step">
-        <div class="step-num">1</div>
-        <div class="step-text">You have <strong>4 items</strong> and <strong>4 ranking categories</strong>. Drag items to rank them — <strong>1st = least, 4th = most</strong>.</div>
-      </div>
-      <div class="overlay-step">
-        <div class="step-num">2</div>
-        <div class="step-text">You have <strong>3 Check Order attempts</strong> shared across all categories. Use them wisely — a ⭐ lights up when a row is correct.</div>
-      </div>
-      <div class="overlay-step">
-        <div class="step-num">3</div>
-        <div class="step-text">Exactly <strong>two categories share the same ranking order</strong>. Select both in the pair finder and hit <strong>Link Pair</strong> — this ends the game.</div>
-      </div>
-      <div class="overlay-step">
-        <div class="step-num">4</div>
-        <div class="step-text"><strong>Guess the pair correctly → you win!</strong> If your linked order matches the correct pair, you get <strong>4/4 stars</strong> — no Check needed. Guess wrong → game over.</div>
-      </div>
-    </div>
-    <button class="btn-play" onclick="document.getElementById('helpOverlay').classList.remove('show')">Let's go!</button>
   </div>
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════
-// PUZZLE DATA
-// ═══════════════════════════════════════════════════════
-const PUZZLES = [
-  {
-    items: ['A4 Paper','Pencil','Elephant','Moon'],
-    categories: [
-      { label:'WEIGHT',     desc:'Lightest → Heaviest',       order:['A4 Paper','Pencil','Elephant','Moon'] },
-      { label:'LENGTH',     desc:'Shortest → Longest',        order:['Pencil','A4 Paper','Elephant','Moon'] },
-      { label:'VALUE IN $', desc:'Cheapest → Most Expensive', order:['A4 Paper','Pencil','Elephant','Moon'] },
-      { label:'AGE',        desc:'Oldest → Newest',           order:['Moon','Elephant','A4 Paper','Pencil'] },
-    ],
-    matchingPair:[0,2]
-  },
-  {
-    items: ['Ant','Tennis Ball','Blue Whale','Eiffel Tower'],
-    categories: [
-      { label:'WEIGHT',       desc:'Lightest → Heaviest',        order:['Ant','Tennis Ball','Blue Whale','Eiffel Tower'] },
-      { label:'POPULATION',   desc:'Fewest → Most in Existence', order:['Eiffel Tower','Blue Whale','Tennis Ball','Ant'] },
-      { label:'AGE',          desc:'Newest → Oldest',            order:['Eiffel Tower','Tennis Ball','Blue Whale','Ant'] },
-      { label:'MARKET VALUE', desc:'Cheapest → Most Expensive',  order:['Ant','Tennis Ball','Blue Whale','Eiffel Tower'] },
-    ],
-    matchingPair:[0,3]
-  },
-  {
-    items: ['Strawberry','Basketball','School Bus','Eiffel Tower'],
-    categories: [
-      { label:'WEIGHT',         desc:'Lightest → Heaviest',          order:['Strawberry','Basketball','School Bus','Eiffel Tower'] },
-      { label:'HEIGHT',         desc:'Shortest → Tallest',           order:['Strawberry','Basketball','School Bus','Eiffel Tower'] },
-      { label:'INVENTION DATE', desc:'Most Recent → Oldest',         order:['Basketball','Eiffel Tower','School Bus','Strawberry'] },
-      { label:'COST PER KG',    desc:'Cheapest → Most Expensive/kg', order:['Eiffel Tower','School Bus','Strawberry','Basketball'] },
-    ],
-    matchingPair:[0,1]
-  },
-  {
-    items: ['Golf Ball','Dolphin','Boeing 747','Burj Khalifa'],
-    categories: [
-      { label:'WEIGHT',     desc:'Lightest → Heaviest',        order:['Golf Ball','Dolphin','Boeing 747','Burj Khalifa'] },
-      { label:'HEIGHT',     desc:'Shortest → Tallest',         order:['Golf Ball','Dolphin','Boeing 747','Burj Khalifa'] },
-      { label:'AGE',        desc:'Newest → Oldest',            order:['Burj Khalifa','Boeing 747','Golf Ball','Dolphin'] },
-      { label:'MAX SPEED',  desc:'Slowest → Fastest',          order:['Burj Khalifa','Dolphin','Golf Ball','Boeing 747'] },
-    ],
-    matchingPair:[0,1]
-  },
-  {
-    items: ['Postage Stamp','Human Brain','Double Decker Bus','Amazon River'],
-    categories: [
-      { label:'WEIGHT',      desc:'Lightest → Heaviest',  order:['Postage Stamp','Human Brain','Double Decker Bus','Amazon River'] },
-      { label:'LENGTH',      desc:'Shortest → Longest',   order:['Postage Stamp','Human Brain','Double Decker Bus','Amazon River'] },
-      { label:'TEMPERATURE', desc:'Coldest → Hottest',    order:['Postage Stamp','Amazon River','Human Brain','Double Decker Bus'] },
-      { label:'AGE',         desc:'Newest → Oldest',      order:['Double Decker Bus','Postage Stamp','Human Brain','Amazon River'] },
-    ],
-    matchingPair:[0,1]
-  },
-  {
-    items: ['Snowflake','Violin','Rocket','Amazon Rainforest'],
-    categories: [
-      { label:'WEIGHT',      desc:'Lightest → Heaviest', order:['Snowflake','Violin','Rocket','Amazon Rainforest'] },
-      { label:'LENGTH',      desc:'Shortest → Longest',  order:['Snowflake','Violin','Rocket','Amazon Rainforest'] },
-      { label:'TEMPERATURE', desc:'Coldest → Hottest',   order:['Snowflake','Violin','Amazon Rainforest','Rocket'] },
-      { label:'SPEED',       desc:'Slowest → Fastest',   order:['Amazon Rainforest','Violin','Snowflake','Rocket'] },
-    ],
-    matchingPair:[0,1]
-  },
+const ADMIN_PASSWORD = '4664';
+
+const DEFAULT_R4_PUZZLES = [
+  {date:'2025-01-01',items:['A4 Paper','Pencil','Elephant','Moon'],emojis:{'A4 Paper':'📄','Pencil':'✏️','Elephant':'🐘','Moon':'🌙'},
+    categories:[
+      {label:'WEIGHT',desc:'Lightest → Heaviest',order:['A4 Paper','Pencil','Elephant','Moon'],facts:{'A4 Paper':'~5 g','Pencil':'~10 g','Elephant':'~4,000 kg','Moon':'7.3×10²² kg'}},
+      {label:'LENGTH',desc:'Shortest → Longest',order:['Pencil','A4 Paper','Elephant','Moon'],facts:{'Pencil':'~19 cm','A4 Paper':'29.7 cm','Elephant':'~6 m','Moon':'3,474 km Ø'}},
+      {label:'VALUE IN $',desc:'Cheapest → Most Expensive',order:['A4 Paper','Pencil','Elephant','Moon'],facts:{'A4 Paper':'~$0.01','Pencil':'~$0.50','Elephant':'~$30,000','Moon':'incalculable'}},
+      {label:'AGE',desc:'Oldest → Newest',order:['Moon','Elephant','A4 Paper','Pencil'],facts:{'Moon':'~4.5B yrs','Elephant':'~60M yrs','A4 Paper':'std. 1975','Pencil':'inv. 1565'}},
+    ],matchingPair:[0,2]},
+  {date:'2025-01-02',items:['Ant','Tennis Ball','Blue Whale','Eiffel Tower'],emojis:{'Ant':'🐜','Tennis Ball':'🎾','Blue Whale':'🐋','Eiffel Tower':'🗼'},
+    categories:[
+      {label:'WEIGHT',desc:'Lightest → Heaviest',order:['Ant','Tennis Ball','Blue Whale','Eiffel Tower'],facts:{'Ant':'~1 mg','Tennis Ball':'~58 g','Blue Whale':'~150,000 kg','Eiffel Tower':'~7,300 t'}},
+      {label:'POPULATION',desc:'Fewest → Most',order:['Eiffel Tower','Blue Whale','Tennis Ball','Ant'],facts:{'Eiffel Tower':'1','Blue Whale':'~15,000','Tennis Ball':'~300M/yr','Ant':'~20 quadrillion'}},
+      {label:'AGE',desc:'Newest → Oldest',order:['Eiffel Tower','Tennis Ball','Blue Whale','Ant'],facts:{'Eiffel Tower':'built 1889','Tennis Ball':'inv. ~1870s','Blue Whale':'~5M yrs','Ant':'~100M yrs'}},
+      {label:'MARKET VALUE',desc:'Cheapest → Most Expensive',order:['Ant','Tennis Ball','Blue Whale','Eiffel Tower'],facts:{'Ant':'~$0','Tennis Ball':'~$3','Blue Whale':'~$1M','Eiffel Tower':'~$480B'}},
+    ],matchingPair:[0,3]},
+  {date:'2025-01-03',items:['Strawberry','Basketball','School Bus','Eiffel Tower'],emojis:{'Strawberry':'🍓','Basketball':'🏀','School Bus':'🚌','Eiffel Tower':'🗼'},
+    categories:[
+      {label:'WEIGHT',desc:'Lightest → Heaviest',order:['Strawberry','Basketball','School Bus','Eiffel Tower'],facts:{'Strawberry':'~12 g','Basketball':'~620 g','School Bus':'~10,000 kg','Eiffel Tower':'~7,300 t'}},
+      {label:'HEIGHT',desc:'Shortest → Tallest',order:['Strawberry','Basketball','School Bus','Eiffel Tower'],facts:{'Strawberry':'~3 cm','Basketball':'~24 cm Ø','School Bus':'~3.5 m','Eiffel Tower':'330 m'}},
+      {label:'INVENTION DATE',desc:'Most Recent → Oldest',order:['Basketball','Eiffel Tower','School Bus','Strawberry'],facts:{'Basketball':'inv. 1891','Eiffel Tower':'built 1889','School Bus':'1827','Strawberry':'~1300s'}},
+      {label:'COST PER KG',desc:'Cheapest → Most Expensive/kg',order:['Eiffel Tower','School Bus','Strawberry','Basketball'],facts:{'Eiffel Tower':'~$7/kg','School Bus':'~$10/kg','Strawberry':'~$42/kg','Basketball':'~$48/kg'}},
+    ],matchingPair:[0,1]},
 ];
 
-const FACTS = [
-  [
-    {'A4 Paper':'~5 g','Pencil':'~10 g','Elephant':'~4,000 kg','Moon':'7.3×10²² kg'},
-    {'Pencil':'~19 cm','A4 Paper':'29.7 cm','Elephant':'~6 m long','Moon':'3,474 km Ø'},
-    {'A4 Paper':'~$0.01','Pencil':'~$0.50','Elephant':'~$30,000','Moon':'incalculable'},
-    {'Moon':'~4.5 B yrs','Elephant':'~60 M yrs','A4 Paper':'std. 1975','Pencil':'inv. 1565'},
-  ],
-  [
-    {'Ant':'~1 mg','Tennis Ball':'~58 g','Blue Whale':'~150,000 kg','Eiffel Tower':'~7,300 t'},
-    {'Eiffel Tower':'1 original','Blue Whale':'~15,000 alive','Tennis Ball':'~300 M/yr','Ant':'~20 quadrillion'},
-    {'Eiffel Tower':'built 1889','Tennis Ball':'inv. ~1870s','Blue Whale':'~5 M yrs','Ant':'~100 M yrs'},
-    {'Ant':'~$0','Tennis Ball':'~$3','Blue Whale':'~$1 M','Eiffel Tower':'~$480 B'},
-  ],
-  [
-    {'Strawberry':'~12 g','Basketball':'~620 g','School Bus':'~10,000 kg','Eiffel Tower':'~7,300 t'},
-    {'Strawberry':'~3 cm','Basketball':'~24 cm Ø','School Bus':'~3.5 m tall','Eiffel Tower':'330 m'},
-    {'Basketball':'inv. 1891','Eiffel Tower':'built 1889','School Bus':'1827','Strawberry':'~1300s'},
-    {'Eiffel Tower':'~$7/kg','School Bus':'~$10/kg','Strawberry':'~$42/kg','Basketball':'~$48/kg'},
-  ],
-  [
-    {'Golf Ball':'~45 g','Dolphin':'~200 kg','Boeing 747':'~178,000 kg','Burj Khalifa':'~500,000 t'},
-    {'Golf Ball':'4.3 cm Ø','Dolphin':'~3 m','Boeing 747':'~19 m tall','Burj Khalifa':'828 m'},
-    {'Burj Khalifa':'opened 2010','Boeing 747':'first flight 1969','Golf Ball':'inv. ~1400s','Dolphin':'~10 M yrs'},
-    {'Burj Khalifa':'0 km/h','Dolphin':'~60 km/h','Golf Ball':'~290 km/h','Boeing 747':'~988 km/h'},
-  ],
-  [
-    {'Postage Stamp':'~0.2 g','Human Brain':'~1.4 kg','Double Decker Bus':'~12,000 kg','Amazon River':'~10¹⁴ kg'},
-    {'Postage Stamp':'~2.5 cm','Human Brain':'~16 cm','Double Decker Bus':'~10 m','Amazon River':'6,992 km'},
-    {'Postage Stamp':'~20 °C','Amazon River':'~28 °C','Human Brain':'~37 °C','Double Decker Bus':'~90 °C'},
-    {'Double Decker Bus':'~1895','Postage Stamp':'1840','Human Brain':'~300 k yrs','Amazon River':'~11 M yrs'},
-  ],
-  [
-    {'Snowflake':'~0.003 mg','Violin':'~400 g','Rocket':'~2.9 M kg','Amazon Rainforest':'~200 B t'},
-    {'Snowflake':'~1–5 mm','Violin':'~60 cm','Rocket':'~110 m','Amazon Rainforest':'~3,300 km wide'},
-    {'Snowflake':'≤ 0 °C','Violin':'~20 °C','Amazon Rainforest':'~27 °C','Rocket':'~3,300 °C'},
-    {'Amazon Rainforest':'0 km/h','Violin':'~3.6 km/h','Snowflake':'~5 km/h','Rocket':'~28,000 km/h'},
-  ],
+const DEFAULT_P3_PUZZLES = [
+  {date:'2025-01-01',theme:'Famous Threes',
+    groups:[
+      {name:'Tom Hanks Movies',items:['Cast Away','Forrest Gump','The Green Mile']},
+      {name:'Ed Sheeran Songs',items:['Shape of You','Bad Habits','Perfect']},
+      {name:'Planets with Rings',items:['Saturn','Jupiter','Uranus']},
+    ]},
 ];
 
-const EMOJIS = [
-  {'A4 Paper':'📄','Pencil':'✏️','Elephant':'🐘','Moon':'🌙'},
-  {'Ant':'🐜','Tennis Ball':'🎾','Blue Whale':'🐋','Eiffel Tower':'🗼'},
-  {'Strawberry':'🍓','Basketball':'🏀','School Bus':'🚌','Eiffel Tower':'🗼'},
-  {'Golf Ball':'⛳','Dolphin':'🐬','Boeing 747':'✈️','Burj Khalifa':'🏗️'},
-  {'Postage Stamp':'📮','Human Brain':'🧠','Double Decker Bus':'🚎','Amazon River':'🌊'},
-  {'Snowflake':'❄️','Violin':'🎻','Rocket':'🚀','Amazon Rainforest':'🌿'},
+const DEFAULT_BTL_PUZZLES = [
+  {date:'2025-01-01',category:'Speed in km/h',
+    items:['Snail','Walking Pace','Cycling','Car','Train','Plane','Rocket'],
+    emojis:['🐌','🚶','🚴','🚗','🚆','✈️','🚀'],
+    values:['0.05 km/h','5 km/h','25 km/h','120 km/h','300 km/h','900 km/h','28,000 km/h']},
 ];
 
-const MAX_CHECKS = 3;
-const CAT_COLORS = ['var(--c0)','var(--c1)','var(--c2)','var(--c3)'];
-const WEBSITE_URL  = 'https://seanpri222.github.io/RANK4/';
-const WEBSITE_DISP = 'seanpri222.github.io/RANK4';
+const DEFAULT_BINGO_PUZZLES = [
+  {date:'2025-01-01',category:'Animals',
+    grid:['Native to Australia','Mammal','Reptile','Has Gills','Lays Eggs','4 Legs','Lives in Ocean','Nocturnal','Has Fur','Can Fly','Endangered','Venomous','Warm-Blooded','Apex Predator','Has Tail','Social Animal'],
+    prompts:[
+      {text:'A kangaroo',matches:[0,1,4,8,14]},
+      {text:'A great white shark',matches:[3,6,13,14]},
+      {text:'A crocodile',matches:[2,4,5,11,14]},
+      {text:'A bat',matches:[1,4,7,8,9,14]},
+      {text:'An eagle',matches:[4,9,12,14]},
+      {text:'A blue whale',matches:[1,4,6,8,10,12,14,15]},
+      {text:'A platypus',matches:[0,1,4,8,11,14]},
+      {text:'A lion',matches:[1,5,8,12,13,14,15]},
+      {text:'A cobra',matches:[2,4,11,14]},
+      {text:'A penguin',matches:[1,4,8,10,12,14]},
+      {text:'A frog',matches:[2,4,5,14]},
+      {text:'A firefly',matches:[4,7,9,14]},
+      {text:'A dolphin',matches:[1,6,8,12,14,15]},
+      {text:'A koala',matches:[0,1,7,8,10,14]},
+      {text:'A honeybee',matches:[4,9,14,15]},
+      {text:'A Komodo dragon',matches:[2,5,11,14]},
+      {text:'A cheetah',matches:[1,5,8,12,13,14]},
+      {text:'A salmon',matches:[3,4,14]},
+      {text:'An owl',matches:[4,7,9,12,14]},
+      {text:'A tarantula',matches:[7,11,14]},
+      {text:'A wolf',matches:[1,5,8,12,13,14,15]},
+      {text:'A sea turtle',matches:[2,4,6,10,14]},
+      {text:'A gorilla',matches:[1,5,8,10,12,14,15]},
+      {text:'A flamingo',matches:[4,9,12,14,15]},
+      {text:'A polar bear',matches:[1,5,8,10,12,13,14]},
+      {text:'A clownfish',matches:[3,6,14]},
+      {text:'A tiger',matches:[1,5,8,12,13,14]},
+      {text:'A python',matches:[2,4,14]},
+      {text:'A rhino',matches:[1,5,8,10,12,14]},
+      {text:'A hummingbird',matches:[4,9,12,14]},
+      {text:'A meerkat',matches:[1,5,8,12,14,15]},
+    ]},
+];
 
-let puzzle, state, pidx;
-
-function getPuzzleIdx() {
-  const d = new Date();
-  return Math.floor((d - new Date(d.getFullYear(),0,0)) / 86400000) % PUZZLES.length;
+// ─── Storage helpers ───
+function getStored(key,fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback;}catch(e){return fallback;}}
+function setStored(key,val){try{localStorage.setItem(key,JSON.stringify(val));}catch(e){}}
+function getR4Puzzles(){return getStored('r4_puzzles',DEFAULT_R4_PUZZLES);}
+function getP3Puzzles(){return getStored('p3_puzzles',DEFAULT_P3_PUZZLES);}
+function getBtlPuzzles(){return getStored('btl_puzzles',DEFAULT_BTL_PUZZLES);}
+function getBingoPuzzles(){return getStored('bingo_puzzles',DEFAULT_BINGO_PUZZLES);}
+function getTodayStr(){return new Date().toISOString().slice(0,10);}
+function getPuzzleForToday(puzzles){
+  const today=getTodayStr();
+  const exact=puzzles.find(p=>p.date===today);
+  if(exact)return{puzzle:exact,idx:puzzles.indexOf(exact)};
+  const d=new Date();
+  const idx=Math.floor((d-new Date(d.getFullYear(),0,0))/86400000)%puzzles.length;
+  return{puzzle:puzzles[idx],idx};
 }
 
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length-1; i>0; i--) {
-    const j = Math.floor(Math.random()*(i+1));
-    [a[i],a[j]] = [a[j],a[i]];
-  }
-  if (a.join() === arr.join()) [a[0],a[1]] = [a[1],a[0]];
-  return a;
+// ─── Page system ───
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='rank4'&&!r4State.initialized)initR4();
+  if(id==='perfect3'&&!p3State.initialized)initP3();
+  if(id==='buildline'&&!btlState.initialized)initBtl();
+  if(id==='bingo'&&!bingoState.initialized)initBingo();
+  if(id==='archive')renderArchive();
+  if(id==='admin')renderAdminLists();
 }
 
-function initGame() {
-  pidx = getPuzzleIdx();
-  puzzle = PUZZLES[pidx];
-  const emojis = EMOJIS[pidx] || {};
-  const now = new Date();
-
-  const dateLong = now.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}).toUpperCase();
-  document.getElementById('headerDate').textContent =
-    now.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'}).toUpperCase();
-  document.getElementById('resultsDate').textContent     = dateLong;
-  document.getElementById('resultsDateFail').textContent = dateLong;
-
-  document.getElementById('heroCards').innerHTML = puzzle.items.map(item => `
-    <div class="hero-card">
-      <span class="hero-card-emoji">${emojis[item]||'📦'}</span>
-      <span class="hero-card-name">${item}</span>
-    </div>`).join('');
-
-  state = {
-    userOrder:   puzzle.categories.map(c => shuffle(c.order)),
-    lockedItems: Array(4).fill(null).map(() => new Set()),
-    catCorrect:  Array(4).fill(false),
-    checksUsed:  0,
-    pairSel:     [],
-    pairLinked:  false,
-    gameOver:    false,
-  };
-
-  updateProgress();
-  renderPairPills();
-  renderCats();
+// ─── Admin ───
+function adminLogin(){
+  const pw=document.getElementById('adminPwInput').value;
+  if(pw===ADMIN_PASSWORD){
+    document.getElementById('adminLoginWrap').style.display='none';
+    document.getElementById('adminPanelWrap').style.display='block';
+    renderAdminLists();
+    const today=getTodayStr();
+    ['r4AdminDate','p3AdminDate','btlAdminDate','bingoAdminDate'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=today;});
+  }else{document.getElementById('adminErr').textContent='Incorrect password.';setTimeout(()=>document.getElementById('adminErr').textContent='',2000);}
 }
-
-function updateProgress() {
-  document.getElementById('progressPips').innerHTML =
-    state.catCorrect.map((done,i) => `<div class="pip${done?' lit-'+i:''}"></div>`).join('');
-  const used = state.checksUsed;
-  document.getElementById('checkPips').innerHTML =
-    Array.from({length:MAX_CHECKS}).map((_,i) =>
-      `<div class="${i < used ? 'check-pip used' : 'check-pip remaining'}"></div>`
-    ).join('');
-  document.getElementById('pairPip').className = 'pair-pip' + (state.pairLinked ? ' lit' : '');
+function switchAdminTab(tab){
+  document.querySelectorAll('.admin-tab').forEach((t,i)=>{const tabs=['rank4','perfect3','buildline','bingo'];t.classList.toggle('active',tabs[i]===tab);});
+  document.querySelectorAll('.admin-tab-content').forEach(c=>c.classList.remove('active'));
+  document.getElementById('admintab-'+tab).classList.add('active');
 }
+function showSaveMsg(id){const el=document.getElementById(id);el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2500);}
 
-function renderPairPills() {
-  const [pa,pb] = puzzle.matchingPair;
-  document.getElementById('pairPills').innerHTML = puzzle.categories.map((cat,ci) => {
-    const isLinked = state.pairLinked && (ci===pa || ci===pb);
-    const isSel    = state.pairSel.includes(ci);
-    let cls = `pair-pill pp${ci}`;
-    if (isLinked) cls += ' linked-done';
-    else if (isSel) cls += ' sel';
-    const dis = (state.pairLinked || state.gameOver) ? 'disabled' : '';
-    return `<button class="${cls}" onclick="togglePill(${ci})" ${dis}>${cat.label}</button>`;
-  }).join('');
-  document.getElementById('btnLink').disabled =
-    state.pairSel.length !== 2 || state.pairLinked || state.gameOver;
-}
-
-function togglePill(ci) {
-  if (state.pairLinked || state.gameOver) return;
-  const idx = state.pairSel.indexOf(ci);
-  if (idx > -1) state.pairSel.splice(idx,1);
-  else if (state.pairSel.length < 2) state.pairSel.push(ci);
-  else state.pairSel = [state.pairSel[1], ci];
-  setPairMsg('Select two categories above','');
-  document.getElementById('pairWrongReveal').classList.remove('show');
-  renderPairPills();
-}
-
-function linkPair() {
-  if (state.pairSel.length !== 2 || state.pairLinked || state.gameOver) return;
-  const [a,b] = state.pairSel;
-  const ua = state.userOrder[a].join(',');
-  const ub = state.userOrder[b].join(',');
-
-  // ── FIX 1: orders don't need to match each other — we check correctness directly
-  // The two selected categories must each match the correct pair order
-  const [pa,pb] = puzzle.matchingPair;
-  const correct = (a===pa && b===pb) || (a===pb && b===pa);
-
-  if (correct) {
-    state.pairLinked = true;
-    state.gameOver   = true;
-
-    // ── FIX 1 (continued): Auto-mark all correct categories even if Check wasn't used
-    // If the pair orders in the user's arrangement match the correct order, award stars
-    puzzle.categories.forEach((cat, ci) => {
-      if (!state.catCorrect[ci]) {
-        const userArr = state.userOrder[ci];
-        const corrArr = cat.order;
-        if (userArr.join(',') === corrArr.join(',')) {
-          state.catCorrect[ci] = true;
-        }
-      }
-    });
-
-    updateProgress();
-    setTimeout(() => showResults(true), 600);
-  } else {
-    state.gameOver = true;
-    showWrongPairReveal(a, b);
-    setPairMsg("Wrong pair — game over!", 'err');
-    shakePills([a,b]);
-    state.pairSel = [];
-    renderPairPills();
-    setTimeout(() => showResults(false), 1800);
-  }
-}
-
-function showWrongPairReveal(a, b) {
-  const catA = puzzle.categories[a];
-  const catB = puzzle.categories[b];
-  const userA = state.userOrder[a];
-  const userB = state.userOrder[b];
-  const correctA = catA.order;
-  const correctB = catB.order;
-
-  function buildRow(catLabel, userOrder, correctOrder, catIdx) {
-    const tiles = userOrder.map((item, pos) => {
-      const wrong = correctOrder.indexOf(item) !== pos;
-      return `<span class="pwt${wrong ? ' wrong' : ''}">${item}</span>${pos < userOrder.length-1 ? '<span class="pwr-arrow">→</span>' : ''}`;
-    }).join('');
-    return `<div class="pair-wrong-row">
-      <div class="pair-wrong-label" style="color:${CAT_COLORS[catIdx]}">${catLabel}</div>
-      <div class="pair-wrong-tiles">${tiles}</div>
-    </div>`;
-  }
-
-  function getSwapHint(userA, correctA, userB, correctB) {
-    const diffsA = userA.reduce((acc,item,i) => correctA.indexOf(item)!==i ? acc.concat(item) : acc, []);
-    const diffsB = userB.reduce((acc,item,i) => correctB.indexOf(item)!==i ? acc.concat(item) : acc, []);
-    const allDiffs = [...new Set([...diffsA,...diffsB])];
-    if (allDiffs.length === 0) return '';
-    return `💡 Tip: Items in the wrong position — ${allDiffs.slice(0,2).join(' and ')} need moving`;
-  }
-
-  document.getElementById('pairWrongRows').innerHTML =
-    buildRow(catA.label, userA, correctA, a) + buildRow(catB.label, userB, correctB, b);
-  const hint = getSwapHint(userA, correctA, userB, correctB);
-  const hintEl = document.getElementById('swapHint');
-  hintEl.textContent = hint;
-  hintEl.style.display = hint ? '' : 'none';
-  document.getElementById('pairWrongReveal').classList.add('show');
-}
-
-function setPairMsg(text, type) {
-  const el = document.getElementById('pairMsg');
-  el.textContent = text;
-  el.className = 'pair-msg' + (type ? ' '+type : '');
-}
-
-function shakePills(indices) {
-  const btns = document.getElementById('pairPills').querySelectorAll('.pair-pill');
-  indices.forEach(ci => {
-    if (btns[ci]) {
-      btns[ci].style.animation = 'shake 0.35s ease';
-      setTimeout(() => { if(btns[ci]) btns[ci].style.animation = ''; }, 400);
-    }
+function saveR4Puzzle(){
+  const date=document.getElementById('r4AdminDate').value;
+  const itemsRaw=document.getElementById('r4AdminItems').value;
+  const emojisRaw=document.getElementById('r4AdminEmojis').value;
+  const pairRaw=document.getElementById('r4AdminPair').value;
+  if(!date||!itemsRaw||!pairRaw){alert('Please fill in Date, Items, and Matching Pair');return;}
+  const items=itemsRaw.split(',').map(s=>s.trim()).filter(Boolean);
+  const emojiArr=emojisRaw.split(',').map(s=>s.trim());
+  const emojis={};items.forEach((item,i)=>{emojis[item]=emojiArr[i]||'📦';});
+  const pairNums=pairRaw.split(',').map(s=>parseInt(s.trim())).filter(n=>!isNaN(n));
+  const categories=[0,1,2,3].map(i=>{
+    const name=document.getElementById(`r4c${i}name`).value.trim().toUpperCase();
+    const desc=document.getElementById(`r4c${i}desc`).value.trim();
+    const order=document.getElementById(`r4c${i}order`).value.split(',').map(s=>s.trim()).filter(Boolean);
+    const factsRaw=document.getElementById(`r4c${i}facts`).value;
+    const factArr=factsRaw.split(',').map(s=>s.trim());
+    const facts={};order.forEach((item,j)=>{facts[item]=factArr[j]||'';});
+    return{label:name,desc,order,facts};
   });
+  const puzzle={date,items,emojis,categories,matchingPair:pairNums};
+  const puzzles=getR4Puzzles();
+  const existIdx=puzzles.findIndex(p=>p.date===date);
+  if(existIdx>-1)puzzles[existIdx]=puzzle;else puzzles.push(puzzle);
+  puzzles.sort((a,b)=>a.date.localeCompare(b.date));
+  setStored('r4_puzzles',puzzles);renderAdminLists();showSaveMsg('r4SaveMsg');r4State.initialized=false;
 }
 
-// ─── RENDER CATEGORIES ─────────────────────────────────────────
-function renderCats() {
-  const list = document.getElementById('catsList');
-  list.innerHTML = '';
-  puzzle.categories.forEach((cat, ci) => {
-    const correct    = state.catCorrect[ci];
-    const locked     = state.lockedItems[ci];
-    const checksLeft = MAX_CHECKS - state.checksUsed;
+function saveP3Puzzle(){
+  const date=document.getElementById('p3AdminDate').value;
+  const theme=document.getElementById('p3AdminTheme').value.trim();
+  if(!date||!theme){alert('Please fill in Date and Theme');return;}
+  const groups=[0,1,2].map(i=>({name:document.getElementById(`p3g${i}name`).value.trim(),items:document.getElementById(`p3g${i}items`).value.split(',').map(s=>s.trim()).filter(Boolean)}));
+  const puzzle={date,theme,groups};
+  const puzzles=getP3Puzzles();
+  const existIdx=puzzles.findIndex(p=>p.date===date);
+  if(existIdx>-1)puzzles[existIdx]=puzzle;else puzzles.push(puzzle);
+  setStored('p3_puzzles',puzzles);renderAdminLists();showSaveMsg('p3SaveMsg');p3State.initialized=false;
+}
 
-    let checkLabel = correct ? '✓ Correct' :
-                     checksLeft > 0 ? `Check Order (${checksLeft} left)` : 'No checks left';
+function saveBtlPuzzle(){
+  const date=document.getElementById('btlAdminDate').value;
+  const category=document.getElementById('btlAdminCat').value.trim();
+  if(!date||!category){alert('Please fill in Date and Category');return;}
+  const items=document.getElementById('btlAdminItems').value.split(',').map(s=>s.trim()).filter(Boolean);
+  const emojis=document.getElementById('btlAdminEmojis').value.split(',').map(s=>s.trim());
+  const values=document.getElementById('btlAdminValues').value.split(',').map(s=>s.trim());
+  const puzzle={date,category,items,emojis,values};
+  const puzzles=getBtlPuzzles();
+  const existIdx=puzzles.findIndex(p=>p.date===date);
+  if(existIdx>-1)puzzles[existIdx]=puzzle;else puzzles.push(puzzle);
+  setStored('btl_puzzles',puzzles);renderAdminLists();showSaveMsg('btlSaveMsg');btlState.initialized=false;
+}
 
-    const block = document.createElement('div');
-    block.className = `cat-block b${ci}${correct ? ' correct' : ''}`;
-    block.id = `cat-${ci}`;
-    block.innerHTML = `
-      <div class="cat-topbar"></div>
+function saveBingoPuzzle(){
+  const date=document.getElementById('bingoAdminDate').value;
+  const category=document.getElementById('bingoAdminCat').value.trim();
+  if(!date||!category){alert('Please fill in Date and Category');return;}
+  const grid=document.getElementById('bingoAdminGrid').value.split(',').map(s=>s.trim()).filter(Boolean);
+  const promptLines=document.getElementById('bingoAdminPrompts').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  const prompts=promptLines.map(line=>{
+    const parts=line.split('|').map(s=>s.trim());
+    const text=parts[0]||'';
+    const matchStr=parts[1]||'';
+    const matches=matchStr?matchStr.split(',').map(s=>parseInt(s.trim())).filter(n=>!isNaN(n)):[];
+    return{text,matches};
+  }).filter(p=>p.text);
+  const puzzle={date,category,grid,prompts};
+  const puzzles=getBingoPuzzles();
+  const existIdx=puzzles.findIndex(p=>p.date===date);
+  if(existIdx>-1)puzzles[existIdx]=puzzle;else puzzles.push(puzzle);
+  setStored('bingo_puzzles',puzzles);renderAdminLists();showSaveMsg('bingoSaveMsg');bingoState.initialized=false;
+}
+
+function deleteAdminPuzzle(storageKey,date,listFn){
+  if(!confirm(`Delete puzzle for ${date}?`))return;
+  const puzzles=getStored(storageKey,[]).filter(p=>p.date!==date);
+  setStored(storageKey,puzzles);listFn();
+}
+
+function renderAdminLists(){
+  renderAdminList('r4AdminList',getR4Puzzles(),'r4_puzzles',p=>p.items.join(', '),renderAdminLists);
+  renderAdminList('p3AdminList',getP3Puzzles(),'p3_puzzles',p=>p.theme,renderAdminLists);
+  renderAdminList('btlAdminList',getBtlPuzzles(),'btl_puzzles',p=>p.category,renderAdminLists);
+  renderAdminList('bingoAdminList',getBingoPuzzles(),'bingo_puzzles',p=>p.category,renderAdminLists);
+}
+
+function renderAdminList(elId,puzzles,storageKey,labelFn,refresh){
+  const el=document.getElementById(elId);if(!el)return;
+  if(!puzzles.length){el.innerHTML='<div style="font-size:0.75rem;color:var(--muted);padding:10px">No puzzles saved yet.</div>';return;}
+  el.innerHTML=[...puzzles].reverse().map(p=>`
+    <div class="admin-list-item">
+      <div class="admin-list-item-info"><div class="admin-list-date">${p.date}</div><div class="admin-list-name">${labelFn(p)}</div></div>
+      <button class="btn-admin-del" onclick="deleteAdminPuzzle('${storageKey}','${p.date}',renderAdminLists)">Delete</button>
+    </div>`).join('');
+}
+
+// ─── Archive ───
+function renderArchive(){
+  const el=document.getElementById('archiveContent');
+  const puzzles=getR4Puzzles();
+  const today=getTodayStr();
+  const sorted=[...puzzles].sort((a,b)=>b.date.localeCompare(a.date));
+  el.innerHTML=`<div style="font-size:0.75rem;color:var(--muted);margin-bottom:16px">Play previous Rank 4 puzzles.</div>
+    <div class="archive-grid">${sorted.map((p,i)=>{const isToday=p.date===today;
+      return`<div class="archive-item" onclick="loadR4Archive('${p.date}')">
+        <div class="archive-num">#${sorted.length-i}</div>
+        <div class="archive-info"><div class="archive-date">${p.date}</div><div class="archive-items-preview">${p.items.join(' · ')}</div></div>
+        <div class="archive-badge ${isToday?'today':''}">${isToday?'Today':'Play'}</div>
+      </div>`;}).join('')}</div>`;
+}
+
+function loadR4Archive(date){
+  const puzzle=getR4Puzzles().find(p=>p.date===date);if(!puzzle)return;
+  r4State.initialized=false;r4ArchivePuzzle=puzzle;showPage('rank4');initR4(puzzle);r4ArchivePuzzle=null;
+}
+let r4ArchivePuzzle=null;
+
+// ═══════════════════════════════════════════════════════
+// RANK 4
+// ═══════════════════════════════════════════════════════
+const R4_CAT_COLORS=['var(--c0)','var(--c1)','var(--c2)','var(--c3)'];
+const R4_MAX_CHECKS=3;
+let r4Puzzle,r4State={initialized:false};
+
+function initR4(overridePuzzle){
+  const puzzles=getR4Puzzles();
+  r4Puzzle=overridePuzzle||getPuzzleForToday(puzzles).puzzle;
+  r4State={initialized:true,userOrder:r4Puzzle.categories.map(c=>shuffle([...c.order])),lockedItems:Array(4).fill(null).map(()=>new Set()),catCorrect:Array(4).fill(false),checksUsed:0,pairSel:[],pairLinked:false,gameOver:false};
+  const emojis=r4Puzzle.emojis||{};
+  document.getElementById('r4HeroCards').innerHTML=r4Puzzle.items.map(item=>`<div class="r4-hero-card"><span class="r4-card-emoji">${emojis[item]||'📦'}</span><span class="r4-card-name">${item}</span></div>`).join('');
+  ['r4Hero','r4Progress','r4PairBox','r4CatsList'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='';});
+  document.getElementById('r4Results').classList.remove('show');
+  const now=new Date();const dl=now.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}).toUpperCase();
+  document.getElementById('r4ResDate').textContent=dl;document.getElementById('r4ResDateFail').textContent=dl;
+  r4UpdateProgress();r4RenderPairPills();r4RenderCats();
+  setTimeout(()=>document.getElementById('r4HelpOverlay').classList.add('show'),400);
+}
+
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}if(a.join()===arr.join())[a[0],a[1]]=[a[1],a[0]];return a;}
+
+function r4UpdateProgress(){
+  document.getElementById('r4Pips').innerHTML=r4State.catCorrect.map((d,i)=>`<div class="pip${d?' lit-'+i:''}"></div>`).join('');
+  const used=r4State.checksUsed;
+  document.getElementById('r4CheckPips').innerHTML=Array.from({length:R4_MAX_CHECKS}).map((_,i)=>`<div class="${i<used?'check-pip used':'check-pip remaining'}"></div>`).join('');
+  document.getElementById('r4PairPip').className='pair-pip'+(r4State.pairLinked?' lit':'');
+}
+
+function r4RenderPairPills(){
+  const[pa,pb]=r4Puzzle.matchingPair;
+  document.getElementById('r4PairPills').innerHTML=r4Puzzle.categories.map((cat,ci)=>{
+    const isLinked=r4State.pairLinked&&(ci===pa||ci===pb);
+    const isSel=r4State.pairSel.includes(ci);
+    let cls=`pair-pill pp${ci}`;
+    if(isLinked)cls+=' linked-done';else if(isSel)cls+=' sel';
+    const dis=(r4State.pairLinked||r4State.gameOver)?'disabled':'';
+    return`<button class="${cls}" onclick="r4TogglePill(${ci})" ${dis}>${cat.label}</button>`;
+  }).join('');
+  document.getElementById('r4BtnLink').disabled=r4State.pairSel.length!==2||r4State.pairLinked||r4State.gameOver;
+}
+
+function r4TogglePill(ci){
+  if(r4State.pairLinked||r4State.gameOver)return;
+  const idx=r4State.pairSel.indexOf(ci);
+  if(idx>-1)r4State.pairSel.splice(idx,1);
+  else if(r4State.pairSel.length<2)r4State.pairSel.push(ci);
+  else r4State.pairSel=[r4State.pairSel[1],ci];
+  r4SetPairMsg('Select two categories above','');
+  document.getElementById('r4WrongReveal').classList.remove('show');
+  r4RenderPairPills();
+}
+
+function r4LinkPair(){
+  if(r4State.pairSel.length!==2||r4State.pairLinked||r4State.gameOver)return;
+  const[a,b]=r4State.pairSel;const[pa,pb]=r4Puzzle.matchingPair;
+  const correct=(a===pa&&b===pb)||(a===pb&&b===pa);
+  if(correct){
+    r4State.pairLinked=true;r4State.gameOver=true;
+    r4Puzzle.categories.forEach((cat,ci)=>{if(!r4State.catCorrect[ci]&&r4State.userOrder[ci].join(',')===cat.order.join(','))r4State.catCorrect[ci]=true;});
+    r4UpdateProgress();setTimeout(()=>r4ShowResults(true),600);
+  }else{
+    r4State.gameOver=true;r4ShowWrongReveal(a,b);r4SetPairMsg('Wrong pair — game over!','err');
+    r4ShakePills([a,b]);r4State.pairSel=[];r4RenderPairPills();setTimeout(()=>r4ShowResults(false),1800);
+  }
+}
+
+function r4ShowWrongReveal(a,b){
+  const buildRow=(cat,userOrder,catIdx)=>{
+    const tiles=userOrder.map((item,pos)=>{const wrong=cat.order.indexOf(item)!==pos;return`<span class="pwt${wrong?' wrong':''}">${item}</span>${pos<userOrder.length-1?'<span class="pwr-arrow">→</span>':''}`}).join('');
+    return`<div class="pair-wrong-row"><div class="pair-wrong-label" style="color:${R4_CAT_COLORS[catIdx]}">${cat.label}</div><div class="pair-wrong-tiles">${tiles}</div></div>`;
+  };
+  document.getElementById('r4WrongRows').innerHTML=buildRow(r4Puzzle.categories[a],r4State.userOrder[a],a)+buildRow(r4Puzzle.categories[b],r4State.userOrder[b],b);
+  const allDiffs=[...new Set([...r4State.userOrder[a].filter((item,i)=>r4Puzzle.categories[a].order.indexOf(item)!==i),...r4State.userOrder[b].filter((item,i)=>r4Puzzle.categories[b].order.indexOf(item)!==i)])];
+  const hint=allDiffs.length?`💡 Tip: ${allDiffs.slice(0,2).join(' and ')} need moving`:'';
+  const hEl=document.getElementById('r4SwapHint');hEl.textContent=hint;hEl.style.display=hint?'':'none';
+  document.getElementById('r4WrongReveal').classList.add('show');
+}
+
+function r4SetPairMsg(text,type){const el=document.getElementById('r4PairMsg');el.textContent=text;el.className='pair-msg'+(type?' '+type:'');}
+function r4ShakePills(indices){const btns=document.getElementById('r4PairPills').querySelectorAll('.pair-pill');indices.forEach(ci=>{if(btns[ci]){btns[ci].style.animation='shake 0.35s ease';setTimeout(()=>{if(btns[ci])btns[ci].style.animation='';},400);}});}
+
+function r4RenderCats(){
+  const list=document.getElementById('r4CatsList');list.innerHTML='';
+  r4Puzzle.categories.forEach((cat,ci)=>{
+    const correct=r4State.catCorrect[ci];const locked=r4State.lockedItems[ci];
+    const checksLeft=R4_MAX_CHECKS-r4State.checksUsed;
+    const checkLabel=correct?'✓ Correct':checksLeft>0?`Check Order (${checksLeft} left)`:'No checks left';
+    const block=document.createElement('div');
+    block.className=`cat-block b${ci}${correct?' correct':''}`;block.id=`r4cat-${ci}`;
+    block.innerHTML=`<div class="cat-topbar"></div>
       <div class="cat-header">
-        <div class="cat-header-left">
-          <div class="cat-swatch"></div>
-          <div>
-            <div class="cat-name">${cat.label}</div>
-            <div class="cat-desc">${cat.desc}</div>
-          </div>
-        </div>
+        <div class="cat-header-left"><div class="cat-swatch"></div><div><div class="cat-name">${cat.label}</div><div class="cat-desc">${cat.desc}</div></div></div>
         <div class="cat-header-right">
           <div class="star-slot${correct?' lit':''}">⭐</div>
-          <button class="btn-check${!correct&&checksLeft===0?' no-checks':''}" id="checkbtn-${ci}"
-            ${correct||state.gameOver||checksLeft===0?'disabled':''} onclick="checkOrder(${ci})">
-            ${checkLabel}
-          </button>
+          <button class="btn-check${!correct&&checksLeft===0?' no-checks':''}" id="r4checkbtn-${ci}"
+            ${correct||r4State.gameOver||checksLeft===0?'disabled':''} onclick="r4CheckOrder(${ci})">${checkLabel}</button>
         </div>
       </div>
-      <div class="rank-row" id="rankrow-${ci}">
-        ${state.userOrder[ci].map((item, ri) => {
-          const isLocked = locked.has(item);
-          const fm       = FACTS[pidx] && FACTS[pidx][ci];
-          const fact     = fm ? (fm[item]||'') : '';
-          const tileClass = isLocked ? 'rank-tile locked' : 'rank-tile';
-          return `
-          ${ri > 0 ? '<div class="rank-arrow">→</div>' : ''}
+      <div class="rank-row" id="r4rankrow-${ci}">
+        ${r4State.userOrder[ci].map((item,ri)=>{const isLocked=locked.has(item);const fact=(cat.facts&&cat.facts[item])||'';return`
+          ${ri>0?'<div class="rank-arrow">→</div>':''}
           <div class="rank-entry">
             <div class="rank-num">${ri+1}${['st','nd','rd','th'][ri]}</div>
-            <div class="${tileClass}" data-ci="${ci}" data-ri="${ri}"${isLocked?' data-locked="1"':''}>${item}</div>
-            <div class="item-fact${correct&&fact?' revealed':''}">
-              ${fact}
-            </div>
-          </div>`;
-        }).join('')}
+            <div class="${isLocked?'rank-tile locked':'rank-tile'}" data-ci="${ci}" data-ri="${ri}"${isLocked?' data-locked="1"':''}>${item}</div>
+            <div class="item-fact${correct&&fact?' revealed':''}">${fact}</div>
+          </div>`;}).join('')}
       </div>`;
     list.appendChild(block);
-    if (!correct && !state.gameOver) setupInteraction(ci);
+    if(!correct&&!r4State.gameOver)r4SetupInteraction(ci);
   });
 }
 
-// ─── DRAG & DROP — unified mouse + touch ───────────────────────
-function setupInteraction(ci) {
-  const row = document.getElementById(`rankrow-${ci}`);
-  if (!row) return;
-
-  let ghost = null;
-  let fromRi = null;
-  let activeTouch = null;
-  let isDragging = false;
-  let startX, startY;
-  const DRAG_THRESHOLD = 8;
-
-  function getTiles() { return Array.from(row.querySelectorAll('.rank-tile')); }
-
-  function createGhost(text, x, y) {
-    ghost = document.createElement('div');
-    ghost.className = 'drag-ghost';
-    ghost.textContent = text;
-    document.body.appendChild(ghost);
-    moveGhost(x, y);
+function r4SetupInteraction(ci){
+  const row=document.getElementById(`r4rankrow-${ci}`);if(!row)return;
+  let ghost=null,fromRi=null,activeTouch=null,isDragging=false,startX,startY;
+  const THRESH=8;
+  function getTiles(){return Array.from(row.querySelectorAll('.rank-tile'));}
+  function createGhost(text,x,y){ghost=document.createElement('div');ghost.className='drag-ghost';ghost.textContent=text;document.body.appendChild(ghost);moveGhost(x,y);}
+  function moveGhost(x,y){if(!ghost)return;ghost.style.left=(x-ghost.offsetWidth/2)+'px';ghost.style.top=(y-ghost.offsetHeight/2)+'px';}
+  function removeGhost(){if(ghost){ghost.remove();ghost=null;}}
+  function getTileAt(x,y){return document.elementsFromPoint(x,y).find(el=>el.classList.contains('rank-tile')&&parseInt(el.dataset.ci)===ci)||null;}
+  function highlight(t){getTiles().forEach(tt=>tt.classList.remove('drag-over'));if(t)t.classList.add('drag-over');}
+  function doSwap(toRi){
+    if(toRi===fromRi||toRi===null)return;
+    const fi=r4State.userOrder[ci][fromRi],ti=r4State.userOrder[ci][toRi];
+    if(r4State.lockedItems[ci].has(fi)||r4State.lockedItems[ci].has(ti))return;
+    [r4State.userOrder[ci][fromRi],r4State.userOrder[ci][toRi]]=[ti,fi];r4RenderCats();r4RenderPairPills();
   }
-
-  function moveGhost(x, y) {
-    if (!ghost) return;
-    ghost.style.left = (x - ghost.offsetWidth/2) + 'px';
-    ghost.style.top  = (y - ghost.offsetHeight/2) + 'px';
-  }
-
-  function removeGhost() {
-    if (ghost) { ghost.remove(); ghost = null; }
-  }
-
-  function getTileAt(x, y) {
-    const els = document.elementsFromPoint(x, y);
-    return els.find(el => el.classList.contains('rank-tile') && parseInt(el.dataset.ci) === ci) || null;
-  }
-
-  function highlightTarget(targetTile) {
-    getTiles().forEach(t => t.classList.remove('drag-over'));
-    if (targetTile) targetTile.classList.add('drag-over');
-  }
-
-  function doSwap(toRi) {
-    if (toRi === fromRi || toRi === null) return;
-    const fromItem = state.userOrder[ci][fromRi];
-    const toItem   = state.userOrder[ci][toRi];
-    if (state.lockedItems[ci].has(fromItem) || state.lockedItems[ci].has(toItem)) return;
-    [state.userOrder[ci][fromRi], state.userOrder[ci][toRi]] =
-      [state.userOrder[ci][toRi], state.userOrder[ci][fromRi]];
-    renderCats(); renderPairPills();
-  }
-
-  // ── MOUSE EVENTS ──
-  getTiles().forEach(tile => {
-    tile.addEventListener('mousedown', e => {
-      if (e.button !== 0) return;
-      fromRi = parseInt(tile.dataset.ri);
-      startX = e.clientX; startY = e.clientY;
-      isDragging = false;
-
-      function onMouseMove(e) {
-        const dx = e.clientX - startX, dy = e.clientY - startY;
-        if (!isDragging && Math.sqrt(dx*dx+dy*dy) > DRAG_THRESHOLD) {
-          isDragging = true;
-          tile.classList.add('dragging');
-          createGhost(tile.textContent.trim(), e.clientX, e.clientY);
-        }
-        if (isDragging) {
-          moveGhost(e.clientX, e.clientY);
-          const target = getTileAt(e.clientX, e.clientY);
-          highlightTarget(target !== tile ? target : null);
-        }
-      }
-
-      function onMouseUp(e) {
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
-        if (isDragging) {
-          tile.classList.remove('dragging');
-          getTiles().forEach(t => t.classList.remove('drag-over'));
-          removeGhost();
-          const target = getTileAt(e.clientX, e.clientY);
-          if (target && target !== tile) doSwap(parseInt(target.dataset.ri));
-        }
-        isDragging = false; fromRi = null;
-      }
-
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
+  getTiles().forEach(tile=>{
+    tile.addEventListener('mousedown',e=>{
+      if(e.button!==0)return;fromRi=parseInt(tile.dataset.ri);startX=e.clientX;startY=e.clientY;isDragging=false;
+      function onMove(e){const dx=e.clientX-startX,dy=e.clientY-startY;if(!isDragging&&Math.sqrt(dx*dx+dy*dy)>THRESH){isDragging=true;tile.classList.add('dragging');createGhost(tile.textContent.trim(),e.clientX,e.clientY);}if(isDragging){moveGhost(e.clientX,e.clientY);const t=getTileAt(e.clientX,e.clientY);highlight(t!==tile?t:null);}}
+      function onUp(e){document.removeEventListener('mousemove',onMove);document.removeEventListener('mouseup',onUp);if(isDragging){tile.classList.remove('dragging');getTiles().forEach(t=>t.classList.remove('drag-over'));removeGhost();const t=getTileAt(e.clientX,e.clientY);if(t&&t!==tile)doSwap(parseInt(t.dataset.ri));}isDragging=false;fromRi=null;}
+      document.addEventListener('mousemove',onMove);document.addEventListener('mouseup',onUp);
     });
-  });
-
-  // ── TOUCH EVENTS ──
-  getTiles().forEach(tile => {
-    tile.addEventListener('touchstart', e => {
-      if (activeTouch !== null) return;
-      activeTouch = e.touches[0].identifier;
-      fromRi = parseInt(tile.dataset.ri);
-      const t = e.touches[0];
-      startX = t.clientX; startY = t.clientY;
-      isDragging = false;
-    }, {passive: true});
-
-    tile.addEventListener('touchmove', e => {
-      const touch = Array.from(e.touches).find(t => t.identifier === activeTouch);
-      if (!touch) return;
-      const dx = touch.clientX - startX, dy = touch.clientY - startY;
-      if (!isDragging && Math.sqrt(dx*dx+dy*dy) > DRAG_THRESHOLD) {
-        isDragging = true;
-        tile.classList.add('dragging');
-        createGhost(tile.textContent.trim(), touch.clientX, touch.clientY);
-      }
-      if (isDragging) {
-        e.preventDefault();
-        moveGhost(touch.clientX, touch.clientY);
-        const target = getTileAt(touch.clientX, touch.clientY);
-        highlightTarget(target && target !== tile ? target : null);
-      }
-    }, {passive: false});
-
-    tile.addEventListener('touchend', e => {
-      const changedTouch = Array.from(e.changedTouches).find(t => t.identifier === activeTouch);
-      if (!changedTouch) return;
-      activeTouch = null;
-      if (isDragging) {
-        tile.classList.remove('dragging');
-        getTiles().forEach(t => t.classList.remove('drag-over'));
-        removeGhost();
-        const target = getTileAt(changedTouch.clientX, changedTouch.clientY);
-        if (target && target !== tile) doSwap(parseInt(target.dataset.ri));
-      }
-      isDragging = false; fromRi = null;
-    }, {passive: true});
-
-    tile.addEventListener('touchcancel', () => {
-      activeTouch = null; isDragging = false; fromRi = null;
-      tile.classList.remove('dragging');
-      getTiles().forEach(t => t.classList.remove('drag-over'));
-      removeGhost();
-    }, {passive: true});
+    tile.addEventListener('touchstart',e=>{if(activeTouch!==null)return;activeTouch=e.touches[0].identifier;fromRi=parseInt(tile.dataset.ri);const t=e.touches[0];startX=t.clientX;startY=t.clientY;isDragging=false;},{passive:true});
+    tile.addEventListener('touchmove',e=>{const touch=Array.from(e.touches).find(t=>t.identifier===activeTouch);if(!touch)return;const dx=touch.clientX-startX,dy=touch.clientY-startY;if(!isDragging&&Math.sqrt(dx*dx+dy*dy)>THRESH){isDragging=true;tile.classList.add('dragging');createGhost(tile.textContent.trim(),touch.clientX,touch.clientY);}if(isDragging){e.preventDefault();moveGhost(touch.clientX,touch.clientY);const t=getTileAt(touch.clientX,touch.clientY);highlight(t&&t!==tile?t:null);}},{passive:false});
+    tile.addEventListener('touchend',e=>{const ct=Array.from(e.changedTouches).find(t=>t.identifier===activeTouch);if(!ct)return;activeTouch=null;if(isDragging){tile.classList.remove('dragging');getTiles().forEach(t=>t.classList.remove('drag-over'));removeGhost();const t=getTileAt(ct.clientX,ct.clientY);if(t&&t!==tile)doSwap(parseInt(t.dataset.ri));}isDragging=false;fromRi=null;},{passive:true});
+    tile.addEventListener('touchcancel',()=>{activeTouch=null;isDragging=false;fromRi=null;tile.classList.remove('dragging');getTiles().forEach(t=>t.classList.remove('drag-over'));removeGhost();},{passive:true});
   });
 }
 
-// ─── CHECK ORDER ───────────────────────────────────────────────
-function checkOrder(ci) {
-  if (state.catCorrect[ci] || state.gameOver) return;
-  if (state.checksUsed >= MAX_CHECKS) return;
-
-  state.checksUsed++;
-  updateProgress();
-
-  const correctOrder = puzzle.categories[ci].order;
-  const userOrder    = state.userOrder[ci];
-
-  let allCorrect = true;
-  userOrder.forEach((item, ri) => {
-    if (correctOrder[ri] === item) {
-      state.lockedItems[ci].add(item);
-    } else {
-      allCorrect = false;
-    }
-  });
-
-  if (allCorrect) {
-    state.catCorrect[ci] = true;
-    renderCats(); renderPairPills();
-  } else {
-    const block = document.getElementById(`cat-${ci}`);
-    const btn   = document.getElementById(`checkbtn-${ci}`);
-    block.classList.remove('wrong-flash'); void block.offsetWidth; block.classList.add('wrong-flash');
-    btn.classList.add('is-wrong'); btn.textContent = '✗ Some wrong';
-
-    const remaining = MAX_CHECKS - state.checksUsed;
-    showToast(remaining > 0
-      ? `${remaining} check${remaining===1?'':'s'} remaining`
-      : 'No more checks!');
-
-    setTimeout(() => {
-      block.classList.remove('wrong-flash');
-      btn.classList.remove('is-wrong');
-      renderCats(); renderPairPills();
-    }, 700);
+function r4CheckOrder(ci){
+  if(r4State.catCorrect[ci]||r4State.gameOver)return;
+  if(r4State.checksUsed>=R4_MAX_CHECKS)return;
+  r4State.checksUsed++;r4UpdateProgress();
+  const correctOrder=r4Puzzle.categories[ci].order;const userOrder=r4State.userOrder[ci];let allCorrect=true;
+  userOrder.forEach((item,ri)=>{if(correctOrder[ri]===item)r4State.lockedItems[ci].add(item);else allCorrect=false;});
+  if(allCorrect){r4State.catCorrect[ci]=true;r4RenderCats();r4RenderPairPills();}
+  else{
+    const block=document.getElementById(`r4cat-${ci}`);const btn=document.getElementById(`r4checkbtn-${ci}`);
+    block.classList.remove('wrong-flash');void block.offsetWidth;block.classList.add('wrong-flash');btn.classList.add('is-wrong');btn.textContent='✗ Some wrong';
+    const rem=R4_MAX_CHECKS-r4State.checksUsed;
+    r4ShowToast(rem>0?`${rem} check${rem===1?'':'s'} remaining`:'No more checks!');
+    setTimeout(()=>{block.classList.remove('wrong-flash');btn.classList.remove('is-wrong');r4RenderCats();r4RenderPairPills();},700);
   }
 }
 
-function showToast(msg) {
-  const t = document.getElementById('checksToast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2200);
-}
+function r4ShowToast(msg){const t=document.getElementById('r4Toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
 
-// ─── BUILD ANSWERS — with facts under each item ────────────────
-function buildAnswers() {
-  const [pa,pb] = puzzle.matchingPair;
-  document.getElementById('answerRows').innerHTML = puzzle.categories.map((cat,ci) => {
-    const isMatch = ci===pa || ci===pb;
-    const fm = FACTS[pidx] && FACTS[pidx][ci];
-    const pillsHTML = cat.order.map((item,i) => {
-      const fact = fm ? (fm[item]||'') : '';
-      return `
-        ${i>0?'<span class="ans-arrow">→</span>':''}
-        <div class="answer-pill-wrap">
-          <span class="answer-item-pill">${item}</span>
-          ${fact ? `<span class="answer-item-fact">${fact}</span>` : ''}
-        </div>`;
-    }).join('');
-
-    return `<div class="answer-row-item">
-      <div class="answer-cat-label" style="color:${CAT_COLORS[ci]}">
-        ${cat.label}${isMatch?'<span class="match-flag">MATCH</span>':''}
-      </div>
-      <div class="answer-pills">${pillsHTML}</div>
-    </div>`;
+function r4ShowResults(won){
+  r4State.gameOver=true;
+  ['r4Hero','r4Progress','r4PairBox','r4CatsList'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
+  const now=new Date();const dateStr=now.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  const checksUsed=r4State.checksUsed;
+  if(won){
+    document.getElementById('r4FailContent').style.display='none';document.getElementById('r4WinContent').style.display='';
+    document.getElementById('r4ResStripe').classList.remove('fail');
+    const starsRow=document.getElementById('r4StarsRow');starsRow.innerHTML='';
+    const STAR_COLORS=['var(--c0)','var(--c1)','var(--c2)','var(--c3)'];
+    const EMPTY_STAR_COLORS=['rgba(232,57,30,0.2)','rgba(245,158,11,0.2)','rgba(14,165,114,0.2)','rgba(47,84,235,0.2)'];
+    r4State.catCorrect.forEach((correct,i)=>{const s=document.createElement('span');s.className='r4-star';s.style.animationDelay=(i*0.09)+'s';s.innerHTML=correct?`<span style="color:${STAR_COLORS[i]};filter:drop-shadow(0 2px 6px ${STAR_COLORS[i]})">★</span>`:`<span style="color:${EMPTY_STAR_COLORS[i]}">★</span>`;starsRow.appendChild(s);});
+    const stars=r4State.catCorrect.filter(Boolean).length;
+    document.getElementById('r4ScoreSub').textContent=`${stars}/4 categories · ${checksUsed}/${R4_MAX_CHECKS} checks used`;
+    const[pa,pb]=r4Puzzle.matchingPair;const pairLabel=`${r4Puzzle.categories[pa].label} & ${r4Puzzle.categories[pb].label}`;
+    const shareText=`RANK 4 — ${dateStr}\n${'★'.repeat(stars)}${'☆'.repeat(4-stars)} ${stars}/4\nChecks: ${checksUsed}/${R4_MAX_CHECKS}\nPair: ✓ ${pairLabel}`;
+    document.getElementById('r4ShareBox').textContent=shareText;
+    document.getElementById('r4BtnCopy').onclick=()=>{navigator.clipboard.writeText(shareText).catch(()=>{});document.getElementById('r4BtnCopy').textContent='Copied! ✓';setTimeout(()=>document.getElementById('r4BtnCopy').textContent='Copy Result',1800);};
+  }else{
+    document.getElementById('r4WinContent').style.display='none';document.getElementById('r4FailContent').style.display='';document.getElementById('r4ResStripe').classList.add('fail');
+    const[pa,pb]=r4Puzzle.matchingPair;
+    document.getElementById('r4FailSub').innerHTML=`The matching pair was<br><strong style="color:rgba(255,255,255,0.85)">${r4Puzzle.categories[pa].label} & ${r4Puzzle.categories[pb].label}</strong><br>Come back tomorrow for a new puzzle!`;
+    const shareText=`RANK 4 — ${dateStr}\n❌ Wrong pair\nChecks: ${checksUsed}/${R4_MAX_CHECKS}`;
+    document.getElementById('r4ShareBoxFail').textContent=shareText;
+    document.getElementById('r4BtnCopyFail').onclick=()=>{navigator.clipboard.writeText(shareText).catch(()=>{});document.getElementById('r4BtnCopyFail').textContent='Copied! ✓';setTimeout(()=>document.getElementById('r4BtnCopyFail').textContent='Copy Result',1800);};
+  }
+  const[pa,pb]=r4Puzzle.matchingPair;
+  document.getElementById('r4AnswerRows').innerHTML=r4Puzzle.categories.map((cat,ci)=>{
+    const isMatch=ci===pa||ci===pb;
+    const pillsHTML=cat.order.map((item,i)=>{const fact=(cat.facts&&cat.facts[item])||'';
+      return`${i>0?'<span class="ans-arrow">→</span>':''}
+        <div class="r4-pill-wrap"><span class="r4-item-pill">${item}</span>${fact?`<span class="r4-item-fact">${fact}</span>`:''}</div>`;}).join('');
+    return`<div class="r4-answer-row"><div class="r4-answer-cat" style="color:${R4_CAT_COLORS[ci]}">${cat.label}${isMatch?'<span class="match-flag">MATCH</span>':''}</div><div class="r4-answer-pills">${pillsHTML}</div></div>`;
   }).join('');
+  document.getElementById('r4Results').classList.add('show');document.getElementById('r4Results').scrollIntoView({behavior:'smooth'});
 }
 
-// ─── RESULTS ──────────────────────────────────────────────────
-function showResults(won) {
-  state.gameOver = true;
-  document.getElementById('heroSection').style.display  = 'none';
-  document.getElementById('progressBar').style.display  = 'none';
-  document.getElementById('pairBox').style.display      = 'none';
-  document.getElementById('catsList').style.display     = 'none';
-  document.querySelector('.footer').style.display       = 'none';
+document.getElementById('r4BtnLink').addEventListener('click',r4LinkPair);
 
-  const now     = new Date();
-  const dateStr = now.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
-  const checksUsed = state.checksUsed;
+// ═══════════════════════════════════════════════════════
+// PERFECT 3s — no red herrings
+// ═══════════════════════════════════════════════════════
+let p3Puzzle,p3State={initialized:false};
 
-  if (won) {
-    document.getElementById('failContent').style.display = 'none';
-    document.getElementById('winContent').style.display  = '';
-    document.getElementById('resultsStripe').classList.remove('fail');
+function initP3(){
+  const puzzles=getP3Puzzles();
+  p3Puzzle=getPuzzleForToday(puzzles).puzzle;
+  const groupItems=p3Puzzle.groups.flatMap(g=>g.items);
+  p3State={initialized:true,items:shuffle([...groupItems]),selected:[],solved:[],attemptsLeft:4,gameOver:false,message:'',messageType:''};
+  renderP3();
+}
 
-    // ── FIX 1: Stars = categories with correct order (checked OR auto-detected at link)
-    const stars = state.catCorrect.filter(Boolean).length;
-    const sr = document.getElementById('starsRow');
-    sr.innerHTML = '';
-    for (let i=0; i<4; i++) {
-      const s = document.createElement('div');
-      s.className = 'res-star';
-      s.textContent = i < stars ? '⭐' : '☆';
-      s.style.animationDelay = (i*0.09)+'s';
-      sr.appendChild(s);
+function renderP3(){
+  const wrap=document.getElementById('p3Wrap');
+  const GRP_COLORS=['var(--p3-a)','var(--p3-b)','var(--p3-c)'];
+  const GRP_NAMES=['sg0','sg1','sg2'];
+  const dotsHTML=Array.from({length:4}).map((_,i)=>{const used=4-p3State.attemptsLeft;return`<div class="p3-dot${i<used?' used':''}"></div>`;}).join('');
+  const solvedHTML=p3State.solved.map(gi=>{const g=p3Puzzle.groups[gi];return`<div class="p3-solved-group ${GRP_NAMES[gi]}"><div class="p3-solved-name" style="color:${GRP_COLORS[gi]}">${g.name}</div><div class="p3-solved-items-row">${g.items.map(item=>`<span class="p3-solved-pill">${item}</span>`).join('')}</div></div>`;}).join('');
+  const gridHTML=p3State.items.map((item,idx)=>{
+    const solvedGroupIdx=p3State.solved.findIndex(gi=>p3Puzzle.groups[gi].items.includes(item));
+    const isSolved=solvedGroupIdx>-1;const isSel=p3State.selected.includes(item);
+    let cls='p3-item';
+    if(isSolved)cls+=` solved-tile ${GRP_NAMES[solvedGroupIdx]}`;else if(isSel)cls+=' sel';
+    const dis=isSolved||p3State.gameOver?'disabled':'';
+    return`<div class="${cls}" onclick="p3ToggleItem(${idx})" ${dis}>${item}</div>`;
+  }).join('');
+  let footer='';
+  if(p3State.solved.length===3){footer=`<div class="p3-msg ok" style="padding:12px 0;font-size:0.9rem">🎉 Perfect! All three groups found!</div>`;}
+  else if(p3State.gameOver){
+    const revealHTML=p3Puzzle.groups.map((g,gi)=>{if(p3State.solved.includes(gi))return'';return`<div class="p3-reveal-row"><div class="p3-reveal-label" style="color:${GRP_COLORS[gi]}">${g.name}</div>${g.items.map(item=>`<span class="p3-reveal-pill">${item}</span>`).join('')}</div>`;}).join('');
+    footer=`<div class="p3-msg err" style="margin-bottom:10px">No attempts left — game over!</div><div class="p3-gameover-reveal"><div class="p3-gameover-label">The correct groups were:</div>${revealHTML}</div>`;
+  }else{
+    const count=p3State.selected.length;
+    const msg=count===0?'Select 3 items that belong together':count<3?`${3-count} more to select`:'Ready — submit!';
+    footer=`<div class="p3-actions"><button class="btn-p3-submit" onclick="p3Submit()" ${count!==3?'disabled':''}>Submit Group</button><span class="p3-msg${p3State.messageType?' '+p3State.messageType:''}">${p3State.message||msg}</span></div>`;
+  }
+  wrap.innerHTML=`
+    <div class="p3-header">
+      <div class="p3-title">Perfect 3s</div>
+      <div class="p3-sub">${p3Puzzle.theme} — Find three groups of three</div>
+      <div class="p3-header-bottom"><span class="p3-attempts-label">Attempts left</span><div class="p3-attempts">${dotsHTML}</div></div>
+    </div>
+    ${solvedHTML}
+    <div class="p3-grid">${gridHTML}</div>
+    ${footer}`;
+}
+
+function p3ToggleItem(idx){
+  if(p3State.gameOver)return;const item=p3State.items[idx];const selIdx=p3State.selected.indexOf(item);
+  p3State.message='';p3State.messageType='';
+  if(selIdx>-1)p3State.selected.splice(selIdx,1);else if(p3State.selected.length<3)p3State.selected.push(item);
+  renderP3();
+}
+
+function p3Submit(){
+  const sel=p3State.selected;if(sel.length!==3||p3State.gameOver)return;
+  const matchGroup=p3Puzzle.groups.findIndex((g,gi)=>!p3State.solved.includes(gi)&&sel.every(item=>g.items.includes(item)));
+  if(matchGroup>-1){
+    p3State.solved.push(matchGroup);p3State.selected=[];
+    p3State.message=p3State.solved.length===3?'🎉 Perfect!':'✓ Correct!';p3State.messageType='ok';
+    if(p3State.solved.length===3)p3State.gameOver=true;renderP3();
+  }else{
+    p3State.attemptsLeft--;p3State.message=p3State.attemptsLeft>0?`✗ Not a group — ${p3State.attemptsLeft} left`:'';p3State.messageType='err';
+    if(p3State.attemptsLeft<=0){p3State.gameOver=true;p3State.selected=[];renderP3();return;}
+    const grid=document.getElementById('p3Wrap')?.querySelector('.p3-grid');
+    if(grid)[...grid.children].forEach((cell,i)=>{if(sel.includes(p3State.items[i])){cell.classList.add('wrong-flash');setTimeout(()=>cell.classList.remove('wrong-flash'),400);}});
+    p3State.selected=[];setTimeout(renderP3,460);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// BUILD THE LINE
+// ═══════════════════════════════════════════════════════
+let btlPuzzle,btlState={initialized:false};
+
+function initBtl(){
+  const puzzles=getBtlPuzzles();btlPuzzle=getPuzzleForToday(puzzles).puzzle;
+  const ri=btlPuzzle.items.map((_,i)=>i);
+  for(let i=ri.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ri[i],ri[j]]=[ri[j],ri[i]];}
+  btlState={initialized:true,revealOrder:ri,lineSlots:[ri[0]],currentItemIdx:1,score:0,done:false};renderBtl();
+}
+
+function renderBtl(){
+  const wrap=document.getElementById('btlWrap');
+  const total=btlPuzzle.items.length;const done=btlState.done;
+  const pct=btlState.currentItemIdx>1?Math.round((btlState.score/(btlState.currentItemIdx-1))*100):100;
+  const dots=Array.from({length:total}).map((_,i)=>{let cls='btl-prog-dot';if(i<btlState.lineSlots.length)cls+=' placed';else if(i===btlState.lineSlots.length)cls+=' current';return`<div class="${cls}"></div>`;}).join('');
+  const curIdx=!done&&btlState.currentItemIdx<total?btlState.revealOrder[btlState.currentItemIdx]:null;
+  const curItemHTML=curIdx!==null?`<div class="btl-item-card"><div class="btl-item-emoji">${btlPuzzle.emojis[curIdx]||'📦'}</div><div class="btl-item-info"><div class="btl-item-eyebrow">Where does this go on the line?</div><div class="btl-item-name">${btlPuzzle.items[curIdx]}</div><div class="btl-item-progress">${dots}</div></div></div>`:'';
+  const slots=btlState.lineSlots;
+  let spineHTML='<div class="btl-spine">';
+  slots.forEach((corrIdx,pos)=>{
+    if(!done)spineHTML+=`<div class="btl-insert-zone" onclick="btlInsertAt(${pos})"><div class="btl-insert-inner"><span class="plus">+</span>Insert here</div></div>`;
+    let dotCls='btl-node-dot',cardCls='btl-placed-card';
+    if(done){const sortedPos=[...slots].sort((a,b)=>a-b).indexOf(corrIdx);const isCorr=pos===sortedPos;dotCls+=isCorr?' correct':' wrong';cardCls+=isCorr?' correct':' wrong';}
+    spineHTML+=`<div class="btl-placed-node"><div class="${dotCls}"></div><div class="${cardCls}"><span class="btl-placed-emoji-sm">${btlPuzzle.emojis[corrIdx]||'📦'}</span><span class="btl-placed-text">${btlPuzzle.items[corrIdx]}</span>${done&&btlPuzzle.values[corrIdx]?`<span class="btl-placed-value">${btlPuzzle.values[corrIdx]}</span>`:''}${done?`<span style="margin-left:4px;font-size:0.9rem">${cardCls.includes('correct')?'✓':'✗'}</span>`:''}</div></div>`;
+  });
+  if(!done)spineHTML+=`<div class="btl-insert-zone" onclick="btlInsertAt(${slots.length})"><div class="btl-insert-inner"><span class="plus">+</span>Insert here</div></div>`;
+  spineHTML+='</div>';
+  const resultHTML=done?`<div class="btl-result-card"><div class="btl-result-heading">${pct===100?'"I built the line with no mistakes!"':pct>=75?`"Built with ${pct}% accuracy!"`:pct>=50?`"Solid effort — ${pct}% accuracy!"`:'"Tough one — keep practising!"'}</div><div class="btl-result-pts">${btlState.score}</div><div class="btl-result-pts-lbl">out of ${total-1} points</div><div class="btl-result-bar"><div class="btl-result-bar-fill" id="btlFill"></div></div><div class="btl-result-pct">${pct}% accuracy · Correct positions shown on line above</div></div>`:'';
+  wrap.innerHTML=`<div class="btl-header"><div class="btl-header-left"><div class="btl-title">Build the Line</div><div class="btl-cat-label">${btlPuzzle.category}</div></div><div class="btl-header-right"><div class="btl-score-big">${done?btlState.score:btlState.currentItemIdx-1}/${total-1}</div><div class="btl-score-lbl">${done?'Points':'Placed'}</div></div></div>${curItemHTML}${resultHTML}<div class="btl-line-wrap"><div class="btl-line-header"><span class="btl-line-end-label">↑ Smallest</span><span class="btl-line-end-label">Largest ↓</span></div>${spineHTML}</div>`;
+  if(done)setTimeout(()=>{const b=document.getElementById('btlFill');if(b)b.style.width=pct+'%';},100);
+}
+
+function btlInsertAt(pos){
+  if(btlState.done||btlState.currentItemIdx>=btlPuzzle.items.length)return;
+  const correctIdx=btlState.revealOrder[btlState.currentItemIdx];
+  btlState.lineSlots.splice(pos,0,correctIdx);
+  const smallerBefore=btlState.lineSlots.slice(0,pos).filter(ci=>ci<correctIdx).length;
+  const smallerAfter=btlState.lineSlots.slice(pos+1).filter(ci=>ci<correctIdx).length;
+  if(pos===smallerBefore+smallerAfter)btlState.score++;
+  btlState.currentItemIdx++;
+  if(btlState.currentItemIdx>=btlPuzzle.items.length)btlState.done=true;
+  renderBtl();
+}
+
+// ═══════════════════════════════════════════════════════
+// TRIVIA BINGO — fixed: any matching square is accepted
+// ═══════════════════════════════════════════════════════
+let bingoState={initialized:false};
+let bingoPuzzle;
+
+function initBingo(){
+  const puzzles=getBingoPuzzles();bingoPuzzle=getPuzzleForToday(puzzles).puzzle;
+  const prompts=shuffle([...bingoPuzzle.prompts]);
+  bingoState={initialized:true,prompts,qIdx:0,marked:new Set(),selected:null,promptsLost:0,feedback:null,feedbackTimer:null,done:false,won:false,justBingo:false};
+  renderBingo();
+}
+
+function checkBingoLines(marked){
+  const lines=[];
+  for(let r=0;r<4;r++)lines.push({key:`row${r}`,cells:[r*4,r*4+1,r*4+2,r*4+3]});
+  for(let c=0;c<4;c++)lines.push({key:`col${c}`,cells:[c,c+4,c+8,c+12]});
+  lines.push({key:'diag0',cells:[0,5,10,15]});lines.push({key:'diag1',cells:[3,6,9,12]});
+  return lines.filter(l=>l.cells.every(i=>marked.has(i)));
+}
+
+function renderBingo(){
+  const wrap=document.getElementById('bingoWrap');
+  const state=bingoState;
+  const prompt=state.prompts[state.qIdx];
+  const promptsLeft=Math.max(0,state.prompts.length-state.qIdx-state.promptsLost);
+  const markedCount=state.marked.size;
+  const completedLines=checkBingoLines(state.marked);
+  const lineCells=new Set(completedLines.flatMap(l=>l.cells));
+
+  // Get which cells are valid for current prompt (for highlighting selectable)
+  const validCells=prompt&&!state.done&&!state.feedback?(prompt.matches||[]):[];
+
+  const gridHTML=bingoPuzzle.grid.map((cell,i)=>{
+    let cls='bingo-cell';
+    if(state.marked.has(i))cls+=lineCells.has(i)?' bingo-line':' marked';
+    else if(prompt&&!state.done&&!state.feedback){
+      // All unmarked cells are selectable — player clicks any they think matches
+      cls+=' selectable';
+      if(state.selected===i)cls+=' selected';
     }
-    document.getElementById('scoreLabel').textContent =
-      `${stars}/4 categories correct · ${checksUsed}/${MAX_CHECKS} checks used`;
+    const onclick=(!state.marked.has(i)&&!state.done&&!state.feedback)?`onclick="bingoSelectCell(${i})"` :'';
+    return`<div class="${cls}" ${onclick}>${cell}</div>`;
+  }).join('');
 
-    const shareText =
-      `RANK 4 — ${dateStr}\n` +
-      `${'⭐'.repeat(stars)}${'☆'.repeat(4-stars)} ${stars}/4\n` +
-      `Checks used: ${checksUsed}/${MAX_CHECKS}\n` +
-      `Matching pair: ✓ Found!\n` +
-      `Play at ${WEBSITE_URL} #Rank4`;
-    document.getElementById('shareBox').textContent = shareText;
-    document.getElementById('btnCopy').onclick = () => {
-      navigator.clipboard.writeText(shareText).catch(()=>{});
-      document.getElementById('btnCopy').textContent = 'Copied! ✓';
-      setTimeout(() => document.getElementById('btnCopy').textContent = 'Copy Result', 1800);
-    };
+  const feedbackHTML=state.feedback?`<div class="bingo-feedback show ${state.feedback.type}"><span style="font-size:1.1rem">${state.feedback.type==='correct'?'✓':'✗'}</span><span>${state.feedback.msg}</span></div>`:'';
+  const bingoFlash=state.justBingo&&!state.feedback?`<div class="bingo-win-flash show"><div class="bingo-win-flash-title">BINGO! 🎱</div><div style="font-size:0.8rem;opacity:0.85">Line complete!</div></div>`:'';
 
-  } else {
-    document.getElementById('winContent').style.display  = 'none';
-    document.getElementById('failContent').style.display = '';
-    document.getElementById('resultsStripe').classList.add('fail');
-
-    const [pa,pb] = puzzle.matchingPair;
-    document.getElementById('failSub').innerHTML =
-      `The correct matching pair was<br><strong style="color:rgba(255,255,255,0.85)">${puzzle.categories[pa].label} & ${puzzle.categories[pb].label}</strong><br>Come back tomorrow for a new puzzle!`;
-
-    const shareText =
-      `RANK 4 — ${dateStr}\n` +
-      `❌ Wrong pair guessed\n` +
-      `Checks used: ${checksUsed}/${MAX_CHECKS}\n` +
-      `Play at ${WEBSITE_URL} #Rank4`;
-    document.getElementById('shareBoxFail').textContent = shareText;
-    document.getElementById('btnCopyFail').onclick = () => {
-      navigator.clipboard.writeText(shareText).catch(()=>{});
-      document.getElementById('btnCopyFail').textContent = 'Copied! ✓';
-      setTimeout(() => document.getElementById('btnCopyFail').textContent = 'Copy Result', 1800);
-    };
+  let promptHTML='';
+  if(state.done){
+    promptHTML=`<div class="bingo-complete-wrap"><div class="bingo-complete-icon">${state.won?'🏆':'💔'}</div><div class="bingo-complete-title">${state.won?'You filled the board!':'Out of prompts!'}</div><div class="bingo-complete-stats">${markedCount}/16 squares filled · ${completedLines.length} line${completedLines.length!==1?'s':''} · ${state.promptsLost} wrong guess${state.promptsLost!==1?'es':''}</div><button class="btn-bingo-skip" onclick="initBingo()" style="background:white;color:var(--ink);border-color:rgba(255,255,255,0.3);margin-top:10px">Play Again</button></div>`;
+  }else if(prompt){
+    const isSel=state.selected!==null;
+    promptHTML=`<div class="bingo-prompt-card">
+      <div class="bingo-prompt-eyebrow"><span>Tap the square that matches, then confirm</span><span class="bingo-q-badge">#${state.qIdx+1} / ${state.prompts.length}</span></div>
+      <div class="bingo-prompt-text">${prompt.text}</div>
+      <div class="bingo-instruction ${isSel?'active':''}">${isSel?`"${bingoPuzzle.grid[state.selected]}" selected — confirm or tap another`:'Tap any square you think fits, or skip if none apply'}</div>
+      <div class="bingo-prompt-actions">
+        <button class="btn-bingo-confirm" onclick="bingoConfirm()" ${!isSel?'disabled':''}>Confirm →</button>
+        <button class="btn-bingo-skip" onclick="bingoSkip()">Skip — no match</button>
+      </div>
+    </div>`;
   }
 
-  buildAnswers();
-  document.getElementById('resultsScreen').classList.add('show');
-  document.getElementById('resultsScreen').scrollIntoView({behavior:'smooth'});
+  wrap.innerHTML=`<div class="bingo-header"><div class="bingo-header-left"><div class="bingo-title">Trivia Bingo</div><div class="bingo-category">${bingoPuzzle.category}</div><div class="bingo-stats-row"><div class="bingo-stat"><div class="bingo-stat-num">${markedCount}/16</div><div class="bingo-stat-lbl">Filled</div></div><div class="bingo-stat"><div class="bingo-stat-num">${promptsLeft}</div><div class="bingo-stat-lbl">Prompts left</div></div><div class="bingo-stat"><div class="bingo-stat-num">${completedLines.length}</div><div class="bingo-stat-lbl">Lines</div></div></div></div></div>
+    ${feedbackHTML}${bingoFlash}
+    <div class="bingo-grid">${gridHTML}</div>
+    ${promptHTML}`;
 }
 
-// ─── BOOT ─────────────────────────────────────────────────────
-document.getElementById('btnLink').addEventListener('click', linkPair);
-document.getElementById('btnHelp').addEventListener('click', () =>
-  document.getElementById('helpOverlay').classList.add('show'));
+function bingoSelectCell(idx){
+  if(bingoState.done||bingoState.feedback)return;
+  if(bingoState.marked.has(idx))return;
+  // Toggle selection
+  bingoState.selected=bingoState.selected===idx?null:idx;
+  bingoState.justBingo=false;renderBingo();
+}
 
-initGame();
-setTimeout(() => document.getElementById('helpOverlay').classList.add('show'), 400);
+function bingoConfirm(){
+  if(bingoState.done||bingoState.selected===null||bingoState.feedback)return;
+  const prompt=bingoState.prompts[bingoState.qIdx];
+  const sel=bingoState.selected;
+  // FIXED: accept if selected cell is any of the valid matches for this prompt
+  const matches=prompt.matches||[];
+  const isCorrect=matches.length===0?false:matches.includes(sel);
+
+  if(isCorrect){
+    const prevKeys=new Set(checkBingoLines(bingoState.marked).map(l=>l.key));
+    bingoState.marked.add(sel);
+    const newLines=checkBingoLines(bingoState.marked).filter(l=>!prevKeys.has(l.key));
+    bingoState.justBingo=newLines.length>0;
+    bingoState.feedback={type:'correct',msg:bingoState.justBingo?`Correct! Line completed! 🎱`:`Correct! "${bingoPuzzle.grid[sel]}" marked.`};
+    if(bingoState.marked.size>=16){bingoState.won=true;bingoState.done=true;}
+  }else{
+    bingoState.promptsLost++;bingoState.justBingo=false;
+    // If prompt has no matches at all, this shouldn't happen since we skip — but just in case:
+    if(matches.length===0){
+      bingoState.feedback={type:'wrong',msg:`That prompt has no matching square — use Skip next time.`};
+    }else{
+      bingoState.feedback={type:'wrong',msg:`Wrong! "${bingoPuzzle.grid[sel]}" doesn't match this prompt. One prompt lost.`};
+    }
+  }
+  bingoState.selected=null;renderBingo();
+  if(bingoState.feedbackTimer)clearTimeout(bingoState.feedbackTimer);
+  bingoState.feedbackTimer=setTimeout(()=>{
+    bingoState.feedback=null;bingoState.justBingo=false;
+    if(!bingoState.done){
+      bingoState.qIdx++;
+      if(bingoState.qIdx>=bingoState.prompts.length||(bingoState.prompts.length-bingoState.qIdx-bingoState.promptsLost)<=0){
+        if(bingoState.marked.size<16)bingoState.done=true;
+      }
+    }
+    renderBingo();
+  },1700);
+}
+
+function bingoSkip(){
+  if(bingoState.done||bingoState.feedback)return;
+  bingoState.selected=null;bingoState.justBingo=false;
+  bingoState.qIdx++;
+  if(bingoState.qIdx>=bingoState.prompts.length||(bingoState.prompts.length-bingoState.qIdx-bingoState.promptsLost)<=0){
+    if(bingoState.marked.size<16)bingoState.done=true;
+  }
+  renderBingo();
+}
+
+// ─── Boot ───
+(function renderHomeCards(){
+  const r4=getPuzzleForToday(getR4Puzzles()).puzzle;
+  const p3=getPuzzleForToday(getP3Puzzles()).puzzle;
+  const btl=getPuzzleForToday(getBtlPuzzles()).puzzle;
+  const bingo=getPuzzleForToday(getBingoPuzzles()).puzzle;
+  document.getElementById('homeTodayCards').innerHTML=`
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px">
+      ${[
+        {name:'Rank 4',color:'var(--c0)',emoji:'🏆',sub:r4.items.slice(0,2).join(', ')+'…',page:'rank4'},
+        {name:'Perfect 3s',color:'var(--p3-a)',emoji:'🎯',sub:p3.theme||'Group the items',page:'perfect3'},
+        {name:'Build the Line',color:'var(--btl)',emoji:'📏',sub:btl.category,page:'buildline'},
+        {name:'Trivia Bingo',color:'var(--bingo)',emoji:'🎱',sub:bingo.category,page:'bingo'},
+      ].map(g=>`<div onclick="showPage('${g.page}')" style="background:var(--white);border:1.5px solid var(--edge);border-radius:14px;padding:16px;cursor:pointer;transition:all 0.15s" onmouseover="this.style.borderColor='${g.color}'" onmouseout="this.style.borderColor='var(--edge)'">
+        <div style="font-size:1.6rem;margin-bottom:8px">${g.emoji}</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:2px;color:${g.color};margin-bottom:3px">${g.name}</div>
+        <div style="font-size:0.7rem;font-weight:500;color:var(--muted)">${g.sub}</div>
+      </div>`).join('')}
+    </div>`;
+})();
 </script>
 </body>
 </html>
