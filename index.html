@@ -12,7 +12,7 @@
   --ink:#0C0C0C;--paper:#F6F4EF;--white:#FFFFFF;--muted:#9B9690;--edge:#E3E0D8;--lift:#EDEAE3;
   --c0:#E8391E;--c1:#F59E0B;--c2:#0EA572;--c3:#2F54EB;
   --ok:#059669;--ok-tint:#DCFCE7;--fail:#DC2626;--warn:#B45309;
-  --p3-a:#7C3AED;--p3-b:#2ecc71;--p3-c:#0284C7;
+  --p3-a:#7C3AED;--p3-b:#DB2777;--p3-c:#0284C7;
   --btl:#D97706;--bingo:#0F766E;
 }
 body{background:var(--paper);color:var(--ink);font-family:'Outfit',sans-serif;min-height:100vh;overflow-x:hidden}
@@ -324,12 +324,12 @@ textarea.form-input{resize:vertical;min-height:60px}
 .p3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:16px}
 .p3-item{background:var(--white);border:2px solid var(--edge);border-radius:14px;padding:16px 8px;text-align:center;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.16s;user-select:none;min-height:62px;display:flex;align-items:center;justify-content:center;line-height:1.25;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
 .p3-item:hover:not(.solved-tile){border-color:var(--p3-a);background:#FAF5FF;transform:translateY(-2px);box-shadow:0 5px 14px rgba(124,58,237,0.13)}
-.p3-item.sel{border-color:var(--p3-a);background:;color:var(--p3-a);transform:translateY(-2px);box-shadow:0 5px 14px rgba(124,58,237,0.2)}
+.p3-item.sel{border-color:var(--p3-a);background:#EDE9FE;color:var(--p3-a);transform:translateY(-2px);box-shadow:0 5px 14px rgba(124,58,237,0.2)}
 .p3-item.sel1{border-color:var(--p3-b);background:#FDF2F8;color:var(--p3-b);transform:translateY(-2px)}
 .p3-item.sel2{border-color:var(--p3-c);background:#EFF6FF;color:var(--p3-c);transform:translateY(-2px)}
 .p3-item.solved-tile{cursor:default;transform:none;pointer-events:none}
 .p3-item.solved-tile.sg0{background:rgba(124,58,237,0.08);border-color:rgba(124,58,237,0.35);color:var(--p3-a)}
-.p3-item.solved-tile.sg1{background:rgba(219,39,119,0.08);border-color:rgba(46,204,113,0.35);color:var(--p3-b)}
+.p3-item.solved-tile.sg1{background:rgba(219,39,119,0.08);border-color:rgba(219,39,119,0.35);color:var(--p3-b)}
 .p3-item.solved-tile.sg2{background:rgba(2,132,199,0.08);border-color:rgba(2,132,199,0.35);color:var(--p3-c)}
 .p3-item.wrong-flash{animation:shake 0.35s ease;border-color:#FCA5A5!important;background:#FEF2F2!important}
 .p3-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
@@ -826,7 +826,7 @@ textarea.form-input{resize:vertical;min-height:60px}
 </div>
 
 <script>
-const ADMIN_PASSWORD = '4664';
+const ADMIN_PASSWORD = 'rank4admin2025';
 
 const DEFAULT_R4_PUZZLES = [
   {date:'2025-01-01',items:['A4 Paper','Pencil','Elephant','Moon'],emojis:{'A4 Paper':'📄','Pencil':'✏️','Elephant':'🐘','Moon':'🌙'},
@@ -853,7 +853,7 @@ const DEFAULT_R4_PUZZLES = [
 ];
 
 const DEFAULT_P3_PUZZLES = [
-  {date:'2025-01-01',theme:'Famous Threes',
+  {date:'2025-01-01',theme:'Famous Fours',
     groups:[
       {name:'Tom Hanks Movies',items:['Cast Away','Forrest Gump','The Green Mile']},
       {name:'Ed Sheeran Songs',items:['Shape of You','Bad Habits','Perfect']},
@@ -906,13 +906,70 @@ const DEFAULT_BINGO_PUZZLES = [
     ]},
 ];
 
-// ─── Storage helpers ───
-function getStored(key,fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback;}catch(e){return fallback;}}
-function setStored(key,val){try{localStorage.setItem(key,JSON.stringify(val));}catch(e){}}
-function getR4Puzzles(){return getStored('r4_puzzles',DEFAULT_R4_PUZZLES);}
-function getP3Puzzles(){return getStored('p3_puzzles',DEFAULT_P3_PUZZLES);}
-function getBtlPuzzles(){return getStored('btl_puzzles',DEFAULT_BTL_PUZZLES);}
-function getBingoPuzzles(){return getStored('bingo_puzzles',DEFAULT_BINGO_PUZZLES);}
+// ═══════════════════════════════════════════════════════
+// JSONBIN CLOUD STORAGE
+// After downloading this file, replace YOUR_API_KEY_HERE
+// with your JSONBin master key (keep the $ at the start).
+// ═══════════════════════════════════════════════════════
+const JSONBIN_BIN_ID = '6998797943b1c97be98e9aa5';
+const JSONBIN_API_KEY = '$2a$10$SIQxm2NOgyIeYb.G/anmHOfT/bnRdUH3Dh13WZEOiGZDZ2Df//oTe';
+const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+
+// In-memory cache so we don't re-fetch on every page visit
+let _cloudCache = null;
+let _cloudFetchPromise = null;
+
+async function fetchCloudData() {
+  // Return cache if we already have it
+  if (_cloudCache) return _cloudCache;
+  // If a fetch is already in progress, wait for it
+  if (_cloudFetchPromise) return _cloudFetchPromise;
+  _cloudFetchPromise = fetch(JSONBIN_URL + '/latest', {
+    headers: { 'X-Master-Key': JSONBIN_API_KEY }
+  })
+  .then(r => r.json())
+  .then(data => {
+    const record = data.record || {};
+    // Merge with defaults so missing keys always have fallback data
+    _cloudCache = {
+      r4_puzzles:    record.r4_puzzles    && record.r4_puzzles.length    ? record.r4_puzzles    : DEFAULT_R4_PUZZLES,
+      p3_puzzles:    record.p3_puzzles    && record.p3_puzzles.length    ? record.p3_puzzles    : DEFAULT_P3_PUZZLES,
+      btl_puzzles:   record.btl_puzzles   && record.btl_puzzles.length   ? record.btl_puzzles   : DEFAULT_BTL_PUZZLES,
+      bingo_puzzles: record.bingo_puzzles && record.bingo_puzzles.length ? record.bingo_puzzles : DEFAULT_BINGO_PUZZLES,
+    };
+    _cloudFetchPromise = null;
+    return _cloudCache;
+  })
+  .catch(err => {
+    console.warn('JSONBin fetch failed, using defaults:', err);
+    _cloudFetchPromise = null;
+    _cloudCache = {
+      r4_puzzles: DEFAULT_R4_PUZZLES, p3_puzzles: DEFAULT_P3_PUZZLES,
+      btl_puzzles: DEFAULT_BTL_PUZZLES, bingo_puzzles: DEFAULT_BINGO_PUZZLES
+    };
+    return _cloudCache;
+  });
+  return _cloudFetchPromise;
+}
+
+async function saveCloudData(updatedFields) {
+  // Fetch current data, merge in the update, then PUT back
+  const current = await fetchCloudData();
+  const merged = { ...current, ...updatedFields };
+  _cloudCache = merged; // update cache immediately
+  await fetch(JSONBIN_URL, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_API_KEY },
+    body: JSON.stringify(merged)
+  });
+}
+
+// Sync helpers — these return cached data synchronously after initial load
+function getR4Puzzles()    { return (_cloudCache && _cloudCache.r4_puzzles)    || DEFAULT_R4_PUZZLES; }
+function getP3Puzzles()    { return (_cloudCache && _cloudCache.p3_puzzles)    || DEFAULT_P3_PUZZLES; }
+function getBtlPuzzles()   { return (_cloudCache && _cloudCache.btl_puzzles)   || DEFAULT_BTL_PUZZLES; }
+function getBingoPuzzles() { return (_cloudCache && _cloudCache.bingo_puzzles) || DEFAULT_BINGO_PUZZLES; }
+
 function getTodayStr(){return new Date().toISOString().slice(0,10);}
 function getPuzzleForToday(puzzles){
   const today=getTodayStr();
@@ -936,13 +993,37 @@ function showPage(id){
   if(id==='admin')renderAdminLists();
 }
 
+// ─── Loading overlay ───
+function showLoader(msg){
+  let el=document.getElementById('globalLoader');
+  if(!el){
+    el=document.createElement('div');el.id='globalLoader';
+    el.style.cssText='position:fixed;inset:0;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;gap:16px';
+    el.innerHTML='<div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:6px;color:white"><span style="color:var(--c0)">R</span><span style="color:var(--c1)">A</span><span style="color:var(--c2)">N</span><span style="color:var(--c3)">K</span> 4</div>'
+      +'<div id="loaderMsg" style="font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4)">'+(msg||'Loading puzzles...')+'</div>'
+      +'<div style="width:120px;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;margin-top:4px"><div id="loaderBar" style="height:100%;background:linear-gradient(90deg,var(--c0),var(--c1),var(--c2),var(--c3));width:0;transition:width 1.4s ease;border-radius:2px"></div></div>';
+    document.body.appendChild(el);
+    setTimeout(()=>{const b=document.getElementById('loaderBar');if(b)b.style.width='85%';},50);
+  }else{document.getElementById('loaderMsg').textContent=msg||'Loading...';}
+}
+function hideLoader(){
+  const el=document.getElementById('globalLoader');
+  if(el){
+    const b=document.getElementById('loaderBar');if(b)b.style.width='100%';
+    setTimeout(()=>{el.style.opacity='0';el.style.transition='opacity 0.4s';setTimeout(()=>el.remove(),400);},300);
+  }
+}
+
 // ─── Admin ───
 function adminLogin(){
   const pw=document.getElementById('adminPwInput').value;
   if(pw===ADMIN_PASSWORD){
     document.getElementById('adminLoginWrap').style.display='none';
     document.getElementById('adminPanelWrap').style.display='block';
-    renderAdminLists();
+    // Force fresh fetch from cloud each time admin logs in
+    _cloudCache=null;
+    showLoader('Loading latest puzzles...');
+    fetchCloudData().then(()=>{hideLoader();renderAdminLists();});
     const today=getTodayStr();
     ['r4AdminDate','p3AdminDate','btlAdminDate','bingoAdminDate'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=today;});
   }else{document.getElementById('adminErr').textContent='Incorrect password.';setTimeout(()=>document.getElementById('adminErr').textContent='',2000);}
@@ -954,7 +1035,7 @@ function switchAdminTab(tab){
 }
 function showSaveMsg(id){const el=document.getElementById(id);el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2500);}
 
-function saveR4Puzzle(){
+async function saveR4Puzzle(){
   const date=document.getElementById('r4AdminDate').value;
   const itemsRaw=document.getElementById('r4AdminItems').value;
   const emojisRaw=document.getElementById('r4AdminEmojis').value;
@@ -974,26 +1055,30 @@ function saveR4Puzzle(){
     return{label:name,desc,order,facts};
   });
   const puzzle={date,items,emojis,categories,matchingPair:pairNums};
-  const puzzles=getR4Puzzles();
+  const puzzles=[...getR4Puzzles()];
   const existIdx=puzzles.findIndex(p=>p.date===date);
   if(existIdx>-1)puzzles[existIdx]=puzzle;else puzzles.push(puzzle);
   puzzles.sort((a,b)=>a.date.localeCompare(b.date));
-  setStored('r4_puzzles',puzzles);renderAdminLists();showSaveMsg('r4SaveMsg');r4State.initialized=false;
+  showLoader('Saving puzzle...');
+  await saveCloudData({r4_puzzles:puzzles});
+  hideLoader();renderAdminLists();showSaveMsg('r4SaveMsg');r4State.initialized=false;
 }
 
-function saveP3Puzzle(){
+async function saveP3Puzzle(){
   const date=document.getElementById('p3AdminDate').value;
   const theme=document.getElementById('p3AdminTheme').value.trim();
   if(!date||!theme){alert('Please fill in Date and Theme');return;}
   const groups=[0,1,2].map(i=>({name:document.getElementById(`p3g${i}name`).value.trim(),items:document.getElementById(`p3g${i}items`).value.split(',').map(s=>s.trim()).filter(Boolean)}));
   const puzzle={date,theme,groups};
-  const puzzles=getP3Puzzles();
+  const puzzles=[...getP3Puzzles()];
   const existIdx=puzzles.findIndex(p=>p.date===date);
   if(existIdx>-1)puzzles[existIdx]=puzzle;else puzzles.push(puzzle);
-  setStored('p3_puzzles',puzzles);renderAdminLists();showSaveMsg('p3SaveMsg');p3State.initialized=false;
+  showLoader('Saving puzzle...');
+  await saveCloudData({p3_puzzles:puzzles});
+  hideLoader();renderAdminLists();showSaveMsg('p3SaveMsg');p3State.initialized=false;
 }
 
-function saveBtlPuzzle(){
+async function saveBtlPuzzle(){
   const date=document.getElementById('btlAdminDate').value;
   const category=document.getElementById('btlAdminCat').value.trim();
   if(!date||!category){alert('Please fill in Date and Category');return;}
@@ -1001,13 +1086,15 @@ function saveBtlPuzzle(){
   const emojis=document.getElementById('btlAdminEmojis').value.split(',').map(s=>s.trim());
   const values=document.getElementById('btlAdminValues').value.split(',').map(s=>s.trim());
   const puzzle={date,category,items,emojis,values};
-  const puzzles=getBtlPuzzles();
+  const puzzles=[...getBtlPuzzles()];
   const existIdx=puzzles.findIndex(p=>p.date===date);
   if(existIdx>-1)puzzles[existIdx]=puzzle;else puzzles.push(puzzle);
-  setStored('btl_puzzles',puzzles);renderAdminLists();showSaveMsg('btlSaveMsg');btlState.initialized=false;
+  showLoader('Saving puzzle...');
+  await saveCloudData({btl_puzzles:puzzles});
+  hideLoader();renderAdminLists();showSaveMsg('btlSaveMsg');btlState.initialized=false;
 }
 
-function saveBingoPuzzle(){
+async function saveBingoPuzzle(){
   const date=document.getElementById('bingoAdminDate').value;
   const category=document.getElementById('bingoAdminCat').value.trim();
   if(!date||!category){alert('Please fill in Date and Category');return;}
@@ -1021,16 +1108,21 @@ function saveBingoPuzzle(){
     return{text,matches};
   }).filter(p=>p.text);
   const puzzle={date,category,grid,prompts};
-  const puzzles=getBingoPuzzles();
+  const puzzles=[...getBingoPuzzles()];
   const existIdx=puzzles.findIndex(p=>p.date===date);
   if(existIdx>-1)puzzles[existIdx]=puzzle;else puzzles.push(puzzle);
-  setStored('bingo_puzzles',puzzles);renderAdminLists();showSaveMsg('bingoSaveMsg');bingoState.initialized=false;
+  showLoader('Saving puzzle...');
+  await saveCloudData({bingo_puzzles:puzzles});
+  hideLoader();renderAdminLists();showSaveMsg('bingoSaveMsg');bingoState.initialized=false;
 }
 
-function deleteAdminPuzzle(storageKey,date,listFn){
+async function deleteAdminPuzzle(storageKey,date,listFn){
   if(!confirm(`Delete puzzle for ${date}?`))return;
-  const puzzles=getStored(storageKey,[]).filter(p=>p.date!==date);
-  setStored(storageKey,puzzles);listFn();
+  const keyMap={r4_puzzles:getR4Puzzles,p3_puzzles:getP3Puzzles,btl_puzzles:getBtlPuzzles,bingo_puzzles:getBingoPuzzles};
+  const current=(keyMap[storageKey]?keyMap[storageKey]():[]).filter(p=>p.date!==date);
+  showLoader('Deleting puzzle...');
+  await saveCloudData({[storageKey]:current});
+  hideLoader();listFn();
 }
 
 function renderAdminLists(){
@@ -1038,6 +1130,12 @@ function renderAdminLists(){
   renderAdminList('p3AdminList',getP3Puzzles(),'p3_puzzles',p=>p.theme,renderAdminLists);
   renderAdminList('btlAdminList',getBtlPuzzles(),'btl_puzzles',p=>p.category,renderAdminLists);
   renderAdminList('bingoAdminList',getBingoPuzzles(),'bingo_puzzles',p=>p.category,renderAdminLists);
+}
+async function refreshAndRenderAdmin(){
+  _cloudCache=null; // force re-fetch
+  showLoader('Refreshing data...');
+  await fetchCloudData();
+  hideLoader();renderAdminLists();
 }
 
 function renderAdminList(elId,puzzles,storageKey,labelFn,refresh){
@@ -1516,7 +1614,7 @@ function bingoSkip(){
 }
 
 // ─── Boot ───
-(function renderHomeCards(){
+function renderHomeCards(){
   const r4=getPuzzleForToday(getR4Puzzles()).puzzle;
   const p3=getPuzzleForToday(getP3Puzzles()).puzzle;
   const btl=getPuzzleForToday(getBtlPuzzles()).puzzle;
@@ -1534,7 +1632,14 @@ function bingoSkip(){
         <div style="font-size:0.7rem;font-weight:500;color:var(--muted)">${g.sub}</div>
       </div>`).join('')}
     </div>`;
-})();
+}
+
+// Fetch cloud data on page load, then render everything
+showLoader('Loading puzzles...');
+fetchCloudData().then(()=>{
+  hideLoader();
+  renderHomeCards();
+});
 </script>
 </body>
 </html>
