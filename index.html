@@ -78,6 +78,25 @@ body{background:var(--paper);color:var(--ink);font-family:'Outfit',sans-serif;mi
 .archive-badge{font-size:0.58rem;font-weight:800;letter-spacing:1px;padding:3px 9px;border-radius:6px;background:var(--ink);color:white;text-transform:uppercase}
 .archive-badge.today{background:var(--c0);color:white}
 
+/* ═══════════════════════════════════════════════ HOW TO PLAY PAGE */
+.htp-wrap{max-width:680px;margin:0 auto;padding:16px 0 80px}
+.htp-section{background:var(--white);border:1.5px solid var(--edge);border-radius:20px;padding:28px 26px;margin-bottom:16px;overflow:hidden;position:relative}
+.htp-section::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.htp-section-rank4::before{background:linear-gradient(90deg,var(--c0),var(--c1),var(--c2),var(--c3))}
+.htp-section-p3::before{background:var(--p3-a)}
+.htp-section-btl::before{background:var(--btl)}
+.htp-section-bingo::before{background:var(--bingo)}
+.htp-game-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px;margin-bottom:4px}
+.htp-game-tag{font-size:0.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}
+.htp-steps{display:flex;flex-direction:column;gap:10px}
+.htp-step{display:flex;align-items:flex-start;gap:12px}
+.htp-step-num{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;flex-shrink:0;margin-top:1px;color:white}
+.htp-step-num-rank4{background:var(--c0)}.htp-step-num-p3{background:var(--p3-a)}.htp-step-num-btl{background:var(--btl)}.htp-step-num-bingo{background:var(--bingo)}
+.htp-step-text{font-size:0.8rem;font-weight:500;color:#444;line-height:1.6}
+.htp-step-text strong{color:var(--ink);font-weight:800}
+.htp-play-btn{display:inline-block;margin-top:18px;font-family:'Outfit',sans-serif;font-size:0.8rem;font-weight:800;padding:10px 24px;border:none;border-radius:100px;cursor:pointer;color:white;transition:all 0.14s}
+.htp-play-btn:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(0,0,0,0.25)}
+
 /* ═══════════════════════════════════════════════ ADMIN PANEL */
 .admin-login{max-width:400px;margin:60px auto;background:var(--white);border:2px solid var(--ink);border-radius:20px;padding:36px;box-shadow:6px 6px 0 var(--ink);text-align:center}
 .admin-login-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;margin-bottom:6px}
@@ -318,7 +337,8 @@ textarea.form-input{resize:vertical;min-height:60px}
 .p3-solved-group.sg0{background:rgba(124,58,237,0.1);border:2px solid rgba(124,58,237,0.3)}
 .p3-solved-group.sg1{background:rgba(219,39,119,0.1);border:2px solid rgba(219,39,119,0.3)}
 .p3-solved-group.sg2{background:rgba(2,132,199,0.1);border:2px solid rgba(2,132,199,0.3)}
-.p3-solved-name{font-size:0.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+/* CHANGED: bigger category name text in solved groups */
+.p3-solved-name{font-size:0.88rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
 .p3-solved-items-row{display:flex;gap:6px;flex-wrap:wrap}
 .p3-solved-pill{font-size:0.78rem;font-weight:700;padding:5px 12px;border-radius:8px;background:rgba(255,255,255,0.7)}
 .p3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:16px}
@@ -377,9 +397,11 @@ textarea.form-input{resize:vertical;min-height:60px}
 .btl-placed-card{flex:1;background:var(--lift);border:2px solid var(--edge);border-radius:12px;padding:9px 14px;display:flex;align-items:center;gap:10px;font-size:0.8rem;font-weight:700;transition:all 0.35s;margin-left:8px}
 .btl-placed-card.correct{background:var(--ok-tint);border-color:#86EFAC;color:var(--ok)}
 .btl-placed-card.wrong{background:#FEE2E2;border-color:#FCA5A5;color:var(--fail)}
+.btl-placed-card.partial{background:#FEF9C3;border-color:#FDE047;color:#713F12}
 .btl-placed-emoji-sm{font-size:1.2rem;flex-shrink:0}
 .btl-placed-text{flex:1;line-height:1.2}
 .btl-placed-value{font-size:0.6rem;font-weight:600;opacity:0.6;margin-left:auto;white-space:nowrap}
+.btl-placed-pts{font-size:0.68rem;font-weight:800;margin-left:6px;white-space:nowrap}
 .btl-result-card{background:var(--ink);border-radius:20px;padding:30px 24px;text-align:center;color:white;margin-bottom:18px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
 .btl-result-heading{font-family:'DM Serif Display',serif;font-size:1.7rem;font-style:italic;color:rgba(255,255,255,0.9);margin-bottom:16px;line-height:1.4}
 .btl-result-pts{font-family:'Bebas Neue',sans-serif;font-size:4.5rem;letter-spacing:3px;color:var(--btl);line-height:1;margin-bottom:4px}
@@ -388,56 +410,94 @@ textarea.form-input{resize:vertical;min-height:60px}
 .btl-result-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--btl),#FDE68A);width:0;transition:width 0.9s ease 0.4s}
 .btl-result-pct{font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.35)}
 
-/* ═══════════════════════════════════════════════ TRIVIA BINGO */
+/* ═══════════════════════════════════════════════ TRIVIA BINGO — redesigned */
 .bingo-wrap{max-width:700px;margin:0 auto;padding:16px 0 60px}
-.bingo-header{background:linear-gradient(135deg,#0F4C41,var(--bingo));border-radius:16px;padding:18px 20px;margin-bottom:16px;color:white;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.bingo-header-left{}
-.bingo-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px;margin-bottom:2px}
-.bingo-category{font-size:0.7rem;font-weight:600;opacity:0.75}
-.bingo-stats-row{display:flex;gap:16px;align-items:center;margin-top:8px}
-.bingo-stat{text-align:center}
-.bingo-stat-num{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:1px;line-height:1}
-.bingo-stat-lbl{font-size:0.52rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:0.6}
-.bingo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:16px}
-.bingo-cell{background:var(--white);border:2px solid var(--edge);border-radius:10px;padding:8px 5px;text-align:center;font-size:0.68rem;font-weight:700;min-height:62px;display:flex;align-items:center;justify-content:center;line-height:1.2;transition:all 0.2s;position:relative;cursor:default}
-.bingo-cell.selectable{cursor:pointer;border-color:var(--bingo);background:#F0FDF8}
-.bingo-cell.selectable:hover{background:#CCFBF1;transform:scale(1.04);box-shadow:0 4px 12px rgba(15,118,110,0.2)}
-.bingo-cell.selected{background:var(--bingo);border-color:var(--bingo);color:white;transform:scale(1.06);box-shadow:0 4px 14px rgba(15,118,110,0.35)}
-.bingo-cell.marked{background:#CCFBF1;border-color:var(--bingo);color:var(--bingo)}
-.bingo-cell.marked::after{content:'✓';position:absolute;top:3px;right:5px;font-size:0.55rem;color:var(--bingo);font-weight:800}
-.bingo-cell.wrong-flash{animation:shake 0.35s ease;background:#FEE2E2!important;border-color:#FCA5A5!important}
-.bingo-cell.bingo-line{background:var(--bingo);border-color:var(--bingo);color:white}
-.bingo-cell.bingo-line::after{content:'★';position:absolute;top:3px;right:5px;font-size:0.55rem;color:rgba(255,255,255,0.8);font-weight:800}
-.bingo-prompt-card{background:var(--white);border:2px solid var(--ink);border-radius:16px;padding:18px 20px;margin-bottom:14px;box-shadow:3px 3px 0 var(--ink)}
-.bingo-prompt-eyebrow{font-size:0.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
-.bingo-q-badge{background:var(--ink);color:white;border-radius:6px;padding:2px 8px;font-size:0.58rem;font-weight:800}
-.bingo-prompt-text{font-size:1.1rem;font-weight:800;color:var(--ink);line-height:1.35;margin-bottom:12px}
-.bingo-instruction{font-size:0.72rem;font-weight:600;color:var(--muted);margin-bottom:14px;padding:8px 12px;background:var(--lift);border-radius:8px}
-.bingo-instruction.active{color:var(--bingo);background:rgba(15,118,110,0.07);border:1px solid rgba(15,118,110,0.2)}
-.bingo-prompt-actions{display:flex;gap:8px;flex-wrap:wrap}
-.btn-bingo-confirm{font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:800;padding:9px 20px;background:var(--bingo);color:white;border:none;border-radius:100px;cursor:pointer;transition:all 0.14s}
-.btn-bingo-confirm:hover:not([disabled]){background:#0D9488;transform:translateY(-1px);box-shadow:0 5px 16px rgba(15,118,110,0.35)}
-.btn-bingo-confirm[disabled]{opacity:0.3;cursor:not-allowed}
-.btn-bingo-skip{font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:700;padding:9px 18px;background:none;color:var(--muted);border:2px solid var(--edge);border-radius:100px;cursor:pointer;transition:all 0.14s}
-.btn-bingo-skip:hover{border-color:var(--ink);color:var(--ink)}
-.bingo-feedback{display:none;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;font-size:0.78rem;font-weight:700;margin-bottom:10px}
-.bingo-feedback.show{display:flex}
-.bingo-feedback.correct{background:var(--ok-tint);border:1.5px solid #86EFAC;color:var(--ok)}
-.bingo-feedback.wrong{background:#FEE2E2;border:1.5px solid #FCA5A5;color:var(--fail)}
-.bingo-win-flash{display:none;background:var(--bingo);border-radius:12px;padding:14px 18px;margin-bottom:14px;text-align:center;color:white;animation:riseIn 0.4s ease}
-.bingo-win-flash.show{display:block}
-.bingo-win-flash-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px;margin-bottom:2px}
-.bingo-complete-wrap{background:var(--ink);border-radius:20px;padding:32px 24px;text-align:center;color:white;margin-top:16px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
-.bingo-complete-icon{font-size:3rem;margin-bottom:12px}
-.bingo-complete-title{font-family:'DM Serif Display',serif;font-size:2.2rem;font-style:italic;margin-bottom:10px}
-.bingo-complete-stats{font-size:0.8rem;font-weight:500;opacity:0.55;line-height:1.8;margin-bottom:20px}
 
-/* ═══════════════════════════════════════════════ OVERLAY */
+/* New Bingo Header */
+.bingo-masthead{background:var(--ink);border-radius:16px;padding:22px 24px 18px;margin-bottom:14px;position:relative;overflow:hidden}
+.bingo-masthead::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 80% at 5% 70%,rgba(15,118,110,0.5) 0%,transparent 55%),radial-gradient(ellipse 50% 60% at 90% 10%,rgba(15,118,110,0.3) 0%,transparent 50%)}
+.bingo-masthead-inner{position:relative;z-index:1;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.bingo-masthead-left{}
+.bingo-game-label{font-size:0.52rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:4px}
+.bingo-title{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;letter-spacing:4px;color:white;line-height:1;margin-bottom:3px}
+.bingo-category{font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);margin-bottom:10px}
+.bingo-counters{display:flex;gap:0;border:1px solid rgba(255,255,255,0.12);border-radius:10px;overflow:hidden}
+.bingo-counter{padding:8px 14px;text-align:center;border-right:1px solid rgba(255,255,255,0.08)}
+.bingo-counter:last-child{border-right:none}
+.bingo-counter-num{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:1px;color:white;line-height:1}
+.bingo-counter-lbl{font-size:0.48rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35)}
+.bingo-masthead-right{flex-shrink:0}
+.bingo-progress-ring-wrap{position:relative;width:72px;height:72px}
+.bingo-progress-ring-wrap svg{transform:rotate(-90deg)}
+.bingo-progress-ring-bg{fill:none;stroke:rgba(255,255,255,0.08);stroke-width:5}
+.bingo-progress-ring-fill{fill:none;stroke:var(--bingo);stroke-width:5;stroke-linecap:round;stroke-dasharray:188.5;stroke-dashoffset:188.5;transition:stroke-dashoffset 0.5s ease}
+.bingo-progress-ring-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.bingo-progress-ring-pct{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1px;color:white;line-height:1}
+.bingo-progress-ring-sub{font-size:0.4rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.35)}
+
+/* Bingo line tracker */
+.bingo-lines-bar{display:flex;gap:6px;margin-bottom:14px;align-items:center;padding:10px 14px;background:var(--white);border:1.5px solid var(--edge);border-radius:12px}
+.bingo-lines-label{font-size:0.58rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-right:4px;white-space:nowrap}
+.bingo-line-pip{flex:1;height:6px;border-radius:3px;background:var(--edge);transition:background 0.4s ease}
+.bingo-line-pip.lit{background:var(--bingo)}
+.bingo-lines-count{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1px;color:var(--bingo);margin-left:4px}
+
+/* Bingo grid */
+.bingo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px}
+.bingo-cell{background:var(--white);border:1.5px solid var(--edge);border-radius:10px;padding:9px 5px;text-align:center;font-size:0.68rem;font-weight:700;min-height:64px;display:flex;align-items:center;justify-content:center;line-height:1.25;transition:all 0.18s;position:relative;cursor:default;color:var(--ink)}
+.bingo-cell-num{position:absolute;top:4px;left:6px;font-size:0.45rem;font-weight:800;color:var(--edge);letter-spacing:0.5px}
+.bingo-cell.selectable{cursor:pointer;border-color:rgba(15,118,110,0.35);background:#F5FEFA}
+.bingo-cell.selectable:hover{background:#E6FAF5;border-color:var(--bingo);transform:translateY(-1px);box-shadow:0 3px 10px rgba(15,118,110,0.15)}
+.bingo-cell.selected{background:var(--ink);border-color:var(--ink);color:white;transform:translateY(-2px);box-shadow:0 5px 16px rgba(12,12,12,0.3)}
+.bingo-cell.marked{background:#E6FAF5;border-color:var(--bingo);color:var(--bingo)}
+.bingo-cell.marked .bingo-cell-check{display:block}
+.bingo-cell-check{display:none;position:absolute;top:4px;right:5px;font-size:0.5rem;color:var(--bingo);font-weight:900}
+.bingo-cell.wrong-flash{animation:shake 0.35s ease;background:#FEE2E2!important;border-color:#FCA5A5!important;color:var(--fail)!important}
+.bingo-cell.bingo-line{background:var(--bingo);border-color:var(--bingo);color:white;box-shadow:0 2px 8px rgba(15,118,110,0.35)}
+.bingo-cell.bingo-line .bingo-cell-check{display:block;color:rgba(255,255,255,0.7)}
+.bingo-cell.bingo-line .bingo-cell-num{color:rgba(255,255,255,0.3)}
+
+/* Bingo prompt area */
+.bingo-prompt-area{background:var(--white);border:2px solid var(--ink);border-radius:16px;overflow:hidden;margin-bottom:12px;box-shadow:3px 3px 0 var(--ink)}
+.bingo-prompt-head{background:var(--ink);padding:10px 16px;display:flex;align-items:center;justify-content:space-between}
+.bingo-prompt-head-label{font-size:0.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35)}
+.bingo-prompt-counter{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:1px;color:white}
+.bingo-prompt-body{padding:16px 18px 14px}
+.bingo-prompt-text{font-size:1.15rem;font-weight:800;color:var(--ink);line-height:1.35;margin-bottom:4px}
+.bingo-prompt-hint{font-size:0.7rem;font-weight:500;color:var(--muted);margin-bottom:14px}
+.bingo-prompt-hint.active{color:var(--bingo);font-weight:600}
+.bingo-prompt-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn-bingo-confirm{font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:800;padding:9px 22px;background:var(--ink);color:white;border:none;border-radius:100px;cursor:pointer;transition:all 0.14s}
+.btn-bingo-confirm:hover:not([disabled]){background:#252525;transform:translateY(-1px);box-shadow:0 5px 14px rgba(0,0,0,0.2)}
+.btn-bingo-confirm[disabled]{opacity:0.25;cursor:not-allowed}
+.btn-bingo-skip{font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:600;padding:9px 18px;background:none;color:var(--muted);border:1.5px solid var(--edge);border-radius:100px;cursor:pointer;transition:all 0.14s}
+.btn-bingo-skip:hover{border-color:var(--ink);color:var(--ink)}
+
+/* Bingo feedback */
+.bingo-feedback-strip{height:3px;background:var(--edge);transition:background 0.3s;border-radius:2px;margin-bottom:10px}
+.bingo-feedback-strip.correct{background:var(--ok)}
+.bingo-feedback-strip.wrong{background:var(--fail)}
+.bingo-feedback-msg{font-size:0.78rem;font-weight:700;min-height:20px;padding:8px 12px;border-radius:8px;display:none;margin-bottom:10px}
+.bingo-feedback-msg.show{display:block}
+.bingo-feedback-msg.correct{background:var(--ok-tint);color:var(--ok);border:1px solid #86EFAC}
+.bingo-feedback-msg.wrong{background:#FEE2E2;color:var(--fail);border:1px solid #FCA5A5}
+
+/* Bingo complete */
+.bingo-complete-wrap{background:var(--ink);border-radius:16px;padding:32px 24px;text-align:center;color:white;margin-top:16px;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.bingo-complete-title{font-family:'DM Serif Display',serif;font-size:2.2rem;font-style:italic;margin-bottom:8px}
+.bingo-complete-sub{font-size:0.78rem;font-weight:500;color:rgba(255,255,255,0.45);line-height:1.8;margin-bottom:20px}
+.bingo-win-banner{background:var(--bingo);border-radius:10px;padding:12px 16px;margin-bottom:12px;text-align:center;animation:riseIn 0.4s ease}
+.bingo-win-banner-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:3px;color:white;margin-bottom:2px}
+.bingo-win-banner-sub{font-size:0.7rem;font-weight:600;color:rgba(255,255,255,0.75)}
+
+/* ═══════════════════════════════════════════════ HOW TO PLAY OVERLAY */
 .overlay{display:none;position:fixed;inset:0;background:rgba(12,12,12,0.65);z-index:400;align-items:center;justify-content:center;backdrop-filter:blur(5px)}
 .overlay.show{display:flex}
-.overlay-card{background:var(--white);border-radius:20px;padding:30px 28px 24px;max-width:420px;width:92%;animation:riseIn 0.3s cubic-bezier(0.22,1,0.36,1) both;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);max-height:90vh;overflow-y:auto}
-.overlay-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;margin-bottom:18px}
-.overlay-steps{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+.overlay-card{background:var(--white);border-radius:20px;padding:30px 28px 24px;max-width:440px;width:92%;animation:riseIn 0.3s cubic-bezier(0.22,1,0.36,1) both;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);max-height:90vh;overflow-y:auto}
+.overlay-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px;gap:10px}
+.overlay-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px}
+.overlay-game-badge{font-size:0.58rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:6px;color:white;white-space:nowrap;margin-top:6px}
+.overlay-steps{display:flex;flex-direction:column;gap:12px;margin-bottom:22px;margin-top:14px}
 .overlay-step{display:flex;align-items:flex-start;gap:12px}
 .step-num{width:24px;height:24px;border-radius:7px;background:var(--ink);color:white;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800;flex-shrink:0;margin-top:2px}
 .step-text{font-size:0.78rem;font-weight:500;color:#444;line-height:1.55}
@@ -486,6 +546,7 @@ textarea.form-input{resize:vertical;min-height:60px}
     <button class="nav-btn" onclick="showPage('perfect3')">Perfect 3s</button>
     <button class="nav-btn" onclick="showPage('buildline')">Build the Line</button>
     <button class="nav-btn" onclick="showPage('bingo')">Trivia Bingo</button>
+    <button class="nav-btn" onclick="showPage('howtoplay')">How to Play</button>
     <button class="nav-btn" onclick="showPage('archive')">Archive</button>
     <button class="nav-btn admin-btn" onclick="showPage('admin')">⚙</button>
   </div>
@@ -527,6 +588,64 @@ textarea.form-input{resize:vertical;min-height:60px}
   <div class="home-section">
     <div class="home-section-label">Today's Games</div>
     <div id="homeTodayCards"></div>
+  </div>
+</div>
+
+<!-- ══════════════════ HOW TO PLAY PAGE ══════════════════ -->
+<div class="page" id="page-howtoplay">
+  <div class="game-wrap">
+    <div class="game-back-bar">
+      <button class="back-btn" onclick="showPage('home')">← Home</button>
+      <div class="game-title-bar"><div class="game-title-label">How to Play</div></div>
+    </div>
+    <div class="htp-wrap">
+      <!-- RANK 4 -->
+      <div class="htp-section htp-section-rank4">
+        <div class="htp-game-name" style="color:var(--c0)">Rank 4</div>
+        <span class="htp-game-tag">Ranking &amp; Pair-Finding</span>
+        <div class="htp-steps">
+          <div class="htp-step"><div class="htp-step-num htp-step-num-rank4">1</div><div class="htp-step-text">You have <strong>4 items</strong> and <strong>4 ranking categories</strong>. Drag the items into order for each category — <strong>1st = least, 4th = most</strong>.</div></div>
+          <div class="htp-step"><div class="htp-step-num htp-step-num-rank4">2</div><div class="htp-step-text">Use <strong>Check Order</strong> to verify a category. You have <strong>3 checks shared</strong> across all categories — a star lights up when a row is perfect.</div></div>
+          <div class="htp-step"><div class="htp-step-num htp-step-num-rank4">3</div><div class="htp-step-text"><strong>Two categories share the exact same ranking order.</strong> Select both and press <strong>Link Pair</strong> to finish the game.</div></div>
+          <div class="htp-step"><div class="htp-step-num htp-step-num-rank4">4</div><div class="htp-step-text">If your orders are correct when you link, you earn <strong>4/4 stars automatically</strong> — no Check needed!</div></div>
+        </div>
+        <button class="htp-play-btn" style="background:var(--c0)" onclick="showPage('rank4')">Play Rank 4</button>
+      </div>
+      <!-- PERFECT 3s -->
+      <div class="htp-section htp-section-p3">
+        <div class="htp-game-name" style="color:var(--p3-a)">Perfect 3s</div>
+        <span class="htp-game-tag">Grouping</span>
+        <div class="htp-steps">
+          <div class="htp-step"><div class="htp-step-num htp-step-num-p3">1</div><div class="htp-step-text">You are shown <strong>9 items</strong> from a shared theme, secretly split into <strong>3 groups of 3</strong>.</div></div>
+          <div class="htp-step"><div class="htp-step-num htp-step-num-p3">2</div><div class="htp-step-text">Tap items to select them. When you have <strong>3 selected</strong>, press <strong>Submit Group</strong> to check if they belong together.</div></div>
+          <div class="htp-step"><div class="htp-step-num htp-step-num-p3">3</div><div class="htp-step-text">You have <strong>3 attempts</strong>. A wrong guess costs one attempt. Find all three groups before you run out!</div></div>
+        </div>
+        <button class="htp-play-btn" style="background:var(--p3-a)" onclick="showPage('perfect3')">Play Perfect 3s</button>
+      </div>
+      <!-- BUILD THE LINE -->
+      <div class="htp-section htp-section-btl">
+        <div class="htp-game-name" style="color:var(--btl)">Build the Line</div>
+        <span class="htp-game-tag">Ordering</span>
+        <div class="htp-steps">
+          <div class="htp-step"><div class="htp-step-num htp-step-num-btl">1</div><div class="htp-step-text">Items are revealed <strong>one at a time</strong>. Place each one on the line where you think it belongs — from smallest to largest.</div></div>
+          <div class="htp-step"><div class="htp-step-num htp-step-num-btl">2</div><div class="htp-step-text">Tap any <strong>gap on the line</strong> to insert the current item at that position.</div></div>
+          <div class="htp-step"><div class="htp-step-num htp-step-num-btl">3</div><div class="htp-step-text">Points are awarded by <strong>how close</strong> your placement is to the correct position. Exact = <strong>3 pts</strong>, 1 off = <strong>2 pts</strong>, 2 off = <strong>1 pt</strong>, 3+ off = <strong>0 pts</strong>. Score is shown out of 21.</div></div>
+        </div>
+        <button class="htp-play-btn" style="background:var(--btl)" onclick="showPage('buildline')">Play Build the Line</button>
+      </div>
+      <!-- TRIVIA BINGO -->
+      <div class="htp-section htp-section-bingo">
+        <div class="htp-game-name" style="color:var(--bingo)">Trivia Bingo</div>
+        <span class="htp-game-tag">Trivia &amp; Pattern-Finding</span>
+        <div class="htp-steps">
+          <div class="htp-step"><div class="htp-step-num htp-step-num-bingo">1</div><div class="htp-step-text">A <strong>4×4 grid</strong> of category labels is shown. Each square describes a property (e.g. "Mammal", "Has Gills").</div></div>
+          <div class="htp-step"><div class="htp-step-num htp-step-num-bingo">2</div><div class="htp-step-text">A <strong>trivia prompt</strong> appears (e.g. "A kangaroo"). Tap the square on the grid that you think matches, then press <strong>Confirm</strong>.</div></div>
+          <div class="htp-step"><div class="htp-step-num htp-step-num-bingo">3</div><div class="htp-step-text">Correct answers <strong>mark that square</strong>. Complete a full row, column, or diagonal to score a <strong>Bingo</strong> line!</div></div>
+          <div class="htp-step"><div class="htp-step-num htp-step-num-bingo">4</div><div class="htp-step-text">If no square fits, press <strong>Skip</strong>. Wrong guesses cost you a prompt. Fill the whole board to win!</div></div>
+        </div>
+        <button class="htp-play-btn" style="background:var(--bingo)" onclick="showPage('bingo')">Play Trivia Bingo</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -609,14 +728,19 @@ textarea.form-input{resize:vertical;min-height:60px}
     </div>
   </div>
   <div class="checks-toast" id="r4Toast"></div>
+
+  <!-- Rank 4 How to Play Overlay -->
   <div class="overlay" id="r4HelpOverlay" onclick="if(event.target===this)this.classList.remove('show')">
     <div class="overlay-card">
-      <div class="overlay-title">How to Play</div>
+      <div class="overlay-top">
+        <div class="overlay-title">How to Play</div>
+        <div class="overlay-game-badge" style="background:var(--c0)">Rank 4</div>
+      </div>
       <div class="overlay-steps">
-        <div class="overlay-step"><div class="step-num">1</div><div class="step-text">You have <strong>4 items</strong> and <strong>4 ranking categories</strong>. Drag items to rank them — <strong>1st = least, 4th = most</strong>.</div></div>
-        <div class="overlay-step"><div class="step-num">2</div><div class="step-text">You have <strong>3 Check Order attempts</strong> shared across all categories. A ⭐ lights up when a row is correct.</div></div>
-        <div class="overlay-step"><div class="step-num">3</div><div class="step-text">Exactly <strong>two categories share the same ranking order</strong>. Select both and hit <strong>Link Pair</strong> to end the game.</div></div>
-        <div class="overlay-step"><div class="step-num">4</div><div class="step-text">If your orders are correct when you link, you get <strong>4/4 stars automatically</strong> — no Check needed!</div></div>
+        <div class="overlay-step"><div class="step-num" style="background:var(--c0)">1</div><div class="step-text">You have <strong>4 items</strong> and <strong>4 ranking categories</strong>. Drag items to rank them — <strong>1st = least, 4th = most</strong>.</div></div>
+        <div class="overlay-step"><div class="step-num" style="background:var(--c1)">2</div><div class="step-text">You have <strong>3 Check Order attempts</strong> shared across all categories. A ⭐ lights up when a row is correct.</div></div>
+        <div class="overlay-step"><div class="step-num" style="background:var(--c2)">3</div><div class="step-text">Exactly <strong>two categories share the same ranking order</strong>. Select both and hit <strong>Link Pair</strong> to end the game.</div></div>
+        <div class="overlay-step"><div class="step-num" style="background:var(--c3)">4</div><div class="step-text">If your orders are correct when you link, you get <strong>4/4 stars automatically</strong> — no Check needed!</div></div>
       </div>
       <button class="btn-play" onclick="document.getElementById('r4HelpOverlay').classList.remove('show')">Let's go!</button>
     </div>
@@ -632,6 +756,22 @@ textarea.form-input{resize:vertical;min-height:60px}
     </div>
     <div class="p3-wrap" id="p3Wrap"></div>
   </div>
+
+  <!-- Perfect 3s How to Play Overlay -->
+  <div class="overlay" id="p3HelpOverlay" onclick="if(event.target===this)this.classList.remove('show')">
+    <div class="overlay-card">
+      <div class="overlay-top">
+        <div class="overlay-title">How to Play</div>
+        <div class="overlay-game-badge" style="background:var(--p3-a)">Perfect 3s</div>
+      </div>
+      <div class="overlay-steps">
+        <div class="overlay-step"><div class="step-num" style="background:var(--p3-a)">1</div><div class="step-text">You are shown <strong>9 items</strong> secretly split into <strong>3 groups of 3</strong>, all sharing a theme.</div></div>
+        <div class="overlay-step"><div class="step-num" style="background:var(--p3-b)">2</div><div class="step-text">Tap to select <strong>3 items</strong> that belong together, then press <strong>Submit Group</strong>.</div></div>
+        <div class="overlay-step"><div class="step-num" style="background:var(--p3-c)">3</div><div class="step-text">You have <strong>3 attempts</strong> — a wrong guess costs one. Find all three groups to win!</div></div>
+      </div>
+      <button class="btn-play" onclick="document.getElementById('p3HelpOverlay').classList.remove('show')">Let's go!</button>
+    </div>
+  </div>
 </div>
 
 <!-- ══════════════════ BUILD THE LINE PAGE ══════════════════ -->
@@ -643,6 +783,22 @@ textarea.form-input{resize:vertical;min-height:60px}
     </div>
     <div class="btl-wrap" id="btlWrap"></div>
   </div>
+
+  <!-- Build the Line How to Play Overlay -->
+  <div class="overlay" id="btlHelpOverlay" onclick="if(event.target===this)this.classList.remove('show')">
+    <div class="overlay-card">
+      <div class="overlay-top">
+        <div class="overlay-title">How to Play</div>
+        <div class="overlay-game-badge" style="background:var(--btl)">Build the Line</div>
+      </div>
+      <div class="overlay-steps">
+        <div class="overlay-step"><div class="step-num" style="background:var(--btl)">1</div><div class="step-text">Items are revealed <strong>one at a time</strong>. Tap a gap on the line to place each item where you think it belongs — smallest to largest.</div></div>
+        <div class="overlay-step"><div class="step-num" style="background:var(--btl)">2</div><div class="step-text">Points are awarded by <strong>how close your placement is</strong>. Exact position = <strong>3 pts</strong>, 1 off = <strong>2 pts</strong>, 2 off = <strong>1 pt</strong>, 3+ off = 0 pts.</div></div>
+        <div class="overlay-step"><div class="step-num" style="background:var(--btl)">3</div><div class="step-text">Score is shown <strong>out of 21</strong>. After all items are placed, the correct positions are revealed.</div></div>
+      </div>
+      <button class="btn-play" onclick="document.getElementById('btlHelpOverlay').classList.remove('show')">Let's go!</button>
+    </div>
+  </div>
 </div>
 
 <!-- ══════════════════ TRIVIA BINGO PAGE ══════════════════ -->
@@ -653,6 +809,22 @@ textarea.form-input{resize:vertical;min-height:60px}
       <div class="game-title-bar"><div class="game-title-label" style="color:var(--bingo)">Trivia Bingo</div></div>
     </div>
     <div class="bingo-wrap" id="bingoWrap"></div>
+  </div>
+
+  <!-- Bingo How to Play Overlay -->
+  <div class="overlay" id="bingoHelpOverlay" onclick="if(event.target===this)this.classList.remove('show')">
+    <div class="overlay-card">
+      <div class="overlay-top">
+        <div class="overlay-title">How to Play</div>
+        <div class="overlay-game-badge" style="background:var(--bingo)">Trivia Bingo</div>
+      </div>
+      <div class="overlay-steps">
+        <div class="overlay-step"><div class="step-num" style="background:var(--bingo)">1</div><div class="step-text">A <strong>4×4 grid</strong> shows category labels. A trivia <strong>prompt</strong> appears — tap the square that matches and press <strong>Confirm</strong>.</div></div>
+        <div class="overlay-step"><div class="step-num" style="background:var(--bingo)">2</div><div class="step-text">Correct answers <strong>mark that square</strong>. Complete a row, column, or diagonal to score a <strong>Bingo</strong>!</div></div>
+        <div class="overlay-step"><div class="step-num" style="background:var(--bingo)">3</div><div class="step-text">If no square fits, press <strong>Skip</strong>. Wrong guesses cost you a prompt. <strong>Fill the board</strong> to win!</div></div>
+      </div>
+      <button class="btn-play" onclick="document.getElementById('bingoHelpOverlay').classList.remove('show')">Let's go!</button>
+    </div>
   </div>
 </div>
 
@@ -783,7 +955,11 @@ textarea.form-input{resize:vertical;min-height:60px}
               <div><label class="form-label">Puzzle Date</label><input class="form-input" type="date" id="btlAdminDate"></div>
               <div><label class="form-label">Category / Metric</label><input class="form-input" type="text" id="btlAdminCat" placeholder="e.g. Speed in km/h"></div>
             </div>
-            <label class="form-label">Items in correct order: Smallest → Largest (comma-separated)</label>
+            <div class="form-row">
+              <div><label class="form-label">Left End Label (smallest end)</label><input class="form-input" type="text" id="btlAdminLabelSmall" placeholder="e.g. Smallest or Earliest"></div>
+              <div><label class="form-label">Right End Label (largest end)</label><input class="form-input" type="text" id="btlAdminLabelLarge" placeholder="e.g. Largest or Latest"></div>
+            </div>
+            <label class="form-label">Items in correct order: Left → Right (comma-separated)</label>
             <input class="form-input" type="text" id="btlAdminItems" placeholder="e.g. Snail, Walking Pace, Cycling, Car, Train, Plane, Rocket" style="margin-bottom:4px">
             <label class="form-label">Emojis (comma-separated)</label>
             <input class="form-input" type="text" id="btlAdminEmojis" placeholder="🐌, 🚶, 🚴, 🚗, 🚆, ✈️, 🚀" style="margin-bottom:10px">
@@ -810,7 +986,7 @@ textarea.form-input{resize:vertical;min-height:60px}
             <textarea class="form-input" id="bingoAdminGrid" rows="3" placeholder="Native to Australia, Mammal, Reptile, Has Gills..." style="margin-bottom:6px"></textarea>
             <div class="form-hint" style="margin-bottom:12px">Squares 0–15 numbered left to right, top to bottom</div>
             <label class="form-label">Prompts — one per line. Format: <code style="background:var(--lift);padding:1px 5px;border-radius:4px;font-size:0.7rem">Prompt text | matching square index(es, comma-separated)</code></label>
-            <div class="form-hint" style="margin-bottom:6px">A prompt can match multiple squares — player gets credit for choosing any of them. Leave the index blank for skip-only prompts.</div>
+            <div class="form-hint" style="margin-bottom:6px">A prompt can match multiple squares — player gets credit for choosing any of them.</div>
             <textarea class="form-input" id="bingoAdminPrompts" rows="14" placeholder="A lion | 1&#10;A shark | 3,6&#10;A kangaroo | 0&#10;A bat | 9"></textarea>
             <button class="btn-admin-save" onclick="saveBingoPuzzle()" style="margin-top:16px">💾 Save Puzzle</button>
             <span class="admin-save-msg" id="bingoSaveMsg">Saved!</span>
@@ -826,7 +1002,8 @@ textarea.form-input{resize:vertical;min-height:60px}
 </div>
 
 <script>
-const ADMIN_PASSWORD = 'rank4admin2025';
+// CHANGED: admin password updated to 4664
+const ADMIN_PASSWORD = '4664';
 
 const DEFAULT_R4_PUZZLES = [
   {date:'2025-01-01',items:['A4 Paper','Pencil','Elephant','Moon'],emojis:{'A4 Paper':'📄','Pencil':'✏️','Elephant':'🐘','Moon':'🌙'},
@@ -861,8 +1038,9 @@ const DEFAULT_P3_PUZZLES = [
     ]},
 ];
 
+// CHANGED: default BTL puzzle includes labelSmall/labelLarge
 const DEFAULT_BTL_PUZZLES = [
-  {date:'2025-01-01',category:'Speed in km/h',
+  {date:'2025-01-01',category:'Speed in km/h',labelSmall:'Smallest',labelLarge:'Largest',
     items:['Snail','Walking Pace','Cycling','Car','Train','Plane','Rocket'],
     emojis:['🐌','🚶','🚴','🚗','🚆','✈️','🚀'],
     values:['0.05 km/h','5 km/h','25 km/h','120 km/h','300 km/h','900 km/h','28,000 km/h']},
@@ -908,21 +1086,16 @@ const DEFAULT_BINGO_PUZZLES = [
 
 // ═══════════════════════════════════════════════════════
 // JSONBIN CLOUD STORAGE
-// After downloading this file, replace YOUR_API_KEY_HERE
-// with your JSONBin master key (keep the $ at the start).
 // ═══════════════════════════════════════════════════════
 const JSONBIN_BIN_ID = '6998797943b1c97be98e9aa5';
 const JSONBIN_API_KEY = '$2a$10$SIQxm2NOgyIeYb.G/anmHOfT/bnRdUH3Dh13WZEOiGZDZ2Df//oTe';
 const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
 
-// In-memory cache so we don't re-fetch on every page visit
 let _cloudCache = null;
 let _cloudFetchPromise = null;
 
 async function fetchCloudData() {
-  // Return cache if we already have it
   if (_cloudCache) return _cloudCache;
-  // If a fetch is already in progress, wait for it
   if (_cloudFetchPromise) return _cloudFetchPromise;
   _cloudFetchPromise = fetch(JSONBIN_URL + '/latest', {
     headers: { 'X-Master-Key': JSONBIN_API_KEY }
@@ -930,7 +1103,6 @@ async function fetchCloudData() {
   .then(r => r.json())
   .then(data => {
     const record = data.record || {};
-    // Merge with defaults so missing keys always have fallback data
     _cloudCache = {
       r4_puzzles:    record.r4_puzzles    && record.r4_puzzles.length    ? record.r4_puzzles    : DEFAULT_R4_PUZZLES,
       p3_puzzles:    record.p3_puzzles    && record.p3_puzzles.length    ? record.p3_puzzles    : DEFAULT_P3_PUZZLES,
@@ -953,10 +1125,9 @@ async function fetchCloudData() {
 }
 
 async function saveCloudData(updatedFields) {
-  // Fetch current data, merge in the update, then PUT back
   const current = await fetchCloudData();
   const merged = { ...current, ...updatedFields };
-  _cloudCache = merged; // update cache immediately
+  _cloudCache = merged;
   await fetch(JSONBIN_URL, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_API_KEY },
@@ -964,7 +1135,6 @@ async function saveCloudData(updatedFields) {
   });
 }
 
-// Sync helpers — these return cached data synchronously after initial load
 function getR4Puzzles()    { return (_cloudCache && _cloudCache.r4_puzzles)    || DEFAULT_R4_PUZZLES; }
 function getP3Puzzles()    { return (_cloudCache && _cloudCache.p3_puzzles)    || DEFAULT_P3_PUZZLES; }
 function getBtlPuzzles()   { return (_cloudCache && _cloudCache.btl_puzzles)   || DEFAULT_BTL_PUZZLES; }
@@ -982,7 +1152,6 @@ function getPuzzleForToday(puzzles){
 
 // ─── Page system ───
 async function showPage(id){
-  // Always wait for cloud data before initialising any game
   if(!_cloudCache){
     showLoader('Loading puzzles...');
     await fetchCloudData();
@@ -1114,10 +1283,12 @@ async function saveBtlPuzzle(){
   const date=document.getElementById('btlAdminDate').value;
   const category=document.getElementById('btlAdminCat').value.trim();
   if(!date||!category){alert('Please fill in Date and Category');return;}
+  const labelSmall=document.getElementById('btlAdminLabelSmall').value.trim()||'Smallest';
+  const labelLarge=document.getElementById('btlAdminLabelLarge').value.trim()||'Largest';
   const items=document.getElementById('btlAdminItems').value.split(',').map(s=>s.trim()).filter(Boolean);
   const emojis=document.getElementById('btlAdminEmojis').value.split(',').map(s=>s.trim());
   const values=document.getElementById('btlAdminValues').value.split(',').map(s=>s.trim());
-  const puzzle={date,category,items,emojis,values};
+  const puzzle={date,category,labelSmall,labelLarge,items,emojis,values};
   const puzzles=[...getBtlPuzzles()];
   const existIdx=puzzles.findIndex(p=>p.date===date);
   if(existIdx>-1)puzzles[existIdx]=puzzle;else puzzles.push(puzzle);
@@ -1162,12 +1333,6 @@ function renderAdminLists(){
   renderAdminList('p3AdminList',getP3Puzzles(),'p3_puzzles',p=>p.theme,renderAdminLists);
   renderAdminList('btlAdminList',getBtlPuzzles(),'btl_puzzles',p=>p.category,renderAdminLists);
   renderAdminList('bingoAdminList',getBingoPuzzles(),'bingo_puzzles',p=>p.category,renderAdminLists);
-}
-async function refreshAndRenderAdmin(){
-  _cloudCache=null; // force re-fetch
-  showLoader('Refreshing data...');
-  await fetchCloudData();
-  hideLoader();renderAdminLists();
 }
 
 function renderAdminList(elId,puzzles,storageKey,labelFn,refresh){
@@ -1276,7 +1441,7 @@ function r4ShowWrongReveal(a,b){
   };
   document.getElementById('r4WrongRows').innerHTML=buildRow(r4Puzzle.categories[a],r4State.userOrder[a],a)+buildRow(r4Puzzle.categories[b],r4State.userOrder[b],b);
   const allDiffs=[...new Set([...r4State.userOrder[a].filter((item,i)=>r4Puzzle.categories[a].order.indexOf(item)!==i),...r4State.userOrder[b].filter((item,i)=>r4Puzzle.categories[b].order.indexOf(item)!==i)])];
-  const hint=allDiffs.length?`💡 Tip: ${allDiffs.slice(0,2).join(' and ')} need moving`:'';
+  const hint=allDiffs.length?`Tip: ${allDiffs.slice(0,2).join(' and ')} need moving`:'';
   const hEl=document.getElementById('r4SwapHint');hEl.textContent=hint;hEl.style.display=hint?'':'none';
   document.getElementById('r4WrongReveal').classList.add('show');
 }
@@ -1403,23 +1568,26 @@ function r4ShowResults(won){
 document.getElementById('r4BtnLink').addEventListener('click',r4LinkPair);
 
 // ═══════════════════════════════════════════════════════
-// PERFECT 3s — no red herrings
+// PERFECT 3s — 3 attempts max (CHANGED from 4)
 // ═══════════════════════════════════════════════════════
+const P3_MAX_ATTEMPTS = 3; // CHANGED
 let p3Puzzle,p3State={initialized:false};
 
 function initP3(){
   const puzzles=getP3Puzzles();
   p3Puzzle=getPuzzleForToday(puzzles).puzzle;
   const groupItems=p3Puzzle.groups.flatMap(g=>g.items);
-  p3State={initialized:true,items:shuffle([...groupItems]),selected:[],solved:[],attemptsLeft:4,gameOver:false,message:'',messageType:''};
+  p3State={initialized:true,items:shuffle([...groupItems]),selected:[],solved:[],attemptsLeft:P3_MAX_ATTEMPTS,gameOver:false,message:'',messageType:''};
   renderP3();
+  setTimeout(()=>document.getElementById('p3HelpOverlay').classList.add('show'),400);
 }
 
 function renderP3(){
   const wrap=document.getElementById('p3Wrap');
   const GRP_COLORS=['var(--p3-a)','var(--p3-b)','var(--p3-c)'];
   const GRP_NAMES=['sg0','sg1','sg2'];
-  const dotsHTML=Array.from({length:4}).map((_,i)=>{const used=4-p3State.attemptsLeft;return`<div class="p3-dot${i<used?' used':''}"></div>`;}).join('');
+  // CHANGED: dots based on P3_MAX_ATTEMPTS
+  const dotsHTML=Array.from({length:P3_MAX_ATTEMPTS}).map((_,i)=>{const used=P3_MAX_ATTEMPTS-p3State.attemptsLeft;return`<div class="p3-dot${i<used?' used':''}"></div>`;}).join('');
   const solvedHTML=p3State.solved.map(gi=>{const g=p3Puzzle.groups[gi];return`<div class="p3-solved-group ${GRP_NAMES[gi]}"><div class="p3-solved-name" style="color:${GRP_COLORS[gi]}">${g.name}</div><div class="p3-solved-items-row">${g.items.map(item=>`<span class="p3-solved-pill">${item}</span>`).join('')}</div></div>`;}).join('');
   const gridHTML=p3State.items.map((item,idx)=>{
     const solvedGroupIdx=p3State.solved.findIndex(gi=>p3Puzzle.groups[gi].items.includes(item));
@@ -1430,7 +1598,7 @@ function renderP3(){
     return`<div class="${cls}" onclick="p3ToggleItem(${idx})" ${dis}>${item}</div>`;
   }).join('');
   let footer='';
-  if(p3State.solved.length===3){footer=`<div class="p3-msg ok" style="padding:12px 0;font-size:0.9rem">🎉 Perfect! All three groups found!</div>`;}
+  if(p3State.solved.length===3){footer=`<div class="p3-msg ok" style="padding:12px 0;font-size:0.9rem">All three groups found!</div>`;}
   else if(p3State.gameOver){
     const revealHTML=p3Puzzle.groups.map((g,gi)=>{if(p3State.solved.includes(gi))return'';return`<div class="p3-reveal-row"><div class="p3-reveal-label" style="color:${GRP_COLORS[gi]}">${g.name}</div>${g.items.map(item=>`<span class="p3-reveal-pill">${item}</span>`).join('')}</div>`;}).join('');
     footer=`<div class="p3-msg err" style="margin-bottom:10px">No attempts left — game over!</div><div class="p3-gameover-reveal"><div class="p3-gameover-label">The correct groups were:</div>${revealHTML}</div>`;
@@ -1462,10 +1630,10 @@ function p3Submit(){
   const matchGroup=p3Puzzle.groups.findIndex((g,gi)=>!p3State.solved.includes(gi)&&sel.every(item=>g.items.includes(item)));
   if(matchGroup>-1){
     p3State.solved.push(matchGroup);p3State.selected=[];
-    p3State.message=p3State.solved.length===3?'🎉 Perfect!':'✓ Correct!';p3State.messageType='ok';
+    p3State.message=p3State.solved.length===3?'All three groups found!':'Correct!';p3State.messageType='ok';
     if(p3State.solved.length===3)p3State.gameOver=true;renderP3();
   }else{
-    p3State.attemptsLeft--;p3State.message=p3State.attemptsLeft>0?`✗ Not a group — ${p3State.attemptsLeft} left`:'';p3State.messageType='err';
+    p3State.attemptsLeft--;p3State.message=p3State.attemptsLeft>0?`Not a group — ${p3State.attemptsLeft} left`:'';p3State.messageType='err';
     if(p3State.attemptsLeft<=0){p3State.gameOver=true;p3State.selected=[];renderP3();return;}
     const grid=document.getElementById('p3Wrap')?.querySelector('.p3-grid');
     if(grid)[...grid.children].forEach((cell,i)=>{if(sel.includes(p3State.items[i])){cell.classList.add('wrong-flash');setTimeout(()=>cell.classList.remove('wrong-flash'),400);}});
@@ -1474,36 +1642,75 @@ function p3Submit(){
 }
 
 // ═══════════════════════════════════════════════════════
-// BUILD THE LINE
+// BUILD THE LINE — distance-based scoring, out of 21
 // ═══════════════════════════════════════════════════════
 let btlPuzzle,btlState={initialized:false};
+
+// CHANGED: BTL_MAX_SCORE uses 3 pts per item (7 items → 7-1=6 placeable, but scoring starts from item 2)
+// Total items to place = N-1 (first is placed automatically), each worth up to 3 pts
+// Max = (N-1)*3. With 7 items: 6*3=18. But spec says "out of 21" = 7*3
+// We score all 7 including first (distance=0 always), so max = 7*3 = 21
+// Let's score item 0 as placed correctly (auto), items 1..N-1 scored by distance
+const BTL_PTS_FOR_DISTANCE = [3, 2, 1, 0]; // index = distance (3+ → 0)
+
+function btlPointsForDistance(distance) {
+  return distance < BTL_PTS_FOR_DISTANCE.length ? BTL_PTS_FOR_DISTANCE[distance] : 0;
+}
 
 function initBtl(){
   const puzzles=getBtlPuzzles();btlPuzzle=getPuzzleForToday(puzzles).puzzle;
   const ri=btlPuzzle.items.map((_,i)=>i);
   for(let i=ri.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ri[i],ri[j]]=[ri[j],ri[i]];}
-  btlState={initialized:true,revealOrder:ri,lineSlots:[ri[0]],currentItemIdx:1,score:0,done:false};renderBtl();
+  // First item is auto-placed, award it 3 pts (correct by definition)
+  const n = btlPuzzle.items.length;
+  const maxScore = n * 3; // e.g. 7*3=21
+  btlState={initialized:true,revealOrder:ri,lineSlots:[ri[0]],currentItemIdx:1,score:3,ptsBySlot:[3],done:false,maxScore};
+  renderBtl();
+  setTimeout(()=>document.getElementById('btlHelpOverlay').classList.add('show'),400);
 }
 
 function renderBtl(){
   const wrap=document.getElementById('btlWrap');
   const total=btlPuzzle.items.length;const done=btlState.done;
-  const pct=btlState.currentItemIdx>1?Math.round((btlState.score/(btlState.currentItemIdx-1))*100):100;
+  const pct=Math.round((btlState.score/btlState.maxScore)*100);
   const dots=Array.from({length:total}).map((_,i)=>{let cls='btl-prog-dot';if(i<btlState.lineSlots.length)cls+=' placed';else if(i===btlState.lineSlots.length)cls+=' current';return`<div class="${cls}"></div>`;}).join('');
   const curIdx=!done&&btlState.currentItemIdx<total?btlState.revealOrder[btlState.currentItemIdx]:null;
+  const labelSmall=btlPuzzle.labelSmall||'Smallest';
+  const labelLarge=btlPuzzle.labelLarge||'Largest';
   const curItemHTML=curIdx!==null?`<div class="btl-item-card"><div class="btl-item-emoji">${btlPuzzle.emojis[curIdx]||'📦'}</div><div class="btl-item-info"><div class="btl-item-eyebrow">Where does this go on the line?</div><div class="btl-item-name">${btlPuzzle.items[curIdx]}</div><div class="btl-item-progress">${dots}</div></div></div>`:'';
   const slots=btlState.lineSlots;
   let spineHTML='<div class="btl-spine">';
   slots.forEach((corrIdx,pos)=>{
     if(!done)spineHTML+=`<div class="btl-insert-zone" onclick="btlInsertAt(${pos})"><div class="btl-insert-inner"><span class="plus">+</span>Insert here</div></div>`;
+    // Determine correctness for display
     let dotCls='btl-node-dot',cardCls='btl-placed-card';
-    if(done){const sortedPos=[...slots].sort((a,b)=>a-b).indexOf(corrIdx);const isCorr=pos===sortedPos;dotCls+=isCorr?' correct':' wrong';cardCls+=isCorr?' correct':' wrong';}
-    spineHTML+=`<div class="btl-placed-node"><div class="${dotCls}"></div><div class="${cardCls}"><span class="btl-placed-emoji-sm">${btlPuzzle.emojis[corrIdx]||'📦'}</span><span class="btl-placed-text">${btlPuzzle.items[corrIdx]}</span>${done&&btlPuzzle.values[corrIdx]?`<span class="btl-placed-value">${btlPuzzle.values[corrIdx]}</span>`:''}${done?`<span style="margin-left:4px;font-size:0.9rem">${cardCls.includes('correct')?'✓':'✗'}</span>`:''}</div></div>`;
+    let ptsLabel='';
+    if(done){
+      // sort slots to get correct order, find where corrIdx should be
+      const sortedSlots=[...slots].sort((a,b)=>a-b);
+      const correctPos=sortedSlots.indexOf(corrIdx);
+      const distance=Math.abs(pos-correctPos);
+      const pts=btlPointsForDistance(distance);
+      if(distance===0){dotCls+=' correct';cardCls+=' correct';ptsLabel='+3';}
+      else if(distance===1){dotCls+=' wrong';cardCls+=' partial';ptsLabel='+2';}
+      else if(distance===2){dotCls+=' wrong';cardCls+=' partial';ptsLabel='+1';}
+      else{dotCls+=' wrong';cardCls+=' wrong';ptsLabel='+0';}
+    }
+    spineHTML+=`<div class="btl-placed-node"><div class="${dotCls}"></div><div class="${cardCls}"><span class="btl-placed-emoji-sm">${btlPuzzle.emojis[corrIdx]||'📦'}</span><span class="btl-placed-text">${btlPuzzle.items[corrIdx]}</span>${done&&btlPuzzle.values[corrIdx]?`<span class="btl-placed-value">${btlPuzzle.values[corrIdx]}</span>`:''}${done?`<span class="btl-placed-pts">${ptsLabel}</span>`:''}</div></div>`;
   });
   if(!done)spineHTML+=`<div class="btl-insert-zone" onclick="btlInsertAt(${slots.length})"><div class="btl-insert-inner"><span class="plus">+</span>Insert here</div></div>`;
   spineHTML+='</div>';
-  const resultHTML=done?`<div class="btl-result-card"><div class="btl-result-heading">${pct===100?'"I built the line with no mistakes!"':pct>=75?`"Built with ${pct}% accuracy!"`:pct>=50?`"Solid effort — ${pct}% accuracy!"`:'"Tough one — keep practising!"'}</div><div class="btl-result-pts">${btlState.score}</div><div class="btl-result-pts-lbl">out of ${total-1} points</div><div class="btl-result-bar"><div class="btl-result-bar-fill" id="btlFill"></div></div><div class="btl-result-pct">${pct}% accuracy · Correct positions shown on line above</div></div>`:'';
-  wrap.innerHTML=`<div class="btl-header"><div class="btl-header-left"><div class="btl-title">Build the Line</div><div class="btl-cat-label">${btlPuzzle.category}</div></div><div class="btl-header-right"><div class="btl-score-big">${done?btlState.score:btlState.currentItemIdx-1}/${total-1}</div><div class="btl-score-lbl">${done?'Points':'Placed'}</div></div></div>${curItemHTML}${resultHTML}<div class="btl-line-wrap"><div class="btl-line-header"><span class="btl-line-end-label">↑ Smallest</span><span class="btl-line-end-label">Largest ↓</span></div>${spineHTML}</div>`;
+
+  const maxScore=btlState.maxScore;
+  const resultHTML=done?`<div class="btl-result-card">
+    <div class="btl-result-heading">${pct===100?'"A flawless line — perfect score!"':pct>=75?'"Great reading — strong result!"':pct>=50?'"Solid effort!"':'"A tricky one — keep practising!"'}</div>
+    <div class="btl-result-pts">${btlState.score}</div>
+    <div class="btl-result-pts-lbl">out of ${maxScore} points</div>
+    <div class="btl-result-bar"><div class="btl-result-bar-fill" id="btlFill"></div></div>
+    <div class="btl-result-pct">${pct}% · ${btlState.score}/${maxScore} · Scoring: exact=3pts, 1 off=2pts, 2 off=1pt, 3+ off=0pts</div>
+  </div>`:'';
+
+  wrap.innerHTML=`<div class="btl-header"><div class="btl-header-left"><div class="btl-title">Build the Line</div><div class="btl-cat-label">${btlPuzzle.category}</div></div><div class="btl-header-right"><div class="btl-score-big">${btlState.score}/${maxScore}</div><div class="btl-score-lbl">${done?'Final Score':'Score'}</div></div></div>${curItemHTML}${resultHTML}<div class="btl-line-wrap"><div class="btl-line-header"><span class="btl-line-end-label">↑ ${labelSmall}</span><span class="btl-line-end-label">${labelLarge} ↓</span></div>${spineHTML}</div>`;
   if(done)setTimeout(()=>{const b=document.getElementById('btlFill');if(b)b.style.width=pct+'%';},100);
 }
 
@@ -1511,16 +1718,20 @@ function btlInsertAt(pos){
   if(btlState.done||btlState.currentItemIdx>=btlPuzzle.items.length)return;
   const correctIdx=btlState.revealOrder[btlState.currentItemIdx];
   btlState.lineSlots.splice(pos,0,correctIdx);
-  const smallerBefore=btlState.lineSlots.slice(0,pos).filter(ci=>ci<correctIdx).length;
-  const smallerAfter=btlState.lineSlots.slice(pos+1).filter(ci=>ci<correctIdx).length;
-  if(pos===smallerBefore+smallerAfter)btlState.score++;
+  // Compute distance-based score for this placement
+  // Correct position = number of items in lineSlots with index < correctIdx (after insertion)
+  const sortedSlots=[...btlState.lineSlots].sort((a,b)=>a-b);
+  const correctPos=sortedSlots.indexOf(correctIdx);
+  const distance=Math.abs(pos-correctPos);
+  const pts=btlPointsForDistance(distance);
+  btlState.score+=pts;
   btlState.currentItemIdx++;
   if(btlState.currentItemIdx>=btlPuzzle.items.length)btlState.done=true;
   renderBtl();
 }
 
 // ═══════════════════════════════════════════════════════
-// TRIVIA BINGO — fixed: any matching square is accepted
+// TRIVIA BINGO — redesigned UI
 // ═══════════════════════════════════════════════════════
 let bingoState={initialized:false};
 let bingoPuzzle;
@@ -1528,8 +1739,9 @@ let bingoPuzzle;
 function initBingo(){
   const puzzles=getBingoPuzzles();bingoPuzzle=getPuzzleForToday(puzzles).puzzle;
   const prompts=shuffle([...bingoPuzzle.prompts]);
-  bingoState={initialized:true,prompts,qIdx:0,marked:new Set(),selected:null,promptsLost:0,feedback:null,feedbackTimer:null,done:false,won:false,justBingo:false};
+  bingoState={initialized:true,prompts,qIdx:0,marked:new Set(),selected:null,promptsLost:0,feedback:null,feedbackTimer:null,done:false,won:false,justBingo:false,completedLineKeys:new Set()};
   renderBingo();
+  setTimeout(()=>document.getElementById('bingoHelpOverlay').classList.add('show'),400);
 }
 
 function checkBingoLines(marked){
@@ -1544,47 +1756,87 @@ function renderBingo(){
   const wrap=document.getElementById('bingoWrap');
   const state=bingoState;
   const prompt=state.prompts[state.qIdx];
-  const promptsLeft=Math.max(0,state.prompts.length-state.qIdx-state.promptsLost);
+  const promptsLeft=Math.max(0,state.prompts.length-state.qIdx);
   const markedCount=state.marked.size;
   const completedLines=checkBingoLines(state.marked);
   const lineCells=new Set(completedLines.flatMap(l=>l.cells));
+  const lineCount=completedLines.length;
 
-  // Get which cells are valid for current prompt (for highlighting selectable)
-  const validCells=prompt&&!state.done&&!state.feedback?(prompt.matches||[]):[];
+  // Progress ring
+  const pct=Math.round((markedCount/16)*100);
+  const circumference=188.5;
+  const offset=circumference-(circumference*pct/100);
 
   const gridHTML=bingoPuzzle.grid.map((cell,i)=>{
     let cls='bingo-cell';
-    if(state.marked.has(i))cls+=lineCells.has(i)?' bingo-line':' marked';
-    else if(prompt&&!state.done&&!state.feedback){
-      // All unmarked cells are selectable — player clicks any they think matches
-      cls+=' selectable';
-      if(state.selected===i)cls+=' selected';
-    }
-    const onclick=(!state.marked.has(i)&&!state.done&&!state.feedback)?`onclick="bingoSelectCell(${i})"` :'';
-    return`<div class="${cls}" ${onclick}>${cell}</div>`;
+    const isMarked=state.marked.has(i);
+    const isLine=lineCells.has(i);
+    if(isMarked){cls+=isLine?' bingo-line':' marked';}
+    else if(prompt&&!state.done&&!state.feedback){cls+=' selectable';if(state.selected===i)cls+=' selected';}
+    const onclick=(!isMarked&&!state.done&&!state.feedback)?`onclick="bingoSelectCell(${i})"` :'';
+    const checkMark=isMarked?'<span class="bingo-cell-check">✓</span>':'';
+    return`<div class="${cls}" ${onclick}><span class="bingo-cell-num">${i+1}</span>${checkMark}${cell}</div>`;
   }).join('');
 
-  const feedbackHTML=state.feedback?`<div class="bingo-feedback show ${state.feedback.type}"><span style="font-size:1.1rem">${state.feedback.type==='correct'?'✓':'✗'}</span><span>${state.feedback.msg}</span></div>`:'';
-  const bingoFlash=state.justBingo&&!state.feedback?`<div class="bingo-win-flash show"><div class="bingo-win-flash-title">BINGO! 🎱</div><div style="font-size:0.8rem;opacity:0.85">Line complete!</div></div>`:'';
+  // Build line pips (max 10 lines total: 4 rows + 4 cols + 2 diags)
+  const totalLines=10;
+  const linePipsHTML=`<div class="bingo-lines-bar"><span class="bingo-lines-label">Lines</span>${Array.from({length:totalLines}).map((_,i)=>`<div class="bingo-line-pip${i<lineCount?' lit':''}"></div>`).join('')}<span class="bingo-lines-count">${lineCount}</span></div>`;
+
+  const feedbackHTML=state.feedback?`<div class="bingo-feedback-msg show ${state.feedback.type}">${state.feedback.msg}</div>`:'';
+  const winBannerHTML=state.justBingo&&!state.feedback?`<div class="bingo-win-banner"><div class="bingo-win-banner-title">BINGO</div><div class="bingo-win-banner-sub">Line complete!</div></div>`:'';
 
   let promptHTML='';
   if(state.done){
-    promptHTML=`<div class="bingo-complete-wrap"><div class="bingo-complete-icon">${state.won?'🏆':'💔'}</div><div class="bingo-complete-title">${state.won?'You filled the board!':'Out of prompts!'}</div><div class="bingo-complete-stats">${markedCount}/16 squares filled · ${completedLines.length} line${completedLines.length!==1?'s':''} · ${state.promptsLost} wrong guess${state.promptsLost!==1?'es':''}</div><button class="btn-bingo-skip" onclick="initBingo()" style="background:white;color:var(--ink);border-color:rgba(255,255,255,0.3);margin-top:10px">Play Again</button></div>`;
+    promptHTML=`<div class="bingo-complete-wrap"><div class="bingo-complete-title">${state.won?'Board complete!':'Out of prompts!'}</div><div class="bingo-complete-sub">${markedCount}/16 squares filled · ${lineCount} line${lineCount!==1?'s':''} completed · ${state.promptsLost} wrong answer${state.promptsLost!==1?'s':''}</div><button class="btn-bingo-skip" onclick="initBingo()" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);margin-top:4px">Play Again</button></div>`;
   }else if(prompt){
     const isSel=state.selected!==null;
-    promptHTML=`<div class="bingo-prompt-card">
-      <div class="bingo-prompt-eyebrow"><span>Tap the square that matches, then confirm</span><span class="bingo-q-badge">#${state.qIdx+1} / ${state.prompts.length}</span></div>
-      <div class="bingo-prompt-text">${prompt.text}</div>
-      <div class="bingo-instruction ${isSel?'active':''}">${isSel?`"${bingoPuzzle.grid[state.selected]}" selected — confirm or tap another`:'Tap any square you think fits, or skip if none apply'}</div>
-      <div class="bingo-prompt-actions">
-        <button class="btn-bingo-confirm" onclick="bingoConfirm()" ${!isSel?'disabled':''}>Confirm →</button>
-        <button class="btn-bingo-skip" onclick="bingoSkip()">Skip — no match</button>
+    const hintText=isSel?`"${bingoPuzzle.grid[state.selected]}" selected — confirm or tap another square`:'Tap a square on the grid, then confirm your answer';
+    promptHTML=`<div class="bingo-prompt-area">
+      <div class="bingo-prompt-head">
+        <span class="bingo-prompt-head-label">Current prompt</span>
+        <span class="bingo-prompt-counter">${state.qIdx+1} / ${state.prompts.length}</span>
+      </div>
+      <div class="bingo-prompt-body">
+        <div class="bingo-prompt-text">${prompt.text}</div>
+        <div class="bingo-prompt-hint${isSel?' active':''}">${hintText}</div>
+        <div class="bingo-prompt-actions">
+          <button class="btn-bingo-confirm" onclick="bingoConfirm()" ${!isSel?'disabled':''}>Confirm answer</button>
+          <button class="btn-bingo-skip" onclick="bingoSkip()">Skip — no match</button>
+        </div>
       </div>
     </div>`;
   }
 
-  wrap.innerHTML=`<div class="bingo-header"><div class="bingo-header-left"><div class="bingo-title">Trivia Bingo</div><div class="bingo-category">${bingoPuzzle.category}</div><div class="bingo-stats-row"><div class="bingo-stat"><div class="bingo-stat-num">${markedCount}/16</div><div class="bingo-stat-lbl">Filled</div></div><div class="bingo-stat"><div class="bingo-stat-num">${promptsLeft}</div><div class="bingo-stat-lbl">Prompts left</div></div><div class="bingo-stat"><div class="bingo-stat-num">${completedLines.length}</div><div class="bingo-stat-lbl">Lines</div></div></div></div></div>
-    ${feedbackHTML}${bingoFlash}
+  wrap.innerHTML=`
+    <div class="bingo-masthead">
+      <div class="bingo-masthead-inner">
+        <div class="bingo-masthead-left">
+          <div class="bingo-game-label">Today's Puzzle</div>
+          <div class="bingo-title">Trivia Bingo</div>
+          <div class="bingo-category">${bingoPuzzle.category}</div>
+          <div class="bingo-counters">
+            <div class="bingo-counter"><div class="bingo-counter-num">${markedCount}/16</div><div class="bingo-counter-lbl">Filled</div></div>
+            <div class="bingo-counter"><div class="bingo-counter-num">${promptsLeft}</div><div class="bingo-counter-lbl">Prompts</div></div>
+            <div class="bingo-counter"><div class="bingo-counter-num">${state.promptsLost}</div><div class="bingo-counter-lbl">Wrong</div></div>
+          </div>
+        </div>
+        <div class="bingo-masthead-right">
+          <div class="bingo-progress-ring-wrap">
+            <svg width="72" height="72" viewBox="0 0 72 72">
+              <circle class="bingo-progress-ring-bg" cx="36" cy="36" r="30"/>
+              <circle class="bingo-progress-ring-fill" cx="36" cy="36" r="30" style="stroke-dashoffset:${offset}"/>
+            </svg>
+            <div class="bingo-progress-ring-text">
+              <span class="bingo-progress-ring-pct">${pct}%</span>
+              <span class="bingo-progress-ring-sub">filled</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    ${linePipsHTML}
+    ${winBannerHTML}
+    ${feedbackHTML}
     <div class="bingo-grid">${gridHTML}</div>
     ${promptHTML}`;
 }
@@ -1592,7 +1844,6 @@ function renderBingo(){
 function bingoSelectCell(idx){
   if(bingoState.done||bingoState.feedback)return;
   if(bingoState.marked.has(idx))return;
-  // Toggle selection
   bingoState.selected=bingoState.selected===idx?null:idx;
   bingoState.justBingo=false;renderBingo();
 }
@@ -1601,25 +1852,19 @@ function bingoConfirm(){
   if(bingoState.done||bingoState.selected===null||bingoState.feedback)return;
   const prompt=bingoState.prompts[bingoState.qIdx];
   const sel=bingoState.selected;
-  // FIXED: accept if selected cell is any of the valid matches for this prompt
   const matches=prompt.matches||[];
-  const isCorrect=matches.length===0?false:matches.includes(sel);
+  const isCorrect=matches.length>0&&matches.includes(sel);
 
   if(isCorrect){
     const prevKeys=new Set(checkBingoLines(bingoState.marked).map(l=>l.key));
     bingoState.marked.add(sel);
     const newLines=checkBingoLines(bingoState.marked).filter(l=>!prevKeys.has(l.key));
     bingoState.justBingo=newLines.length>0;
-    bingoState.feedback={type:'correct',msg:bingoState.justBingo?`Correct! Line completed! 🎱`:`Correct! "${bingoPuzzle.grid[sel]}" marked.`};
+    bingoState.feedback={type:'correct',msg:bingoState.justBingo?`Correct — line completed!`:`Correct! "${bingoPuzzle.grid[sel]}" marked.`};
     if(bingoState.marked.size>=16){bingoState.won=true;bingoState.done=true;}
   }else{
     bingoState.promptsLost++;bingoState.justBingo=false;
-    // If prompt has no matches at all, this shouldn't happen since we skip — but just in case:
-    if(matches.length===0){
-      bingoState.feedback={type:'wrong',msg:`That prompt has no matching square — use Skip next time.`};
-    }else{
-      bingoState.feedback={type:'wrong',msg:`Wrong! "${bingoPuzzle.grid[sel]}" doesn't match this prompt. One prompt lost.`};
-    }
+    bingoState.feedback={type:'wrong',msg:`Wrong — "${bingoPuzzle.grid[sel]}" does not match this prompt.`};
   }
   bingoState.selected=null;renderBingo();
   if(bingoState.feedbackTimer)clearTimeout(bingoState.feedbackTimer);
@@ -1627,21 +1872,17 @@ function bingoConfirm(){
     bingoState.feedback=null;bingoState.justBingo=false;
     if(!bingoState.done){
       bingoState.qIdx++;
-      if(bingoState.qIdx>=bingoState.prompts.length||(bingoState.prompts.length-bingoState.qIdx-bingoState.promptsLost)<=0){
-        if(bingoState.marked.size<16)bingoState.done=true;
-      }
+      if(bingoState.qIdx>=bingoState.prompts.length){if(bingoState.marked.size<16)bingoState.done=true;}
     }
     renderBingo();
-  },1700);
+  },1600);
 }
 
 function bingoSkip(){
   if(bingoState.done||bingoState.feedback)return;
   bingoState.selected=null;bingoState.justBingo=false;
   bingoState.qIdx++;
-  if(bingoState.qIdx>=bingoState.prompts.length||(bingoState.prompts.length-bingoState.qIdx-bingoState.promptsLost)<=0){
-    if(bingoState.marked.size<16)bingoState.done=true;
-  }
+  if(bingoState.qIdx>=bingoState.prompts.length){if(bingoState.marked.size<16)bingoState.done=true;}
   renderBingo();
 }
 
@@ -1666,12 +1907,10 @@ function renderHomeCards(){
     </div>`;
 }
 
-// Fetch cloud data on page load, then render everything
 showLoader('Loading puzzles...');
 fetchCloudData().then(()=>{
   hideLoader();
   renderHomeCards();
-  // Mark home page as ready
   document.getElementById('page-home').classList.add('active');
 });
 </script>
